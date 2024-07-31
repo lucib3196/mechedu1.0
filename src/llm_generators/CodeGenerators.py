@@ -76,7 +76,7 @@ class CodeGenerator(LLMConfig):
         return generated_code
 
 # Custom Generators
-csv_path = r"mechedu1.0\src\data\Question_Embedding_20240128.csv"
+csv_path = r"mechedu1.0\src\llm_generators\Question_Embedding_20240128.csv"
 question_html_generator = CodeGenerator(
     embedding_column="question_embedding",
     llm_model="gpt-4o",
