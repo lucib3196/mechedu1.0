@@ -6,6 +6,7 @@ from src.llm_generators.llm_templates import question_html_gen_template, server_
 from credentials import api_key
 from openai import AsyncOpenAI
 import asyncio
+import os
 
 @dataclass
 class CodeGenerator(LLMConfig):
@@ -76,7 +77,10 @@ class CodeGenerator(LLMConfig):
         return generated_code
 
 # Custom Generators
-csv_path = r"mechedu1.0\src\llm_generators\Question_Embedding_20240128.csv"
+base_path = os.path.dirname(os.path.abspath(__file__))
+csv_path = os.path.join(base_path, "mechedu1.0/src/llm_generators/Question_Embedding_20240128.csv")
+
+
 question_html_generator = CodeGenerator(
     embedding_column="question_embedding",
     llm_model="gpt-4o",
