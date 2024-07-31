@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Document Title{% endblock %}</title>
+
+    <!-- Include Local CSS -->
+    <link href="app\static\css\styles.css" rel="stylesheet">
+
+    <!-- MathJax Configuration -->
+    <script type="text/javascript">
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    
+    <!-- Include MathJax -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+
+    <footer>
+        <p align="center">2024 STEM Module Generator. All rights reserved.</p>
+    </footer>
+
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Include Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <!-- Include PrairieLearn JavaScript -->
+    <script src="https://prairielearn.engr.illinois.edu/pl-api/v1/content/shared/pl-components/pl.js"></script>
+    
+    {% block scripts %}
+    {% endblock %}
+
+</body>
+</html>

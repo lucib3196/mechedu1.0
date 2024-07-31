@@ -116,7 +116,7 @@ server_py_generator = CodeGenerator(
     similarity_threshold=0.5,
     embedding_engine="text-embedding-ada-002",
     embedding_model="text-embedding-ada-002",
-    base_template=server_js_template_base
+    base_template=server_py_template_base
 )
 
 solution_html_generator = CodeGenerator(

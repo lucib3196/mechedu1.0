@@ -1,5 +1,7 @@
 import os
+import io
 from time import time
+import zipfile
 import asyncio
 from typing import Union, List, Dict, Optional
 from credentials import api_key
@@ -93,14 +95,20 @@ async def process_nonadaptive_async(question: str, metadata: Optional[str] = Non
     return generated_content
 
 
-## Test
-question = """Classify each number as being a natural number (N), whole number (W), integer (I), rational number (Q), and/or irrational number (Q′).
+## Should be moved to something else
+def save_files_to_temp(files, folder_path):
+    file_paths = []
+    for filename,content in files.items():
+        filepath = os.path.join(folder_path, filename)
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(content)
+        file_paths.append(filepath)
+    return file_paths
 
-- \(\sqrt{36}\)
-- \(\frac{8}{3}\)
-- \(\sqrt{73}\)
-- \(-6\)
-- \(3.2121121112\ldots\)
-"""
-
-asyncio.run(main(question))
+def create_zip_file(file_paths, base_dir):
+    memory_file = io.BytesIO()
+    with zipfile.ZipFile(memory_file, 'w') as zipf:
+        for file_path in file_paths:
+            zipf.write(file_path, os.path.relpath(file_path, base_dir))
+    memory_file.seek(0)
+    return memory_file
