@@ -1,72 +1,70 @@
 {% extends "base.html" %}
-{% block title %}Home{% endblock %}
-{% block content %}
 
-<section>
-    <h2 align="center">Generate Custom Modules from Your Questions</h2>
-  </section>
-  
-  <section>
-    <div align="center">
-      <button class="btn btn-secondary" id="showTextButton">Text Generator</button>
-      <button class="btn btn-secondary" id="showImageButton">Image Generator</button>
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="text-center my-5">
+    <h1 class="main-heading">2024 GESTALT Question Generator</h1>
+    <p class="subheading">&copy; Generate Custom Modules from Your Questions</p>
+</section>
+
+<section class="text-center my-4">
+    <div>
+        <button class="btn btn-secondary mx-2" id="showTextButton">Text Generator</button>
+        <button class="btn btn-secondary mx-2" id="showImageButton">Image Generator</button>
     </div>
-  </section>
-  
-  <div id="textGenerator" style="display: none;">
+</section>
+
+<div id="textGenerator" class="container" style="display: none;">
     <section></section>
-    <p align="center">Enter your question below and get personalized modules instantly.</p>
-    <p align="center">This is the basic generator. Here are some examples of questions you can try:</p>
+    <p class="text-center">Enter your question below and get personalized modules instantly.</p>
+    <p class="text-center">This is the basic generator. Here are some examples of questions you can try:</p>
     <ul>
-      <li>A ball is thrown horizontally from the top of a 50-meter high building with an initial speed of 15 meters per second. Assuming there is no air resistance, calculate the time it takes for the ball to reach the ground.</li>
-      <li>A mass-spring system oscillates with a period of 2 seconds. If the spring constant is 100 N/m, calculate the mass attached to the spring. Assume the motion is simple harmonic.</li>
-      <li>A force of 200 Newtons is applied perpendicular to a circular cross-sectional area with a radius of 0.1 meters. Calculate the pressure exerted on the area.</li>
+        <li>A ball is thrown horizontally from the top of a 50-meter high building with an initial speed of 15 meters per second. Assuming there is no air resistance, calculate the time it takes for the ball to reach the ground.</li>
+        <li>A mass-spring system oscillates with a period of 2 seconds. If the spring constant is 100 N/m, calculate the mass attached to the spring. Assume the motion is simple harmonic.</li>
+        <li>A force of 200 Newtons is applied perpendicular to a circular cross-sectional area with a radius of 0.1 meters. Calculate the pressure exerted on the area.</li>
     </ul>
     <form action="/generate_from_text" method="post" onsubmit="disableButton('text_generate_button')">
-      <input type="textarea" class="form-control" name="user_question" placeholder="Enter your question here" required>
-      <div align="center">
-        <br>
-        <button class="btn btn-primary" id="text_generate_button" type="submit">Generate</button>
-      </div>
+        <textarea class="form-control my-3" name="user_question" placeholder="Enter your question here" required></textarea>
+        <div class="text-center">
+            <button class="btn btn-primary" id="text_generate_button" type="submit">Generate</button>
+        </div>
     </form>
-  </div>
-  
-  <div id="imageGenerator" style="display: none;">
+</div>
+
+<div id="imageGenerator" class="container" style="display: none;">
     <section></section>
-    <p align="center">Upload your images below to generate personalized modules instantly.</p>
-    <p align="center">This is the advanced generator that uses images with both the text and corresponding solution. Here are some examples of what you can upload:</p>
+    <p class="text-center">Upload your images below to generate personalized modules instantly.</p>
+    <p class="text-center">This is the advanced generator that uses images with both the text and corresponding solution. Here are some examples of what you can upload:</p>
     <ul>
-      <li>Textbook solutions which are more official and accurate.</li>
-      <li>Handwritten solutions, which are also accepted.</li>
+        <li>Textbook solutions which are more official and accurate.</li>
+        <li>Handwritten solutions, which are also accepted.</li>
     </ul>
-    <p align="center"> Additionally, this method allows you to upload multiple images simultaneously. However, please note that it is designed to process and generate modules for one question at a time. Ensure that all the images uploaded pertain to a single question and its corresponding solution to achieve the best results.</p?
-    <p align="center">This method is more computationally expensive compared to simple text input, but there is a higher chance of it being correct.</p>
+    <p class="text-center">Additionally, this method allows you to upload multiple images simultaneously. However, please note that it is designed to process and generate modules for one question at a time. Ensure that all the images uploaded pertain to a single question and its corresponding solution to achieve the best results.</p>
+    <p class="text-center">This method is more computationally expensive compared to simple text input, but there is a higher chance of it being correct.</p>
     <form action="/generate_from_image" method="post" enctype="multipart/form-data" onsubmit="disableButton('image_generate_button')">
-      <input type="file" class="form-control" name="user_images" accept="image/*" multiple required>
-      <div align="center">
-        <br>
-        <button class="btn btn-primary" id="image_generate_button" type="submit">Generate</button>
-      </div>
+        <input type="file" class="form-control my-3" name="user_images" accept="image/*" multiple required>
+        <div class="text-center">
+            <button class="btn btn-primary" id="image_generate_button" type="submit">Generate</button>
+        </div>
     </form>
-  </div>
-  
-  
-  {% endblock %}
-  
-  {% block scripts %}
-  <script>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
     document.getElementById('showTextButton').addEventListener('click', function() {
-      document.getElementById('textGenerator').style.display = 'block';
-      document.getElementById('imageGenerator').style.display = 'none';
+        document.getElementById('textGenerator').style.display = 'block';
+        document.getElementById('imageGenerator').style.display = 'none';
     });
-  
+
     document.getElementById('showImageButton').addEventListener('click', function() {
-      document.getElementById('textGenerator').style.display = 'none';
-      document.getElementById('imageGenerator').style.display = 'block';
+        document.getElementById('textGenerator').style.display = 'none';
+        document.getElementById('imageGenerator').style.display = 'block';
     });
-  
+
     function disableButton(buttonId) {
-      document.getElementById(buttonId).disabled = true;
+        document.getElementById(buttonId).disabled = true;
     }
-  </script>
-  {% endblock scripts %}
+</script>
+{% endblock scripts %}
