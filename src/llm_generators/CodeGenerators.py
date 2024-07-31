@@ -7,7 +7,7 @@ from credentials import api_key
 from openai import AsyncOpenAI
 import asyncio
 import os
-from llm_generators import csv_path
+from src.llm_generators import csv_path
 
 print(f"This is the csv path {csv_path}")
 @dataclass
