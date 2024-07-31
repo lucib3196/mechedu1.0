@@ -7,7 +7,9 @@ from credentials import api_key
 from openai import AsyncOpenAI
 import asyncio
 import os
+from llm_generators import csv_path
 
+print(f"This is the csv path {csv_path}")
 @dataclass
 class CodeGenerator(LLMConfig):
     base_template: str
@@ -77,7 +79,6 @@ class CodeGenerator(LLMConfig):
         return generated_code
 
 # Custom Generators
-csv_path = "data/Question_Embedding_20240128.csv"
 
 question_html_generator = CodeGenerator(
     embedding_column="question_embedding",
