@@ -1,4 +1,4 @@
-# STEM Module Generator
+# GESTALT QUESTION GENERATOR
 
 ## Welcome
 
