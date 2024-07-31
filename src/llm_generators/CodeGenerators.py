@@ -77,9 +77,7 @@ class CodeGenerator(LLMConfig):
         return generated_code
 
 # Custom Generators
-base_path = os.path.dirname(os.path.abspath(__file__))
-csv_path = os.path.join(base_path, "mechedu1.0\src\data\Question_Embedding_20240128.csv")
-
+csv_path = "data/Question_Embedding_20240128.csv"
 
 question_html_generator = CodeGenerator(
     embedding_column="question_embedding",
