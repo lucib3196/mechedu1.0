@@ -77,13 +77,11 @@ Given the following input question, generate the following metadata
   question: {question}
     - uuid: A universally unique identifier (UUID) for this item
         - title: The title or name of the educational content. Return using CamelCase convention
-        - stem: Additional context or a subtopic related to the main topic
+        - stem: = Additional context or a subtopic related to the main topic
         - topic: The main topic or subject of the educational content
         - tags: An array of keywords or tags associated with the content for categorization
         - prereqs: Prerequisites needed to access or understand the content
         - isAdaptive: Designates whether the content necessitates any form of numerical computation. Assign as 'true' if the question involves any numerical computation; return 'false' if no computational effort is required. Note: This is a string value, not a boolean.
-        Refer to the predefined list of tags: {tags}. If a tag from this list matches the question's requirements, use it. If the existing tag do not adequately cover the specific needs of the question, you are encouraged to define and introduce a new tag. 
-        Consider that multiple concepts—either from the list or newly created—can be relevant and should be included. Each tag should be specific and directly related to mechanical engineering."
         """
 
 

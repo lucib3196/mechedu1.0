@@ -1,0 +1,107 @@
+{
+    "summary_and_key_concepts": {
+        "div": [
+            {
+                "name": "summary-container",
+                "description": "Appropriate for the summary section of a webpage."
+            },
+            {
+                "name": "concepts-container",
+                "description": "Best used for sections detailing key or fundamental concepts."
+            }
+        ]
+    },
+    "derivation-section": {
+        "div": [
+            {
+                "name": "single-derivation-container",
+                "description": "Appropriate for containing a single derivation"
+            }
+        ]
+    },
+    "conceptual-question-section":{
+        "div": [
+            {
+                "name": "single-concepetual-question-container",
+                "description": "Appropriate for containing a single conceptual question including their options"
+            }
+        ]
+    },
+
+    "general_styles": {
+        "h1": [
+            {
+                "name": "main-heading",
+                "description": "Best used for the main heading of the section, regardless of the section."
+            }
+        ],
+        "h2": [
+            {
+                "name": "sub-heading",
+                "description": "Appropriate for sub-headings within any section."
+            }
+        ],
+        "h3": [
+            {
+                "name": "minor-heading",
+                "description": "Suitable for minor headings under sub-sections, applicable in various contexts like questions or concepts."
+            }
+        ],
+        "span": [
+            {
+                "name": "highlight-text",
+                "description": "Best used for highlighting specific parts of the text within any paragraph or content block."
+            },
+            {
+                "name": "important-text",
+                "description": "Appropriate for emphasizing important text essentially just a bold. Should be used for features such as key concepts."
+            }
+        ],
+        "strong": [
+            {
+                "name": "important-text",
+                "description": "Appropriate for emphasizing important text across different content sections."
+            },
+            {
+                "name": "highlighted-important-text",
+                "description": "Best used for crucial information that needs emphasis, applicable in derivations, key concepts, or any other critical content."
+            }
+        ],
+        "p": [
+            {
+                "name": "intro-paragraph",
+                "description": "Use for introductory paragraphs in any section to set the context."
+            },
+            {
+                "name": "note-paragraph",
+                "description": "Appropriate for additional notes or recommendations across various sections."
+            }
+        ],
+        "ul": [
+            {
+                "name": "main-list",
+                "description": "Suitable for unordered lists"
+            },
+            {
+                "name": "nested-list",
+                "description": "Ideal for nested lists"
+            }
+        ],
+        "ol": [
+            {
+                "name": "numbered-list",
+                "description": "Use for ordered lists where items need sequential numbering."
+            }
+        ],
+        "li": [
+            {
+                "name": "list-item",
+                "description": "Best for individual list items."
+            },
+            {
+                "name": "highlighted-item",
+                "description": "Use for list items that require emphasis."
+            }
+        ]
+    }
+}

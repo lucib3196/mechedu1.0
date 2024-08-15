@@ -9,7 +9,7 @@
 </section>
 
 <section class="text-center my-4">
-    <div>
+    <div class="options-menu">
         <button class="btn btn-secondary mx-2" id="showTextButton">Text Generator</button>
         <button class="btn btn-secondary mx-2" id="showImageButton">Image Generator</button>
     </div>
@@ -24,12 +24,22 @@
         <li>A mass-spring system oscillates with a period of 2 seconds. If the spring constant is 100 N/m, calculate the mass attached to the spring. Assume the motion is simple harmonic.</li>
         <li>A force of 200 Newtons is applied perpendicular to a circular cross-sectional area with a radius of 0.1 meters. Calculate the pressure exerted on the area.</li>
     </ul>
-    <form action="/generate_from_text" method="post" onsubmit="disableButton('text_generate_button')">
-        <textarea class="form-control my-3" name="user_question" placeholder="Enter your question here" required></textarea>
-        <div class="text-center">
-            <button class="btn btn-primary" id="text_generate_button" type="submit">Generate</button>
-        </div>
-    </form>
+    <div class="button-container">
+        <form action="{{ url_for('quiz_generator.generate_from_text') }}" method="post" onsubmit="disableButton('text_generate_button')">
+            <textarea class="form-control my-3" name="user_question" placeholder="Enter your question here" required></textarea>
+            <div class="text-center my-4">
+                <button class="btn btn-primary" id="text_generate_button" type="submit">Generate</button>
+                
+            </div>
+        </form>
+            <form action="{{ url_for('quiz_generator.download_zip') }}" method="get" onsubmit="disableButton('download_module_button')">
+                <div class="text-center my-4">
+                    <button class="btn btn-primary3" id="download_module_button" type="submit">Download Module</button>
+                </div>
+        </form>
+        
+    </div>
+    
 </div>
 
 <div id="imageGenerator" class="container" style="display: none;">
@@ -42,12 +52,15 @@
     </ul>
     <p class="text-center">Additionally, this method allows you to upload multiple images simultaneously. However, please note that it is designed to process and generate modules for one question at a time. Ensure that all the images uploaded pertain to a single question and its corresponding solution to achieve the best results.</p>
     <p class="text-center">This method is more computationally expensive compared to simple text input, but there is a higher chance of it being correct.</p>
-    <form action="/generate_from_image" method="post" enctype="multipart/form-data" onsubmit="disableButton('image_generate_button')">
+    <form action="{{ url_for('quiz_generator.generate_from_image') }}" method="post" enctype="multipart/form-data" onsubmit="disableButton('image_generate_button')">
         <input type="file" class="form-control my-3" name="user_images" accept="image/*" multiple required>
-        <div class="text-center">
-            <button class="btn btn-primary" id="image_generate_button" type="submit">Generate</button>
-        </div>
+        <button class="btn btn-primary" id="text_generate_button" type="submit">Generate</button>
     </form>
+    <form action="{{ url_for('quiz_generator.download_zip') }}" method="get" onsubmit="disableButton('download_module_button')">
+        <div class="text-center my-4">
+            <button class="btn btn-primary3" id="download_module_button" type="submit">Download Module</button>
+        </div>
+</form>
 </div>
 {% endblock %}
 

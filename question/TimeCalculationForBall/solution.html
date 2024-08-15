@@ -1,0 +1,21 @@
+
+<pl-solution-panel>
+    <pl-hint level="1" data-type="text">
+        To calculate the time it takes for the ball to reach the ground, we need to consider the vertical motion of the ball. The horizontal motion does not affect the time to fall.
+    </pl-hint>
+    <pl-hint level="2" data-type="text">
+        The vertical motion can be described by the kinematic equation: \( H = \frac{1}{2} g t^2 \), where \( H \) is the height of the building, \( g \) is the acceleration due to gravity, and \( t \) is the time.
+    </pl-hint>
+    <pl-hint level="3" data-type="text">
+        Rearranging the equation to solve for \( t \), we get: \( t = \sqrt{\frac{2H}{g}} \).
+    </pl-hint>
+    <pl-hint level="4" data-type="text">
+        The acceleration due to gravity varies based on the unit system. For the SI unit system, it is {{params.units.si.acceleration}} m/s², and for the USCS unit system, it is {{params.units.uscs.acceleration}} ft/s².
+    </pl-hint>
+    <pl-hint level="5" data-type="text">
+        Substituting \( H = {{params.H}} {{params.unitsDist}} \) and the corresponding value of \( g \) for the selected unit system, we can calculate the time \( t \) it takes for the ball to reach the ground.
+    </pl-hint>
+    <pl-hint level="6" data-type="text">
+        The calculated time for the ball to reach the ground is \( {{correct_answers.t}} \) seconds.
+    </pl-hint>
+</pl-solution-panel>

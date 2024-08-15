@@ -7,8 +7,11 @@ def extract_code_block(text, language):
     pattern = re.compile(rf'```{language}\n(.*?)\n```', re.DOTALL)
     matches = pattern.findall(text)
     return matches[0]
-def extract_triple_quotes(text):
-    pattern = r'(""".*?"""|\'\'\'.*?\'\'\'|```.*?```)'
-    matches = re.findall(pattern, text, re.DOTALL)
-    extracted_contents = [match[3:-3] for match in matches]
-    return extracted_contents
+def extract_triple_quotes(text:str)->str:
+    pattern = re.compile(r'```.*?\n(.*?)\n```', re.DOTALL)
+    matches = pattern.findall(text)
+    for match in matches:
+        if match:
+            return match
+        
+    

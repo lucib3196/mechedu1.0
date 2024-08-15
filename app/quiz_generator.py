@@ -1,50 +1,65 @@
-from flask import Blueprint, render_template,request,send_file
-from run_generators import save_files_to_temp,create_zip_file,main
+from flask import Blueprint,render_template,request,send_file,jsonify,session
 import os
 import tempfile
 import asyncio
+import json
+
+from src.gestalt_module_generator.generate_gestalt_module import generate
+from src.utils.file_handler import save_files_temp,save_temp_dir_as_zip
+
 
 quiz_generator = Blueprint('quiz_generator', __name__)
-@quiz_generator.route('/generate_from_text', methods=['GET', 'POST'])
-
+@quiz_generator.route('/generate_from_text', methods=['POST'])
 def generate_from_text():
-    if request.method == "POST":
-        text = request.form.get("user_question")
-        if text:
-            try:
-                print("There is text!", text)
-                loop = asyncio.new_event_loop()
-                asyncio.set_event_loop(loop)
-                generated_content, question_title = loop.run_until_complete(main(user_input=text))
-                print("This is the generated_content", generated_content)
-                print("/n")
-                loop.close()
-                
-                with tempfile.TemporaryDirectory() as tmpdirname:
-                    folder_path = os.path.join(tmpdirname, question_title)
-                    os.makedirs(folder_path, exist_ok=True)
-                    file_paths = save_files_to_temp(generated_content, folder_path)
-                    zip_file = create_zip_file(file_paths, tmpdirname)
-                    print("Process complete")
-                    return send_file(zip_file, mimetype='application/zip', as_attachment=True, download_name='module.zip')
-            except Exception as e:
-                print(f"An error occurred: {e}")
-                return "An error occurred while processing your request.", 500
-        else:
-            return "No text provided", 400
-    else:
-        return "Please submit a POST request.", 405
+    text = request.form.get("user_question")
     
-@quiz_generator.route('/generate_from_image', methods=['GET', 'POST'])
+    if not text:
+        return jsonify({"error": "No text provided"}), 400
+    
+    try:
+        print(f"This is the user question to be generated: {text}")
+
+        # Use asyncio to run the generate function
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        generated_content = loop.run_until_complete(generate(user_input=text))
+        loop.close()
+
+        # Extract and handle the metadata from the generated content
+        metadata = generated_content.get("info.json", {})
+
+        if isinstance(metadata, dict):
+            print(f"Metadata: {metadata}")
+            title = metadata.get("title")
+            print(f"Title: {title}")
+        else:
+            print("Expected metadata to be a dictionary, but got something else.")
+            metadata = {}
+
+        # Save the files to a temporary directory and get the path
+        question_title = metadata.get("title", "default_title")
+        temp_dir = generate_temp(question_title=question_title, generated_content=generated_content)
+
+        if not temp_dir:
+            return jsonify({"error": "Failed to create temporary directory."}), 500
+
+        print(f"Temporary directory path: {temp_dir}")
+        return render_template("home.html")
+    
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return jsonify({"error": "An error occurred while processing your request."}), 500
+
+@quiz_generator.route('/generate_from_image', methods=['POST'])
 def generate_from_image():
-    if request.method == "POST":
-        files = request.files.getlist('user_images')
-        if not files or all(file.filename == '' for file in files):
-            return 'No Selected File', 400
-        
-        temp_file_paths = []
-        try:
-            for file in files:
+    files = request.files.getlist('user_images')
+    
+    if not files:
+        return jsonify({"error": "No files provided"}), 400
+    
+    temp_file_paths = []
+    try:
+        for file in files:
                 if file and file.filename:
                     temp_file = tempfile.NamedTemporaryFile(delete=False)
                     file.save(temp_file.name)
@@ -52,29 +67,56 @@ def generate_from_image():
                     temp_file.close()
                     temp_file_paths.append(temp_file_path)
                     print("Temp file path:", temp_file_path)
-            
-            print("Temp file paths:", temp_file_paths)
-            
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            generated_content, question_title = loop.run_until_complete(main(user_input=temp_file_paths))
-            loop.close()
-            
-            with tempfile.TemporaryDirectory() as tmpdirname:
-                folder_path = os.path.join(tmpdirname, question_title)
-                os.makedirs(folder_path, exist_ok=True)
-                file_paths = save_files_to_temp(generated_content, folder_path)
-                zip_file = create_zip_file(file_paths, tmpdirname)
-                print("Process complete")
-                return send_file(zip_file, mimetype='application/zip', as_attachment=True, download_name='module.zip')
+        print("Temp file paths:", temp_file_paths)
         
-        except Exception as e:
-            print(f"An error occurred: {e}")
-            return 'Image processing failed', 500
 
-        finally:
-            for path in temp_file_paths:
-                if os.path.exists(path):
-                    os.remove(path)
+        # Use asyncio to run the generate function
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        generated_contents = loop.run_until_complete(generate(user_input=temp_file_paths))
+        loop.close()
+        print(f"{'*'*25}\n {generated_contents}\n{'*'*25}")
+        for generated_content in generated_contents:
+            # Extract and handle the metadata from the generated content
+            metadata = generated_content.get("info.json", {})
 
-    return 'Invalid request method', 405
+            if isinstance(metadata, dict):
+                print(f"Metadata: {metadata}")
+                title = metadata.get("title")
+                print(f"Title: {title}")
+            else:
+                print("Expected metadata to be a dictionary, but got something else.")
+                metadata = {}
+
+            # Save the files to a temporary directory and get the path
+            question_title = metadata.get("title", "default_title")
+            temp_dir = generate_temp(question_title=question_title, generated_content=generated_content)
+
+            if not temp_dir:
+                return jsonify({"error": "Failed to create temporary directory."}), 500
+
+            print(f"Temporary directory path: {temp_dir}")
+        return render_template("home.html")
+    
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return jsonify({"error": "An error occurred while processing your request."}), 500
+
+
+@quiz_generator.route('/download_zip', methods=['GET','POST'])
+def download_zip():
+    temp_dir = session.get("temp_dir","")
+    print(temp_dir)
+    zip_file = save_temp_dir_as_zip(temp_dir)
+    return send_file(zip_file, mimetype='application/zip', as_attachment=True, download_name='module.zip')
+
+
+def generate_temp(question_title, generated_content):
+    # Generate the temporary directory
+    temp_dir = save_files_temp(question_title, generated_content)
+    
+    # Store the path in the session
+    session['temp_dir'] = temp_dir
+    print(temp_dir)
+    
+    return f"Temporary directory generated and stored in session."
