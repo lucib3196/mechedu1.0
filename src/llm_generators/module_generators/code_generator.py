@@ -59,7 +59,7 @@ class ModuleCodeGenerator:
 async def main():
     input_columns ="question"
     output = "question.html"
-    api_key = "sk-FCr8c_lPRqm2jr1BO7WebmuiWQaBDPnhmsLRb86S2PT3BlbkFJeKfRRDbRDS-V_c1AuVLndSk6jurY77aKjljAuhpPgA"
+    from ...credentials import api_key
     exampe_based_formatter = ExampleBasedPromptDataFrame(example_input_column=input_columns,example_output_column=output,api_key=api_key)
 
 
