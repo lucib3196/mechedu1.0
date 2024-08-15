@@ -45,7 +45,7 @@ class ExampleBasedPromptDataFrame:
     api_key: str
     embedding_engine: str = "text-embedding-ada-002"
     embedding_columns: str = "question_embedding"
-    embedding_file: str = os.path.join(base_dir, 'src', 'data', 'Question_Embedding_20240128.csv')
+    embedding_file: str = os.path.join(base_dir, '..', 'data', 'Question_Embedding_20240128.csv')
 
     df_config: EmbeddingDataFrame = field(init=False)
     llm_config: LLMConfig = field(init=False)
