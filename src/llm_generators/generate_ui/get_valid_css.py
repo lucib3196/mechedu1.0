@@ -8,7 +8,7 @@ from .ui_type import UIType
 base_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Construct the full path to the JSON file
-css_styles_file = os.path.join(base_dir, 'src', 'llm_generators', 'generate_ui', 'valid_css_styles_bootstrap.json')
+css_styles_file = os.path.join(base_dir, 'valid_css_styles_bootstrap.json')
 
 with open(css_styles_file,"r") as file:
     css_styles = json.load(file)
