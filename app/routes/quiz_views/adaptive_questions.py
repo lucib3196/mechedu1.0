@@ -33,6 +33,8 @@ def render_adaptive_quiz():
             server_file = os.path.join(tmpdir, "server.js")
             params = run_generate(server_file)
             question_html = read_file(os.path.join(tmpdir, "question.html"))
+            print(f"/n This is the server file {server_file}\n")
+            print(f"/n This is the question file {question_html}\n")
             solution_html = read_file(os.path.join(tmpdir, "solution.html"))
             question_html_template, solution_html_template = process_prairielearn_html(
                 question_html,solution_html= solution_html, qdata=params, qname=quiz_name
