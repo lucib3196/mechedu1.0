@@ -22,6 +22,7 @@ def retrieve_files_session(module_name: str, folder_name: str, folder_id: int) -
                                             if no files data is found in the session.
     """
     files_data = session.get("files_data")
+    print(f"Inside the retrieve_files_session {files_data}")
     if not files_data:
         return "<h1>No files data found in session</h1>", 404
     
