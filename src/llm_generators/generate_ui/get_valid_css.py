@@ -4,7 +4,12 @@ print(os.getcwd())
 from .ui_type import UIType
 
 
-css_styles_file = r"src\llm_generators\generate_ui\valid_css_styles_bootstrap.json"
+# Base directory where your script is running
+base_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the full path to the JSON file
+css_styles_file = os.path.join(base_dir, 'src', 'llm_generators', 'generate_ui', 'valid_css_styles_bootstrap.json')
+
 with open(css_styles_file,"r") as file:
     css_styles = json.load(file)
 def get_valid_css_classes( UItype: UIType,name_interest: str="",) -> tuple:
