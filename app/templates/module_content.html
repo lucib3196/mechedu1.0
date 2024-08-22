@@ -18,7 +18,11 @@
         {% endfor %}    
     </tbody>
 </table>
-<div class = "container">
-    <a href="{{ url_for('quiz_overview_bp.download_all_modules', folder_data=folder_data) }}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">Download</a>
+<div class="container">
+    <form method="POST" action="{{ url_for('quiz_overview_bp.download_all_modules') }}">
+        {{ form.hidden_tag() }} <!-- CSRF token for security -->
+        <input type="hidden" name="folder_data" value="{{ folder_data }}">
+        <button type="submit" class="btn btn-primary">Download</button>
+    </form>
 </div>
 {% endblock %}
