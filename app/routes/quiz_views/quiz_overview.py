@@ -53,11 +53,10 @@ def module_details(folder_id):
         return redirect(url_for("adaptive_quiz_bp.render_adaptive_quiz"))
     else:
         # Decode the bytes content to a string
-        # content = files_data[0].get("content").decode('utf-8', errors='ignore')
-        
-        # Render the template with the escaped content
-        # return render_template('lecture.html', lecture=content, module_name=module_name, folder_name=folder_name, folder_id=folder_id)
-        return "Hello"
+        files_names = [{
+        "filename": file.filename,
+        "content": file.content.decode('utf-8', errors='ignore') } for file in folder.files]
+        return render_template('lecture.html', lecture=files_names[0].get("content"))
     
 @quiz_overview_bp.route("/quiz_overview/download", methods=['GET', 'POST'])
 def download_module():
