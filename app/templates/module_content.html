@@ -13,14 +13,13 @@
         {% for folder in folder_data %}
         <tr>
             <td>{{ folder.id }}</td>  
-            <td><a href="{{ url_for('quiz_overview_bp.module_details', module_name=module_name, folder_name=folder.folder_name, folder_id=folder.id) }}">{{ folder.folder_name }}</a></td>
+            <td><a href="{{ url_for('quiz_overview_bp.module_details', folder_id = folder.id) }}">{{ folder.folder_name }}</a></td>
         </tr>
         {% endfor %}    
     </tbody>
 </table>
 <div class="container">
     <form method="POST" action="{{ url_for('quiz_overview_bp.download_all_modules') }}">
-        {{ form.hidden_tag() }} <!-- CSRF token for security -->
         <input type="hidden" name="folder_data" value="{{ folder_data }}">
         <button type="submit" class="btn btn-primary">Download</button>
     </form>

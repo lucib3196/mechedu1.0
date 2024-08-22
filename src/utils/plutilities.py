@@ -327,13 +327,39 @@ def process_prairielearn_html(question_html: str, solution_html: str, qdata: dic
             raise ValueError("No form found in the HTML to append the submit button.")
 
         html = soup.prettify()
+        solution_html = soup.prettify()
 
-        question_html_template = Template(html).render(qdata)
-        print(solution_html)
-        solution_html_template = Template(solution_html).render(qdata)
+        question_html_template = Template(escape_jinja_in_latex(html)).render(qdata)
+        solution_html_template = Template(escape_jinja_in_latex(solution_html)).render(qdata)
 
         return question_html_template, solution_html_template
 
     except Exception as e:
         raise ValueError(f"An error occurred while processing the HTML: {e}")
 
+import re
+
+def escape_jinja_in_latex(template: str) -> str:
+    """
+    Escapes Jinja2 curly braces within LaTeX math mode in an HTML template.
+
+    Args:
+        template (str): The HTML template string containing Jinja2 and LaTeX code.
+
+    Returns:
+        str: The modified template with Jinja2 expressions properly escaped within LaTeX math mode.
+    """
+    # Regex to find Jinja2 expressions within LaTeX math mode (\(...\) or \[...\])
+    pattern = r'\\\((.*?)\\\)|\\\[(.*?)\\\]'
+    
+    def escape_curly_braces(match):
+        # This function will escape {{ and }} inside LaTeX math mode
+        content = match.group(0)
+        content = re.sub(r'{{', r'{{{{', content)
+        content = re.sub(r'}}', r'}}}}', content)
+        return content
+    
+    # Apply the escaping function to all matches in the template
+    escaped_template = re.sub(pattern, escape_curly_braces, template, flags=re.DOTALL)
+    
+    return escaped_template

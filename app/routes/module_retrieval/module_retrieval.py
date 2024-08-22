@@ -29,7 +29,7 @@ def view_modules():
             'id': module.id,
             'name': module.name,
         })
-    print(module_data)
+    print(f"This is the module data {module_data}")
     return render_template("view_modules.html", modules=module_data)
 
 @module_retrieval_bp.route("/retrieve_modules/<module_name>_<module_id>", methods=['GET', 'POST'])
@@ -41,10 +41,9 @@ def view_module_details(module_name,module_id):
             'id': folder.id,
             'folder_name': folder.name,
         })
-    print(f"This is the folder data {folder_data}")
-    session["folder_data"] = folder_data
-    print(f"This is the session {session}")
-    return render_template("module_content.html", module_name = module.name,folder_data=folder_data,module_id = module_id)
+        print(f"This is the folder data {folder_data}")
+        session["folder_data"] = folder_data
+    return render_template("module_content.html",folder_data=folder_data)
 
 
 
