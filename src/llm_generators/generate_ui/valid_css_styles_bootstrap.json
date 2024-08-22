@@ -1,0 +1,166 @@
+{
+    "summary_and_key_concepts": {
+        "div": [
+            {
+                "name": "container my-5",
+                "description": "Container with margin for the summary and key concepts section."
+            }
+        ],
+        "h1": [
+            {
+                "name": "display-4",
+                "description": "Main heading for the summary and key concepts sections."
+            }
+        ],
+        "p": [
+            {
+                "name": "lead",
+                "description": "Used for the introductory paragraph in the summary section."
+            }
+        ],
+        "ul": [
+            {
+                "name": "list-group",
+                "description": "Bootstrap's list group, ideal for displaying key concepts."
+            }
+        ],
+        "li": [
+            {
+                "name": "list-group-item",
+                "description": "Bootstrap class for individual items within the key concepts list."
+            }
+        ]
+    },
+    "derivation-section": {
+        "div": [
+            {
+                "name": "mb-5",
+                "description": "Margin-bottom utility class for spacing the derivation section."
+            }
+        ],
+        "h2": [
+            {
+                "name": "h4",
+                "description": "Sub-heading for derivation sections."
+            }
+        ],
+        "p": [
+            {
+                "name": "lead",
+                "description": "Used for introductory text before derivations."
+            }
+        ],
+        "ol": [
+            {
+                "name": "list-group",
+                "description": "Bootstrap's list group, ideal for ordered derivations."
+            }
+        ],
+        "li": [
+            {
+                "name": "list-group-item font-weight-bold",
+                "description": "Bold text for key derivation steps."
+            }
+        ]
+    },
+    "conceptual-question-section": {
+        "div": [
+            {
+                "name": "mb-5",
+                "description": "Margin-bottom utility class for spacing the conceptual question section."
+            }
+        ],
+        "h3": [
+            {
+                "name": "h5",
+                "description": "Minor heading for individual conceptual questions."
+            }
+        ],
+        "ol": [
+            {
+                "name": "list-group",
+                "description": "Bootstrap's list group for listing question options."
+            }
+        ],
+        "li": [
+            {
+                "name": "list-group-item",
+                "description": "Bootstrap class for each option in conceptual questions."
+            }
+        ],
+        "p": [
+            {
+                "name": "font-italic",
+                "description": "Italic text for correct answer notes in conceptual questions."
+            }
+        ]
+    },
+    "general_styles": {
+        "h1": [
+            {
+                "name": "display-4",
+                "description": "Main heading for any section, providing a large, prominent title."
+            }
+        ],
+        "h2": [
+            {
+                "name": "h4",
+                "description": "Sub-heading within any section, providing a smaller, secondary title."
+            }
+        ],
+        "h3": [
+            {
+                "name": "h5",
+                "description": "Minor heading, used for lower-level titles within subsections."
+            }
+        ],
+        "span": [
+            {
+                "name": "font-weight-bold",
+                "description": "Bold text to emphasize important inline content."
+            },
+            {
+                "name": "text-muted",
+                "description": "Muted text for less prominent inline content."
+            }
+        ],
+        "strong": [
+            {
+                "name": "font-weight-bold",
+                "description": "Bold text to emphasize key content in various sections."
+            }
+        ],
+        "p": [
+            {
+                "name": "lead",
+                "description": "For introductory or important paragraphs across sections."
+            },
+            {
+                "name": "font-italic",
+                "description": "Italic text for notes or additional information."
+            }
+        ],
+        "ul": [
+            {
+                "name": "list-group",
+                "description": "Used for unordered lists where items need to be visually distinct."
+            }
+        ],
+        "ol": [
+            {
+                "name": "list-group",
+                "description": "Used for ordered lists with a Bootstrap-styled appearance."
+            }
+        ],
+        "li": [
+            {
+                "name": "list-group-item",
+                "description": "For individual list items in both ordered and unordered lists."
+            },
+            {
+                "name": "font-weight-bold",
+                "description": "Emphasized list items that require attention."
+            }
+        ]
+    }
+}

@@ -1,89 +1,67 @@
-from typing import Union, List,Dict,Any,Optional
+from typing import Union, List,Dict,Any,Optional,Tuple
 from time import time
 import asyncio
 import json
-
-from .utils import handle_image_inputs
+from .extract_question_images import extract_question_images_user_uploaded
 from .generate_gestalt_metadata import generate_module_metadata
-from ..llm_generators.module_generators.server_js_generator import server_js_generator
-from ..llm_generators.module_generators.server_py_generator import server_py_generator
-from ..llm_generators.module_generators.question_solution_html_generator import question_solution_generator
-from ..llm_generators.module_generators.question_html_generator import question_html_generator
-
-async def proccess_adaptive(question:str, metadata:dict, solution_guide:str=None,code_guide:str=None):
-    question_html = await question_html_generator.arun(question)
-    server_js, server_py,solution_html = await asyncio.gather(
-        server_js_generator.arun(question),
-        server_py_generator.arun(question),
-        question_solution_generator.arun(question)
-    )
-    generated_content = {
-        "question.html":question_html,
-        "server.py": server_py,
-        "server.js": server_js,
-        "info.json": metadata,
-        "solution.html": solution_html
-    }
-    return generated_content
-async def proccess_nonadaptive(question:str, metadata:dict):
-    question_html = await question_html_generator.arun(question)
-    generated_content = {
-        "question_html":question_html,
-        "info.json": metadata,
-    }
-    return generated_content
+from ..gestalt_module_generator.generate_adaptive_module import process_adaptive_question
+from ..gestalt_module_generator.generate_nonadaptive_module import process_nonadaptive_question
+from ..gestalt_module_generator.utils import is_image_file_extension,is_adaptive_question,extract_question_title
 
 
+async def generate_question_content(question: str, user_data: dict, solution_guide: str = None) -> Tuple[str, Dict]:
+    """
+    Generates content for a given question by determining whether it is adaptive or non-adaptive
+    and processing it accordingly.
 
+    Args:
+        question (str): The text of the question to be processed.
+        user_data (dict): A dictionary containing user-specific data that will be used to generate metadata.
+        solution_guide (str, optional): An optional guide providing solutions for the question. Defaults to None.
 
-async def generate_content(question:str,user_data:dict, solution_guide:str=None,code_guide:str=None):
-    metadata = await generate_module_metadata(question,user_data)
-    question_title = metadata.get("title","")
-    print(f"Question Title: {question_title}")
-    if metadata.get('isAdaptive', False) == True:
-        generated_content = await proccess_adaptive(question,metadata)
-        return generated_content
+    Returns:
+        Tuple[str, Dict]: A tuple containing the question title and a dictionary with the generated content.
+                         The generated content will vary based on whether the question is adaptive or non-adaptive.
+    """
+    metadata_dict = await generate_module_metadata(question, user_data)
+    question_title = extract_question_title(metadata_dict)
+    
+    if is_adaptive_question(metadata_dict):
+        generated_content = await process_adaptive_question(question, metadata_dict, solution_guide)
     else:
-        generate_content = await proccess_nonadaptive(question,metadata)
-        return json.dump(generate_content)
+        generated_content = await process_nonadaptive_question(question, metadata_dict)
+    
+    return question_title, generated_content
+
+
+async def generate_module(user_input: Union[str, List[str]],user_data:dict):
+    if isinstance(user_input,str) and not is_image_file_extension(user_input):
+        question = user_input
+        results = [await generate_question_content(question=question, user_data=user_data)]
+    else:
+        image_data = await extract_question_images_user_uploaded(user_input)
+        tasks = []
+
+        for data in image_data:
+            question = data.get("question","")
+            solution_guide = data.get("solution","")
+            tasks.append(asyncio.create_task(generate_question_content(
+                question=question,
+                user_data=user_data,
+                solution_guide=solution_guide,
+            )))
+        results = await asyncio.gather(*tasks)
+    for result in results:
+        question_title, module = result
+        print(f"This is the question title {question_title}\n Here is the generated module {module}\n")
+    return results
+
         
-
-async def generate(user_input: Union[str, List[str]]):
-    start_time = time()
-
+if __name__ == "__main__" :
     user_data = {
         "created_by": "lberm007@ucr.edu",  # Replace with the actual creator identifier
         "code_language": "javascript",
     }
-
-    if isinstance(user_input, str):
-        question = user_input
-        results = await generate_content(question=question, user_data=user_data)
-    
-    elif isinstance(user_input, list):
-        question_data = await handle_image_inputs(user_input)
-        tasks = []
-
-        for data in question_data:
-            question = data.get("question", "")
-            solution_guide = data.get("solution", "")
-            tasks.append(asyncio.create_task(generate_content(question, user_data
-            , solution_guide)))
-
-        results = await asyncio.gather(*tasks)
-
-        for result in results:
-            print(f"Received Result: {result}")
-
-    elapsed_time = time() - start_time
-    print(f"Completed in {elapsed_time:.2f} seconds.")
-    return results
-
-
-if __name__ == "__main__" :
     image_path = [r"C:\Users\lberm\OneDrive\Desktop\GitHub_Repository\mechedu1.0\mechedu1.0\test_images\textbook_ex1.png"]
-    result = asyncio.run(generate(image_path))
-    print(result)
-    question = "A car travels a total distance of 5 miles in 10 minutes calculate its average speed"
-    result = asyncio.run(generate(question))
+    result = asyncio.run(generate_module(image_path,user_data))
     print(result)

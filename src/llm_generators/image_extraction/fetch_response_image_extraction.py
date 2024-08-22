@@ -49,7 +49,7 @@ if __name__ == "__main__":
 
         image_paths = [f"{image_path}"]
         print(image_paths)
-        prompt = "What is in the image? Return as JSON structure."
+        prompt = "Extract all the questions Return as JSON structure."
 
         print("Processing the image and sending the request. Please wait...")
         result = asyncio.run(main(image_paths=image_paths, prompt=prompt))

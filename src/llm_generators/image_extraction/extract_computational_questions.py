@@ -2,7 +2,7 @@ import asyncio
 from typing import List, Dict, Optional, Union,Tuple
 from pydantic import BaseModel, Field
 import os
-
+from collections import defaultdict
 from .fetch_response_image_extraction import fetch_structured_response_from_images
 class Step(BaseModel):
     explanation: str = Field(..., description="An explanation of the step involved in solving the problem, using LaTeX for any mathematical symbols or equations.")
@@ -39,7 +39,7 @@ response_format = {
 
 # print(response_format)
 
-async def computational_question_extraction_images(image_paths: List[str]) -> dict:
+async def computational_question_extraction_images(image_paths: List[str], seperate_paths = True) -> dict:
     """
     Extracts conceptual questions from lecture images using an AI model.
 
@@ -53,41 +53,68 @@ async def computational_question_extraction_images(image_paths: List[str]) -> di
     Extract and process the content from the provided image according to these guidelines:
 
     1. **Extract the Question**:
-    - Extract the question from the image or lecture. Ensure that all necessary details, data, and parameters are included to fully understand the question.
+    - Extract all the question from the image or lecture. Ensure that all necessary details, data, and parameters are included to fully understand the question.
     - Represent any special characters, such as mathematical symbols, in LaTeX format.
 
     2. **Develop the Solution Guide**:
     - Analyze the image and create a concise solution guide that outlines the methodical steps for solving the problem symbolically.
-    - Focus on symbolic representation rather than numerical values.
+    - Focus on symbolic representation rather than numerical values. Numerical values should not be used in any of the solution steps; the guide should solve the problem purely symbolically.
     - Include relevant conversion factors and generalize the solution for both SI and USCS units where applicable.
     - Structure the solution guide as follows:
         - **Problem Statement**: Clearly define the objective and context of the problem as shown in the image.
         - **Variables Description**: Describe all variables discernible from the image, using LaTeX for any mathematical expressions.
         - **Equation Setup**: Identify and set up the equations or relationships shown or implied in the image, using LaTeX for mathematical representations.
-        - **Solution Process**: Detail each step of the solution process, using LaTeX for all mathematical workings.
+        - **Solution Process**: Detail each step of the solution process, using LaTeX for all mathematical workings, ensuring that only symbolic representations are used.
         - **Explanation and Clarification**: Provide thorough explanations and clarifications based on the content of the image, with all mathematical justifications in LaTeX.
         - **Symbolic Representation Only**: The solution guide should only include symbolic representations, avoiding any numerical values.
         - **Generalization for SI and USCS**: Generalize the solution for both SI and USCS units, including relevant conversion factors for both systems.
 
-    Ensure the extracted content adheres strictly to these guidelines, emphasizing clarity, accuracy, and completeness in both the question and the solution guide.
+    Ensure that the solution guide strictly adheres to the symbolic representation requirement, with no numerical values included in the steps.
     """
+    if seperate_paths:
+    # Fetch structured responses for each image path concurrently
+        responses = await asyncio.gather(
+            *[fetch_structured_response_from_images([image_path], prompt, response_format) for image_path in image_paths]
+        )
 
-    response = await fetch_structured_response_from_images(image_paths, prompt, response_format)
-    return response
+        aggregated_results = []
+        for response in responses:
+            print(f"\n {'*' * 25}\n {response}\n {'*' * 25} \n")
+            
+            extracted_questions = response.get("extracted_question", [])
+            for question in extracted_questions:
+                print(f'\n{question}\n')
+                aggregated_results.append(question)
+        
+        combined_result = {"extracted_question": aggregated_results}
+        return combined_result
 
 async def main():
     try:
-        print("Please enter the absolute path to the image file:")
-        image_path = input()
-        # Validate the provided path
-        if not os.path.isabs(image_path):
-            raise ValueError("The provided path is not an absolute path.")
-        if not os.path.isfile(image_path):
-            raise FileNotFoundError(f"No file found at {image_path}. Please provide a valid image file path.")
-        image_paths = [f"{image_path}"]
-        print(image_paths)
-        print("Processing the image and sending the request. Please wait...")
+        # Prompt the user for the image file paths
+        print("Please enter the absolute path(s) to the image file(s), separated by commas if multiple:")
+        image_paths_input = input().strip()
+        
+        # Split the input into a list of paths
+        image_paths = [path.strip() for path in image_paths_input.split(",")]
+        
+        # Print the paths for debugging
+        print(f"Provided image paths: {image_paths}")
+
+        # Validate each provided path
+        for image_path in image_paths:
+            if not os.path.isabs(image_path):
+                raise ValueError(f"The provided path '{image_path}' is not an absolute path.")
+            if not os.path.isfile(image_path):
+                raise FileNotFoundError(f"No file found at '{image_path}'. Please provide a valid image file path.")
+
+        # Notify the user that processing is starting
+        print("Processing the image(s) and sending the request. Please wait...")
+        
+        # Perform the computational question extraction
         result = await computational_question_extraction_images(image_paths=image_paths)
+        
+        # Output the result
         print("\nRequest completed successfully. Here is the result:")
         print(result)
 
@@ -97,7 +124,6 @@ async def main():
         print(f"File Not Found Error: {fnfe}")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
-    
 
 if __name__ == "__main__":
     asyncio.run(main())

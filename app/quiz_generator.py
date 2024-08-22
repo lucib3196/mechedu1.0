@@ -3,52 +3,85 @@ import os
 import tempfile
 import asyncio
 import json
-
-from src.gestalt_module_generator.generate_gestalt_module import generate
+from typing import Union
+from flask import Blueprint, request, jsonify
+import asyncio
+import os
+import tempfile
+from .models import db, File, Folder
+from src.gestalt_module_generator.generate_gestalt_module import generate_module
 from src.utils.file_handler import save_files_temp,save_temp_dir_as_zip
+import os
+import json
+import asyncio
+import tempfile
+from flask import request, jsonify
+from werkzeug.utils import secure_filename
 
-
+user_data = {
+        "created_by": "lberm007@ucr.edu",  # Replace with the actual creator identifier
+        "code_language": "javascript",
+    }
 quiz_generator = Blueprint('quiz_generator', __name__)
+
+
 @quiz_generator.route('/generate_from_text', methods=['POST'])
 def generate_from_text():
     text = request.form.get("user_question")
-    
     if not text:
         return jsonify({"error": "No text provided"}), 400
-    
+
     try:
         print(f"This is the user question to be generated: {text}")
 
         # Use asyncio to run the generate function
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-        generated_content = loop.run_until_complete(generate(user_input=text))
+        generated_content = loop.run_until_complete(generate_module(user_input=text, user_data=user_data))
         loop.close()
 
-        # Extract and handle the metadata from the generated content
-        metadata = generated_content.get("info.json", {})
+        for result in generated_content:
+            question_title, module = result
+            print(f"This is the question: {question_title}\nThis is the module content: {module}")
 
-        if isinstance(metadata, dict):
-            print(f"Metadata: {metadata}")
-            title = metadata.get("title")
-            print(f"Title: {title}")
-        else:
-            print("Expected metadata to be a dictionary, but got something else.")
-            metadata = {}
+            # Create a Folder entry in the database using the question title
+            folder = Folder(name=question_title)
+            db.session.add(folder)
+            db.session.flush()  # Ensure the folder is available for the files
 
-        # Save the files to a temporary directory and get the path
-        question_title = metadata.get("title", "default_title")
-        temp_dir = generate_temp(question_title=question_title, generated_content=generated_content)
+            with tempfile.TemporaryDirectory() as tmpdir:
+                if not tmpdir:
+                    return jsonify({"error": "Failed to create temporary directory."}), 500
+                print(f"Temporary directory path: {tmpdir}")
 
-        if not temp_dir:
-            return jsonify({"error": "Failed to create temporary directory."}), 500
+                for file_name, file_contents in module.items():
+                    print(f"This is the file name: {file_name}\nContents:\n{file_contents}\n{'*'*50}\n")
+                    file_path = os.path.join(tmpdir, file_name)
 
-        print(f"Temporary directory path: {temp_dir}")
-        return render_template("home.html")
-    
+                    # Convert dictionary to JSON string if file_contents is a dict
+                    if isinstance(file_contents, dict):
+                        file_contents = json.dumps(file_contents, indent=4)
+
+                    # Ensure file_contents is binary for storage
+                    if isinstance(file_contents, str):
+                        file_contents = file_contents.encode('utf-8')
+                    
+                    # Write the file contents to the temporary directory
+                    with open(file_path, "wb") as file:
+                        file.write(file_contents)
+                    
+                    # Store the file information in the database and associate with the folder
+                    file_record = File(filename=file_name, content=file_contents, folder=folder)
+                    db.session.add(file_record)
+
+            db.session.commit()
+
+        return jsonify({"message": "Files stored in the database successfully."})
+
     except Exception as e:
         print(f"An error occurred: {e}")
         return jsonify({"error": "An error occurred while processing your request."}), 500
+
 
 @quiz_generator.route('/generate_from_image', methods=['POST'])
 def generate_from_image():
@@ -57,66 +90,66 @@ def generate_from_image():
     if not files:
         return jsonify({"error": "No files provided"}), 400
     
-    temp_file_paths = []
     try:
-        for file in files:
-                if file and file.filename:
-                    temp_file = tempfile.NamedTemporaryFile(delete=False)
-                    file.save(temp_file.name)
-                    temp_file_path = os.path.abspath(temp_file.name)
-                    temp_file.close()
-                    temp_file_paths.append(temp_file_path)
-                    print("Temp file path:", temp_file_path)
-        print("Temp file paths:", temp_file_paths)
-        
+        with tempfile.TemporaryDirectory() as tmpdir:
+            file_paths = []
+            for file in files:
+                filename = secure_filename(file.filename)
+                file_path = os.path.join(tmpdir, filename)
+                file.save(file_path)  # Save the file to the temporary directory
+                file_paths.append(file_path)
+            
+            print(f"Saved file paths: {file_paths}")
 
-        # Use asyncio to run the generate function
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-        generated_contents = loop.run_until_complete(generate(user_input=temp_file_paths))
-        loop.close()
-        print(f"{'*'*25}\n {generated_contents}\n{'*'*25}")
-        for generated_content in generated_contents:
-            # Extract and handle the metadata from the generated content
-            metadata = generated_content.get("info.json", {})
+            # Use asyncio to run the generate function
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            generated_content = loop.run_until_complete(generate_module(user_input=file_paths, user_data=user_data))
+            loop.close()
 
-            if isinstance(metadata, dict):
-                print(f"Metadata: {metadata}")
-                title = metadata.get("title")
-                print(f"Title: {title}")
-            else:
-                print("Expected metadata to be a dictionary, but got something else.")
-                metadata = {}
+            for result in generated_content:
+                question_title, module = result
+                print(f"This is the question: {question_title}\nThis is the module content: {module}")
 
-            # Save the files to a temporary directory and get the path
-            question_title = metadata.get("title", "default_title")
-            temp_dir = generate_temp(question_title=question_title, generated_content=generated_content)
+                # Create a Folder entry in the database using the question title
+                folder = Folder(name=question_title)
+                db.session.add(folder)
+                db.session.flush()  # Ensure the folder is available for the files
 
-            if not temp_dir:
-                return jsonify({"error": "Failed to create temporary directory."}), 500
+                for file_name, file_contents in module.items():
+                    print(f"This is the file name: {file_name}\nContents:\n{file_contents}\n{'*'*50}\n")
+                    
+                    # Convert dictionary to JSON string if file_contents is a dict
+                    if isinstance(file_contents, dict):
+                        file_contents = json.dumps(file_contents, indent=4)
 
-            print(f"Temporary directory path: {temp_dir}")
-        return render_template("home.html")
-    
+                    # Ensure file_contents is binary for storage
+                    if isinstance(file_contents, str):
+                        file_contents = file_contents.encode('utf-8')
+                    
+                    # Store the file information in the database and associate with the folder
+                    file_record = File(filename=file_name, content=file_contents, folder=folder)
+                    db.session.add(file_record)
+
+                db.session.commit()
+
+        return jsonify({"message": "Files stored in the database successfully."})
+
     except Exception as e:
         print(f"An error occurred: {e}")
         return jsonify({"error": "An error occurred while processing your request."}), 500
 
 
+
 @quiz_generator.route('/download_zip', methods=['GET','POST'])
 def download_zip():
-    temp_dir = session.get("temp_dir","")
-    print(temp_dir)
-    zip_file = save_temp_dir_as_zip(temp_dir)
-    return send_file(zip_file, mimetype='application/zip', as_attachment=True, download_name='module.zip')
+    temp_dirs = session.get("temp_dir","")
+    print("These are teh temp dirs:,",temp_dirs)
+    print("Going to download \n")
+    for temp_dir in temp_dirs:
+        zip_file = save_temp_dir_as_zip(temp_dir)
+        return send_file(zip_file, mimetype='application/zip', as_attachment=True, download_name='module.zip')
+    return jsonify(temp_dirs)
 
 
-def generate_temp(question_title, generated_content):
-    # Generate the temporary directory
-    temp_dir = save_files_temp(question_title, generated_content)
-    
-    # Store the path in the session
-    session['temp_dir'] = temp_dir
-    print(temp_dir)
-    
-    return f"Temporary directory generated and stored in session."
+

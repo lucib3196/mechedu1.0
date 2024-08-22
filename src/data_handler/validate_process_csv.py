@@ -27,7 +27,8 @@ def validate_and_process_csv(csv_path: str, embedding_column: str) -> pd.DataFra
     
     
 if __name__ == "__main__":
-    file_path = r"mechedu1.0\src\data\Question_Embedding_20240128.csv"
-    embedding_column = r"question_embedding"
-    df = validate_and_process_csv(csv_path = file_path, embedding_column=embedding_column)
-    print(df.head())
+    pass
+    # file_path = r"mechedu1.0\src\data\Question_Embedding_20240128.csv"
+    # embedding_column = r"question_embedding"
+    # df = validate_and_process_csv(csv_path = file_path, embedding_column=embedding_column)
+    # print(df.head())

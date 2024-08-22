@@ -54,21 +54,23 @@ def save_files_temp(question_title: str, files: Dict[str, Any]) -> str:
         print(f"An error occurred while creating the temporary directory: {e}")
         return None
 
-def create_zip_file(file_paths: List[str], base_dir: str) -> io.BytesIO:
+def create_zip_file(file_paths: List[str]) -> io.BytesIO:
     """
-    Creates a zip file containing the specified files.
+    Creates an in-memory ZIP file from the list of file paths, storing only the basename of each file in the archive.
 
     Args:
-        file_paths (List[str]): List of file paths to include in the zip file.
-        base_dir (str): The base directory to use for relative paths in the zip file.
+        file_paths (List[str]): A list of file paths to include in the ZIP archive.
 
     Returns:
-        io.BytesIO: A BytesIO object containing the zipped content.
+        io.BytesIO: A BytesIO object containing the ZIP file data.
     """
     memory_file = io.BytesIO()
+    
     with zipfile.ZipFile(memory_file, 'w') as zipf:
         for file_path in file_paths:
-            zipf.write(file_path, os.path.relpath(file_path, base_dir))
+            # Write the file to the ZIP, using only the basename
+            zipf.write(file_path, arcname=os.path.basename(file_path))
+    
     memory_file.seek(0)
     return memory_file
 

@@ -36,6 +36,7 @@ class ModuleCodeGenerator:
     
     async def arun(self,question:str, additional_instruction:str=None):
         prompt = self.generate_prompt(question,additional_instruction)
+        print(f"This is the prompt {prompt}\n")
         class Response(BaseModel):
             generated_code:str = Field(...,description="The generated code only return the generated code")
 

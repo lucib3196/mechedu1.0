@@ -1,83 +1,86 @@
 {% extends "base.html" %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Home page{% endblock %}
 
 {% block content %}
-<section class="text-center my-5">
-    <h1 class="main-heading">2024 GESTALT Question Generator</h1>
+
+<div class="container my-5">
+    <!-- Title Section -->
+    <h1 class="text-center mb-5">2024 GESTALT Question Generator</h1>
     <p class="subheading">Generate Custom Modules from Your Questions</p>
-</section>
 
-<section class="text-center my-4">
-    <div class="options-menu">
-        <button class="btn btn-secondary mx-2" id="showTextButton">Text Generator</button>
-        <button class="btn btn-secondary mx-2" id="showImageButton">Image Generator</button>
-    </div>
-</section>
+    <!-- Welcome Section -->
+    <section>
+        <h3>Welcome</h3>
+        <p>
+            The STEM Module Generator is designed to help educators create adaptive quizzes and content for STEM disciplines, with a focus on mechanical engineering subjects.
+            Our platform generates modules containing multiple files, including HTML for solutions and step-by-step guides, and JavaScript for computation and value generation.
+        </p>
+    </section>
 
-<div id="textGenerator" class="container" style="display: none;">
-    <section></section>
-    <p class="text-center">Enter your question below and get personalized modules instantly.</p>
-    <p class="text-center">This is the basic generator. Here are some examples of questions you can try:</p>
-    <ul>
-        <li>A ball is thrown horizontally from the top of a 50-meter high building with an initial speed of 15 meters per second. Assuming there is no air resistance, calculate the time it takes for the ball to reach the ground.</li>
-        <li>A mass-spring system oscillates with a period of 2 seconds. If the spring constant is 100 N/m, calculate the mass attached to the spring. Assume the motion is simple harmonic.</li>
-        <li>A force of 200 Newtons is applied perpendicular to a circular cross-sectional area with a radius of 0.1 meters. Calculate the pressure exerted on the area.</li>
-    </ul>
-    <div class="button-container">
-        <form action="{{ url_for('quiz_generator.generate_from_text') }}" method="post" onsubmit="disableButton('text_generate_button')">
-            <textarea class="form-control my-3" name="user_question" placeholder="Enter your question here" required></textarea>
-            <div class="text-center my-4">
-                <button class="btn btn-primary" id="text_generate_button" type="submit">Generate</button>
-                
-            </div>
-        </form>
-            <form action="{{ url_for('quiz_generator.download_zip') }}" method="get" onsubmit="disableButton('download_module_button')">
-                <div class="text-center my-4">
-                    <button class="btn btn-primary3" id="download_module_button" type="submit">Download Module</button>
-                </div>
-        </form>
-        
-    </div>
-    
-</div>
+    <!-- Features Section -->
+    <section class="mt-5">
+        <h3>Features</h3>
+        <ul class="list-group">
+            <li class="list-group-item">Instant Generation of Adaptive Content</li>
+            <li class="list-group-item">Process both text and image inputs</li>
+            <li class="list-group-item">Automatic Unit Conversion and Random Value Generation</li>
+            <li class="list-group-item">Upload text questions to generate content</li>
+            <li class="list-group-item">Generate content from images, including lecture notes, handwritten work, and textbook solutions</li>
+            <li class="list-group-item">Advanced lecture analysis tool for comprehensive content generation</li>
+        </ul>
+    </section>
 
-<div id="imageGenerator" class="container" style="display: none;">
-    <section></section>
-    <p class="text-center">Upload your images below to generate personalized modules instantly.</p>
-    <p class="text-center">This is the advanced generator that uses images with both the text and corresponding solution. Here are some examples of what you can upload:</p>
-    <ul>
-        <li>Textbook solutions which are more official and accurate.</li>
-        <li>Handwritten solutions, which are also accepted.</li>
-    </ul>
-    <p class="text-center">Additionally, this method allows you to upload multiple images simultaneously. However, please note that it is designed to process and generate modules for one question at a time. Ensure that all the images uploaded pertain to a single question and its corresponding solution to achieve the best results.</p>
-    <p class="text-center">This method is more computationally expensive compared to simple text input, but there is a higher chance of it being correct.</p>
-    <form action="{{ url_for('quiz_generator.generate_from_image') }}" method="post" enctype="multipart/form-data" onsubmit="disableButton('image_generate_button')">
-        <input type="file" class="form-control my-3" name="user_images" accept="image/*" multiple required>
-        <button class="btn btn-primary" id="text_generate_button" type="submit">Generate</button>
-    </form>
-    <form action="{{ url_for('quiz_generator.download_zip') }}" method="get" onsubmit="disableButton('download_module_button')">
-        <div class="text-center my-4">
-            <button class="btn btn-primary3" id="download_module_button" type="submit">Download Module</button>
-        </div>
-</form>
+    <!-- How It Works Section -->
+    <section class="mt-5">
+        <h3>How It Works</h3>
+        <p>Step 1: Enter your question in the input box or upload an image of your question.</p>
+        <p>Step 2: Click the "Generate" button.</p>
+        <p>Step 3: Review and download your custom module.</p>
+    </section>
+
+    <!-- Generators Section -->
+    <section class="mt-5">
+        <h3>Generators</h3>
+        <p>Our platform offers three types of generators to meet your needs:</p>
+
+        <h4>1. Text Generator</h4>
+        <p>This tool works best with simple questions. It is faster and ideal for quick tests. Just type your question and get an instant response. Feel free to experiment with the complexity of the questions to see what works best.</p>
+
+        <h4>2. Image Input Generator</h4>
+        <p>This generator is ideal for more complex questions that are represented visually. Upload an image of your lecture notes, handwritten work, or textbook solutions, and the platform will generate content based on the provided image.</p>
+
+        <h4>3. Lecture Analysis Tool</h4>
+        <p>The Lecture Analysis Tool is our most advanced generator. It analyzes a collection of documents, typically lecture notes, and decides on key options for extraction. This tool can extract key concepts and fundamental ideas, generate conceptual questions, identify mathematical derivations, and create computational questions. Essentially, it combines the capabilities of the first two generators, generating all necessary modules and creating an HTML webpage of the lecture material.</p>
+    </section>
+
+    <!-- Important Notice Section -->
+    <section class="mt-5">
+        <h3>Important Notice</h3>
+        <p>
+            While our STEM Module Generator is designed to provide quick and efficient creation of educational modules based on user input, it is important to note that 
+            the generated content is not guaranteed to be perfect, as there can be inaccuracies or areas that need improvement.
+        </p>
+
+        <h4>Why Review is Necessary</h4>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Accuracy:</strong> The generated modules might contain factual errors or misinterpretations of the input question. It is crucial to verify the accuracy of the content to ensure it meets your specific requirements and standards.</li>
+            <li class="list-group-item"><strong>Relevance:</strong> The generated content might not always be fully aligned with the intended context or specific nuances of the question. Reviewing helps to tailor the content more precisely to your needs.</li>
+            <li class="list-group-item"><strong>Quality:</strong> Automated generation can sometimes result in content that lacks the depth, clarity, or coherence required for effective learning. Reviewing allows for refinement and enhancement of the material.</li>
+            <li class="list-group-item"><strong>Customization:</strong> Each educational context is unique. Reviewing and editing the generated modules enable customization to better fit the specific learning objectives and audience.</li>
+        </ul>
+        <p class="mt-3">
+            By thoroughly reviewing and refining the generated modules before deployment, you can ensure that the content is accurate, relevant, high-quality, and customized to your needs. This step is essential for maintaining the integrity and effectiveness of your educational materials.
+        </p>
+    </section>
+
+    <!-- Powered by OpenAI Section -->
+    <section class="mt-5">
+        <h3>Powered by OpenAI</h3>
+        <p>
+            Our generators use OpenAI's GPT models to create content. These advanced language models help in generating accurate and relevant educational materials based on your input questions.
+        </p>
+    </section>
 </div>
 {% endblock %}
 
-{% block scripts %}
-<script>
-    document.getElementById('showTextButton').addEventListener('click', function() {
-        document.getElementById('textGenerator').style.display = 'block';
-        document.getElementById('imageGenerator').style.display = 'none';
-    });
-
-    document.getElementById('showImageButton').addEventListener('click', function() {
-        document.getElementById('textGenerator').style.display = 'none';
-        document.getElementById('imageGenerator').style.display = 'block';
-    });
-
-    function disableButton(buttonId) {
-        document.getElementById(buttonId).disabled = true;
-    }
-</script>
-{% endblock scripts %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %} 
+{% block content %}
+<h1>All Modules</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        {% for module in modules %}
+        <tr>
+            <td>{{ module.id }}</td>  <!-- Changed <th> to <td> -->
+                <td><a href="{{ url_for('module_retrieval_bp.view_module_details', module_name=module.name, module_id = module.id) }}">{{ module.name }}</a></td>
+        </tr>
+        {% endfor %}    
+    </tbody>
+</table>
+
+{% endblock %}

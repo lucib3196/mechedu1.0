@@ -3,42 +3,12 @@ from typing import List, Dict
 from .semantic_search import SemanticSearchManager
 from .get_embeddings import GenerateEmbeddings
 from .embedded_dataframe import EmbeddingDataFrame
+from functools import lru_cache
 from .llm_config import LLMConfig
 import os
 base_dir = os.path.dirname(os.path.abspath(__file__))
 @dataclass
 class ExampleBasedPromptDataFrame:
-    """
-    A class designed to handle the configuration, validation, and generation of prompts based on examples 
-    extracted from a DataFrame. This class integrates various components for embedding generation and semantic 
-    search operations, allowing users to retrieve and format examples for use in language models.
-
-    Attributes:
-        example_input_column (str): The name of the column containing example inputs in the DataFrame.
-        example_output_column (str): The name of the column containing the corresponding outputs for the examples.
-        api_key (str): API key for accessing the language model.
-        embedding_engine (str): The engine used for generating embeddings. Defaults to "text-embedding-ada-002".
-        embedding_columns (str): The name of the column in the DataFrame that contains the embeddings. Defaults to "question_embedding".
-        embedding_file (str): Path to the CSV file containing the DataFrame. Defaults to "src\data\Question_Embedding_20240128.csv".
-        df_config (EmbeddingDataFrame): Configuration object for the DataFrame, initialized in `__post_init__`.
-        llm_config (LLMConfig): Configuration for the language model, initialized in `__post_init__`.
-        embedding_generator (GenerateEmbeddings): An instance for generating embeddings, initialized in `__post_init__`.
-        semantic_search (SemanticSearchManager): Manages semantic search operations on the DataFrame, initialized in `__post_init__`.
-
-    Methods:
-        __post_init__():
-            Post-initialization to set up the configurations after the main dataclass fields are initialized.
-
-        extract_examples(query: str, threshold: float, num_examples: int) -> List[Dict]:
-            Extracts examples from the DataFrame based on a semantic search query, threshold, and number of examples.
-
-        format_examples(query: str, threshold: float, num_examples: int) -> str:
-            Formats the extracted examples into a string, with each input and output pair presented.
-
-        format_examples_prompt(template_text: str, query: str, threshold: float, num_examples: int) -> str:
-            Creates a prompt by combining a template text with formatted examples based on the query and search criteria.
-    """
-
     example_input_column: str
     example_output_column: str
 
@@ -51,45 +21,45 @@ class ExampleBasedPromptDataFrame:
     llm_config: LLMConfig = field(init=False)
     embedding_generator: GenerateEmbeddings = field(init=False)
     semantic_search: SemanticSearchManager = field(init=False)
+    _initialized: bool = field(default=False, init=False)
 
     def __post_init__(self):
-        """
-        Post-initialization to set up the configurations after the main dataclass fields are initialized.
-        """
-        # Initialize the DataFrame configuration
-        self.df_config = EmbeddingDataFrame(
-            csv_path=self.embedding_file,
-            embedding_column=self.embedding_columns,
-            example_input_column=self.example_input_column,
-            expected_output_column=self.example_output_column
-        )
+        if not self._initialized:
+            print("Initializing ExampleBasedPromptDataFrame...")
+            self.df_config = EmbeddingDataFrame(
+                csv_path=self.embedding_file,
+                embedding_column=self.embedding_columns,
+                example_input_column=self.example_input_column,
+                expected_output_column=self.example_output_column
+            )
+            self.dataframe = self.df_config.validate_dataframe()
 
-        # Get the dataframe
-        self.dataframe = self.df_config.validate_dataframe()
-        
-        # Initialize the LLM configuration
-        self.llm_config = LLMConfig(
-            api_key=self.api_key,
-            model=self.embedding_engine,
-            temperature=0
-        )
-        
-        # Initialize the semantic search
-        self.embedding_generator = GenerateEmbeddings(self.llm_config)
-        self.semantic_search = SemanticSearchManager(self.df_config, self.embedding_generator)
+            self.llm_config = LLMConfig(
+                api_key=self.api_key,
+                model=self.embedding_engine,
+                temperature=0
+            )
+            self.embedding_generator = GenerateEmbeddings(self.llm_config)
+            self.semantic_search = SemanticSearchManager(self.df_config, self.embedding_generator)
+            self._initialized = True
+            print("Initialization complete.")
+        else:
+            print("ExampleBasedPromptDataFrame already initialized.")
 
+    @classmethod
+    def get_instance(cls, example_input_column, example_output_column, api_key):
+        global _example_based_prompt_dataframe_instance
+        if _example_based_prompt_dataframe_instance is None:
+            _example_based_prompt_dataframe_instance = cls(
+                example_input_column=example_input_column, 
+                example_output_column=example_output_column, 
+                api_key=api_key
+            )
+        return _example_based_prompt_dataframe_instance
 
     def extract_examples(self, query: str, threshold: float, num_examples: int) -> List[Dict]:
         """
         Extracts examples from the DataFrame based on a semantic search query, threshold, and number of examples.
-
-        Args:
-            query (str): The query text for which to search similar examples.
-            threshold (float): The similarity threshold to filter results.
-            num_examples (int): The number of examples to return.
-
-        Returns:
-            List[Dict]: A list of dictionaries, each containing an 'input' and 'output' key with corresponding example values.
         """
         filtered_results = self.semantic_search.filtered_similarities(query, threshold, num_examples)
         all_examples = []
@@ -106,14 +76,6 @@ class ExampleBasedPromptDataFrame:
     def format_examples(self, query: str, threshold: float, num_examples: int) -> str:
         """
         Formats the extracted examples into a string, with each input and output pair presented.
-
-        Args:
-            query (str): The query text for which to search similar examples.
-            threshold (float): The similarity threshold to filter results.
-            num_examples (int): The number of examples to return.
-
-        Returns:
-            str: A formatted string of examples, where each input and output pair is separated by a newline.
         """
         examples = self.extract_examples(query, threshold, num_examples)
         formatted_example = ""

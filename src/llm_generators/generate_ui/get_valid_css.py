@@ -4,7 +4,7 @@ print(os.getcwd())
 from .ui_type import UIType
 
 
-css_styles_file = r"src\llm_generators\generate_ui\valid_css_styles_generator.json"
+css_styles_file = r"src\llm_generators\generate_ui\valid_css_styles_bootstrap.json"
 with open(css_styles_file,"r") as file:
     css_styles = json.load(file)
 def get_valid_css_classes( UItype: UIType,name_interest: str="",) -> tuple:

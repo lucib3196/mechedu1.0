@@ -48,8 +48,6 @@ async def generate_conceptual_questions_html(response: dict) -> BeautifulSoup:
     - Ensure that all questions and answer choices are formatted using appropriate HTML tags to enhance readability.
     - If any mathematical notation is required within the questions or answer choices, use LaTeX to format it properly.
     """
-
-    
     prompts = create_multiple_prompts(base_prompt, response)
     results = await asyncio.gather(
         *[generate_and_return_ui(prompt,"conceptual-question-section") for prompt in prompts]

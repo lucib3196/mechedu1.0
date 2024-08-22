@@ -1,0 +1,24 @@
+{% extends "base.html" %} 
+{% block content %}
+<h1>Module Content</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        {% for folder in folder_data %}
+        <tr>
+            <td>{{ folder.id }}</td>  
+            <td><a href="{{ url_for('quiz_overview_bp.module_details', module_name=module_name, folder_name=folder.folder_name, folder_id=folder.id) }}">{{ folder.folder_name }}</a></td>
+        </tr>
+        {% endfor %}    
+    </tbody>
+</table>
+<div class = "container">
+    <a href="{{ url_for('quiz_overview_bp.download_all_modules', folder_data=folder_data) }}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">Download</a>
+</div>
+{% endblock %}
