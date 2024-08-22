@@ -2,16 +2,18 @@
 import os
 import tempfile
 import zipfile
-from typing import List
-from ...db_models.models import File, EduModule, Folder
 import io
 import json
-# Third-Party Imports
-from flask import Blueprint, render_template, request, send_file, jsonify, session, redirect, url_for
+from typing import List
 from ast import literal_eval
+from io import BytesIO
+
+# Third-Party Imports
+from flask import Blueprint, render_template, request, send_file, jsonify, session, redirect, url_for, Response
+
 # Local Application Imports
-from ...db_models.models import Folder
-from .utils import retrieve_files_session,retrieve_files_folder
+from ...db_models.models import File, EduModule, Folder
+from .utils import retrieve_files_session, retrieve_files_folder
 from src.utils.file_handler import create_zip_file
 
 
@@ -57,122 +59,11 @@ def module_details(folder_id):
         # return render_template('lecture.html', lecture=content, module_name=module_name, folder_name=folder_name, folder_id=folder_id)
         return "Hello"
     
-
-@quiz_overview_bp.route("/retrieve_modules/download_all", methods=['GET', 'POST'])
-def download_all_modules():
-    """
-    Downloads a combined ZIP file containing ZIP files for all modules and folders in the session.
-
-    The function retrieves folder data from the session, processes each folder to create individual ZIP files, 
-    and then combines these ZIP files into a single downloadable ZIP file.
-
-    Returns:
-        Response: A Flask response object that triggers the download of the combined ZIP file.
-    """
-    if request.method == 'POST':
-        folder_data =literal_eval(request.form.get("folder_data"))
-        print(f"This is the {folder_data} and this is the type {type(folder_data)}")
-        if not folder_data:
-            return "No folder data found in session", 400
-        
-        combined_zip_buffer = io.BytesIO()
-
-        with zipfile.ZipFile(combined_zip_buffer, 'w') as combined_zip:
-            for folder in folder_data:
-                if isinstance(folder,str):
-                    folder = json.loads(folder)
-                print(f"This is the folder {folder} and this is the type {type(folder)}")
-                full_files_data = retrieve_files_session("test", folder.get("folder_name"), folder.get("id"))
-                file_paths = []
-                
-                with tempfile.TemporaryDirectory() as tmpdir:
-                    for file in full_files_data:
-                        print(f"This is the folder {file} and this is the type {type(file)}")
-                        # Create a full path for the temporary file
-                        tempfile_path = os.path.join(tmpdir, file.get("filename"))
-                        content = file.get("content", "")
-                        
-                        # Ensure the content is in bytes, encoding if necessary
-                        if isinstance(content, str):
-                            content = content.encode('utf-8')  # Convert string to bytes
-                        
-                        # Write the content to the temporary file
-                        with open(tempfile_path, 'wb') as f:
-                            f.write(content)
-                        
-                        print(f"Temporary file created at: {tempfile_path}")  # Debugging output
-                        
-                        # Add the temporary file path to the list of files to be zipped
-                        file_paths.append(tempfile_path)
-                    
-                    # Create a ZIP file for the current folder and store it in memory
-                    folder_zip_buffer = io.BytesIO()
-                    with zipfile.ZipFile(folder_zip_buffer, 'w') as folder_zip:
-                        for file_path in file_paths:
-                            folder_zip.write(file_path, os.path.basename(file_path))
-                    
-                    # Write the in-memory ZIP file to the combined ZIP file
-                    folder_zip_filename = f"{folder.get('folder_name')}_{folder.get('id')}.zip"
-                    folder_zip_buffer.seek(0)
-                    combined_zip.writestr(folder_zip_filename, folder_zip_buffer.read())
-        
-        combined_zip_buffer.seek(0)
-        return send_file(combined_zip_buffer, mimetype='application/zip', as_attachment=True, download_name='all_modules.zip')
-
-# @quiz_overview_bp.route("/quiz_overview/<module_name><folder_name>_<folder_id>/download", methods=['GET', 'POST'])
-# def download_module(module_name: str, folder_name: str, folder_id: int):
-#     """
-#     Downloads a ZIP file containing all the files associated with a module and folder.
-
-#     This function retrieves the files from the user's session, writes them to a temporary directory, 
-#     creates a ZIP file containing the files, and then sends the ZIP file as a downloadable response.
-
-#     Args:
-#         module_name (str): The name of the module associated with the files.
-#         folder_name (str): The name of the folder containing the files.
-#         folder_id (int): The unique identifier for the folder in the database.
-
-#     Returns:
-#         Response: A Flask response object that triggers the download of the ZIP file.
-#     """
-    
-#     # # Retrieve the files data from the session based on module and folder information
-#     # full_files_data = retrieve_files_session(module_name, folder_name, folder_id)
-    
-#     # # Query the folder object from the database using the folder_id
-#     # folder = Folder.query.filter_by(id=folder_id).first()
-    
-#     # file_paths = []  # List to store the paths of temporary files
-    
-#     # # Create a temporary directory to store the files before zipping
-#     # with tempfile.TemporaryDirectory() as tmpdir:
-#     #     for file in full_files_data:
-#     #         # Create a full path for the temporary file
-#     #         tempfile_path = os.path.join(tmpdir, file.get("filename"))
-#     #         content = file.get("content", "")
-            
-#     #         # Ensure the content is in bytes, encoding if necessary
-#     #         if isinstance(content, str):
-#     #             content = content.encode('utf-8')  # Convert string to bytes
-            
-#     #         # Write the content to the temporary file
-#     #         with open(tempfile_path, 'wb') as f:
-#     #             f.write(content)
-            
-#     #         print(f"Temporary file created at: {tempfile_path}")  # Debugging output
-            
-#     #         # Add the temporary file path to the list of files to be zipped
-#     #         file_paths.append(tempfile_path)
-        
-#     #     # Create a ZIP file from the list of temporary file paths
-#     #     zip_file = create_zip_file(file_paths)
-        
-#     #     # Send the ZIP file as a downloadable response
-#     #     return send_file(zip_file, mimetype='application/zip', as_attachment=True, download_name=f'{folder.name}.zip')
-
 @quiz_overview_bp.route("/quiz_overview/download", methods=['GET', 'POST'])
 def download_module():
-    folder_name, full_files_data = retrieve_files_folder()
+    folder_id = session["folder_id"]
+    print(folder_id)
+    folder_name, full_files_data = retrieve_files_folder(folder_id)
     tempfile_paths = []
     with tempfile.TemporaryDirectory() as tmpdir:
         for file in full_files_data:
@@ -190,3 +81,59 @@ def download_module():
 
         zip_file = create_zip_file(tempfile_paths)
         return send_file(zip_file, mimetype='application/zip', as_attachment=True, download_name=f'{folder_name}.zip')
+    
+@quiz_overview_bp.route("/retrieve_modules/download_all", methods=['GET', 'POST'])
+def download_all_modules():
+    """
+    Downloads a combined ZIP file containing ZIP files for all modules and folders in the session.
+
+    The function retrieves folder data from the session, processes each folder to create individual ZIP files, 
+    and then combines these ZIP files into a single downloadable ZIP file.
+
+    Returns:
+        Response: A Flask response object that triggers the download of the combined ZIP file.
+    """
+    folder_data = session.get("folder_data", [])
+    print("Downloading all")
+    
+    # Create an in-memory ZIP file
+    master_zip_buffer = BytesIO()
+    
+    with zipfile.ZipFile(master_zip_buffer, 'w', zipfile.ZIP_DEFLATED) as master_zip:
+        for folder in folder_data:
+            folder_name = folder.get("folder_name")
+            folder_id = folder.get("id")
+            print(f"Processing folder: {folder_name}_{folder_id}")
+
+            # Assuming retrieve_files_folder takes folder_id as an argument
+            folder_name, full_files_data = retrieve_files_folder(folder_id)
+            print(f"Files in folder {folder_name}: {full_files_data}")
+
+            # Create a folder-specific ZIP in memory
+            folder_zip_buffer = BytesIO()
+            with zipfile.ZipFile(folder_zip_buffer, 'w', zipfile.ZIP_DEFLATED) as folder_zip:
+                for file in full_files_data:
+                    filename = file.get("filename")
+                    content = file.get("content", "").encode('utf-8') if isinstance(file.get("content", ""), str) else file.get("content")
+                    
+                    # Add file to folder-specific ZIP
+                    folder_zip.writestr(filename, content)
+                    print(f"Added {filename} to folder ZIP")
+
+            # Move to the beginning of the BytesIO buffer before writing it into the master ZIP
+            folder_zip_buffer.seek(0)
+            master_zip.writestr(f"{folder_name}_{folder_id}.zip", folder_zip_buffer.read())
+            print(f"Added {folder_name}_{folder_id}.zip to master ZIP")
+
+    # Finalize the in-memory ZIP file
+    master_zip_buffer.seek(0)
+    
+    return send_file(
+        master_zip_buffer, 
+        mimetype='application/zip', 
+        as_attachment=True, 
+        download_name="all_modules.zip"
+    )
+
+
+

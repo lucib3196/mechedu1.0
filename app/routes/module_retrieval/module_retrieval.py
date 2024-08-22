@@ -41,8 +41,8 @@ def view_module_details(module_name,module_id):
             'id': folder.id,
             'folder_name': folder.name,
         })
-        print(f"This is the folder data {folder_data}")
-        session["folder_data"] = folder_data
+    print(f"This is the folder data {folder_data}")
+    session["folder_data"] = folder_data
     return render_template("module_content.html",folder_data=folder_data)
 
 

@@ -19,7 +19,8 @@ adaptive_quiz_bp = Blueprint('adaptive_quiz_bp', __name__)
 @adaptive_quiz_bp.route("/quiz_overview/_adaptive", methods=['GET', 'POST'])
 def render_adaptive_quiz():
     try:
-        folder_name, full_files_data = retrieve_files_folder()
+        folder_id = session["folder_id"]
+        folder_name, full_files_data = retrieve_files_folder(folder_id)
         with tempfile.TemporaryDirectory() as tmpdir:
             for file in full_files_data:
                 tempfile_path = os.path.join(tmpdir, file.get("filename"))

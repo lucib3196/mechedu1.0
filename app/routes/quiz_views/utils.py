@@ -41,7 +41,7 @@ def retrieve_files_session(module_name: str, folder_name: str, folder_id: int) -
 from typing import Tuple, List, Dict, Union
 from flask import session
 
-def retrieve_files_folder() -> Union[Tuple[str, List[Dict[str, str]]], str]:
+def retrieve_files_folder(folder_id: int) -> Union[Tuple[str, List[Dict[str, str]]], str]:
     """
     Retrieve the name of the current folder and its associated files from the database.
 
@@ -58,7 +58,6 @@ def retrieve_files_folder() -> Union[Tuple[str, List[Dict[str, str]]], str]:
                     - "content" (str): The content of the file, decoded as a UTF-8 string.
             - If an error occurs, returns a descriptive error message as a string.
     """
-    folder_id = session.get("folder_id")
     
     if not folder_id:
         raise "Error: Folder ID not found in session."
