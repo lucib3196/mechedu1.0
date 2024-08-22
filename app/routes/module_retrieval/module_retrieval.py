@@ -43,6 +43,7 @@ def view_module_details(module_name,module_id):
         })
     print(f"This is the folder data {folder_data}")
     session["folder_data"] = folder_data
+    print(f"This is the session {session}")
     return render_template("module_content.html", module_name = module.name,folder_data=folder_data,module_id = module_id)
 
 
