@@ -1,6 +1,11 @@
+import os
 import pandas as pd
+
+from ..logging_config.logging_config import get_logger
 from .utils import load_df
 from .process_embeddings import process_embeddings
+
+logger = get_logger(__name__)
 
 def validate_and_process_csv(csv_path: str, embedding_column: str) -> pd.DataFrame:
     """
@@ -26,9 +31,28 @@ def validate_and_process_csv(csv_path: str, embedding_column: str) -> pd.DataFra
         raise ValueError(f"Failed to process CSV at {csv_path}: {e}") from e
     
     
-if __name__ == "__main__":
-    pass
-    # file_path = r"mechedu1.0\src\data\Question_Embedding_20240128.csv"
-    # embedding_column = r"question_embedding"
-    # df = validate_and_process_csv(csv_path = file_path, embedding_column=embedding_column)
-    # print(df.head())
+def main() -> None:
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    csv_path = os.path.join(base_dir, '..', 'data', 'Question_Embedding_20240128.csv')
+    
+    logger.debug(f"Base directory set to: {base_dir}")
+    logger.debug(f"CSV path for question embeddings constructed: {csv_path}")
+    
+    try:
+        df = pd.read_csv(csv_path)
+        logger.info(f"Successfully loaded CSV file with {len(df)} records from {csv_path}")
+    except FileNotFoundError:
+        logger.exception(f"CSV file not found at {csv_path}")
+        return
+    
+    try:
+        df_processed = validate_and_process_csv(csv_path, "question_embedding")
+        logger.info(f"DataFrame processed successfully with {len(df_processed)} records")
+        logger.debug(f"First few records of the processed DataFrame:\n{df_processed.head()}")
+    except ValueError as e:
+        logger.error(f"Failed to process embeddings: {e}")
+        return
+
+
+if __name__ == "__main__": 
+    main()

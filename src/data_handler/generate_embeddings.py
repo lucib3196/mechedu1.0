@@ -1,10 +1,10 @@
-from openai import OpenAI
-from .llm_config import LLMConfig
 from dataclasses import dataclass
-from typing import Optional,List
+from typing import Optional, List
 
-from dataclasses import dataclass
-from typing import List
+from openai import OpenAI
+from ..credentials import api_key
+from ..llm_generators.llm_config import LLMConfig
+
 
 @dataclass
 class GenerateEmbeddings:
@@ -59,12 +59,24 @@ class GenerateEmbeddings:
 
 
 def main():
-    queries = ["What is a car?",
-             "What is the captial of france",
-             "This is just some text"]
-    from ..credentials import api_key
-    llm_config = LLMConfig(api_key=api_key,model="text-embedding-ada-002",temperature=0)
+    queries = [
+        "What is a car?",
+        "What is the capital of France?",
+        "This is just some text"
+    ]
+    
+    # Initialize the LLM configuration
+    llm_config = LLMConfig(
+        api_key=api_key,
+        model="text-embedding-ada-002",
+        temperature=0
+    )
+    
+    # Generate embeddings based on the LLM configuration
     generate_embeddings = GenerateEmbeddings(llm_config)
+    
+    # Pretty print the embeddings for the given queries
     generate_embeddings.pretty_print_embeddings(queries)
+
 if __name__ == "__main__":
     main()

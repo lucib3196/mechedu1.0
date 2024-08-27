@@ -1,12 +1,18 @@
-from dataclasses import dataclass,field
-from typing import List, Dict
-from .semantic_search import SemanticSearchManager
-from .get_embeddings import GenerateEmbeddings
-from .embedded_dataframe import EmbeddingDataFrame
-from functools import lru_cache
-from .llm_config import LLMConfig
 import os
+from dataclasses import dataclass, field
+from functools import lru_cache
+from typing import List, Dict
+
+from .semantic_search import SemanticSearchManager
+from .generate_embeddings import GenerateEmbeddings
+from .embedded_dataframe import EmbeddingDataFrame
+from ..llm_generators.llm_config import LLMConfig
+
+# Determine the base directory
 base_dir = os.path.dirname(os.path.abspath(__file__))
+
+
+
 @dataclass
 class ExampleBasedPromptDataFrame:
     example_input_column: str
@@ -127,16 +133,21 @@ class ExampleBasedPromptDataFrame:
 
 
 def main():
+    # Define column names
     search_column = "question"
     output_column = "question.html"
+
+    # Import API key
     from ..credentials import api_key
 
+    # Initialize the formatter with the provided API key and column names
     formatter = ExampleBasedPromptDataFrame(
         example_input_column=search_column, 
         example_output_column=output_column, 
         api_key=api_key
     )
 
+    # List of questions to be processed
     questions = [
         "What is the role of mitochondria in cellular respiration and how does it contribute to energy production in eukaryotic cells?",
         "Explain the concept of entropy in thermodynamics and how it relates to the second law of thermodynamics.",
@@ -144,6 +155,7 @@ def main():
         "What are the key differences between classical mechanics and quantum mechanics in the behavior of particles at the microscopic scale?"
     ]
 
+    # Corresponding prompts for each question
     prompts = [
         "This is the prompt for mitochondria:",
         "This is the prompt for entropy:",
@@ -151,6 +163,7 @@ def main():
         "This is the prompt for classical vs quantum mechanics:"
     ]
 
+    # Generate and print formatted examples for each question
     for i, question in enumerate(questions):
         examples = formatter.format_examples_prompt(
             template_text=prompts[i], 
@@ -158,13 +171,12 @@ def main():
             threshold=0.5, 
             num_examples=1
         )
-        print(f"Prompt for Question {i+1}:\n{examples}\n{'='*50}\n")
+        print(f"\nPrompt for Question {i + 1}:\n{examples}\n{'='*50}\n")
 
-    formatter.pretty_print_extracted_examples(questions[0],0.5,3)
+    # Pretty print extracted examples for the first question
+    formatter.pretty_print_extracted_examples(questions[0], threshold=0.5, top_n=3)
 
 if __name__ == "__main__":
     main()
-
-
 
     

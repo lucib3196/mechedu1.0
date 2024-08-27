@@ -2,11 +2,12 @@ from dataclasses import dataclass
 from openai import OpenAI
 import numpy as np
 from typing import List,Tuple
+import os
 
-from .get_embeddings import GenerateEmbeddings
+from .generate_embeddings import GenerateEmbeddings
 from .embedded_dataframe import EmbeddingDataFrame
-from .llm_config import LLMConfig
-
+from ..llm_generators.llm_config import LLMConfig
+from ..credentials import api_key
 
 @dataclass
 class SemanticSearchManager:
@@ -104,25 +105,40 @@ class SemanticSearchManager:
 
 
 def main():
-    file_path = r"src\data\Question_Embedding_20240128.csv"
-    embedding_column = r"question_embedding"
+    # Set up file paths and column names
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    csv_path = os.path.join(base_dir, '..', 'data', 'Question_Embedding_20240128.csv')
+    embedding_column = "question_embedding"
     search_column = "question"
     output_column = "question.html"
-    from ..credentials import api_key
-
-    df_config = EmbeddingDataFrame(file_path, embedding_column,search_column,output_column)
-    llm_config = LLMConfig(api_key=api_key,model="text-embedding-ada-002",temperature=0)
+    
+    # Initialize the DataFrame configuration
+    df_config = EmbeddingDataFrame(csv_path, embedding_column, search_column, output_column)
+    
+    # Initialize the LLM configuration
+    llm_config = LLMConfig(
+        api_key=api_key,
+        model="text-embedding-ada-002",
+        temperature=0
+    )
+    
+    # Set up the embedding generator
     embedding_generator = GenerateEmbeddings(llm_config)
 
+    # List of questions to be processed
     questions = [
-    "What is the role of mitochondria in cellular respiration and how does it contribute to energy production in eukaryotic cells?",
-    "Explain the concept of entropy in thermodynamics and how it relates to the second law of thermodynamics.",
-    "How does the principle of superposition apply to the analysis of electrical circuits in the context of Ohm's Law?",
-    "What are the key differences between classical mechanics and quantum mechanics in the behavior of particles at the microscopic scale?"]
+        "What is the role of mitochondria in cellular respiration and how does it contribute to energy production in eukaryotic cells?",
+        "Explain the concept of entropy in thermodynamics and how it relates to the second law of thermodynamics.",
+        "How does the principle of superposition apply to the analysis of electrical circuits in the context of Ohm's Law?",
+        "What are the key differences between classical mechanics and quantum mechanics in the behavior of particles at the microscopic scale?"
+    ]
 
+    # Initialize the semantic search manager
     semantic_search = SemanticSearchManager(df_config, embedding_generator)
 
+    # Perform semantic search and print results
     for question in questions:
-        semantic_search.pretty_print_filtered_result(question,0.7,3)
+        semantic_search.pretty_print_filtered_result(question, threshold=0.7, top_n=3)
+
 if __name__ == "__main__":
     main()
