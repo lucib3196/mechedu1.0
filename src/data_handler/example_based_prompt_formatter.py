@@ -6,7 +6,7 @@ from typing import List, Dict
 from .semantic_search import SemanticSearchManager
 from .generate_embeddings import GenerateEmbeddings
 from .embedded_dataframe import EmbeddingDataFrame
-from ..llm_generators.llm_config import LLMConfig
+from ..llm_module_generator.llm_base import LLMConfig
 
 # Determine the base directory
 base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -21,9 +21,11 @@ class ExampleBasedPromptDataFrame:
     api_key: str
     embedding_engine: str = "text-embedding-ada-002"
     embedding_columns: str = "question_embedding"
-    embedding_file: str = os.path.join(base_dir, '..', 'data', 'Question_Embedding_20240128.csv')
+    embedding_file: str = os.path.join(base_dir, '..', 'data', 'Question_embedding_20240902.csv')
+
 
     df_config: EmbeddingDataFrame = field(init=False)
+    is_adaptive: bool = True
     llm_config: LLMConfig = field(init=False)
     embedding_generator: GenerateEmbeddings = field(init=False)
     semantic_search: SemanticSearchManager = field(init=False)
@@ -32,12 +34,21 @@ class ExampleBasedPromptDataFrame:
     def __post_init__(self):
         if not self._initialized:
             print("Initializing ExampleBasedPromptDataFrame...")
-            self.df_config = EmbeddingDataFrame(
-                csv_path=self.embedding_file,
-                embedding_column=self.embedding_columns,
-                example_input_column=self.example_input_column,
-                expected_output_column=self.example_output_column
-            )
+            if self.is_adaptive:
+                self.df_config = EmbeddingDataFrame(
+                    csv_path=self.embedding_file,
+                    embedding_column=self.embedding_columns,
+                    example_input_column=self.example_input_column,
+                    expected_output_column=self.example_output_column,
+                )
+            else:
+                self.df_config = EmbeddingDataFrame(
+                    csv_path=self.embedding_file,
+                    embedding_column=self.embedding_columns,
+                    example_input_column=self.example_input_column,
+                    expected_output_column=self.example_output_column,
+                    filter_condition=("isAdaptive",True)
+                )
             self.dataframe = self.df_config.validate_dataframe()
 
             self.llm_config = LLMConfig(

@@ -25,9 +25,6 @@
                         <a class="nav-link active" aria-current="page" href="{{ url_for('routes.home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('module_retrieval_bp.view_modules') }}">Modules</a>
                     </li>
                     <li class="nav-item dropdown">
@@ -40,12 +37,25 @@
                             <li><a class="dropdown-item" href="{{ url_for('lecture_generator_bp.generate_lecture') }}">Module from Lecture</a></li>
                         </ul>
                     </li>
-                </ul>
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item-inline"><a class="nav-link" href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                    {% else %}
+                    <li class="nav-item-inline"><a class="nav-link" href="{{ url_for('auth.login') }}">Log In</a></li>
+                    {% endif %}
             </div>
         </div>
     </nav>
     {% endblock %}
-
+    <div class="container border border-primary rounded mt-4 bg-light">
+        <!-- Flash Messages Section -->
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
     <div class="container-fluid flex-grow-1 d-flex flex-column mt-3 mb-3 p-5">
         {% block content %}
         {% endblock %}

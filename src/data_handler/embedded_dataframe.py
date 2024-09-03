@@ -1,7 +1,7 @@
-from typing import List, Dict
+from typing import List, Dict, Optional, Tuple,Any
 from dataclasses import dataclass
 import pandas as pd
-from dataclasses import dataclass
+from dataclasses import dataclass,field
 import os
 
 from .validate_process_csv import validate_and_process_csv
@@ -25,16 +25,18 @@ class EmbeddingDataFrame:
         embedding_column (str): The name of the column containing the embeddings.
         example_input_column (str): The name of the column representing the input examples for search.
         expected_output_column (str): The name of the column representing the expected output corresponding to the input examples.
+        filter_condition (Optional[Tuple[str, Any]]): A tuple containing the column name and value to filter out unwanted rows.
     """
     csv_path: str
     embedding_column: str
     example_input_column: str
     expected_output_column: str
+    filter_condition: Optional[Tuple[str, Any]] = None
 
-    def __post_init__(self):
-        self.logger = get_logger(__name__)
+    dataframe: pd.DataFrame = field(init=False, default=None)
 
-    def validate_dataframe(self)->pd.DataFrame:
+
+    def validate_dataframe(self) -> Optional[pd.DataFrame]:
         """Validates the DataFrame to ensure it contains the necessary columns for embedding search.
 
         This method loads the DataFrame from the specified CSV path, checks that the 
@@ -43,30 +45,58 @@ class EmbeddingDataFrame:
 
         Returns:
             pandas.DataFrame: The validated DataFrame if successful.
-            str: An error message if the validation fails.
+            None: If validation fails, returns None.
         """
         try:
-            # Load in dataframe
+            # Load the dataframe
             self.dataframe = validate_and_process_csv(self.csv_path, self.embedding_column)
-            # Check and ensure dataframe is ready for embeddings
-            columns = [self.example_input_column, self.expected_output_column]
-            if is_valid_columns(self.dataframe, columns):
+            logger.debug(f"DataFrame loaded with columns: {self.dataframe.columns.tolist()}")
+
+            # Apply filtering if a filter condition is provided
+            if self.filter_condition:
+                column_name, filter_value = self.filter_condition
+                if column_name in self.dataframe.columns:
+                    logger.info(f"Filtering out rows where {column_name} == {filter_value}")
+                    self.dataframe = self.dataframe[self.dataframe[column_name] != filter_value]
+                else:
+                    logger.error(f"Filter column '{column_name}' not found in the DataFrame.")
+                    return self.dataframe
+
+            # Validate required columns
+            required_columns = [self.example_input_column, self.expected_output_column]
+            if is_valid_columns(self.dataframe, required_columns):
                 self.dataframe = self.dataframe.dropna(subset=[self.expected_output_column])
-                self.logger.info("Embedded DataFrame Loaded Succesfully")
+                logger.info("DataFrame validated successfully.")
                 return self.dataframe
+            else:
+                logger.error("Required columns are missing or invalid.")
+                return None
+
         except ValueError as e:
-            self.logger.exception(f"DataFrame validation and processing failed: {e}")
+            logger.exception(f"DataFrame validation and processing failed: {e}")
             return None
+
+    def drop_unwanted(self):
+        """Optional method to print or handle the unwanted column condition."""
+        if self.filter_condition:
+            logger.info(f"Filter condition: {self.filter_condition}")
+        else:
+            logger.info("No filter condition provided.")
+
 
 
 def main():
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    csv_path = os.path.join(base_dir, '..', 'data', 'Question_Embedding_20240128.csv')
+    csv_path = os.path.join(base_dir, '..', 'data', 'Question_embedding_20240902.csv')
     
     logger.debug(f"Base directory set to: {base_dir}")
     logger.debug(f"CSV path for question embeddings constructed: {csv_path}")
     try:
-        df = EmbeddingDataFrame(csv_path,"question_embedding", "question", "question.html")
+        manager = EmbeddingDataFrame(csv_path,"question_embedding", "question", "question.html", filter_condition=("isAdaptive",True))
+        df = manager.validate_dataframe()
+        print(df["isAdaptive"])
+        print(df.head())
+        print(len(df))
     except ValueError as e:
         logger.error(f"Failed to Create embedded dataframe error {e}")
 if __name__ == "__main__":

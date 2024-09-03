@@ -1,7 +1,10 @@
+from flask.app import Flask
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
+from wtforms import PasswordField, StringField, SubmitField, BooleanField
 from flask_wtf.file import MultipleFileField, FileRequired,FileField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, Length, Email, EqualTo
+from ..db_models.models import User
+from wtforms import ValidationError
 
 class QuestionForm(FlaskForm):
     """
@@ -40,3 +43,21 @@ class ImageForm(FlaskForm):
     """
     files = MultipleFileField(validators=[FileRequired()])
     submit = SubmitField('Generate')
+
+
+class LoginForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Length(1, 64), Email()])
+    password = PasswordField("Password",validators = [DataRequired()])
+    remember_me = BooleanField("Keep Me Logged In")
+    submit = SubmitField("Log In")
+
+class SignUp(FlaskForm):
+    first_name = StringField("First Name", validators=[DataRequired(), Length(1, 64)])
+    email = StringField('Email', validators=[DataRequired(), Length(1, 64), Email()])
+    password = PasswordField('Password', validators=[DataRequired(), EqualTo('password2', message='Passwords must match.')])
+    password2 = PasswordField('Confirm Password', validators=[DataRequired()])
+    submit = SubmitField("Sign Up")
+
+    def validate_email(self, field):
+        if User.query.filter_by(email=field.data).first():
+            raise ValidationError('Email already registered.')

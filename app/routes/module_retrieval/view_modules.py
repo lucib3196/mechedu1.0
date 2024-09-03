@@ -1,5 +1,5 @@
 from flask import Blueprint, Flask, render_template, session, redirect, url_for, jsonify, flash
-from ..models import File, EduModule,Folder
+from ...db_models.models import File, EduModule,Folder
 import os 
 from ast import literal_eval
 from src.run_quizzes.run_module import generateAdaptive, run_generate_py,run_generate,read_file

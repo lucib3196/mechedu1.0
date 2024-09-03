@@ -1,0 +1,48 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python Debugger: Config Module",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.llm_module_generator.config.llm_call"
+    },
+    {
+      "name": "Python Debugger: Module",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src",
+      "cwd": "${workspaceFolder}/mechedu1.0/mechedu1",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/mechedu1.0/mechedu1"
+      }
+    },
+    {
+      "name": "Python: Current File",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Python: Fetch Response Image Extraction",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.llm_generators.image_extraction.fetch_response_image_extraction",
+      "cwd": "${workspaceFolder}/mechedu1.0/mechedu1",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/mechedu1.0/mechedu1"
+      }
+    },
+    {
+      "name": "Python: Test All Image Extractions LLM",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.llm_generators.image_extraction.image_llm_extraction",
+      "cwd": "${workspaceFolder}/mechedu1.0/mechedu1",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/mechedu1.0/mechedu1"
+      }
+    }
+  ]
+}

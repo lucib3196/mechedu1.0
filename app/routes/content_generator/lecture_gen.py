@@ -1,5 +1,6 @@
 # Standard Library Imports
 import asyncio
+from operator import le
 import os
 from flask import request
 
@@ -10,9 +11,8 @@ from werkzeug.utils import secure_filename
 
 # Local Application Imports
 from ...form.forms import ImageForm
-from src.gestalt_module_generator.generate_gestalt_module import generate_module
+from src.llm_content_assembly.assembly import lecture_assembly
 from .utils import save_generated_content
-from src.gestalt_module_generator.generate_lecture import process_lecture_content
 
 user_data = {
         "created_by": "lberm007@ucr.edu",  # Replace with the actual creator identifier
@@ -46,9 +46,9 @@ def generate_lecture():
                 asyncio.set_event_loop(loop)
                 
                 # Ensure this function is truly async-compatible with Flask
-                generated_content = loop.run_until_complete(process_lecture_content(user_input=file_paths, user_data=user_data))
+                results = loop.run_until_complete(lecture_assembly(paths = file_paths, user_data=user_data))
                 loop.close()
-
+                print(results)
                 # Call the function to save the generated content
                 save_response, status_code = save_generated_content(generated_content)
                 if status_code != 200:

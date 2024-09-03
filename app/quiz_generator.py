@@ -8,7 +8,9 @@ from flask import Blueprint, request, jsonify
 import asyncio
 import os
 import tempfile
-from .models import db, File, Folder
+
+from jinja2.lexer import TokenStreamIterator
+from .db_models import db, File, Folder
 from src.gestalt_module_generator.generate_gestalt_module import generate_module
 from src.utils.file_handler import save_files_temp,save_temp_dir_as_zip
 import os
@@ -17,6 +19,7 @@ import asyncio
 import tempfile
 from flask import request, jsonify
 from werkzeug.utils import secure_filename
+from ..src.llm_content_assembly.assembly import generate_module_text
 
 user_data = {
         "created_by": "lberm007@ucr.edu",  # Replace with the actual creator identifier
@@ -37,7 +40,7 @@ def generate_from_text():
         # Use asyncio to run the generate function
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-        generated_content = loop.run_until_complete(generate_module(user_input=text, user_data=user_data))
+        generated_content, tokens = loop.run_until_complete(generate_module_text(question=text))
         loop.close()
 
         for result in generated_content:

@@ -3,7 +3,7 @@ from typing import Optional, List
 
 from openai import OpenAI
 from ..credentials import api_key
-from ..llm_generators.llm_config import LLMConfig
+from ..llm_module_generator.llm_base import LLMConfig
 
 
 @dataclass

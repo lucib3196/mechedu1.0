@@ -1,0 +1,190 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+
+        {
+            "name": "Python Debugger: Metadata Gen",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.llm_module_generator.physics_module_generator.generate_metadata",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
+        {
+            "name": "Python Debugger: Extract Question Images",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.llm_module_generator.image_extraction.image_llm_extraction",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
+        {
+            "name": "Python Debugger: Non Adaptive Gen",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.llm_content_assembly.generate_nonadaptive_module",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
+        {
+            "name": "Python Debugger: File Converter",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.llm_content_assembly.batch_file_converter",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
+        {
+            "name": "Python Debugger: Embedding Dataframe",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.data_handler.embedded_dataframe",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
+        {
+            "name": "Python Debugger: Asembbly",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.llm_content_assembly.assembly",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
+        {
+            "name": "Python Debugger: Temp Man",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.llm_content_assembly.temporary_directory_manager",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
+        {
+            "name": "Python Debugger: Non Adaptive Gen",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.llm_content_assembly.generate_nonadaptive_module",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
+        {
+            "name": "Python Debugger: Generate Module",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.llm_content_assembly.generate_module",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
+        {
+            "name": "Python Debugger: Complete Moduel metadata",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.llm_content_assembly.generate_module_metadata",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
+        {
+            "name": "Python Debugger: Generate Adaptive Module",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.llm_content_assembly.generate_adaptive_module",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
+        {
+            "name": "Python Debugger: Lecture Pipeline",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.llm_content_assembly.llm_lecture_processor",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
+        {
+            "name": "Python Debugger: Generate Lecture Module",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.llm_module_generator.agent.lecture_triaging_agent",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
+        {
+            "name": "Python Debugger: Parsers Module",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.llm_module_generator.parsers.parser",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
+        {
+            "name": "Python Debugger: Code Gen Module",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.llm_module_generator.physics_module_generator.module_generator",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
+        {
+            "name": "Python Debugger: UI Gen Module",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.llm_module_generator.ui_generator.ui_generators",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
+        {
+            "name": "Python Debugger: LLM Call Module",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.llm_module_generator.llm_base.llm_call",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
+        {
+            "name": "Python Debugger: LLM UI Builder",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.llm_module_generator.ui_generator.ui_builder",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        }
+    ]
+}
