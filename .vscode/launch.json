@@ -8,6 +8,18 @@
       "module": "src.llm_module_generator.config.llm_call"
     },
     {
+      "name": "Python Debugger: Example Based Formatter",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.data_handler.example_based_prompt_formatter"
+    },
+    {
+      "name": "Python Debugger: Config Module",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.llm_module_generator.config.llm_call"
+    },
+    {
       "name": "Python Debugger:NEW HTML",
       "type": "debugpy",
       "request": "launch",

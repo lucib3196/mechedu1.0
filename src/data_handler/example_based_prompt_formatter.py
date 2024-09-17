@@ -56,7 +56,7 @@ class ExampleBasedPromptDataFrame:
                 model=self.embedding_engine,
                 temperature=0
             )
-            self.embedding_generator = GenerateEmbeddings(self.llm_config)
+            self.embedding_generator = GenerateEmbeddings(self.api_key,self.embedding_engine,0)
             self.semantic_search = SemanticSearchManager(self.df_config, self.embedding_generator)
             self._initialized = True
             print("Initialization complete.")
@@ -179,8 +179,8 @@ def main():
         examples = formatter.format_examples_prompt(
             template_text=prompts[i], 
             query=question, 
-            threshold=0.5, 
-            num_examples=1,
+            threshold=0.01, 
+            num_examples=3,
         )
         print(f"\nPrompt for Question {i + 1}:\n{examples}\n{'='*50}\n")
 

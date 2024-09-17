@@ -7,7 +7,7 @@ from ..llm_module_generator.llm_base import LLMConfig
 
 
 @dataclass
-class GenerateEmbeddings:
+class GenerateEmbeddings(LLMConfig):
     """
     A class to generate and display embeddings for given text queries using a specified language model.
 
@@ -22,7 +22,6 @@ class GenerateEmbeddings:
             Generates and prints embeddings for a list of text queries, showing only the first few values 
             based on the specified length.
     """
-    llm_config: LLMConfig
     
     def get_embeddings_sync(self, query: str)->List[float]:
         """
@@ -34,8 +33,8 @@ class GenerateEmbeddings:
         Returns:
             List[float]: A list of floating-point numbers representing the embedding of the input text.
         """
-        client = OpenAI(api_key=self.llm_config.api_key)
-        response = client.embeddings.create(input=query, model=self.llm_config.model)
+        client = OpenAI(api_key=self.api_key)
+        response = client.embeddings.create(input=query, model=self.model)
         embeddings = response.data[0].embedding
         return embeddings
 

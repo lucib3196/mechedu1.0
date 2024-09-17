@@ -54,6 +54,7 @@ def render_adaptive_quiz():
             # Generate quiz data
             server_file = os.path.join(tmpdir, "server.js")
             generated_data = run_generate(server_file)
+            print(generated_data)
             params = generated_data.get("params", {})
             correct_answers = generated_data.get("correct_answers", {})
 

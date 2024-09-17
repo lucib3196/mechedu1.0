@@ -9,6 +9,11 @@ from .embedded_dataframe import EmbeddingDataFrame
 from ..llm_module_generator.llm_base import LLMConfig
 from ..credentials import api_key
 
+
+
+def cosine_similarity(a, b):
+    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+
 @dataclass
 class SemanticSearchManager:
     """
@@ -52,7 +57,7 @@ class SemanticSearchManager:
             (
                 index, 
                 row[self.embedded_dataframe_config.example_input_column], 
-                np.dot(row[self.embedded_dataframe_config.embedding_column], embeddings)
+                cosine_similarity(row[self.embedded_dataframe_config.embedding_column],embeddings)
             )
             for index, row in df.iterrows()
             if self.embedded_dataframe_config.embedding_column in row and isinstance(row[self.embedded_dataframe_config.embedding_column], list)

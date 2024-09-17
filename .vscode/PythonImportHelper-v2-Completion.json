@@ -2482,6 +2482,22 @@
         "documentation": {}
     },
     {
+        "label": "api_key",
+        "importPath": "src.credentials",
+        "description": "src.credentials",
+        "isExtraImport": true,
+        "detail": "src.credentials",
+        "documentation": {}
+    },
+    {
+        "label": "GenerateEmbeddings",
+        "importPath": "src.data_handler.generate_embeddings",
+        "description": "src.data_handler.generate_embeddings",
+        "isExtraImport": true,
+        "detail": "src.data_handler.generate_embeddings",
+        "documentation": {}
+    },
+    {
         "label": "dataclass",
         "importPath": "dataclasses",
         "description": "dataclasses",
@@ -5219,6 +5235,33 @@
         "documentation": {}
     },
     {
+        "label": "csv_path",
+        "kind": 5,
+        "importPath": "src.data.generate_embeddings_dataset",
+        "description": "src.data.generate_embeddings_dataset",
+        "peekOfCode": "csv_path = r\"src\\data\\question_embeddings_2024_9_11.csv\"\ndf = pd.read_csv(csv_path)\nfiltered_df= df.iloc[0]\nprint(df.columns)\nprint(df[\"question_embedding\"].iloc[:5])\nprint(df[\"embeddings-3-small\"].iloc[:5])\nprint(df.iloc[0][\"question\"])\nembedding_gen = GenerateEmbeddings(api_key,model=\"text-embedding-3-small\",temperature=0)\nprint(embedding_gen.get_embeddings_sync(df.iloc[0][\"question\"]))",
+        "detail": "src.data.generate_embeddings_dataset",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "src.data.generate_embeddings_dataset",
+        "description": "src.data.generate_embeddings_dataset",
+        "peekOfCode": "df = pd.read_csv(csv_path)\nfiltered_df= df.iloc[0]\nprint(df.columns)\nprint(df[\"question_embedding\"].iloc[:5])\nprint(df[\"embeddings-3-small\"].iloc[:5])\nprint(df.iloc[0][\"question\"])\nembedding_gen = GenerateEmbeddings(api_key,model=\"text-embedding-3-small\",temperature=0)\nprint(embedding_gen.get_embeddings_sync(df.iloc[0][\"question\"]))",
+        "detail": "src.data.generate_embeddings_dataset",
+        "documentation": {}
+    },
+    {
+        "label": "embedding_gen",
+        "kind": 5,
+        "importPath": "src.data.generate_embeddings_dataset",
+        "description": "src.data.generate_embeddings_dataset",
+        "peekOfCode": "embedding_gen = GenerateEmbeddings(api_key,model=\"text-embedding-3-small\",temperature=0)\nprint(embedding_gen.get_embeddings_sync(df.iloc[0][\"question\"]))",
+        "detail": "src.data.generate_embeddings_dataset",
+        "documentation": {}
+    },
+    {
         "label": "EmbeddingDataFrame",
         "kind": 6,
         "importPath": "src.data_handler.embedded_dataframe",
@@ -5277,7 +5320,7 @@
         "kind": 6,
         "importPath": "src.data_handler.generate_embeddings",
         "description": "src.data_handler.generate_embeddings",
-        "peekOfCode": "class GenerateEmbeddings:\n    \"\"\"\n    A class to generate and display embeddings for given text queries using a specified language model.\n    Attributes:\n        llm_config (LLMConfig): Configuration object for the language model, including API key and model name.\n    Methods:\n        get_embeddings_sync(query: str) -> List[float]:\n            Generates embeddings for a given text query using the specified language model.\n        pretty_print_embeddings(queries: List[str], length_embeddings: int = 10) -> None:\n            Generates and prints embeddings for a list of text queries, showing only the first few values ",
+        "peekOfCode": "class GenerateEmbeddings(LLMConfig):\n    \"\"\"\n    A class to generate and display embeddings for given text queries using a specified language model.\n    Attributes:\n        llm_config (LLMConfig): Configuration object for the language model, including API key and model name.\n    Methods:\n        get_embeddings_sync(query: str) -> List[float]:\n            Generates embeddings for a given text query using the specified language model.\n        pretty_print_embeddings(queries: List[str], length_embeddings: int = 10) -> None:\n            Generates and prints embeddings for a list of text queries, showing only the first few values ",
         "detail": "src.data_handler.generate_embeddings",
         "documentation": {}
     },
@@ -5323,6 +5366,15 @@
         "importPath": "src.data_handler.semantic_search",
         "description": "src.data_handler.semantic_search",
         "peekOfCode": "class SemanticSearchManager:\n    \"\"\"\n    A class to manage the configuration, validation, and processing of a DataFrame for semantic search operations.\n    This class handles validating the DataFrame, generating embeddings for input queries, \n    and calculating similarity scores between the query embeddings and the embeddings stored in the DataFrame.\n    Attributes:\n        embedded_dataframe_config (EmbeddingDataFrame): Configuration object containing the DataFrame \n            and information about the relevant columns used in the semantic search.\n        embedding_generator (GenerateEmbeddings): An instance responsible for generating embeddings \n            using a language model.",
+        "detail": "src.data_handler.semantic_search",
+        "documentation": {}
+    },
+    {
+        "label": "cosine_similarity",
+        "kind": 2,
+        "importPath": "src.data_handler.semantic_search",
+        "description": "src.data_handler.semantic_search",
+        "peekOfCode": "def cosine_similarity(a, b):\n    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))\n@dataclass\nclass SemanticSearchManager:\n    \"\"\"\n    A class to manage the configuration, validation, and processing of a DataFrame for semantic search operations.\n    This class handles validating the DataFrame, generating embeddings for input queries, \n    and calculating similarity scores between the query embeddings and the embeddings stored in the DataFrame.\n    Attributes:\n        embedded_dataframe_config (EmbeddingDataFrame): Configuration object containing the DataFrame ",
         "detail": "src.data_handler.semantic_search",
         "documentation": {}
     },
@@ -5457,7 +5509,7 @@
         "kind": 5,
         "importPath": "src.llm_content_assembly.generate_adaptive_module",
         "description": "src.llm_content_assembly.generate_adaptive_module",
-        "peekOfCode": "logger = get_logger(__name__)\nasync def generate_adaptive_module(question: str,metadata_dict:dict = None, solution_guide: str = None):\n    question_html = await question_html_generator.generate_html_ui(question)\n    additional_instructions = f\"{server_template_code_guide} \\n {solution_guide}\" if solution_guide else None\n    logger.info(f\"\\nThis is the solution guide: {solution_guide if solution_guide else 'No solution guide provided'}\\n\")\n    try:\n        server_js, server_py, solution_html = await asyncio.gather(\n            server_js_generator.acall_generate_code(question_html, additional_instructions=additional_instructions),\n            server_py_generator.acall_generate_code(question_html, additional_instructions=additional_instructions),\n            question_solution_generator.acall_generate_code(question_html, additional_instructions=additional_instructions)",
+        "peekOfCode": "logger = get_logger(__name__)\nasync def generate_adaptive_module(question: str,metadata_dict:dict = None, solution_guide: str = None):\n    question_html = await question_html_generator.acall_generate_code(question)\n    additional_instructions = f\"{server_template_code_guide} \\n {solution_guide}\" if solution_guide else None\n    logger.info(f\"\\nThis is the solution guide: {solution_guide if solution_guide else 'No solution guide provided'}\\n\")\n    print(question)\n    try:\n        server_js, server_py, solution_html = await asyncio.gather(\n            server_js_generator.acall_generate_code(question_html, additional_instructions=additional_instructions),\n            server_py_generator.acall_generate_code(question_html, additional_instructions=additional_instructions),",
         "detail": "src.llm_content_assembly.generate_adaptive_module",
         "documentation": {}
     },
@@ -6159,7 +6211,7 @@
         "kind": 6,
         "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
         "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "class ModuleCodeGenerator(LLM_Call):\n    llm_config: LLMConfig\n    base_prompt: str\n    example_input_column: str\n    example_output_column: str\n    threshold: float = 0.1\n    num_examples: int = 2\n    is_adaptive: bool = True\n    def __post_init__(self):\n        super().__post_init__()",
+        "peekOfCode": "class ModuleCodeGenerator(LLM_Call):\n    llm_config: LLMConfig\n    base_prompt: str\n    example_input_column: str\n    example_output_column: str\n    threshold: float = 0.6\n    num_examples: int = 2\n    is_adaptive: bool = True\n    def __post_init__(self):\n        super().__post_init__()",
         "detail": "src.llm_module_generator.physics_module_generator.module_generator",
         "documentation": {}
     },
@@ -6168,7 +6220,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
         "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "logger = get_logger(__name__)\nfrom .module_generator_templates import question_html_gen_template,server_js_template_base,server_py_template_base,solution_html_template,question_html_gen_template_nonadaptive\n@dataclass\nclass ModuleCodeGenerator(LLM_Call):\n    llm_config: LLMConfig\n    base_prompt: str\n    example_input_column: str\n    example_output_column: str\n    threshold: float = 0.1\n    num_examples: int = 2",
+        "peekOfCode": "logger = get_logger(__name__)\nfrom .module_generator_templates import question_html_gen_template,server_js_template_base,server_py_template_base,solution_html_template,question_html_gen_template_nonadaptive\n@dataclass\nclass ModuleCodeGenerator(LLM_Call):\n    llm_config: LLMConfig\n    base_prompt: str\n    example_input_column: str\n    example_output_column: str\n    threshold: float = 0.6\n    num_examples: int = 2",
         "detail": "src.llm_module_generator.physics_module_generator.module_generator",
         "documentation": {}
     },
