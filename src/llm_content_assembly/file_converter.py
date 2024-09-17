@@ -47,6 +47,7 @@ class FileConverter:
         # Single PDF Path
         if isinstance(files, str) and not is_image_file_extension(files) and is_pdf_file_extension(files):
             return self.convert_pdf_to_images(files)
+        # Multiple PDF Paths
         if isinstance(files, list) and all(not is_image_file_extension(file) for file in files):
             image_paths = [self.convert_pdf_to_images(file) for file in files]
             return image_paths[0]
@@ -60,20 +61,20 @@ class FileConverter:
 
 def main():
     # Create an instance of BatchFileConverter
-    converter = FileConverter()()
+    converter = FileConverter()
 
     # Test cases
     test_cases = [
         r"C:\Users\lberm\OneDrive\Desktop\GitHub_Repository\mechedu1.0\mechedu1\test_images\Lecture_01_09.pdf",
-        ["image1.jpg", "image2.png", "image3.gif"],
+        # ["image1.jpg", "image2.png", "image3.gif"],
         [r"C:\Users\lberm\OneDrive\Desktop\GitHub_Repository\mechedu1.0\mechedu1\test_images\Lecture_01_09.pdf", r"C:\Users\lberm\OneDrive\Desktop\GitHub_Repository\mechedu1.0\mechedu1\test_images\Lecture_01_11.pdf"],
-        ["image1.jpg", "document.pdf"],
+        # ["image1.jpg", "document.pdf"],
         "unknownfile.xyz"
     ]
 
     # Test each case and print the result
     for files in test_cases:
-        file_type = converter.determine_file_type(files)
+        file_type = converter.convert_files_images(files)
         print(f"Input: {files}\nPaths {file_type}\n")
 
 if __name__ == "__main__":

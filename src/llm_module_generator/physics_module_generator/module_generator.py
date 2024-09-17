@@ -26,7 +26,7 @@ class ModuleCodeGenerator(LLM_Call):
     base_prompt: str
     example_input_column: str
     example_output_column: str
-    threshold: float = 0.3
+    threshold: float = 0.1
     num_examples: int = 2
     is_adaptive: bool = True
     def __post_init__(self):
@@ -38,11 +38,11 @@ class ModuleCodeGenerator(LLM_Call):
             is_adaptive=self.is_adaptive
         )
 
-    def generate_prompt(self, question:str, additional_instructions:str=None)->str:
+    def generate_prompt(self, question:str, additional_instructions=None)->str:
         prompt = self.example_formatter.format_examples_prompt(self.base_prompt,query=question,threshold=self.threshold,num_examples=self.num_examples)
         if additional_instructions:
             prompt += f"\n{additional_instructions}"
-        prompt += f"\n new_question {question} \n Only return the generated code"
+        prompt += f"\n\n BASED ON THIS KNOWLEDGE CONVERT THE FOLLOWING QUESTION INTO ITS RESPECTIVE HTML **new_question** {question} \n only generate the code"
         return prompt
     
     async def acall_generate_code(self, question:str, additional_instructions:str=None)->str:

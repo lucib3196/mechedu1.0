@@ -22,6 +22,7 @@ class QuestionForm(FlaskForm):
         FlaskForm (FlaskForm): Inherits from FlaskForm, which provides the base functionality for forms in Flask.
     """
     question = StringField("Enter question to generate", validators=[DataRequired()])
+    module_name = StringField("Enter Name of Module",validators=[DataRequired()])
     submit = SubmitField('Generate')
 
 

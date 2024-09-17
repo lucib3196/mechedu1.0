@@ -4,6 +4,46 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        {
+            "name": "Python Debugger: Extract Prairielearn ",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.process_prairielearn.extract_test",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
+        {
+            "name": "Python Debugger: Load valid elements Prairielearn ",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.process_prairielearn.load_valid_elements",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
+        {
+            "name": "Python Debugger: Plutitlities ",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.utils.plutilities_new",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
+        {
+            "name": "Python Debugger: Process Prairielearn ",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.utils.process_prairilearn",
+            "cwd": "${workspaceFolder}/..",
+            "env": {
+                "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows
+            }
+        },
 
 
         {
@@ -40,7 +80,7 @@
             "name": "Python Debugger: File Converter",
             "type": "debugpy",
             "request": "launch",
-            "module": "src.llm_content_assembly.batch_file_converter",
+            "module": "src.llm_content_assembly.file_converter",
             "cwd": "${workspaceFolder}/..",
             "env": {
                 "pythonPath": "${workspaceFolder}/../venv/Scripts/python.exe" // For Windows

@@ -37,7 +37,8 @@ def generate_text():
 
     if form.validate_on_submit():
         session["question"] = form.question.data
-        logger.info(f"Received user question for generation: {session['question']}")
+        session["module_name"] = form.module_name.data
+        logger.info(f"Received user question for generation: {session['question']} with name {session['module_name']}")
 
         try:
             # Create an event loop to run the function asynchronously
@@ -47,11 +48,12 @@ def generate_text():
                 generate_module_text(question=session["question"], user_data=user_data)
             )
             loop.close()
+            print(f"This is the generated content {generated_content}")
 
             logger.info(f"Text generation completed. Tokens used: {tokens}")
 
             # Call the function to save the generated content
-            save_response, status_code = save_generated_content(generated_content)
+            save_response, status_code = save_generated_content(generated_content, module_name=session['module_name'])
             if status_code != 200:
                 logger.error(f"Failed to save generated content. Status code: {status_code}")
                 return jsonify(save_response), status_code

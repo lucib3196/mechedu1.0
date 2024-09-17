@@ -10,52 +10,52 @@ import os
 from bs4 import BeautifulSoup
 from jinja2 import Template
 
-def pl_number_input(soup, tag_name: str, qdata: dict):
-    if not isinstance(soup, BeautifulSoup):
-        raise TypeError("The 'soup' argument must be a BeautifulSoup object.")
+# def pl_number_input(soup, tag_name: str, qdata: dict):
+#     if not isinstance(soup, BeautifulSoup):
+#         raise TypeError("The 'soup' argument must be a BeautifulSoup object.")
     
-    # Find all old tags that match the provided tag name
-    old_tags = soup.find_all(tag_name)
-    for old_tag in old_tags:
-        # Extract attributes from the old tag
-        attribute = old_tag.attrs
-        answers_name = attribute.get("answers-name","")
-        # print(f'This is comparison f{attribute.get("comparison")}')
-        # Determine the correct answer value
-        correct_answer = attribute.get('correct-answer') or qdata.get('correct_answers', {}).get(answers_name, '')
+#     # Find all old tags that match the provided tag name
+#     old_tags = soup.find_all(tag_name)
+#     for old_tag in old_tags:
+#         # Extract attributes from the old tag
+#         attribute = old_tag.attrs
+#         answers_name = attribute.get("answers-name","")
+#         # print(f'This is comparison f{attribute.get("comparison")}')
+#         # Determine the correct answer value
+#         correct_answer = attribute.get('correct-answer') or qdata.get('correct_answers', {}).get(answers_name, '')
 
-        # Create the visible input tag with dynamic attributes
-        new_tag = soup.new_tag(
-            name="input",
-            attrs={
-                "type": "number",
-                "class": "response",
-                "name": answers_name,
-                "id": answers_name,
-                "size": "50",
-                "value": "",
-                "step": "any",
-                "comparison": attribute.get("comparison"),
-                "digits":attribute.get("digits"),
-                "label": attribute.get("label")
-            }
-        )
+#         # Create the visible input tag with dynamic attributes
+#         new_tag = soup.new_tag(
+#             name="input",
+#             attrs={
+#                 "type": "number",
+#                 "class": "response",
+#                 "name": answers_name,
+#                 "id": answers_name,
+#                 "size": "50",
+#                 "value": "",
+#                 "step": "any",
+#                 "comparison": attribute.get("comparison"),
+#                 "digits":attribute.get("digits"),
+#                 "label": attribute.get("label")
+#             }
+#         )
 
-        # Create a hidden input tag to store the correct answer
-        hidden_tag = soup.new_tag(
-            name="input",
-            attrs={
-                "type": "hidden",
-                "name": f"{answers_name}_correct",
-                "id": f"{answers_name}_correct",
-                "value": correct_answer
-            }
-        )
+#         # Create a hidden input tag to store the correct answer
+#         hidden_tag = soup.new_tag(
+#             name="input",
+#             attrs={
+#                 "type": "hidden",
+#                 "name": f"{answers_name}_correct",
+#                 "id": f"{answers_name}_correct",
+#                 "value": correct_answer
+#             }
+#         )
         
-        # Replace the old tag with the new input tag and append the hidden tag
-        old_tag.replace_with(new_tag)
-        new_tag.insert_after(hidden_tag)
-    return soup
+#         # Replace the old tag with the new input tag and append the hidden tag
+#         old_tag.replace_with(new_tag)
+#         new_tag.insert_after(hidden_tag)
+#     return soup
 
 def pl_multiple_choice(soup, tag_name, data):
     if not isinstance(soup, BeautifulSoup):
@@ -111,52 +111,52 @@ def pl_multiple_choice(soup, tag_name, data):
 
     return soup
 
-def wrap_input_fields_form(soup):
-    """
-    Wraps all <input> fields in the given BeautifulSoup object within a <form> tag,
-    and adds a submit button at the end.
+# def wrap_input_fields_form(soup):
+#     """
+#     Wraps all <input> fields in the given BeautifulSoup object within a <form> tag,
+#     and adds a submit button at the end.
 
-    Args:
-        soup (BeautifulSoup): A BeautifulSoup object containing the HTML to modify.
+#     Args:
+#         soup (BeautifulSoup): A BeautifulSoup object containing the HTML to modify.
 
-    Returns:
-        BeautifulSoup: The modified BeautifulSoup object with input fields wrapped in a form tag.
+#     Returns:
+#         BeautifulSoup: The modified BeautifulSoup object with input fields wrapped in a form tag.
     
-    Raises:
-        TypeError: If the 'soup' argument is not a BeautifulSoup object.
-    """
-    if not isinstance(soup, BeautifulSoup):
-        raise TypeError("The 'soup' argument must be a BeautifulSoup object.")
+#     Raises:
+#         TypeError: If the 'soup' argument is not a BeautifulSoup object.
+#     """
+#     if not isinstance(soup, BeautifulSoup):
+#         raise TypeError("The 'soup' argument must be a BeautifulSoup object.")
     
-    outer_tag = soup.new_tag(
-        name="form",
-        attrs={
-            "id": "quizForm",
-            "class": "answer",
-            "method": "POST",
-            "action": "/quiz/submit_quiz"
-        }
-    )
-    all_inputs = soup.find_all("input")
-    if not all_inputs:
-        return soup
+#     outer_tag = soup.new_tag(
+#         name="form",
+#         attrs={
+#             "id": "quizForm",
+#             "class": "answer",
+#             "method": "POST",
+#             "action": "/quiz/submit_quiz"
+#         }
+#     )
+#     all_inputs = soup.find_all("input")
+#     if not all_inputs:
+#         return soup
     
-    first_input = all_inputs[0]
-    last_input = all_inputs[-1]
+#     first_input = all_inputs[0]
+#     last_input = all_inputs[-1]
     
-    # Insert the new outer tag before the first input tag
-    first_input.insert_before(outer_tag)
+#     # Insert the new outer tag before the first input tag
+#     first_input.insert_before(outer_tag)
     
-    # Find all elements between the first and last input tags and move them into the new outer tag
-    current_element = first_input
-    while current_element:
-        next_element = current_element.find_next_sibling()
-        outer_tag.append(current_element.extract())
-        if current_element == last_input:
-            break
-        current_element = next_element
+#     # Find all elements between the first and last input tags and move them into the new outer tag
+#     current_element = first_input
+#     while current_element:
+#         next_element = current_element.find_next_sibling()
+#         outer_tag.append(current_element.extract())
+#         if current_element == last_input:
+#             break
+#         current_element = next_element
     
-    return soup
+#     return soup
     
 def wrap_inputs_with_fieldset(soup, name, class_):
     """
@@ -199,57 +199,57 @@ def wrap_inputs_with_fieldset(soup, name, class_):
         soup.form.append(fieldset_tag)
     return soup
 
-def pl_question_panel(soup):
-    """
-    Wraps the contents of the <pl-question-panel> tag with a <div> element that has the class "question-panel-wrapper".
+# def pl_question_panel(soup):
+#     """
+#     Wraps the contents of the <pl-question-panel> tag with a <div> element that has the class "question-panel-wrapper".
 
-    Args:
-        soup (BeautifulSoup): A BeautifulSoup object containing the HTML to modify.
+#     Args:
+#         soup (BeautifulSoup): A BeautifulSoup object containing the HTML to modify.
 
-    Returns:
-        BeautifulSoup: The modified BeautifulSoup object.
+#     Returns:
+#         BeautifulSoup: The modified BeautifulSoup object.
     
-    Raises:
-        TypeError: If the 'soup' argument is not a BeautifulSoup object.
-    """
-    if not isinstance(soup, BeautifulSoup):
-        raise TypeError("The 'soup' argument must be a BeautifulSoup object.")
+#     Raises:
+#         TypeError: If the 'soup' argument is not a BeautifulSoup object.
+#     """
+#     if not isinstance(soup, BeautifulSoup):
+#         raise TypeError("The 'soup' argument must be a BeautifulSoup object.")
     
-    old_tag = soup.find("pl-question-panel")
-    if old_tag:
-        # Create the new wrapper div
-        wrapper = soup.new_tag("div", **{"class": "question-panel-wrapper"})
+#     old_tag = soup.find("pl-question-panel")
+#     if old_tag:
+#         # Create the new wrapper div
+#         wrapper = soup.new_tag("div", **{"class": "question-panel-wrapper"})
         
-        # Move the contents of the original tag to the new wrapper
-        for child in list(old_tag.children):
-            wrapper.append(child.extract())
+#         # Move the contents of the original tag to the new wrapper
+#         for child in list(old_tag.children):
+#             wrapper.append(child.extract())
         
-        # Replace the original tag with the new wrapper
-        old_tag.replace_with(wrapper)
+#         # Replace the original tag with the new wrapper
+#         old_tag.replace_with(wrapper)
     
-    return soup
-def pl_figure(soup, qname):
-    """
-    Creates an <img> tag with attributes derived from the provided tag and question name.
+#     return soup
+# def pl_figure(soup, qname):
+#     """
+#     Creates an <img> tag with attributes derived from the provided tag and question name.
 
-    Args:
-        tag (BeautifulSoup.Tag): A BeautifulSoup tag containing attributes.
-        qname (str): The question name to construct the image file path.
+#     Args:
+#         tag (BeautifulSoup.Tag): A BeautifulSoup tag containing attributes.
+#         qname (str): The question name to construct the image file path.
 
-    Returns:
-        BeautifulSoup.Tag: The newly created <img> tag.
-    """
-    if not isinstance(soup, BeautifulSoup):
-        raise TypeError("The 'soup' argument must be a BeautifulSoup object.")
+#     Returns:
+#         BeautifulSoup.Tag: The newly created <img> tag.
+#     """
+#     if not isinstance(soup, BeautifulSoup):
+#         raise TypeError("The 'soup' argument must be a BeautifulSoup object.")
     
-    old_tags = soup.find_all("pl-figure")
-    for old_tag in old_tags:
-        attributes = old_tag.attrs
-        file_name = attributes.get('file-name', '')
-        im_file_name = f'/questions/{qname}/{file_name}'
-        img_tag = soup.new_tag(name ="img", src=im_file_name, alt="Picture for problem", width="300", height="300", class_="pic")
-        old_tag.replace_with(img_tag)
-    return soup
+#     old_tags = soup.find_all("pl-figure")
+#     for old_tag in old_tags:
+#         attributes = old_tag.attrs
+#         file_name = attributes.get('file-name', '')
+#         im_file_name = f'/questions/{qname}/{file_name}'
+#         img_tag = soup.new_tag(name ="img", src=im_file_name, alt="Picture for problem", width="300", height="300", class_="pic")
+#         old_tag.replace_with(img_tag)
+#     return soup
 
 
 
@@ -363,3 +363,20 @@ def escape_jinja_in_latex(template: str) -> str:
     escaped_template = re.sub(pattern, escape_curly_braces, template, flags=re.DOTALL)
     
     return escaped_template
+
+
+
+test = """
+<pl-question-panel>
+  <pl-figure file-name="gas_laws.png"></pl-figure>
+</p>
+<p>The figure above illustrates concepts related to gases under certain conditions. Which of the following is the ideal gas law equation?
+</p>
+<pl-checkbox answers-name="idealGas" weight="1" inline="true">
+  <pl-answer correct="true">\( PV = nRT \)</pl-answer>
+  <pl-answer correct="false">\( P = \rho RT \)</pl-answer>
+  <pl-answer correct="false">\( P = \frac{m}{V} \)</pl-answer>
+  <pl-answer correct="false">\( P = \frac{RT}{m} \)</pl-answer>
+</pl-checkbox>
+
+"""

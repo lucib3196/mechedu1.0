@@ -2,11 +2,12 @@ from ..llm_module_generator.physics_module_generator.module_generator import que
 import asyncio
 from ..llm_module_generator.physics_module_generator.llm_templates import server_template_code_guide, solution_improvement_prompt
 from ..logging_config.logging_config import get_logger
+from ..llm_module_generator.question_html_ui.question_html_builder import question_html_builder_advance
 
 logger = get_logger(__name__)
 
 async def generate_adaptive_module(question: str,metadata_dict:dict = None, solution_guide: str = None):
-    question_html = await question_html_generator.acall_generate_code(question)
+    question_html = await question_html_builder_advance.generate_html_ui(question)
     additional_instructions = f"{server_template_code_guide} \n {solution_guide}" if solution_guide else None
     logger.info(f"\nThis is the solution guide: {solution_guide if solution_guide else 'No solution guide provided'}\n")
 

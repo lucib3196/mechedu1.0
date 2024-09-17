@@ -48,7 +48,7 @@ def module_details(folder_id):
     file_type = determine_file_type(file_names_filter)
 
     if file_type == "NonAdaptive":
-        return "<h1>NonAdaptive</h1>"
+        return redirect(url_for("non_adaptive_quiz_bp.render_non_adaptive_quiz"))
     elif file_type == "Adaptive":
         return redirect(url_for("adaptive_quiz_bp.render_adaptive_quiz"))
     else:

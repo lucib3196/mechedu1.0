@@ -8,6 +8,55 @@
       "module": "src.llm_module_generator.config.llm_call"
     },
     {
+      "name": "Python Debugger:NEW HTML",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.llm_module_generator.question_html_ui.intermediate_analysis"
+    },
+    {
+      "name": "Python Debugger: Question HTML Response",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.llm_module_generator.question_html_ui.question_html_response"
+    },
+    {
+      "name": "Python Debugger: Question HTML Builder",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.llm_module_generator.question_html_ui.question_html_builder"
+    },
+    {
+      "name": "Python Debugger: Test",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.test"
+    },
+    {
+      "name": "Python Debugger:Number Input",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.prairielearn.elements.pl-number-input.pl-number-input"
+    },
+    {
+      "name": "Python Debugger:lextract",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.process_prairielearn.extract_test"
+    },
+    {
+      "name": "Python Debugger:load_ver4",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.process_prairielearn.process_prairielearn"
+    },
+    {
+      "name": "Python Debugger:test stuff data ",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.data_handler.test_stuff"
+    },
+
+    {
       "name": "Python Debugger: Module",
       "type": "debugpy",
       "request": "launch",

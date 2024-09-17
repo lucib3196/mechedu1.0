@@ -1,10 +1,10 @@
-from ...db_models.models import db, EduModule, Folder,File
+from ...db_models.models import db, EduModule, Folder,File, QuestionMetadata
 import tempfile
 import os
 import json
 
 
-def save_generated_content(generated_content, module_name="Module"):
+def save_generated_content(generated_content, module_name:str = "Module"):
     """
     Save the generated content to the database, including the module, folders, and files.
 
@@ -39,7 +39,6 @@ def save_generated_content(generated_content, module_name="Module"):
             folder = Folder(name=question_title, module_id=module.id)
             db.session.add(folder)
             db.session.flush()  # Ensure folder.id is available for use in File instances
-
             # Create a temporary directory to store the files
             with tempfile.TemporaryDirectory() as tmpdir:
                 if not tmpdir:
@@ -52,17 +51,51 @@ def save_generated_content(generated_content, module_name="Module"):
                     print(f"This is the file name: {file_name}\nContents:\n{file_contents}\n{'*'*50}\n")
                     file_path = os.path.join(tmpdir, file_name)
 
+
                     # Convert file_contents to JSON string if it is a dictionary
                     if isinstance(file_contents, dict):
                         file_contents = json.dumps(file_contents, indent=4)
 
+                    if file_name == "info.json":
+
+                        if isinstance(file_contents,str):
+                            try:
+                                file_contents = json.loads(file_contents)
+                            except json.JSONDecodeError as e:
+                                print(f"Failed to parse info.json: {e}")
+                                continue
+
+                            # Assuming file_contents is already a dictionary parsed from the JSON file
+                            question_metadata = QuestionMetadata(
+                                uuid=file_contents.get("uuid"),
+                                title=file_contents.get("title"),
+                                stem=file_contents.get("stem"),
+                                topic=file_contents.get("topic"),
+                                tags=json.dumps(file_contents.get("tags", [])),  # Assuming tags is a list
+                                prereqs=json.dumps(file_contents.get("prereqs", [])),  # Assuming prereqs is a list
+                                is_adaptive=file_contents.get("isAdaptive", False),  # Convert key to snake_case
+                                created_by=file_contents.get("createdBy", "unknown"),  # Convert key to snake_case
+                                q_type=file_contents.get("qType", "unknown"),  # Convert key to snake_case
+                                n_steps=file_contents.get("nSteps", 1),  # Convert key to snake_case
+                                updated_by=file_contents.get("updatedBy", ""),  # Convert key to snake_case
+                                difficulty=file_contents.get("difficulty", 1),
+                                codelang=file_contents.get("codelang", "javascript"),
+                                reviewed=file_contents.get("reviewed", False),
+                                folder_id=folder.id  # Assuming folder.id is defined elsewhere in your code
+                            )
+                            db.session.add(question_metadata)
+
                     # Ensure file_contents is in binary format for storage
                     if isinstance(file_contents, str):
                         file_contents = file_contents.encode('utf-8')
+                    elif isinstance(file_contents, dict):
+                        # Convert dict to JSON string, then to bytes
+                        file_contents = json.dumps(file_contents, indent=4).encode('utf-8')
 
                     # Write the file contents to the temporary directory
                     with open(file_path, "wb") as file:
                         file.write(file_contents)
+
 
                     # Create and save the File instance associated with the folder
                     file_record = File(filename=file_name, content=file_contents, folder_id=folder.id)

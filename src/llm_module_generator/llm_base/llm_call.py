@@ -39,14 +39,13 @@ class LLM_Call():
                 {"role": "system", "content": "You are a helpul assistant. Please return the result in JSON format."},
                 {"role": "user", "content": prompt}
             ],
-            response_format=response_format if response_format is not None else {"type": "json_object" },
+            response_format=response_format if response_format is not None else {"type": "json_object" }, # type: ignore
             )
-            
             completion = response.choices[0].message.content
             try: 
-                completion = json.loads(completion)
+                completion = json.loads(completion) # type: ignore
             except (json.JSONDecodeError, ValueError):
-                completion = json.loads(extract_json(completion)) 
+                completion = json.loads(extract_json(completion))  # type: ignore
             self.total_tokens += response.usage.total_tokens
             return completion
         except ValueError as e:

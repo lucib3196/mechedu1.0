@@ -3,6 +3,9 @@ from typing import List, Optional, Union,List, Dict, Optional
 from .utils import encode_multiple_images
 from ...credentials import api_key
 import json
+from ...logging_config.logging_config import get_logger
+
+logger = get_logger(__name__)
 
 async def create_image_content_payload(image_paths: List[str]) -> List[dict]:
     """
@@ -30,10 +33,9 @@ async def create_image_content_payload(image_paths: List[str]) -> List[dict]:
 async def create_payload(
     prompt: str, 
     image_contents: Optional[List[dict]], 
-    max_tokens: int = 16384, 
     response_format: Optional[str] = None, 
     tools: Optional[str] = None, 
-    model: str = "gpt-4o-mini"
+    model: str = "gpt-4o-2024-08-06"
 ) -> Union[dict, str]:
     """
     Creates the payload for the API request based on the given parameters.
@@ -67,7 +69,7 @@ async def create_payload(
             }
         ],
         "temperature": 0,
-        "max_tokens": max_tokens
+        "max_tokens": 16384
     }
 
     if tools:
@@ -77,7 +79,7 @@ async def create_payload(
             payload["response_format"] = response_format
         else:
             payload["response_format"] = {"type": "json_object"}
-    print(f"\n This is the response_format {response_format}\n ")
+    logger.debug(f"\n This is the response_format {response_format}\n ")
     return payload
 
 async def send_image_request(
@@ -85,7 +87,6 @@ async def send_image_request(
     image_paths: List[str],
     api_key: str = api_key, # type: ignore
     response_format: Optional[str] = None,
-    max_tokens: int = 10000,
     tools: Optional[str] = None
 ) -> dict:
     """
@@ -112,7 +113,9 @@ async def send_image_request(
         "Authorization": f"Bearer {api_key}"
     }
 
-    payload = await create_payload(prompt, image_contents, max_tokens, response_format, tools)
+    payload = await create_payload(prompt, image_contents,response_format, tools)
+
+    
 
     async with aiohttp.ClientSession() as session:
         async with session.post(

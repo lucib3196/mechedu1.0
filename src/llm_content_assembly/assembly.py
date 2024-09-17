@@ -1,6 +1,8 @@
 import asyncio
 from typing import List, Tuple
 
+from numpy import imag
+
 from .file_converter import FileConverter
 from .llm_lecture_processor import analyze_lecture
 from .generate_module import generate_module_from_question
@@ -32,6 +34,7 @@ async def lecture_assembly(paths: List[str], user_data:dict) -> Tuple[str, List[
     
     # Convert the input files to images
     image_paths = file_manager.convert_files_images(paths)
+    print(f"These are the image paths {image_paths}")
     
     # Analyze the lecture images and generate the result, modules, and token count
     result, all_mod, tokens = await analyze_lecture(image_paths)
@@ -122,16 +125,16 @@ async def main():
     # for module in text_modules:
     #     print(f"Module: {module}")
 
-    # Run the image-based module generation
-    print("\nRunning image-based module generation...")
-    image_modules, image_tokens = await generate_from_image(image_paths)
-    print(f"Image-based module generation completed. Tokens used: {image_tokens}")
-    for module in image_modules:
-        print(f"Module: {module}")
+    # # Run the image-based module generation
+    # print("\nRunning image-based module generation...")
+    # image_modules, image_tokens = await generate_from_image(image_paths,user_data)
+    # print(f"Image-based module generation completed. Tokens used: {image_tokens}")
+    # for module in image_modules:
+    #     print(f"Module: {module}")
 
     # Run the lecture assembly
     print("\nRunning lecture assembly...")
-    lecture_result, all_modules, lecture_tokens = await lecture_assembly(lecture_paths)
+    lecture_result, all_modules, lecture_tokens = await lecture_assembly(lecture_paths,user_data=user_data)
     print(f"Lecture assembly completed. Tokens used: {lecture_tokens}")
     print(f"Lecture result: {lecture_result}")
     for module in all_modules:

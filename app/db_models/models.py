@@ -23,21 +23,42 @@ class Folder(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(256), nullable=False)
     files = db.relationship('File', backref='folder', lazy=True)
+    question_metadata = db.relationship('QuestionMetadata', backref='folder', lazy=True)
     module_id = db.Column(db.Integer, db.ForeignKey('edu_module.id'), nullable=False)
 
     def __repr__(self):
         return f"<Folder {self.name}>"
 
+class QuestionMetadata(db.Model):
+    __tablename__ = 'questions'  # Consider if this is the desired table name
+    uuid = db.Column(db.String(36), primary_key=True)  # Ensure UUID is properly formatted
+    title = db.Column(db.String(128), nullable=False)
+    stem = db.Column(db.Text, nullable=False)
+    topic = db.Column(db.String(64), nullable=False)
+    tags = db.Column(db.Text, nullable=False)  # JSON or comma-separated string
+    prereqs = db.Column(db.Text, nullable=False)  # JSON or comma-separated string
+    is_adaptive = db.Column(db.Boolean, default=False)
+    created_by = db.Column(db.String(128), nullable=False)
+    q_type = db.Column(db.String(32), nullable=False)
+    n_steps = db.Column(db.Integer, nullable=False)
+    updated_by = db.Column(db.String(128), nullable=True)
+    difficulty = db.Column(db.Integer, nullable=False)
+    codelang = db.Column(db.String(32), nullable=False)
+    reviewed = db.Column(db.Boolean, default=False)
+
+    folder_id = db.Column(db.Integer, db.ForeignKey('folder.id'), nullable=False)
+
+    def __repr__(self):
+        return f"<Metadata {self.title} in folder {self.folder_id}>"
 
 class File(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     filename = db.Column(db.String(256), nullable=False)
-    content = db.Column(db.String, nullable=False)
+    content = db.Column(db.Text, nullable=False)  # Changed to Text for potentially larger content
     folder_id = db.Column(db.Integer, db.ForeignKey('folder.id'), nullable=False)
 
     def __repr__(self):
         return f"<File {self.filename} in folder {self.folder_id}>"
-
 
 class User(db.Model, UserMixin):
     __tablename__ = "users"
@@ -69,8 +90,6 @@ class User(db.Model, UserMixin):
             if self.role is None:
                 self.role = Role.query.filter_by(default=True).first()
                 print(f"Debug: Assigned default role: {self.role}")
-
-
 
     @property
     def password(self):

@@ -33,9 +33,11 @@ def derivations_parser(response: dict) -> list[str]:
     return all_derivations
 
 def lecture_summary_parser(response: dict) -> list[str]:
-    summary = response.get('summary', "No summary provided.")
-    key_concepts_list = response.get('key_concepts', [])
-    foundational_concepts_list = response.get('foundational_concepts', [])
+    print(response)
+    analysis = response.get("analysis","")
+    summary = analysis.get('summary', "No summary provided.")
+    key_concepts_list = analysis.get('key_concepts', [])
+    foundational_concepts_list = analysis.get('foundational_concepts', [])
     # Parsing key concepts
     key_concepts = "\n".join([
         f"- {concept}\n"

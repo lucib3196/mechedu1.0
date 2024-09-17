@@ -38,7 +38,6 @@ class ImageToLLMProcessor:
             Dict: The structured response obtained from the images.
         """
         response = await send_image_request(prompt=self.prompt, image_paths=image_paths,response_format=self.response_format)
-        print(response)
         self.total_tokens += int(response["usage"]["total_tokens"])
         print(f"total tokens {self.total_tokens}")
         return json.loads(response["choices"][0]["message"]["content"])

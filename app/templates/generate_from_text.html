@@ -1,35 +1,53 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 {% block content %}
 
-    <div class="container text-center p-4">
-        <!-- Title Section -->
-        <div class="title">
-            <h1>Generate from Text</h1>
-            <h5 class="text-muted">Input a question below to automatically generate a question module.</h5>
-        </div>
-        <!-- Example Questions Section -->
-        <div class="example-questions mt-4">
-            <p>Try generating modules with these example questions:</p>
-            <ul class="list-group list-group-flush p-3">
-                <li class="list-group-item">
-                    A ball is thrown horizontally from the top of a 50-meter high building with an initial speed of 15 meters per second. Assuming there is no air resistance, calculate the time it takes for the ball to reach the ground.
-                </li>
-                <li class="list-group-item">
-                    A mass-spring system oscillates with a period of 2 seconds. If the spring constant is 100 N/m, calculate the mass attached to the spring. Assume the motion is simple harmonic.
-                </li>
-                <li class="list-group-item">
-                    A force of 200 Newtons is applied perpendicular to a circular cross-sectional area with a radius of 0.1 meters. Calculate the pressure exerted on the area.
-                </li>
-            </ul>
-        </div>
+<div class="container text-center p-4">
+    <!-- Title Section -->
+    <div class="mb-4">
+        <h1 class="display-4">Generate from Text</h1>
+        <p class="lead text-muted">Input a question below to automatically generate a question module.</p>
     </div>
-    <form method="POST" action="{{ url_for('text_generator_bp.generate_text') }}">
-        <div class="form-group">
-            {{ form.hidden_tag() }} 
+
+    <!-- Example Questions Section -->
+    <div class="example-questions text-left">
+        <h5 class="font-weight-bold">Try generating modules with these example questions:</h5>
+        <ul class="list-group list-group-flush mt-3">
+            <li class="list-group-item">
+                A ball is thrown horizontally from the top of a 50-meter high building with an initial speed of 15
+                meters per second. Assuming there is no air resistance, calculate the time it takes for the ball to
+                reach the ground.
+            </li>
+            <li class="list-group-item">
+                A mass-spring system oscillates with a period of 2 seconds. If the spring constant is 100 N/m, calculate
+                the mass attached to the spring. Assume the motion is simple harmonic.
+            </li>
+            <li class="list-group-item">
+                A force of 200 Newtons is applied perpendicular to a circular cross-sectional area with a radius of 0.1
+                meters. Calculate the pressure exerted on the area.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<form method="POST" action="{{ url_for('text_generator_bp.generate_text') }}">
+    <div class="form-group">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group mt-4 mb-4">
+            <label for="module_name">Module Name</label>
+            {{ form.module_name(class="form-control", placeholder="Enter Module Name") }}
+        </div>
+
+        <div class="form-group mt-4 mb-4">
+            <label for="question">Question to Generate</label>
             {{ form.question(class="form-control", placeholder="Enter Question") }}
         </div>
-        {{ form.submit(class="btn btn-primary mt-3 mb-3") }}
-    </form>
+
+        <div class="form-group mt-3 mb-3">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </div>
+</form>
 
 </div>
 {% endblock %}

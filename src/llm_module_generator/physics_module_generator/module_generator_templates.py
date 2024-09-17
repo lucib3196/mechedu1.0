@@ -118,53 +118,48 @@ solution_improvement_prompt = """Given the current HTML module for STEM problem-
          Reference Code for Integration:
          {code_guide}
           Include your revised HTML code below:
-        ```insert revised html code here```
+        return the generated code
         """
 
 server_py_template_base = """
-    Design a robust Python module capable of generating computational problems across various STEM disciplines. This module will ingest an HTML file containing a structured query and will output a Python snippet that performs the calculations for the described problem. The Python code must conform to the following outline:
+You have access to Python modules such as `numpy`, `sympy`, and `pandas`, which you may use when necessary.
 
-    def generate():
-        # 1. Dynamic Parameter Selection:
-        # Do not include html inside the python code
-        # - Thoroughly analyze the HTML or data source to identify an extensive range of categories and units for computation.
-        # - Ensure the inclusion of a wide variety of units and values, covering different global measurement systems.
-        # - Develop a randomized selection algorithm to fairly choose a category or unit system, ensuring equitable representation.
-        # - When applicable, ensure that it alternates between SI and USCS for unit selection.
+Your task is to design a robust Python module that generates computational problems across various STEM disciplines. This module will ingest an HTML file containing a structured query and output a Python snippet that performs the required calculations. The Python code must adhere to the following outline:
 
-        # 2. Value Generation:
-        # - Produce random values relevant to the problem's context, ensuring they fall within specified ranges.
-        # - Define static ranges for value generation to avoid conversion issues later on.
-        # - When applicable and given the chance to include both SI and USCS, choose to define static values within a specified range rather than converting them later.
-        # - Account for both SI and USCS unit systems when applicable, generating appropriate values for each system.
+```python
+def generate():
+    # 1. Dynamic Parameter Selection:
+    # - Thoroughly analyze the HTML or data source to identify relevant categories and units for computation.
+    # - Ensure the inclusion of a diverse set of units and values, covering different global measurement systems (SI and USCS).
+    # - Implement a randomized selection algorithm that fairly alternates between unit systems (SI and USCS), ensuring balanced representation.
+    # - Avoid embedding HTML within the Python code.
 
-        **Important Note on Unit Conversion:**
-        # - Do not convert between SI and USCS unless directly stated in the problem. The code should only apply unit conversions within the specified system. Ensure that each problem instance adheres to this rule to maintain accuracy and consistency.
-        # - Do not convert the values when it is not needed for solution synthesis i.e., do not convert SI values to USCS and vice versa.
+    # 2. Value Generation:
+    # - Randomly generate values relevant to the problem context, ensuring they fall within specified, realistic ranges.
+    # - Define static ranges for value generation to avoid conversion issues.
+    # - Ensure that values are generated specifically for either SI or USCS without converting between the two unless explicitly stated in the problem.
+    # - When necessary, include static values for both SI and USCS systems.
 
-        # 3. Solution Synthesis:
-        # - Utilize the selected parameters and the generated values to formulate the solution.
-        # - Apply any necessary unit conversions.
+    # **Note on Unit Conversion:**
+    # - Only perform unit conversions if explicitly required by the problem.
+    # - If the problem involves unit conversion, ensure that conversions are applied correctly within the specified system. Do not convert SI to USCS or vice versa unless necessary.
+    # - Original generated values should be retained for further processing, especially for integration with the HTML side.
 
-        return {
-            'params': {
-                # Input parameters relevant to the problem's context and the chosen category/unit system.
-                # Export all calculated variables used during the calculation before applying any unit conversions. These values should be the original values generated, as these will
-                # be used for the HTML integration. Ensure that any converted values are also exported if conversions are performed.
-            },
-            'correct_answers': {
-                # Calculate the correct answer(s) using the selected parameters and generated values.
-            },
-            'nDigits': 3,  # Define the number of digits after the decimal place.
-            'sigfigs': 3   # Define the number of significant figures for the answer.
-        }
+    # 3. Solution Synthesis:
+    # - Use the selected parameters and generated values to formulate the solution.
+    # - If necessary, apply appropriate unit conversions during the solution phase, ensuring consistency with the original values.
 
-    if __name__ == "__main__":
-        # Example usage
-        result = generate()
-        print(result)
+    return {
+        'params': {
+            # The input parameters relevant to the problem's context (categories, units, values).
+            # Export all original values generated before applying any unit conversions, ensuring consistency for HTML integration.
+            # If any conversions were performed, include the converted values alongside the original ones.
+        },
+        'correct_answers': {
+            # The correct answers to the problem, calculated based on the selected parameters and generated values.
+        },
+        'nDigits': 3,  # The number of digits after the decimal point for numerical answers.
+        'sigfigs': 3   # The number of significant figures to be used in the final answer.
+    }
 
-    Your mission is to flesh out the generate function within this framework. It should dynamically select parameters and units, apply necessary transformations, spawn values, and deduce a legitimate solution. The function must return a dictionary containing 'params' and 'correct_answers' keys, adhering to the prescribed structure. This alignment ensures seamless integration of the HTML and Python components. Below is a sample illustration:
-    ```insert python code here```
-    
     """

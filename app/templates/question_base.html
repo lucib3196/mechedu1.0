@@ -3,16 +3,26 @@
 {% block title %}Quiz{% endblock %}
 {% block content %}
 <div class="container">
+    <!-- Form for downloading a module -->
     <form method="POST" action="{{ url_for('quiz_overview_bp.download_module') }}">
+        <!-- Hidden input for folder data -->
         <input type="hidden" name="folder_data" value="{{ folder_data }}">
         <button type="submit" class="btn btn-primary">Download</button>
     </form>
-</div>
-</div>
-<div class="container mx-auto p-5">
-    <h1>{{ quiz_name }}</h1>
-    {{ question_html | safe }}
-</div>
 
+    <!-- Main quiz content inside form -->
+    <form method="POST" action="{{ url_for('adaptive_quiz_bp.grade_quiz') }}" class="form-group mt-4">
+        <h1>{{ quiz_name }}</h1>
+        
+        <!-- Safely render the entire question HTML, including the form fields -->
+        <div class="form-field">
+            {{ question_html | safe }}
+        </div>
 
+        <div class="mt-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-secondary" onclick="location.reload()">New Variant</button>
+        </div>
+    </form>
+</div>
 {% endblock %}

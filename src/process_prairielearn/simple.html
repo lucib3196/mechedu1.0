@@ -1,0 +1,472 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="../prairielearn/elements/pl-order-blocks/pl-order-blocks.js"></script>
+<script type="text/javascript">
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<div>
+    <div class="card w-auto my-4">
+        <div class="card-body">
+            <div class="card-text">
+
+                <p>Provide your calculated answers below:</p>
+                <span class="form-inline d-inline-block ml-2">
+                    <span class="input-group pl-number-input">
+                        <span class="input-group-prepend">
+                            <span class="input-group-text"
+                                id="pl-number-input-cac78fc6-42ee-473c-8023-0f6ead18981f-label">Maximum Height (in
+                                meters)</span>
+                        </span>
+                        <input id="pl-number-input-textfield-cac78fc6-42ee-473c-8023-0f6ead18981f" name="maxHeight"
+                            type="text" inputmode="text" autocomplete="off" autocorrect="off"
+                            class="form-control pl-number-input-input" size="35"
+                            aria-describedby="pl-number-input-cac78fc6-42ee-473c-8023-0f6ead18981f-suffix"
+                            aria-labelledby="pl-integer-input-cac78fc6-42ee-473c-8023-0f6ead18981f-label"
+                            placeholder="number (3 significant figures)" />
+
+                        <span class="input-group-append">
+                            <a role="button" class="btn btn-light border d-flex align-items-center"
+                                data-toggle="popover" data-html="true" title="Number"
+                                data-content="&lt;p&gt;
+Your answer must be a real number between &lt;code&gt;-1e308&lt;/code&gt; and &lt;code&gt;1e308&lt;/code&gt; (i.e., it must be interpretable as a double-precision floating-point number).
+No symbolic expressions (those that involve square roots, variables, etc.) will be accepted. Scientific notation is accepted (e.g., &lt;code&gt;1.2e03&lt;/code&gt;).  You may express your answer as a fraction of two numbers.  &lt;p&gt;Your answer must be accurate to 3 significant figures. This means (for example) that if the true answer is &lt;code&gt;1.234&lt;/code&gt;, then the submitted answer must be between &lt;code&gt;1.234 - 0.0051&lt;/code&gt; and &lt;code&gt;1.234 + 0.0051&lt;/code&gt; to be counted correct.&lt;/p&gt;"
+                                data-placement="auto" data-trigger="focus" tabindex="0">
+                                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                            </a>
+                        </span>
+
+                    </span>
+                </span><span class="form-inline d-inline-block ml-2">
+                    <span class="input-group pl-units-input">
+                        <span class="input-group-prepend">
+                            <span class="input-group-text"
+                                id="pl-units-input-c308ee3b-9306-4c20-ad9d-7efa159819f7-label">Flight Time (in
+                                seconds)</span>
+                        </span>
+
+                        <input name=flightTime autocomplete="off" autocorrect="off" type="text"
+                            class="form-control pl-units-input-input" size="35"
+                            aria-describedby="pl-units-input-c308ee3b-9306-4c20-ad9d-7efa159819f7-suffix"
+                            aria-labelledby="pl-units-input-c308ee3b-9306-4c20-ad9d-7efa159819f7-label"
+                            placeholder="Number (rtol=0.01, atol=2s) + Unit" />
+
+                        <span class="input-group-append">
+
+                            <a role="button" class="btn btn-light border d-flex align-items-center"
+                                data-toggle="popover" data-html="true" title="Units" data-content="&lt;p&gt; Your answer must be formatted as a number and then a unit (e.g. &lt;code&gt;9.8 m/s^2&lt;/code&gt;). &lt;/p&gt;
+&lt;p&gt; The number part of your answer must be a real number between &lt;code&gt;-1e308&lt;/code&gt; and &lt;code&gt;1e308&lt;/code&gt; (i.e., it must be interpretable as a double-precision floating-point number). &lt;/p&gt;
+&lt;p&gt; Your answer should not be a symbolic expression to guarantee correct parsing. Fractions and scientific notation are accepted (e.g., &lt;code&gt;1.2e03&lt;/code&gt;). &lt;/p&gt;
+&lt;p&gt; Your unit must be formatted as a string after the numerical part of your answer. &lt;/p&gt;"
+                                data-placement="auto" data-trigger="focus" tabindex="0">
+                                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                            </a>
+
+                        </span>
+                    </span>
+                </span><span class="form-inline d-inline-block ml-2">
+                    <span class="input-group pl-number-input">
+                        <span class="input-group-prepend">
+                            <span class="input-group-text"
+                                id="pl-number-input-a5712f65-2f13-456e-96a9-c2814bf707ba-label">Horizontal Range (in
+                                meters)</span>
+                        </span>
+                        <input id="pl-number-input-textfield-a5712f65-2f13-456e-96a9-c2814bf707ba" name="range"
+                            type="text" inputmode="text" autocomplete="off" autocorrect="off"
+                            class="form-control pl-number-input-input" size="35"
+                            aria-describedby="pl-number-input-a5712f65-2f13-456e-96a9-c2814bf707ba-suffix"
+                            aria-labelledby="pl-integer-input-a5712f65-2f13-456e-96a9-c2814bf707ba-label"
+                            placeholder="number (3 significant figures)" />
+
+                        <span class="input-group-append">
+                            <a role="button" class="btn btn-light border d-flex align-items-center"
+                                data-toggle="popover" data-html="true" title="Number"
+                                data-content="&lt;p&gt;
+Your answer must be a real number between &lt;code&gt;-1e308&lt;/code&gt; and &lt;code&gt;1e308&lt;/code&gt; (i.e., it must be interpretable as a double-precision floating-point number).
+No symbolic expressions (those that involve square roots, variables, etc.) will be accepted. Scientific notation is accepted (e.g., &lt;code&gt;1.2e03&lt;/code&gt;).  You may express your answer as a fraction of two numbers.  &lt;p&gt;Your answer must be accurate to 3 significant figures. This means (for example) that if the true answer is &lt;code&gt;1.234&lt;/code&gt;, then the submitted answer must be between &lt;code&gt;1.234 - 0.0051&lt;/code&gt; and &lt;code&gt;1.234 + 0.0051&lt;/code&gt; to be counted correct.&lt;/p&gt;"
+                                data-placement="auto" data-trigger="focus" tabindex="0">
+                                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                            </a>
+                        </span>
+
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card w-auto my-4">
+        <div class="card-body">
+            <div class="card-text">
+
+                <p>Enter the symbolic expression for the horizontal range in terms of \( v_0 \) (initial velocity), \(
+                    \theta \) (angle), and \( g \) (gravitational constant):</p>
+                <span class="form-inline d-inline-block ml-2">
+                    <span class="input-group pl-symbolic-input">
+                        <span class="input-group-prepend">
+                            <span class="input-group-text"
+                                id="pl-symbolic-input-f997a579-6ce3-4f47-81cd-e553b2f80f8b-label">Symbolic expression
+                                for horizontal range</span>
+                        </span>
+                        <input name="rangeExpression" type="text" autocomplete="off" autocorrect="off"
+                            class="form-control pl-symbolic-input-input" size="35" placeholder="symbolic expression"
+                            aria-describedby="pl-symbolic-input-f997a579-6ce3-4f47-81cd-e553b2f80f8b-suffix"
+                            aria-labelledby="pl-symbolic-input-f997a579-6ce3-4f47-81cd-e553b2f80f8b-label" />
+                        <span class="input-group-append">
+                            <a role="button" class="btn btn-light border d-flex align-items-center"
+                                data-toggle="popover" data-html="true" title="Symbolic"
+                                data-content="&lt;p&gt;&lt;strong&gt;General format information:&lt;/strong&gt;&lt;br&gt;Your answer must be a symbolic expression. All numbers must be rational - so, &lt;code class=&quot;user-output&quot;&gt;1/2&lt;/code&gt; instead of &lt;code class=&quot;user-output&quot;&gt;0.5&lt;/code&gt;.
+Complex numbers are not allowed.&lt;/p&gt;
+&lt;!-- From https://stackoverflow.com/a/14417521/2923069 --&gt;
+&lt;p&gt;
+    &lt;strong&gt;Allowable variables:&lt;/strong&gt;&lt;br&gt;
+     &lt;code class=&quot;user-output&quot;&gt;v_0&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;theta&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;g&lt;/code&gt; &amp;nbsp; 
+&lt;/p&gt;
+&lt;p&gt;
+    &lt;strong&gt;Allowable constants:&lt;/strong&gt;&lt;br&gt;
+     &lt;code class=&quot;user-output&quot;&gt;pi&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;e&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;infty&lt;/code&gt; &amp;nbsp; 
+&lt;/p&gt;
+&lt;p&gt;
+    &lt;strong&gt;Allowable operators:&lt;/strong&gt;&lt;br&gt;
+     &lt;code class=&quot;user-output&quot;&gt;( )&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;+&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;-&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;*&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;/&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;^&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;**&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;!&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;exp&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;log&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;ln&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;sqrt&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;factorial&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;abs&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;sgn&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;max&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;min&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;sign&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;Abs&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;Max&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;Min&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;cos&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;sin&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;tan&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;sec&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;cot&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;csc&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;arccos&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;arcsin&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;arctan&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;acos&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;asin&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;atan&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;arctan2&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;atan2&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;atanh&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;acosh&lt;/code&gt; &amp;nbsp;  &lt;code class=&quot;user-output&quot;&gt;asinh&lt;/code&gt; &amp;nbsp; 
+&lt;/p&gt;
+
+&lt;p&gt;Note that either &lt;code class=&quot;user-output&quot;&gt;^&lt;/code&gt; or &lt;code class=&quot;user-output&quot;&gt;**&lt;/code&gt; can be used for exponentiation.&lt;/p&gt;"
+                                data-placement="auto" data-trigger="focus" tabindex="0">
+                                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                            </a>
+                        </span>
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card w-auto my-4">
+        <div class="card-body">
+            <div class="card-text">
+
+                <p>Select the correct formula for the total flight time of the projectile:</p>
+                <span class="d-inline-block" role="group" aria-label="Checkbox options">
+
+
+                    <div class="form-check form-check-inline d-inline-flex align-items-center py-1 gap-2">
+                        <input class="form-check-input mt-0 flex-shrink-0" type="checkbox" name="timeFormula" value="a"
+                            id="timeFormula-a">
+
+                        <label class="form-check-label d-flex align-items-center" for="timeFormula-a">
+                            <div class="pl-checkbox-key-label">(a)</div>
+                            <div class="ml-1 mr-1">\( t = \frac{v_0 \cdot g}{\sin \theta} \)</div>
+                        </label>
+
+
+                    </div>
+                    <div class="form-check form-check-inline d-inline-flex align-items-center py-1 gap-2">
+                        <input class="form-check-input mt-0 flex-shrink-0" type="checkbox" name="timeFormula" value="b"
+                            id="timeFormula-b">
+
+                        <label class="form-check-label d-flex align-items-center" for="timeFormula-b">
+                            <div class="pl-checkbox-key-label">(b)</div>
+                            <div class="ml-1 mr-1">\( t = \frac{2v_0 \sin \theta}{g} \)</div>
+                        </label>
+
+
+                    </div>
+                    <div class="form-check form-check-inline d-inline-flex align-items-center py-1 gap-2">
+                        <input class="form-check-input mt-0 flex-shrink-0" type="checkbox" name="timeFormula" value="c"
+                            id="timeFormula-c">
+
+                        <label class="form-check-label d-flex align-items-center" for="timeFormula-c">
+                            <div class="pl-checkbox-key-label">(c)</div>
+                            <div class="ml-1 mr-1">\( t = \frac{v_0 \cos \theta}{g} \)</div>
+                        </label>
+
+
+                    </div>
+                    <div class="form-check form-check-inline d-inline-flex align-items-center py-1 gap-2">
+                        <input class="form-check-input mt-0 flex-shrink-0" type="checkbox" name="timeFormula" value="d"
+                            id="timeFormula-d">
+
+                        <label class="form-check-label d-flex align-items-center" for="timeFormula-d">
+                            <div class="pl-checkbox-key-label">(d)</div>
+                            <div class="ml-1 mr-1">\( t = \frac{v_0^2}{g} \)</div>
+                        </label>
+
+
+                    </div>
+
+                    <span class="form-inline">
+                        <span class="input-group pl-checkbox">
+                            <span> <small class="form-text text-muted">Select all possible options that apply.</small>
+                            </span>
+                            <a role="button" class="btn btn-light btn-sm" data-toggle="popover" data-html="true"
+                                title="Checkbox"
+                                data-content="You must select at least 1 option. You will receive a score of 100% if you select all options that are true and no options that are false. Otherwise, you will receive a score of 0%."
+                                data-placement="auto" data-trigger="focus" tabindex="0">
+                                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                            </a>
+                        </span>
+                    </span>
+
+
+
+
+
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card w-auto my-4">
+        <div class="card-body">
+            <div class="card-text">
+
+                <p>Matrix \( A \) represents the force components acting on the projectile at different points in its
+                    trajectory. Enter the values for matrix \( A \) below:</p>
+                <span class="form-inline d-inline-block ml-2 pl-matrix-component-span-fullwidth">
+                    <div class="input-group">
+                        <span class="input-group-prepend">
+                            <label class="input-group-text" id="basic-addon2">$A=$</label>
+                        </span>
+                        <div class="form-control pl-matrix-component-input-container">
+                            <table>
+                                <tr>
+                                    <td class="pl-matrix-component-input-close-left" rowspan="3"></td>
+                                    <td style="width:4px" rowspan="3"></td>
+                                    <td> <input name="forceComponents1" type="text"
+                                            size="8" " /> </td> <td> <input name= " forceComponents2" type="text"
+                                            size="8" " /> </td> <td> <input name= " forceComponents3" type="text"
+                                            size="8" " /> </td><td style=" width:4px" rowspan="3"></td>
+                                    <td class="pl-matrix-component-input-close-right" rowspan="3"></td>
+                                <tr>
+                                    <td> <input name="forceComponents4" type="text"
+                                            size="8" " /> </td> </td>  <td> <input name= " forceComponents5" type="text"
+                                            size="8" " /> </td> </td>  <td> <input name= " forceComponents6" type="text"
+                                            size="8" " /> </td> </td> </tr> <tr> <td> <input name= " forceComponents7"
+                                            type="text" size="8" " /> </td> </td>  <td> <input name= " forceComponents8"
+                                            type="text" size="8" " /> </td> </td>  <td> <input name= " forceComponents9"
+                                            type="text" size="8" " /> </td> </td> </tr></table>
+        </div>
+        <div class=" input-group-append">
+                                        <a role="button" class="btn btn-light border d-flex align-items-center"
+                                            data-toggle="popover" data-html="true" title="Matrix" data-content="&lt;p&gt;
+Your must enter all the components of the matrix.
+&lt;/p&gt;
+&lt;p&gt;
+Each entry must be a real number between &lt;code&gt;-1e308&lt;/code&gt; and &lt;code&gt;1e308&lt;/code&gt; (i.e., it must be interpretable as a double-precision floating-point number).
+No symbolic expressions (those that involve square roots, variables, etc.) will be accepted. Scientific notation is accepted (e.g., &lt;code&gt;1.2e03&lt;/code&gt;). Fractions are accepted.
+&lt;/p&gt;
+&lt;p&gt;
+Numbers must be accurate to within relative tolerance &lt;code&gt;0.01&lt;/code&gt; and absolute tolerance &lt;code&gt;1e-08&lt;/code&gt;.
+
+
+&lt;/p&gt;" data-placement="auto" data-trigger="focus" tabindex="0">
+                                            <i class="fa fa-question-circle" aria-hidden="true"></i>
+
+
+
+
+                                        </a>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card w-auto my-4">
+        <div class="card-body">
+            <div class="card-text">
+
+                <p>Matrix \( B \) represents the resulting forces after the projectile’s impact. Input the values for
+                    matrix \( B \) below:</p>
+                <div class="input-group">
+                    <span class="input-group-prepend">
+                        <label class="input-group-text"
+                            id="pl-matrix-input-b70b39a5-a29e-4d41-8582-0b50d790a86e-label">$B=$</label>
+                    </span>
+                    <input name="matrixB" type="text" class="form-control pl-matrix-input-input rounded-right"
+                        placeholder="matrix (rtol=0.01, atol=1e-08)"
+                        aria-labelledby="pl-matrix-input-b70b39a5-a29e-4d41-8582-0b50d790a86e-label" />
+                    <div class="input-group-append">
+                        <a role="button" class="btn btn-light border d-flex align-items-center" data-toggle="popover"
+                            data-html="true" title="Matrix" data-content="&lt;p&gt;
+Your answer must be a matrix (i.e., a 2D array). It can be expressed in one of two ways:
+&lt;/p&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;Matlab Format.&lt;/strong&gt; Enclose it by a single pair of square brackets. Separate entries in each row with a space or comma. Indicate the end of each intermediate row with a semicolon. Examples: &lt;code&gt;[1 2 3; 4 5 6]&lt;/code&gt; or &lt;code&gt;[1, 2, 3; 4, 5, 6]&lt;/code&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Python Format.&lt;/strong&gt; Enclose it by a single pair of square brackets. Enclose each row by a single pair of square brackets. Separate rows with a comma. Separate entries in each row with a comma. Example: &lt;code&gt;[[1, 2, 3], [4, 5, 6]]&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+    Note that &lt;code&gt;[1, 2, 3]&lt;/code&gt; is valid Matlab input for a 1&amp;times;3 matrix (a row vector). If you want a column vector (a 3&amp;times;1 matrix) then you should enter &lt;code&gt;[1; 2; 3]&lt;/code&gt; or &lt;code&gt;[[1], [2], [3]]&lt;/code&gt;.
+&lt;/p&gt;
+&lt;p&gt;
+Each entry must be a real number between &lt;code&gt;-1e308&lt;/code&gt; and &lt;code&gt;1e308&lt;/code&gt; (i.e., it must be interpretable as a double-precision floating-point number).
+No symbolic expressions (those that involve fractions, square roots, variables, etc.) will be accepted. Scientific notation is accepted (e.g., &lt;code&gt;1.2e03&lt;/code&gt;).
+&lt;/p&gt;
+&lt;p&gt;
+Numbers must be accurate to within relative tolerance &lt;code&gt;0.01&lt;/code&gt; and absolute tolerance &lt;code&gt;1e-08&lt;/code&gt;.
+
+
+&lt;/p&gt;" data-placement="auto" data-trigger="focus" tabindex="0">
+                            <i class="fa fa-question-circle" aria-hidden="true"></i>
+
+
+
+
+
+                        </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card w-auto my-4">
+        <div class="card-body">
+            <div class="card-text">
+
+                <p>Match the following types of projectiles with their correct classification based on their motion:</p>
+                <div class="pl-matching-container pl-matching-container-right">
+                    <div class="pl-matching-statements">
+                        <div class="pl-matching-statement">
+                            <div class="pl-matching-statement-select">
+                                <select name="projectileType-dropdown-0" class="custom-select">
+                                    <option selected value="-1"> </option>
+                                    <option value="0">a</option>
+                                    <option value="1">b</option>
+                                    <option value="2">c</option>
+                                    <option value="3">d</option>
+                                    <option value="4">e</option>
+                                    <option value="5">f</option>
+                                </select>
+                            </div>
+                            <div class="pl-matching-statement-text">
+                                Projectile with air resistance
+                            </div>
+                        </div>
+                        <div class="pl-matching-statement">
+                            <div class="pl-matching-statement-select">
+                                <select name="projectileType-dropdown-1" class="custom-select">
+                                    <option selected value="-1"> </option>
+                                    <option value="0">a</option>
+                                    <option value="1">b</option>
+                                    <option value="2">c</option>
+                                    <option value="3">d</option>
+                                    <option value="4">e</option>
+                                    <option value="5">f</option>
+                                </select>
+                            </div>
+                            <div class="pl-matching-statement-text">
+                                Projectile in vacuum
+                            </div>
+                        </div>
+                        <div class="pl-matching-statement">
+                            <div class="pl-matching-statement-select">
+                                <select name="projectileType-dropdown-2" class="custom-select">
+                                    <option selected value="-1"> </option>
+                                    <option value="0">a</option>
+                                    <option value="1">b</option>
+                                    <option value="2">c</option>
+                                    <option value="3">d</option>
+                                    <option value="4">e</option>
+                                    <option value="5">f</option>
+                                </select>
+                            </div>
+                            <div class="pl-matching-statement-text">
+                                Guided projectile
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pl-matching-options">
+                        <ol>
+                            <li class="pl-matching-option" style="--pl-matching-counter-type: lower-alpha">Basketball
+                            </li>
+                            <li class="pl-matching-option" style="--pl-matching-counter-type: lower-alpha">Projectile
+                                with air resistance</li>
+                            <li class="pl-matching-option" style="--pl-matching-counter-type: lower-alpha">Bullet</li>
+                            <li class="pl-matching-option" style="--pl-matching-counter-type: lower-alpha">Projectile in
+                                vacuum</li>
+                            <li class="pl-matching-option" style="--pl-matching-counter-type: lower-alpha">Guided
+                                projectile</li>
+                            <li class="pl-matching-option" style="--pl-matching-counter-type: lower-alpha">Missile</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card w-auto my-4">
+        <div class="card-body">
+            <div class="card-text">
+
+                <p>Arrange the following stages of projectile motion in the correct order:</p>
+                <script>
+                    $(function () {
+                        var UUID = "d890b1e5-9dc5-4d1a-8c1d-e65a7b1fa868";
+
+                        new window.PLOrderBlocks(UUID, {
+                            maxIndent: 4,
+                            inline: false,
+                            enableIndentation: false,
+                        });
+                    });
+                </script>
+
+
+                <div class="d-flex flex-wrap">
+                    <div class="pl-order-blocks-container  pl-order-blocks-right ">
+                        <div class="card-header pl-order-blocks-header list-group-item-primary">Drag from here:</div>
+                        <ul id="order-blocks-options-d890b1e5-9dc5-4d1a-8c1d-e65a7b1fa868" name="motion-stages"
+                            class="card-body list-group pl-order-blocks-connected-sortable">
+                            <li class="list-group-item shadow pl-order-block "
+                                uuid="f11fe8be-5e12-4b0d-9c44-9c8f1bdb90e6" string="Descent">Descent
+                            </li>
+                            <li class="list-group-item shadow pl-order-block "
+                                uuid="fd5c4235-5403-49d4-ba88-9c83faec6450" string="Impact">Impact
+                            </li>
+                            <li class="list-group-item shadow pl-order-block "
+                                uuid="c5ce600f-66d3-45e8-a59a-ebef9a2ca4ce" string="Launch">Launch
+                            </li>
+                            <li class="list-group-item shadow pl-order-block "
+                                uuid="c05fca26-fce3-4de6-b3b1-91d7670cdf63" string="Peak height">Peak height
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pl-order-blocks-container  pl-order-blocks-right ">
+                        <div class="card-header pl-order-blocks-header list-group-item-primary">
+                            <span class="mr-2">Construct your solution here:</span>
+                            <a role="button" style="vertical-align:middle;" class="btn btn-light btn-sm"
+                                data-toggle="popover" data-html="true" title="Order Blocks"
+                                data-content="Drag answer tiles into the answer area to the right. &lt;br&gt;The ordering of your answer matters and is graded."
+                                data-trigger="focus" tabindex="0">
+                                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <ul id="order-blocks-dropzone-d890b1e5-9dc5-4d1a-8c1d-e65a7b1fa868" name="motion-stages"
+                            class="card-body list-group pl-order-blocks-connected-sortable dropzone">
+                        </ul>
+                    </div>
+                </div>
+                <input id="d890b1e5-9dc5-4d1a-8c1d-e65a7b1fa868-input" type="hidden" name="motion-stages-input"
+                    value="" />
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

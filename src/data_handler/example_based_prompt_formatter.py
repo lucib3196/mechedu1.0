@@ -19,9 +19,9 @@ class ExampleBasedPromptDataFrame:
     example_output_column: str
 
     api_key: str
-    embedding_engine: str = "text-embedding-ada-002"
-    embedding_columns: str = "question_embedding"
-    embedding_file: str = os.path.join(base_dir, '..', 'data', 'Question_embedding_20240902.csv')
+    embedding_engine: str = "text-embedding-3-small"
+    embedding_columns: str = "embeddings-3-small"
+    embedding_file: str = os.path.join(base_dir, '..', 'data', 'question_embeddings_2024_9_11.csv')
 
 
     df_config: EmbeddingDataFrame = field(init=False)
@@ -180,12 +180,12 @@ def main():
             template_text=prompts[i], 
             query=question, 
             threshold=0.5, 
-            num_examples=1
+            num_examples=1,
         )
         print(f"\nPrompt for Question {i + 1}:\n{examples}\n{'='*50}\n")
 
     # Pretty print extracted examples for the first question
-    formatter.pretty_print_extracted_examples(questions[0], threshold=0.5, top_n=3)
+    formatter.pretty_print_extracted_examples(questions[0], threshold=0.5, num_examples=3)
 
 if __name__ == "__main__":
     main()
