@@ -80,14 +80,6 @@
         "documentation": {}
     },
     {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
         "label": "List",
         "importPath": "typing",
         "description": "typing",
@@ -1904,94 +1896,6 @@
         "documentation": {}
     },
     {
-        "label": "Blueprint",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "render_template",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "request",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "send_file",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "jsonify",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "session",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "Blueprint",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "request",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "jsonify",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "request",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "jsonify",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
         "label": "url_for",
         "importPath": "flask",
         "description": "flask",
@@ -2136,14 +2040,6 @@
         "importPath": "tempfile",
         "description": "tempfile",
         "detail": "tempfile",
-        "documentation": {}
-    },
-    {
-        "label": "secure_filename",
-        "importPath": "werkzeug.utils",
-        "description": "werkzeug.utils",
-        "isExtraImport": true,
-        "detail": "werkzeug.utils",
         "documentation": {}
     },
     {
@@ -2574,38 +2470,6 @@
         "description": "src.utils.file_handler",
         "isExtraImport": true,
         "detail": "src.utils.file_handler",
-        "documentation": {}
-    },
-    {
-        "label": "save_files_temp",
-        "importPath": "src.utils.file_handler",
-        "description": "src.utils.file_handler",
-        "isExtraImport": true,
-        "detail": "src.utils.file_handler",
-        "documentation": {}
-    },
-    {
-        "label": "save_temp_dir_as_zip",
-        "importPath": "src.utils.file_handler",
-        "description": "src.utils.file_handler",
-        "isExtraImport": true,
-        "detail": "src.utils.file_handler",
-        "documentation": {}
-    },
-    {
-        "label": "TokenStreamIterator",
-        "importPath": "jinja2.lexer",
-        "description": "jinja2.lexer",
-        "isExtraImport": true,
-        "detail": "jinja2.lexer",
-        "documentation": {}
-    },
-    {
-        "label": "generate_module",
-        "importPath": "src.gestalt_module_generator.generate_gestalt_module",
-        "description": "src.gestalt_module_generator.generate_gestalt_module",
-        "isExtraImport": true,
-        "detail": "src.gestalt_module_generator.generate_gestalt_module",
         "documentation": {}
     },
     {
@@ -5292,51 +5156,6 @@
         "documentation": {}
     },
     {
-        "label": "generate_from_text",
-        "kind": 2,
-        "importPath": "app.quiz_generator",
-        "description": "app.quiz_generator",
-        "peekOfCode": "def generate_from_text():\n    text = request.form.get(\"user_question\")\n    if not text:\n        return jsonify({\"error\": \"No text provided\"}), 400\n    try:\n        print(f\"This is the user question to be generated: {text}\")\n        # Use asyncio to run the generate function\n        loop = asyncio.new_event_loop()\n        asyncio.set_event_loop(loop)\n        generated_content, tokens = loop.run_until_complete(generate_module_text(question=text))",
-        "detail": "app.quiz_generator",
-        "documentation": {}
-    },
-    {
-        "label": "generate_from_image",
-        "kind": 2,
-        "importPath": "app.quiz_generator",
-        "description": "app.quiz_generator",
-        "peekOfCode": "def generate_from_image():\n    files = request.files.getlist('user_images')\n    if not files:\n        return jsonify({\"error\": \"No files provided\"}), 400\n    try:\n        with tempfile.TemporaryDirectory() as tmpdir:\n            file_paths = []\n            for file in files:\n                filename = secure_filename(file.filename)\n                file_path = os.path.join(tmpdir, filename)",
-        "detail": "app.quiz_generator",
-        "documentation": {}
-    },
-    {
-        "label": "download_zip",
-        "kind": 2,
-        "importPath": "app.quiz_generator",
-        "description": "app.quiz_generator",
-        "peekOfCode": "def download_zip():\n    temp_dirs = session.get(\"temp_dir\",\"\")\n    print(\"These are teh temp dirs:,\",temp_dirs)\n    print(\"Going to download \\n\")\n    for temp_dir in temp_dirs:\n        zip_file = save_temp_dir_as_zip(temp_dir)\n        return send_file(zip_file, mimetype='application/zip', as_attachment=True, download_name='module.zip')\n    return jsonify(temp_dirs)",
-        "detail": "app.quiz_generator",
-        "documentation": {}
-    },
-    {
-        "label": "user_data",
-        "kind": 5,
-        "importPath": "app.quiz_generator",
-        "description": "app.quiz_generator",
-        "peekOfCode": "user_data = {\n        \"created_by\": \"lberm007@ucr.edu\",  # Replace with the actual creator identifier\n        \"code_language\": \"javascript\",\n    }\nquiz_generator = Blueprint('quiz_generator', __name__)\n@quiz_generator.route('/generate_from_text', methods=['POST'])\ndef generate_from_text():\n    text = request.form.get(\"user_question\")\n    if not text:\n        return jsonify({\"error\": \"No text provided\"}), 400",
-        "detail": "app.quiz_generator",
-        "documentation": {}
-    },
-    {
-        "label": "quiz_generator",
-        "kind": 5,
-        "importPath": "app.quiz_generator",
-        "description": "app.quiz_generator",
-        "peekOfCode": "quiz_generator = Blueprint('quiz_generator', __name__)\n@quiz_generator.route('/generate_from_text', methods=['POST'])\ndef generate_from_text():\n    text = request.form.get(\"user_question\")\n    if not text:\n        return jsonify({\"error\": \"No text provided\"}), 400\n    try:\n        print(f\"This is the user question to be generated: {text}\")\n        # Use asyncio to run the generate function\n        loop = asyncio.new_event_loop()",
-        "detail": "app.quiz_generator",
-        "documentation": {}
-    },
-    {
         "label": "path",
         "kind": 5,
         "importPath": "src.data.data_analysis",
@@ -5638,7 +5457,7 @@
         "kind": 5,
         "importPath": "src.llm_content_assembly.generate_adaptive_module",
         "description": "src.llm_content_assembly.generate_adaptive_module",
-        "peekOfCode": "logger = get_logger(__name__)\nasync def generate_adaptive_module(question: str,metadata_dict:dict = None, solution_guide: str = None):\n    question_html = await question_html_builder_advance.generate_html_ui(question)\n    additional_instructions = f\"{server_template_code_guide} \\n {solution_guide}\" if solution_guide else None\n    logger.info(f\"\\nThis is the solution guide: {solution_guide if solution_guide else 'No solution guide provided'}\\n\")\n    try:\n        server_js, server_py, solution_html = await asyncio.gather(\n            server_js_generator.acall_generate_code(question_html, additional_instructions=additional_instructions),\n            server_py_generator.acall_generate_code(question_html, additional_instructions=additional_instructions),\n            question_solution_generator.acall_generate_code(question_html, additional_instructions=additional_instructions)",
+        "peekOfCode": "logger = get_logger(__name__)\nasync def generate_adaptive_module(question: str,metadata_dict:dict = None, solution_guide: str = None):\n    question_html = await question_html_generator.generate_html_ui(question)\n    additional_instructions = f\"{server_template_code_guide} \\n {solution_guide}\" if solution_guide else None\n    logger.info(f\"\\nThis is the solution guide: {solution_guide if solution_guide else 'No solution guide provided'}\\n\")\n    try:\n        server_js, server_py, solution_html = await asyncio.gather(\n            server_js_generator.acall_generate_code(question_html, additional_instructions=additional_instructions),\n            server_py_generator.acall_generate_code(question_html, additional_instructions=additional_instructions),\n            question_solution_generator.acall_generate_code(question_html, additional_instructions=additional_instructions)",
         "detail": "src.llm_content_assembly.generate_adaptive_module",
         "documentation": {}
     },

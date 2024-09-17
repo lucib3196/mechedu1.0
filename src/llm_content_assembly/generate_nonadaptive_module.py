@@ -2,7 +2,7 @@ import asyncio
 from ..llm_module_generator.physics_module_generator.module_generator import question_html_generator, question_solution_generator, server_js_generator, server_py_generator,question_html_generator_nonadaptive
 import asyncio
 from ..llm_module_generator.physics_module_generator.llm_templates import server_template_code_guide, solution_improvement_prompt
-from ..llm_module_generator.question_html_ui.question_html_builder import question_html_builder_advance
+from ..llm_module_generator.question_html_ui.question_html_builder import question_html_generator
 from ..logging_config.logging_config import get_logger
 
 logger = get_logger(__name__)
@@ -22,7 +22,7 @@ async def generate_nonadaptive(question: str, metadata_dict: dict=None) -> dict:
     """
     try:
         # Generate the HTML for the question
-        question_html = await question_html_builder_advance.generate_html_ui(question)
+        question_html = await question_html_generator.generate_html_ui(question)
         
         # Get and log total tokens used
         question_html_tokens = question_html_generator_nonadaptive.get_total_tokens()
