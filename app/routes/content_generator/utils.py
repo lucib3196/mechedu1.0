@@ -2,7 +2,7 @@ from ...db_models.models import db, EduModule, Folder,File, QuestionMetadata
 import tempfile
 import os
 import json
-
+import uuid
 
 def save_generated_content(generated_content, module_name:str = "Module"):
     """
@@ -67,7 +67,7 @@ def save_generated_content(generated_content, module_name:str = "Module"):
 
                             # Assuming file_contents is already a dictionary parsed from the JSON file
                             question_metadata = QuestionMetadata(
-                                uuid=file_contents.get("uuid"),
+                                uuid=str(uuid.uuid4()),
                                 title=file_contents.get("title"),
                                 stem=file_contents.get("stem"),
                                 topic=file_contents.get("topic"),

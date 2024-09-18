@@ -2140,6 +2140,15 @@
         "documentation": {}
     },
     {
+        "label": "uuid",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uuid",
+        "description": "uuid",
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
         "label": "ast",
         "kind": 6,
         "isExtraImport": true,
@@ -4370,15 +4379,6 @@
         "documentation": {}
     },
     {
-        "label": "uuid",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "uuid",
-        "description": "uuid",
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
         "label": "ArrayLike",
         "importPath": "numpy.typing",
         "description": "numpy.typing",
@@ -5509,7 +5509,7 @@
         "kind": 5,
         "importPath": "src.llm_content_assembly.generate_adaptive_module",
         "description": "src.llm_content_assembly.generate_adaptive_module",
-        "peekOfCode": "logger = get_logger(__name__)\nasync def generate_adaptive_module(question: str,metadata_dict:dict = None, solution_guide: str = None):\n    question_html = await question_html_generator.acall_generate_code(question)\n    additional_instructions = f\"{server_template_code_guide} \\n {solution_guide}\" if solution_guide else None\n    logger.info(f\"\\nThis is the solution guide: {solution_guide if solution_guide else 'No solution guide provided'}\\n\")\n    print(question)\n    try:\n        server_js, server_py, solution_html = await asyncio.gather(\n            server_js_generator.acall_generate_code(question_html, additional_instructions=additional_instructions),\n            server_py_generator.acall_generate_code(question_html, additional_instructions=additional_instructions),",
+        "peekOfCode": "logger = get_logger(__name__)\nasync def generate_adaptive_module(question: str,metadata_dict:dict = None, solution_guide: str = None):\n    logger.info(\"Generating question html\")\n    question_html = await question_html_generator.acall_generate_code(question)\n    logger.info(f\"Finished generating question html {question_html}\")\n    additional_instructions = f\"{server_template_code_guide} \\n {solution_guide}\" if solution_guide else None\n    logger.info(f\"\\nThis is the solution guide: {solution_guide if solution_guide else 'No solution guide provided'}\\n\")\n    try:\n        server_js, server_py, solution_html = await asyncio.gather(\n            server_js_generator.acall_generate_code(question_html, additional_instructions=additional_instructions),",
         "detail": "src.llm_content_assembly.generate_adaptive_module",
         "documentation": {}
     },
@@ -6211,7 +6211,7 @@
         "kind": 6,
         "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
         "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "class ModuleCodeGenerator(LLM_Call):\n    llm_config: LLMConfig\n    base_prompt: str\n    example_input_column: str\n    example_output_column: str\n    threshold: float = 0.2\n    num_examples: int = 2\n    is_adaptive: bool = True\n    def __post_init__(self):\n        super().__post_init__()",
+        "peekOfCode": "class ModuleCodeGenerator(LLM_Call):\n    llm_config: LLMConfig\n    base_prompt: str\n    example_input_column: str\n    example_output_column: str\n    threshold: float = 0.1\n    num_examples: int = field(default=1)\n    is_adaptive: bool = True\n    def __post_init__(self):\n        super().__post_init__()",
         "detail": "src.llm_module_generator.physics_module_generator.module_generator",
         "documentation": {}
     },
@@ -6220,7 +6220,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
         "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "logger = get_logger(__name__)\nfrom .module_generator_templates import question_html_gen_template,server_js_template_base,server_py_template_base,solution_html_template,question_html_gen_template_nonadaptive\n@dataclass\nclass ModuleCodeGenerator(LLM_Call):\n    llm_config: LLMConfig\n    base_prompt: str\n    example_input_column: str\n    example_output_column: str\n    threshold: float = 0.2\n    num_examples: int = 2",
+        "peekOfCode": "logger = get_logger(__name__)\nfrom .module_generator_templates import question_html_gen_template,server_js_template_base,server_py_template_base,solution_html_template,question_html_gen_template_nonadaptive\n@dataclass\nclass ModuleCodeGenerator(LLM_Call):\n    llm_config: LLMConfig\n    base_prompt: str\n    example_input_column: str\n    example_output_column: str\n    threshold: float = 0.1\n    num_examples: int = field(default=1)",
         "detail": "src.llm_module_generator.physics_module_generator.module_generator",
         "documentation": {}
     },
@@ -6229,7 +6229,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
         "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "llm_config = LLMConfig(api_key=api_key, model=\"gpt-4o-2024-08-06\", temperature=0)\n# Initialize all the generators\nquestion_html_generator = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",\n    llm_config=llm_config\n)\nquestion_html_generator_nonadaptive = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template_nonadaptive,",
+        "peekOfCode": "llm_config = LLMConfig(api_key=api_key, model=\"gpt-4o-2024-08-06\", temperature=0)\n# Initialize all the generators\nquestion_html_generator = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",\n    llm_config=llm_config,\n    num_examples = 3\n)\nquestion_html_generator_nonadaptive = ModuleCodeGenerator(",
         "detail": "src.llm_module_generator.physics_module_generator.module_generator",
         "documentation": {}
     },
@@ -6238,7 +6238,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
         "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "question_html_generator = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",\n    llm_config=llm_config\n)\nquestion_html_generator_nonadaptive = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template_nonadaptive,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",",
+        "peekOfCode": "question_html_generator = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",\n    llm_config=llm_config,\n    num_examples = 3\n)\nquestion_html_generator_nonadaptive = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template_nonadaptive,\n    example_input_column=\"question\",",
         "detail": "src.llm_module_generator.physics_module_generator.module_generator",
         "documentation": {}
     },
@@ -6247,7 +6247,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
         "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "question_html_generator_nonadaptive = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template_nonadaptive,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",\n    llm_config=llm_config,\n    is_adaptive=False\n)\nquestion_solution_generator = ModuleCodeGenerator(\n    base_prompt=solution_html_template,\n    example_input_column=\"question.html\",",
+        "peekOfCode": "question_html_generator_nonadaptive = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template_nonadaptive,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",\n    llm_config=llm_config,\n    is_adaptive=False,\n    num_examples = 3\n)\nquestion_solution_generator = ModuleCodeGenerator(\n    base_prompt=solution_html_template,",
         "detail": "src.llm_module_generator.physics_module_generator.module_generator",
         "documentation": {}
     },
@@ -6301,7 +6301,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.physics_module_generator.module_generator_templates",
         "description": "src.llm_module_generator.physics_module_generator.module_generator_templates",
-        "peekOfCode": "question_html_gen_template_nonadaptive = \"\"\"\nGenerate a html file given the following examples\n\"\"\"\nserver_js_template_base = \"\"\"\n    Design a robust JavaScript module capable of generating computational problems across various STEM disciplines. This module will ingest an HTML file containing a structured query and will output a JavaScript snippet that performs the calculations for the described problem. The JavaScript code must conform to the following outline:\n    const generate = () => {{\n        // 1. Dynamic Parameter Selection:\n        // - Thoroughly analyze the HTML or data source to identify an extensive range of categories and units for computation.\n        // - Ensure the inclusion of a wide variety of units and values, covering different global measurement systems.\n        // - Develop a randomized selection algorithm to fairly choose a category or unit system, ensuring equitable representation.",
+        "peekOfCode": "question_html_gen_template_nonadaptive = \"\"\"\nGenerate a html file given the following examples\n\"\"\"\nserver_js_template_base = \"\"\"\n    Design a robust JavaScript module capable of generating computational problems across various STEM disciplines. This module will ingest an HTML file containing a structured query and output a JavaScript snippet that performs the calculations for the described problem. The JavaScript code must conform to the following outline:\n    Additionally, the only JavaScript library you are allowed to import is the mathjs library.\n    You do not have access to any external files. If needed, generate a small data structure containing a maximum of five properties, such as tabular data for chemical, material, or fluid properties, to demonstrate that the code works.\n    const generate = () => {{\n        // 1. Dynamic Parameter Selection:\n        // - Thoroughly analyze the HTML or data source to identify an extensive range of categories and units for computation.",
         "detail": "src.llm_module_generator.physics_module_generator.module_generator_templates",
         "documentation": {}
     },
@@ -6310,7 +6310,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.physics_module_generator.module_generator_templates",
         "description": "src.llm_module_generator.physics_module_generator.module_generator_templates",
-        "peekOfCode": "server_js_template_base = \"\"\"\n    Design a robust JavaScript module capable of generating computational problems across various STEM disciplines. This module will ingest an HTML file containing a structured query and will output a JavaScript snippet that performs the calculations for the described problem. The JavaScript code must conform to the following outline:\n    const generate = () => {{\n        // 1. Dynamic Parameter Selection:\n        // - Thoroughly analyze the HTML or data source to identify an extensive range of categories and units for computation.\n        // - Ensure the inclusion of a wide variety of units and values, covering different global measurement systems.\n        // - Develop a randomized selection algorithm to fairly choose a category or unit system, ensuring equitable representation.\n        // - When applicable, ensure that it alternates between SI and USCS for unit selection.\n        // 2. Value Generation:\n        // - Produce random values relevant to the problem's context, ensuring they fall within specified ranges.",
+        "peekOfCode": "server_js_template_base = \"\"\"\n    Design a robust JavaScript module capable of generating computational problems across various STEM disciplines. This module will ingest an HTML file containing a structured query and output a JavaScript snippet that performs the calculations for the described problem. The JavaScript code must conform to the following outline:\n    Additionally, the only JavaScript library you are allowed to import is the mathjs library.\n    You do not have access to any external files. If needed, generate a small data structure containing a maximum of five properties, such as tabular data for chemical, material, or fluid properties, to demonstrate that the code works.\n    const generate = () => {{\n        // 1. Dynamic Parameter Selection:\n        // - Thoroughly analyze the HTML or data source to identify an extensive range of categories and units for computation.\n        // - Ensure the inclusion of a wide variety of units and values, covering different global measurement systems.\n        // - Develop a randomized selection algorithm to fairly choose a category or unit system, ensuring equitable representation.\n        // - When applicable, ensure that it alternates between SI and USCS for unit selection.",
         "detail": "src.llm_module_generator.physics_module_generator.module_generator_templates",
         "documentation": {}
     },

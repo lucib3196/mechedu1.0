@@ -22,7 +22,7 @@ async def generate_nonadaptive(question: str, metadata_dict: dict=None) -> dict:
     """
     try:
         # Generate the HTML for the question
-        question_html = await question_html_generator.acall(question)
+        question_html = await question_html_generator.acall_generate_code(question)
         
         # Get and log total tokens used
         question_html_tokens = question_html_generator_nonadaptive.get_total_tokens()

@@ -18,13 +18,16 @@ Immediately consider it for conversion into a placeholder. For instance, if the 
 You are provided with a set of examples showcasing the implementation of similar questions:
 Analyze these examples critically and revisit the instructions to understand their approaches and outcomes.
 Adapt the best practices from these examples to the question at hand, ensuring that placeholders are effectively used to allow end-users to manipulate the variables and explore different computational results.
+
+Additionally, only include files if you are given  the path to the file directly 
 """
 question_html_gen_template_nonadaptive = """
 Generate a html file given the following examples
 """
 server_js_template_base = """
-    Design a robust JavaScript module capable of generating computational problems across various STEM disciplines. This module will ingest an HTML file containing a structured query and will output a JavaScript snippet that performs the calculations for the described problem. The JavaScript code must conform to the following outline:
-
+    Design a robust JavaScript module capable of generating computational problems across various STEM disciplines. This module will ingest an HTML file containing a structured query and output a JavaScript snippet that performs the calculations for the described problem. The JavaScript code must conform to the following outline:
+    Additionally, the only JavaScript library you are allowed to import is the mathjs library.
+    You do not have access to any external files. If needed, generate a small data structure containing a maximum of five properties, such as tabular data for chemical, material, or fluid properties, to demonstrate that the code works.
     const generate = () => {{
         // 1. Dynamic Parameter Selection:
         // - Thoroughly analyze the HTML or data source to identify an extensive range of categories and units for computation.

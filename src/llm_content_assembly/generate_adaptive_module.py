@@ -7,10 +7,11 @@ from ..logging_config.logging_config import get_logger
 logger = get_logger(__name__)
 
 async def generate_adaptive_module(question: str,metadata_dict:dict = None, solution_guide: str = None):
+    logger.info("Generating question html")
     question_html = await question_html_generator.acall_generate_code(question)
+    logger.info(f"Finished generating question html {question_html}")
     additional_instructions = f"{server_template_code_guide} \n {solution_guide}" if solution_guide else None
     logger.info(f"\nThis is the solution guide: {solution_guide if solution_guide else 'No solution guide provided'}\n")
-    print(question)
     try:
         server_js, server_py, solution_html = await asyncio.gather(
             server_js_generator.acall_generate_code(question_html, additional_instructions=additional_instructions),
