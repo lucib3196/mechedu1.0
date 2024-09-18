@@ -51,7 +51,7 @@ To install and run the STEM Module Generator, follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/stem-module-generator.git](https://github.com/lucib3196/mechedu1.0.git
+   git clone https://github.com/lucib3196/mechedu1.0.git
    cd mechedu1.0
    ```
 
