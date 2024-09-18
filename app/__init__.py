@@ -8,7 +8,7 @@ from src.prairielearn.python import prairielearn
 from src.prairielearn.python import prairielearn as pl
 import json
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SECRET_KEY = os.environ.get('SECRET_KEY') or "6Vicv382oz3PyNOAYP2SlAo/uO2750TY4+5fjNRoi8ccH0fpoEP/QLznbI07K36v"
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN', "").split(",")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SESSION_TYPE = 'filesystem'
@@ -21,7 +21,7 @@ class DevelopmentConfig(Config):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = "sqlite:///files.db"
 
-config = {
+config: dict[str, type[DevelopmentConfig]] = {
     'development': DevelopmentConfig,
     'default': DevelopmentConfig
 }
