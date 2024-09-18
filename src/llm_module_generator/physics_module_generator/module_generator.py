@@ -26,7 +26,7 @@ class ModuleCodeGenerator(LLM_Call):
     base_prompt: str
     example_input_column: str
     example_output_column: str
-    threshold: float = 0.6
+    threshold: float = 0.4
     num_examples: int = 2
     is_adaptive: bool = True
     def __post_init__(self):
