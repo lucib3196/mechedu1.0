@@ -26,7 +26,7 @@ class ModuleCodeGenerator(LLM_Call):
     base_prompt: str
     example_input_column: str
     example_output_column: str
-    threshold: float = 0.4
+    threshold: float = 0.2
     num_examples: int = 2
     is_adaptive: bool = True
     def __post_init__(self):
@@ -47,6 +47,7 @@ class ModuleCodeGenerator(LLM_Call):
     
     async def acall_generate_code(self, question:str, additional_instructions:str=None)->str:
         prompt = self.generate_prompt(question,additional_instructions)
+        logger.info(prompt)
         class Response(BaseModel):
             generated_code:str = Field(...,description="The generated code only return the generated code")
         response =await  self.acall(prompt, response_format=Response)
