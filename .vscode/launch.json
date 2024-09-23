@@ -1,6 +1,19 @@
 {
   "version": "0.2.0",
   "configurations": [
+
+    {
+      "name": "Python Debugger:  Element Drawer",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.prairielearn.elements.pl-drawing.elements"
+    },
+    {
+      "name": "Python Debugger: Math Js Retriever",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.llm_module_generator.physics_module_generator.math_js_retriever"
+    },
     {
       "name": "Python Debugger: Config Module",
       "type": "debugpy",

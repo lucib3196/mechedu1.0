@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 # Local application imports
 from ..llm_base import LLM_Call, LLMConfig
 from ...credentials import api_key
-from .llm_templates import generate_metadata_template
+from .templates import generate_metadata_template
 
 # LLM Configuration
 llm_config = LLMConfig(api_key=api_key, model="gpt-4o-mini", temperature=0)

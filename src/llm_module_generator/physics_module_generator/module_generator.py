@@ -17,7 +17,7 @@ from ...data_handler.example_based_prompt_formatter import ExampleBasedPromptDat
 from ...credentials import api_key
 from ...logging_config.logging_config import get_logger
 logger = get_logger(__name__)
-from .module_generator_templates import question_html_gen_template,server_js_template_base,server_py_template_base,solution_html_template,question_html_gen_template_nonadaptive
+from .templates import question_html_gen_template,server_js_template_base,server_py_template_base,solution_html_template,question_html_gen_template_nonadaptive
 
 
 @dataclass

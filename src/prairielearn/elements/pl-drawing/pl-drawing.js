@@ -1,9 +1,16 @@
 /* global window, _, $, fabric, mechanicsObjects */
+// Import necessary libraries
+import _ from 'lodash';         // Lodash or Underscore.js       // jQuery
+const fabric = require('fabric');
+
+
+const mechanicsObjects =  require('./mechanicsObjects.js'); // Custom mechanics objects
 
 /**
  * Base element class.
  */
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class
+
 class PLDrawingBaseElement {
   /**
    * Generates a canvas representation of an element from given options.
@@ -87,7 +94,7 @@ window.PLDrawingApi = {
    * @param dictionary Dictionary of elements to register.
    */
   registerElements(extensionName, dictionary) {
-    _.extend(this.elements, dictionary);
+    extend(this.elements, dictionary);
     Object.keys(dictionary).forEach((elem) => {
       this.elementModule[elem] = extensionName;
     });
@@ -196,7 +203,7 @@ window.PLDrawingApi = {
         if (!elem_options.editable) {
           btn.disabled = true;
         }
-        let cloned_opts = _.clone(opts || {});
+        let cloned_opts = clone(opts || {});
         $(btn).click(() => elem.button_press(canvas, cloned_opts, submittedAnswer));
       }
     });
@@ -299,7 +306,7 @@ class PLDrawingAnswerState {
 
   _updateAnswerInput() {
     // Correctly escape double back-slashes... (\\)
-    let temp = JSON.stringify(_.values(this._answerData)).replace('\\\\', '\\\\\\\\');
+    let temp = JSON.stringify(values(this._answerData)).replace('\\\\', '\\\\\\\\');
     this._htmlInput.val(temp);
   }
 
@@ -337,7 +344,7 @@ class PLDrawingAnswerState {
    * @param object The object to delete, or its ID.
    */
   deleteObject(object) {
-    if (_.isObject(object)) {
+    if (isObject(object)) {
       object = object.id;
     }
     delete this._answerData[object];
@@ -359,7 +366,7 @@ class PLDrawingAnswerState {
    * @removeHandler {optional} Function that is run whenever the canvas object is deleted.
    */
   registerAnswerObject(options, object, modifyHandler, removeHandler) {
-    let submitted_object = _.clone(options);
+    let submitted_object = clone(options);
     if (!('id' in submitted_object)) {
       if (!('id' in object)) {
         submitted_object.id = window.PLDrawingApi.generateID();
@@ -437,7 +444,7 @@ class PLDrawingAnswerState {
         padding: 10,
         graded: false,
       };
-      let opts = _.defaults(options, def);
+      let opts = defaults(options, def);
       opts.type = 'pl-line';
       window.PLDrawingApi.createElement(canvas, opts, submittedAnswer);
     }

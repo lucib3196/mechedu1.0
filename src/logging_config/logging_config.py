@@ -10,6 +10,6 @@ logging.basicConfig(
         logging.StreamHandler()          # Log to console
     ]
 )
-
+logging.getLogger("langchain.retrievers.multi_query").setLevel(logging.INFO)
 def get_logger(name):
     return logging.getLogger(name)

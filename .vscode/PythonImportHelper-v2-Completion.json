@@ -480,6 +480,22 @@
         "documentation": {}
     },
     {
+        "label": "Set",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "List",
         "importPath": "typing",
         "description": "typing",
@@ -2424,6 +2440,14 @@
         "documentation": {}
     },
     {
+        "label": "prairielearn",
+        "importPath": "src.prairielearn.python",
+        "description": "src.prairielearn.python",
+        "isExtraImport": true,
+        "detail": "src.prairielearn.python",
+        "documentation": {}
+    },
+    {
         "label": "zipfile",
         "kind": 6,
         "isExtraImport": true,
@@ -2977,6 +3001,22 @@
         "documentation": {}
     },
     {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
         "label": "field_validator",
         "importPath": "pydantic",
         "description": "pydantic",
@@ -3049,6 +3089,208 @@
         "importPath": "re",
         "description": "re",
         "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "OpenAIEmbeddings",
+        "importPath": "langchain_openai",
+        "description": "langchain_openai",
+        "isExtraImport": true,
+        "detail": "langchain_openai",
+        "documentation": {}
+    },
+    {
+        "label": "ChatOpenAI",
+        "importPath": "langchain_openai",
+        "description": "langchain_openai",
+        "isExtraImport": true,
+        "detail": "langchain_openai",
+        "documentation": {}
+    },
+    {
+        "label": "OpenAIEmbeddings",
+        "importPath": "langchain_openai",
+        "description": "langchain_openai",
+        "isExtraImport": true,
+        "detail": "langchain_openai",
+        "documentation": {}
+    },
+    {
+        "label": "Chroma",
+        "importPath": "langchain_chroma",
+        "description": "langchain_chroma",
+        "isExtraImport": true,
+        "detail": "langchain_chroma",
+        "documentation": {}
+    },
+    {
+        "label": "Chroma",
+        "importPath": "langchain_chroma",
+        "description": "langchain_chroma",
+        "isExtraImport": true,
+        "detail": "langchain_chroma",
+        "documentation": {}
+    },
+    {
+        "label": "MultiQueryRetriever",
+        "importPath": "langchain.retrievers.multi_query",
+        "description": "langchain.retrievers.multi_query",
+        "isExtraImport": true,
+        "detail": "langchain.retrievers.multi_query",
+        "documentation": {}
+    },
+    {
+        "label": "create_retrieval_chain",
+        "importPath": "langchain.chains",
+        "description": "langchain.chains",
+        "isExtraImport": true,
+        "detail": "langchain.chains",
+        "documentation": {}
+    },
+    {
+        "label": "create_stuff_documents_chain",
+        "importPath": "langchain.chains.combine_documents",
+        "description": "langchain.chains.combine_documents",
+        "isExtraImport": true,
+        "detail": "langchain.chains.combine_documents",
+        "documentation": {}
+    },
+    {
+        "label": "ChatPromptTemplate",
+        "importPath": "langchain_core.prompts",
+        "description": "langchain_core.prompts",
+        "isExtraImport": true,
+        "detail": "langchain_core.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "RunnablePassthrough",
+        "importPath": "langchain_core.runnables",
+        "description": "langchain_core.runnables",
+        "isExtraImport": true,
+        "detail": "langchain_core.runnables",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "bs4",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "bs4",
+        "description": "bs4",
+        "detail": "bs4",
+        "documentation": {}
+    },
+    {
+        "label": "BeautifulSoup",
+        "importPath": "bs4",
+        "description": "bs4",
+        "isExtraImport": true,
+        "detail": "bs4",
+        "documentation": {}
+    },
+    {
+        "label": "BeautifulSoup",
+        "importPath": "bs4",
+        "description": "bs4",
+        "isExtraImport": true,
+        "detail": "bs4",
+        "documentation": {}
+    },
+    {
+        "label": "BeautifulSoup",
+        "importPath": "bs4",
+        "description": "bs4",
+        "isExtraImport": true,
+        "detail": "bs4",
+        "documentation": {}
+    },
+    {
+        "label": "BeautifulSoup",
+        "importPath": "bs4",
+        "description": "bs4",
+        "isExtraImport": true,
+        "detail": "bs4",
+        "documentation": {}
+    },
+    {
+        "label": "BeautifulSoup",
+        "importPath": "bs4",
+        "description": "bs4",
+        "isExtraImport": true,
+        "detail": "bs4",
+        "documentation": {}
+    },
+    {
+        "label": "BeautifulSoup",
+        "importPath": "bs4",
+        "description": "bs4",
+        "isExtraImport": true,
+        "detail": "bs4",
+        "documentation": {}
+    },
+    {
+        "label": "Tag",
+        "importPath": "bs4",
+        "description": "bs4",
+        "isExtraImport": true,
+        "detail": "bs4",
+        "documentation": {}
+    },
+    {
+        "label": "BeautifulSoup",
+        "importPath": "bs4",
+        "description": "bs4",
+        "isExtraImport": true,
+        "detail": "bs4",
+        "documentation": {}
+    },
+    {
+        "label": "BeautifulSoup",
+        "importPath": "bs4",
+        "description": "bs4",
+        "isExtraImport": true,
+        "detail": "bs4",
+        "documentation": {}
+    },
+    {
+        "label": "urljoin",
+        "importPath": "urllib.parse",
+        "description": "urllib.parse",
+        "isExtraImport": true,
+        "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
+        "label": "urljoin",
+        "importPath": "urllib.parse",
+        "description": "urllib.parse",
+        "isExtraImport": true,
+        "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
+        "label": "HTMLHeaderTextSplitter",
+        "importPath": "langchain_text_splitters",
+        "description": "langchain_text_splitters",
+        "isExtraImport": true,
+        "detail": "langchain_text_splitters",
+        "documentation": {}
+    },
+    {
+        "label": "HTMLSectionSplitter",
+        "importPath": "langchain_text_splitters",
+        "description": "langchain_text_splitters",
+        "isExtraImport": true,
+        "detail": "langchain_text_splitters",
         "documentation": {}
     },
     {
@@ -3225,87 +3467,6 @@
         "description": "enum",
         "isExtraImport": true,
         "detail": "enum",
-        "documentation": {}
-    },
-    {
-        "label": "bs4",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "bs4",
-        "description": "bs4",
-        "detail": "bs4",
-        "documentation": {}
-    },
-    {
-        "label": "BeautifulSoup",
-        "importPath": "bs4",
-        "description": "bs4",
-        "isExtraImport": true,
-        "detail": "bs4",
-        "documentation": {}
-    },
-    {
-        "label": "BeautifulSoup",
-        "importPath": "bs4",
-        "description": "bs4",
-        "isExtraImport": true,
-        "detail": "bs4",
-        "documentation": {}
-    },
-    {
-        "label": "BeautifulSoup",
-        "importPath": "bs4",
-        "description": "bs4",
-        "isExtraImport": true,
-        "detail": "bs4",
-        "documentation": {}
-    },
-    {
-        "label": "BeautifulSoup",
-        "importPath": "bs4",
-        "description": "bs4",
-        "isExtraImport": true,
-        "detail": "bs4",
-        "documentation": {}
-    },
-    {
-        "label": "BeautifulSoup",
-        "importPath": "bs4",
-        "description": "bs4",
-        "isExtraImport": true,
-        "detail": "bs4",
-        "documentation": {}
-    },
-    {
-        "label": "BeautifulSoup",
-        "importPath": "bs4",
-        "description": "bs4",
-        "isExtraImport": true,
-        "detail": "bs4",
-        "documentation": {}
-    },
-    {
-        "label": "Tag",
-        "importPath": "bs4",
-        "description": "bs4",
-        "isExtraImport": true,
-        "detail": "bs4",
-        "documentation": {}
-    },
-    {
-        "label": "BeautifulSoup",
-        "importPath": "bs4",
-        "description": "bs4",
-        "isExtraImport": true,
-        "detail": "bs4",
-        "documentation": {}
-    },
-    {
-        "label": "BeautifulSoup",
-        "importPath": "bs4",
-        "description": "bs4",
-        "isExtraImport": true,
-        "detail": "bs4",
         "documentation": {}
     },
     {
@@ -3847,38 +4008,60 @@
         "documentation": {}
     },
     {
-        "label": "defaults",
+        "label": "lxml",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "defaults",
-        "description": "defaults",
-        "detail": "defaults",
+        "importPath": "lxml",
+        "description": "lxml",
+        "detail": "lxml",
         "documentation": {}
     },
     {
-        "label": "drawing_defaults",
-        "importPath": "defaults",
-        "description": "defaults",
+        "label": "html",
+        "importPath": "lxml",
+        "description": "lxml",
         "isExtraImport": true,
-        "detail": "defaults",
+        "detail": "lxml",
         "documentation": {}
     },
     {
-        "label": "warnings",
-        "kind": 6,
+        "label": "etree",
+        "importPath": "lxml",
+        "description": "lxml",
         "isExtraImport": true,
-        "importPath": "warnings",
-        "description": "warnings",
-        "detail": "warnings",
+        "detail": "lxml",
         "documentation": {}
     },
     {
-        "label": "elements",
-        "kind": 6,
+        "label": "html",
+        "importPath": "lxml",
+        "description": "lxml",
         "isExtraImport": true,
-        "importPath": "elements",
-        "description": "elements",
-        "detail": "elements",
+        "detail": "lxml",
+        "documentation": {}
+    },
+    {
+        "label": "etree",
+        "importPath": "lxml",
+        "description": "lxml",
+        "isExtraImport": true,
+        "detail": "lxml",
+        "documentation": {}
+    },
+    {
+        "label": "etree",
+        "importPath": "lxml",
+        "description": "lxml",
+        "isExtraImport": true,
+        "detail": "lxml",
+        "documentation": {}
+    },
+    {
+        "label": "etree",
+        "importPath": "lxml",
+        "description": "lxml",
+        "isExtraImport": true,
+        "detail": "lxml",
         "documentation": {}
     },
     {
@@ -3904,6 +4087,33 @@
         "description": "lxml.etree",
         "isExtraImport": true,
         "detail": "lxml.etree",
+        "documentation": {}
+    },
+    {
+        "label": "warnings",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "warnings",
+        "description": "warnings",
+        "detail": "warnings",
+        "documentation": {}
+    },
+    {
+        "label": "defaults",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "defaults",
+        "description": "defaults",
+        "detail": "defaults",
+        "documentation": {}
+    },
+    {
+        "label": "elements",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "elements",
+        "description": "elements",
+        "detail": "elements",
         "documentation": {}
     },
     {
@@ -4561,55 +4771,6 @@
         "importPath": "sklearn",
         "description": "sklearn",
         "detail": "sklearn",
-        "documentation": {}
-    },
-    {
-        "label": "lxml",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "lxml",
-        "description": "lxml",
-        "detail": "lxml",
-        "documentation": {}
-    },
-    {
-        "label": "etree",
-        "importPath": "lxml",
-        "description": "lxml",
-        "isExtraImport": true,
-        "detail": "lxml",
-        "documentation": {}
-    },
-    {
-        "label": "html",
-        "importPath": "lxml",
-        "description": "lxml",
-        "isExtraImport": true,
-        "detail": "lxml",
-        "documentation": {}
-    },
-    {
-        "label": "etree",
-        "importPath": "lxml",
-        "description": "lxml",
-        "isExtraImport": true,
-        "detail": "lxml",
-        "documentation": {}
-    },
-    {
-        "label": "etree",
-        "importPath": "lxml",
-        "description": "lxml",
-        "isExtraImport": true,
-        "detail": "lxml",
-        "documentation": {}
-    },
-    {
-        "label": "etree",
-        "importPath": "lxml",
-        "description": "lxml",
-        "isExtraImport": true,
-        "detail": "lxml",
         "documentation": {}
     },
     {
@@ -6063,147 +6224,183 @@
         "documentation": {}
     },
     {
-        "label": "question_html_gen_template",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "description": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "peekOfCode": "question_html_gen_template = \"\"\"\n1. Analyze the Question\nBegin by carefully reading the physics question to determine its nature—whether it demands computational solutions or is purely theoretical. \nThis initial analysis is critical as it dictates the necessity of incorporating placeholders for numerical values. \nConsider the context and specifics of the question thoroughly to ensure the correct categorization.\n2. Identify Parameters for Computation\nFor questions requiring computational analysis:\nIdentify all numerical values that could potentially vary or would be essential for calculations. This step is paramount and must be prioritized for computational questions.\nReplace these values with placeholders using the format {{params.variable_name}}. Ensure you choose descriptive and unique names for each variable to prevent any confusion and to clearly indicate their roles in the computations.\n3. Emphasize Placeholder Implementation",
-        "detail": "src.llm_module_generator.physics_module_generator.llm_templates",
+        "label": "Code_Analysis",
+        "kind": 6,
+        "importPath": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "description": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "peekOfCode": "class Code_Analysis(BaseModel):\n    \"\"\"Analyze the code related to the given question.\"\"\"\n    analysis: str = Field(description=\"A brief description of the functionality that the code implements.\")\n    code_snippet: str = Field(description=\"A code snippet delimit the code using triple backticks\")\nclass Response(BaseModel):\n    response: Optional[list[Code_Analysis]] = Field(description=\"A list of potential code implementations based on documentation that matches the given question. If no matches are found, return None.\")\n## Format the retrieved information\ndef format_docs(docs):\n    return \"\\n\\n\".join(doc.page_content for doc in docs)\n## Define the RAG Chain",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_retriever",
         "documentation": {}
     },
     {
-        "label": "server_js_template_base",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "description": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "peekOfCode": "server_js_template_base = \"\"\"\n    Design a robust JavaScript module capable of generating computational problems across various STEM disciplines. This module will ingest an HTML file containing a structured query and will output a JavaScript snippet that performs the calculations for the described problem. The JavaScript code must conform to the following outline:\n    const generate = () => {{\n        // 1. Dynamic Parameter Selection:\n        // - Thoroughly analyze the HTML or data source to identify an extensive range of categories and units for computation.\n        // - Ensure the inclusion of a wide variety of units and values, covering different global measurement systems.\n        // - Develop a randomized selection algorithm to fairly choose a category or unit system, ensuring equitable representation.\n        // - When applicable, ensure that it alternates between SI and USCS for unit selection.\n        // 2. Value Generation:\n        // - Produce random values relevant to the problem's context, ensuring they fall within specified ranges.",
-        "detail": "src.llm_module_generator.physics_module_generator.llm_templates",
+        "label": "Response",
+        "kind": 6,
+        "importPath": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "description": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "peekOfCode": "class Response(BaseModel):\n    response: Optional[list[Code_Analysis]] = Field(description=\"A list of potential code implementations based on documentation that matches the given question. If no matches are found, return None.\")\n## Format the retrieved information\ndef format_docs(docs):\n    return \"\\n\\n\".join(doc.page_content for doc in docs)\n## Define the RAG Chain\nrag_chain_from_docs = (\n    {\n        \"input\": lambda x: x[\"input\"],\n        \"context\": lambda x: format_docs(x[\"context\"]),",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_retriever",
         "documentation": {}
     },
     {
-        "label": "server_template_code_guide",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "description": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "peekOfCode": "server_template_code_guide = \"\"\"\n    Additionally, you have access to both a code guide and a solution guide. The solution guide provides an accurate, step-by-step method for solving the problem, dictating the logical approach. \n    The code guide offers guidance on how to implement this solution in code, including formatting and other relevant considerations.\n\"\"\"\ngenerate_metadata_template = \"\"\"\nGiven the following input question, generate the following metadata\n  question: {question}\n    - uuid: A universally unique identifier (UUID) for this item\n        - title: The title or name of the educational content. Return using CamelCase convention\n        - stem: = Additional context or a subtopic related to the main topic",
-        "detail": "src.llm_module_generator.physics_module_generator.llm_templates",
+        "label": "format_docs",
+        "kind": 2,
+        "importPath": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "description": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "peekOfCode": "def format_docs(docs):\n    return \"\\n\\n\".join(doc.page_content for doc in docs)\n## Define the RAG Chain\nrag_chain_from_docs = (\n    {\n        \"input\": lambda x: x[\"input\"],\n        \"context\": lambda x: format_docs(x[\"context\"]),\n    }\n    | prompt\n    | llm.with_structured_output(Response)",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_retriever",
         "documentation": {}
     },
     {
-        "label": "generate_metadata_template",
+        "label": "logger",
         "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "description": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "peekOfCode": "generate_metadata_template = \"\"\"\nGiven the following input question, generate the following metadata\n  question: {question}\n    - uuid: A universally unique identifier (UUID) for this item\n        - title: The title or name of the educational content. Return using CamelCase convention\n        - stem: = Additional context or a subtopic related to the main topic\n        - topic: The main topic or subject of the educational content\n        - tags: An array of keywords or tags associated with the content for categorization\n        - prereqs: Prerequisites needed to access or understand the content\n        - isAdaptive: Designates whether the content necessitates any form of numerical computation. Assign as 'true' if the question involves any numerical computation; return 'false' if no computational effort is required. Note: This is a string value, not a boolean.",
-        "detail": "src.llm_module_generator.physics_module_generator.llm_templates",
+        "importPath": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "description": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "peekOfCode": "logger = get_logger(__name__)\n## Define the LLM and Load the Vector Store\nllm = ChatOpenAI(model=\"gpt-4o-mini\")\nembedding_function = OpenAIEmbeddings()\nvectorstore = Chroma(persist_directory=r\"src\\llm_module_generator\\physics_module_generator\\chroma_db\", embedding_function=embedding_function)\ndocs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_retriever",
         "documentation": {}
     },
     {
-        "label": "solution_improvement_prompt",
+        "label": "llm",
         "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "description": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "peekOfCode": "solution_improvement_prompt = \"\"\"Given the current HTML module for STEM problem-solving, your task is to enhance it using the provided code as a foundational guide. This code is designed to dynamically generate problem parameters and their correct answers. Your objective is to integrate these elements into the HTML solution guide effectively.\n        Your Specific Tasks:\n        1. **Review the Current ssolution guide  **: \n        Begin by examining the provided HTML solution guide  {solution_generated}. \n        2. **Integrate Dynamic Content Using Placeholders**: Insert placeholders into the HTML that correspond to the outputs of the code found in the params datastructure. Use placeholders like `{{params.placeholder_value}}` or `{{correct_answers.placeholder_value}}` that align with the variable names and data formats in the code. This ensures the HTML will dynamically display the correct data when the module runs.\n         Reference Code for Integration:\n         {code_guide}\n          Include your revised HTML code below:\n        ```insert revised html code here```\n        \"\"\"",
-        "detail": "src.llm_module_generator.physics_module_generator.llm_templates",
+        "importPath": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "description": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "peekOfCode": "llm = ChatOpenAI(model=\"gpt-4o-mini\")\nembedding_function = OpenAIEmbeddings()\nvectorstore = Chroma(persist_directory=r\"src\\llm_module_generator\\physics_module_generator\\chroma_db\", embedding_function=embedding_function)\ndocs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_retriever",
         "documentation": {}
     },
     {
-        "label": "extract_question_image_template",
+        "label": "embedding_function",
         "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "description": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "peekOfCode": "extract_question_image_template = \"\"\"Extract only the question being asked from the image. Ensure that it includes all details, data, and parameters necessary for understanding the question comprehensively. Represent any special characters, such as math symbols, using LaTeX format. \nIf the image contains multiple questions, return them as an ordered list. Do not extract any other information, such as how to solve the problem or any additional context. \nYour sole objective is to extract the original question(s) from the image.\"\"\"\nextract_solution_image_tempate = \"\"\"\nAnalyze the provided image to extract and develop a concise solution guide outlining the methodical steps for solving the problem symbolically. The guide should be clear and to the point, without numerical values, and should include relevant conversion factors.\nSolution Guide Format:\nProblem Statement:\n- Define the problem's objective as depicted in the image, clearly outlining its context and goal.\nVariables Description:\n- Describe all discernible variables from the image. Include relevant mathematical expressions or equations in LaTeX.",
-        "detail": "src.llm_module_generator.physics_module_generator.llm_templates",
+        "importPath": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "description": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "peekOfCode": "embedding_function = OpenAIEmbeddings()\nvectorstore = Chroma(persist_directory=r\"src\\llm_module_generator\\physics_module_generator\\chroma_db\", embedding_function=embedding_function)\ndocs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_retriever",
         "documentation": {}
     },
     {
-        "label": "extract_solution_image_tempate",
+        "label": "vectorstore",
         "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "description": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "peekOfCode": "extract_solution_image_tempate = \"\"\"\nAnalyze the provided image to extract and develop a concise solution guide outlining the methodical steps for solving the problem symbolically. The guide should be clear and to the point, without numerical values, and should include relevant conversion factors.\nSolution Guide Format:\nProblem Statement:\n- Define the problem's objective as depicted in the image, clearly outlining its context and goal.\nVariables Description:\n- Describe all discernible variables from the image. Include relevant mathematical expressions or equations in LaTeX.\nEquation Setup:\n- Identify and establish equations or relationships shown or implied in the image, using LaTeX for mathematical representations.\nSolution Process:",
-        "detail": "src.llm_module_generator.physics_module_generator.llm_templates",
+        "importPath": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "description": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "peekOfCode": "vectorstore = Chroma(persist_directory=r\"src\\llm_module_generator\\physics_module_generator\\chroma_db\", embedding_function=embedding_function)\ndocs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (\n    \"You are an assistant for question-answering tasks. \"",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_retriever",
         "documentation": {}
     },
     {
-        "label": "code_guide_template",
+        "label": "docs",
         "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "description": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "peekOfCode": "code_guide_template = \"\"\"\n### Code Guide for Dynamic Problem Generation in JavaScript\n#### 0. Analyze the Original Question:\n- **Given Values and Units**:\n  - Carefully identify all the given values in the original question.\n  - Note their units and understand their role within the context of the problem.\n#### 1. Variable Ranges:\n- **Establishing Variable Ranges**:\n  - Identify each variable from the problem statement.\n  - Suggest reasonable ranges for each variable.",
-        "detail": "src.llm_module_generator.physics_module_generator.llm_templates",
+        "importPath": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "description": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "peekOfCode": "docs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (\n    \"You are an assistant for question-answering tasks. \"\n    \"Use the following pieces of retrieved context to answer \"",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_retriever",
         "documentation": {}
     },
     {
-        "label": "server_py_template_base",
+        "label": "retriever",
         "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "description": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "peekOfCode": "server_py_template_base = \"\"\"\n    Design a robust Python module capable of generating computational problems across various STEM disciplines. This module will ingest an HTML file containing a structured query and will output a Python snippet that performs the calculations for the described problem. The Python code must conform to the following outline:\n    def generate():\n        # 1. Dynamic Parameter Selection:\n        # Do not include html inside the python code\n        # - Thoroughly analyze the HTML or data source to identify an extensive range of categories and units for computation.\n        # - Ensure the inclusion of a wide variety of units and values, covering different global measurement systems.\n        # - Develop a randomized selection algorithm to fairly choose a category or unit system, ensuring equitable representation.\n        # - When applicable, ensure that it alternates between SI and USCS for unit selection.\n        # 2. Value Generation:",
-        "detail": "src.llm_module_generator.physics_module_generator.llm_templates",
+        "importPath": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "description": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "peekOfCode": "retriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (\n    \"You are an assistant for question-answering tasks. \"\n    \"Use the following pieces of retrieved context to answer \"\n    \"the question. If you don't know the answer, say that you \"",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_retriever",
         "documentation": {}
     },
     {
-        "label": "assistant_template",
+        "label": "retriever_from_llm",
         "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "description": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "peekOfCode": "assistant_template = \"\"\"\nRole: You are a personal physics tutor with access to solution guides for specific problems. Your goal is to guide students to find the solutions themselves by asking probing questions and gauging their understanding. You also have access to a code interpreter tool to perform necessary computations.\nGuidelines:\nCheck Solution Availability:\nStep 1: When a student asks a question, first check if the solution to the problem is available in the solution guides you have access to.\nUnavailable Solution: If the solution is not available, inform the student: \"I do not have access to the solution to that particular problem. However, I can try my best to help you understand the concepts and work through it. It is always best to review with a professor or attend office hours for further clarification.\"\nIdentify the Problem: If the solution is available, do not use it right away. Instead, proceed to identify the problem and the student's current understanding.\nAsk Probing Questions: Ask questions that lead the student to discover the steps and concepts needed to solve the problem. Gauge where they are with the material and identify what they are stuck on.\nProvide Hints: If the student is struggling, offer hints or partial steps that can help them progress without giving away the complete answer.\nUse Code Interpreter: If the solution requires complex computations, guide the student through the process and use the code interpreter tool to verify their calculations or help them understand the computation steps.",
-        "detail": "src.llm_module_generator.physics_module_generator.llm_templates",
+        "importPath": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "description": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "peekOfCode": "retriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (\n    \"You are an assistant for question-answering tasks. \"\n    \"Use the following pieces of retrieved context to answer \"\n    \"the question. If you don't know the answer, say that you \"\n    \"don't know.If the context provided does not offer information \"",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_retriever",
         "documentation": {}
     },
     {
-        "label": "G",
+        "label": "system_prompt",
         "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "description": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "peekOfCode": "G = 6.67430e-11  # Gravitational constant\nm1 = 5.97e24  # Mass of the Earth in kg\nm2 = 7.35e22  # Mass of the Moon in kg\nr = 3.84e8  # Distance between Earth and Moon in meters\nF = G * m1 * m2 / r**2\nF\n\"Now, what result do you get from this calculation?\"\nClarify Doubts: If the student has follow-up questions or needs clarification on any part of the solution, provide additional guiding questions or hints to help them understand better.\n\"\"\"\nextract_question_image_template = \"\"\"",
-        "detail": "src.llm_module_generator.physics_module_generator.llm_templates",
+        "importPath": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "description": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "peekOfCode": "system_prompt = (\n    \"You are an assistant for question-answering tasks. \"\n    \"Use the following pieces of retrieved context to answer \"\n    \"the question. If you don't know the answer, say that you \"\n    \"don't know.If the context provided does not offer information \"\n    \"that directly answers the question, make it clear that the context \"\n    \"does not provide the necessary information.\"\n    \"\\n\\n\"\n    \"{context}\"\n)",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_retriever",
         "documentation": {}
     },
     {
-        "label": "m1",
+        "label": "prompt",
         "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "description": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "peekOfCode": "m1 = 5.97e24  # Mass of the Earth in kg\nm2 = 7.35e22  # Mass of the Moon in kg\nr = 3.84e8  # Distance between Earth and Moon in meters\nF = G * m1 * m2 / r**2\nF\n\"Now, what result do you get from this calculation?\"\nClarify Doubts: If the student has follow-up questions or needs clarification on any part of the solution, provide additional guiding questions or hints to help them understand better.\n\"\"\"\nextract_question_image_template = \"\"\"\nYou are tasked with analyzing the following image. Extract all the questions found in the image and return them as a JSON structure using the following format:",
-        "detail": "src.llm_module_generator.physics_module_generator.llm_templates",
+        "importPath": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "description": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "peekOfCode": "prompt = ChatPromptTemplate.from_messages(\n    [\n        (\"system\", system_prompt),\n        (\"human\", \"{input}\"),\n    ]\n)\n## This prompt will go in for the human input of the question\nhuman_prompt = f\"\"\"\nYou are tasked with analyzing a given question and generating relevant code snippets in Javascript based on the Math Js documentation.\nEach response should contain a brief description of the functionality the code implements (analysis)",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_retriever",
         "documentation": {}
     },
     {
-        "label": "m2",
+        "label": "human_prompt",
         "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "description": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "peekOfCode": "m2 = 7.35e22  # Mass of the Moon in kg\nr = 3.84e8  # Distance between Earth and Moon in meters\nF = G * m1 * m2 / r**2\nF\n\"Now, what result do you get from this calculation?\"\nClarify Doubts: If the student has follow-up questions or needs clarification on any part of the solution, provide additional guiding questions or hints to help them understand better.\n\"\"\"\nextract_question_image_template = \"\"\"\nYou are tasked with analyzing the following image. Extract all the questions found in the image and return them as a JSON structure using the following format:\n{",
-        "detail": "src.llm_module_generator.physics_module_generator.llm_templates",
+        "importPath": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "description": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "peekOfCode": "human_prompt = f\"\"\"\nYou are tasked with analyzing a given question and generating relevant code snippets in Javascript based on the Math Js documentation.\nEach response should contain a brief description of the functionality the code implements (analysis)\nand a short, concise code snippet that demonstrates the functionality (code_snippet).\nEach code snippet should be unique, avoiding repetition of similar code, and serve a distinct purpose.\nA single response can contain multiple components if needed, but the goal is to be direct with the appropriate code snippets.\nThe response should return a list of potential code implementations.\nIf no suitable code implementations are found, return None.\nReturn a max of 0-2 analysis, code_snippet pairs.\nQuestion: {{question}}",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_retriever",
         "documentation": {}
     },
     {
-        "label": "r",
+        "label": "rag_chain_from_docs",
         "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "description": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "peekOfCode": "r = 3.84e8  # Distance between Earth and Moon in meters\nF = G * m1 * m2 / r**2\nF\n\"Now, what result do you get from this calculation?\"\nClarify Doubts: If the student has follow-up questions or needs clarification on any part of the solution, provide additional guiding questions or hints to help them understand better.\n\"\"\"\nextract_question_image_template = \"\"\"\nYou are tasked with analyzing the following image. Extract all the questions found in the image and return them as a JSON structure using the following format:\n{\n    {",
-        "detail": "src.llm_module_generator.physics_module_generator.llm_templates",
+        "importPath": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "description": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "peekOfCode": "rag_chain_from_docs = (\n    {\n        \"input\": lambda x: x[\"input\"],\n        \"context\": lambda x: format_docs(x[\"context\"]),\n    }\n    | prompt\n    | llm.with_structured_output(Response)\n)\nretrieve_docs = (lambda x: x[\"input\"]) | retriever_from_llm\nchain = RunnablePassthrough.assign(context=retrieve_docs).assign(",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_retriever",
         "documentation": {}
     },
     {
-        "label": "F",
+        "label": "retrieve_docs",
         "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "description": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "peekOfCode": "F = G * m1 * m2 / r**2\nF\n\"Now, what result do you get from this calculation?\"\nClarify Doubts: If the student has follow-up questions or needs clarification on any part of the solution, provide additional guiding questions or hints to help them understand better.\n\"\"\"\nextract_question_image_template = \"\"\"\nYou are tasked with analyzing the following image. Extract all the questions found in the image and return them as a JSON structure using the following format:\n{\n    {\n      \"question\": \"extracted question\",",
-        "detail": "src.llm_module_generator.physics_module_generator.llm_templates",
+        "importPath": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "description": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "peekOfCode": "retrieve_docs = (lambda x: x[\"input\"]) | retriever_from_llm\nchain = RunnablePassthrough.assign(context=retrieve_docs).assign(\n    answer=rag_chain_from_docs\n)\n## Wrap it all in a funciton \nasync def mathjs_code_snippet_chain(question:str)->str:\n    code_search = await chain.ainvoke({\"input\": human_prompt.format(question=question)})\n    response_instance = json.loads(code_search[\"answer\"].model_dump_json())\n    response = response_instance[\"response\"]\n    # Build the example code snippets",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_retriever",
         "documentation": {}
     },
     {
-        "label": "extract_question_image_template",
+        "label": "chain",
         "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "description": "src.llm_module_generator.physics_module_generator.llm_templates",
-        "peekOfCode": "extract_question_image_template = \"\"\"\nYou are tasked with analyzing the following image. Extract all the questions found in the image and return them as a JSON structure using the following format:\n{\n    {\n      \"question\": \"extracted question\",\n      \"question_number\": \"the number of the question\",\n      \"requires_image\": true/false,\n      \"question_complete\": true/false\n    }\n}",
-        "detail": "src.llm_module_generator.physics_module_generator.llm_templates",
+        "importPath": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "description": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "peekOfCode": "chain = RunnablePassthrough.assign(context=retrieve_docs).assign(\n    answer=rag_chain_from_docs\n)\n## Wrap it all in a funciton \nasync def mathjs_code_snippet_chain(question:str)->str:\n    code_search = await chain.ainvoke({\"input\": human_prompt.format(question=question)})\n    response_instance = json.loads(code_search[\"answer\"].model_dump_json())\n    response = response_instance[\"response\"]\n    # Build the example code snippets\n    example_code_snippets = \"\\nThe following are useful code snippets\\n\"",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_retriever",
+        "documentation": {}
+    },
+    {
+        "label": "is_href_invalid",
+        "kind": 2,
+        "importPath": "src.llm_module_generator.physics_module_generator.math_js_vectorstore",
+        "description": "src.llm_module_generator.physics_module_generator.math_js_vectorstore",
+        "peekOfCode": "def is_href_invalid(href: str) -> bool:\n    \"\"\"\n    Checks if the href is an invalid link based on specific conditions.\n    Args:\n        href (str): The link to check.\n    Returns:\n        bool: True if the link is invalid, otherwise False.\n    \"\"\"\n    if (href.startswith(\"https://en.wikipedia.org\") or\n        href.startswith(\"https://github.com\") or",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_vectorstore",
+        "documentation": {}
+    },
+    {
+        "label": "extract_all_links",
+        "kind": 2,
+        "importPath": "src.llm_module_generator.physics_module_generator.math_js_vectorstore",
+        "description": "src.llm_module_generator.physics_module_generator.math_js_vectorstore",
+        "peekOfCode": "def extract_all_links(link: str) -> Set[str]:\n    \"\"\"\n    Recursively extracts all unique links from a given webpage and its child pages.\n    Args:\n        link (str): The URL of the webpage to extract links from.\n    Returns:\n        Set[str]: A set of all unique links found.\n    \"\"\"\n    all_links = set()\n    html = requests.get(link)",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_vectorstore",
+        "documentation": {}
+    },
+    {
+        "label": "check_and_return_html",
+        "kind": 2,
+        "importPath": "src.llm_module_generator.physics_module_generator.math_js_vectorstore",
+        "description": "src.llm_module_generator.physics_module_generator.math_js_vectorstore",
+        "peekOfCode": "def check_and_return_html(url: str) -> str:\n    \"\"\"\n    Attempts to request the HTML content from a given URL, handling common errors.\n    Args:\n        url (str): The URL to make the request to.\n    Returns:\n        str: The HTML content of the webpage if the request is successful. If the request fails, \n        it prints an error message and returns an empty string.\n    \"\"\"\n    # Fix any backslashes in the URL by replacing them with forward slashes",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_vectorstore",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "src.llm_module_generator.physics_module_generator.math_js_vectorstore",
+        "description": "src.llm_module_generator.physics_module_generator.math_js_vectorstore",
+        "peekOfCode": "def main():\n    \"\"\"\n    Main function to extract links, split the content of the webpages,\n    and store the results in a vectorstore for future use.\n    \"\"\"\n    # Base URL to extract links from\n    original_link = \"https://mathjs.org/docs/index.html\"\n    # Extract all links from the base URL\n    all_links = extract_all_links(original_link)\n    # Headers to split the HTML content on",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_vectorstore",
         "documentation": {}
     },
     {
@@ -6220,7 +6417,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
         "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "logger = get_logger(__name__)\nfrom .module_generator_templates import question_html_gen_template,server_js_template_base,server_py_template_base,solution_html_template,question_html_gen_template_nonadaptive\n@dataclass\nclass ModuleCodeGenerator(LLM_Call):\n    llm_config: LLMConfig\n    base_prompt: str\n    example_input_column: str\n    example_output_column: str\n    threshold: float = 0.1\n    num_examples: int = field(default=1)",
+        "peekOfCode": "logger = get_logger(__name__)\nfrom .templates import question_html_gen_template,server_js_template_base,server_py_template_base,solution_html_template,question_html_gen_template_nonadaptive\n@dataclass\nclass ModuleCodeGenerator(LLM_Call):\n    llm_config: LLMConfig\n    base_prompt: str\n    example_input_column: str\n    example_output_column: str\n    threshold: float = 0.1\n    num_examples: int = field(default=1)",
         "detail": "src.llm_module_generator.physics_module_generator.module_generator",
         "documentation": {}
     },
@@ -6281,64 +6478,64 @@
     {
         "label": "generate",
         "kind": 2,
-        "importPath": "src.llm_module_generator.physics_module_generator.module_generator_templates",
-        "description": "src.llm_module_generator.physics_module_generator.module_generator_templates",
+        "importPath": "src.llm_module_generator.physics_module_generator.templates",
+        "description": "src.llm_module_generator.physics_module_generator.templates",
         "peekOfCode": "def generate():\n    # 1. Dynamic Parameter Selection:\n    # - Thoroughly analyze the HTML or data source to identify relevant categories and units for computation.\n    # - Ensure the inclusion of a diverse set of units and values, covering different global measurement systems (SI and USCS).\n    # - Implement a randomized selection algorithm that fairly alternates between unit systems (SI and USCS), ensuring balanced representation.\n    # - Avoid embedding HTML within the Python code.\n    # 2. Value Generation:\n    # - Randomly generate values relevant to the problem context, ensuring they fall within specified, realistic ranges.\n    # - Define static ranges for value generation to avoid conversion issues.\n    # - Ensure that values are generated specifically for either SI or USCS without converting between the two unless explicitly stated in the problem.",
-        "detail": "src.llm_module_generator.physics_module_generator.module_generator_templates",
+        "detail": "src.llm_module_generator.physics_module_generator.templates",
         "documentation": {}
     },
     {
         "label": "question_html_gen_template",
         "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.module_generator_templates",
-        "description": "src.llm_module_generator.physics_module_generator.module_generator_templates",
+        "importPath": "src.llm_module_generator.physics_module_generator.templates",
+        "description": "src.llm_module_generator.physics_module_generator.templates",
         "peekOfCode": "question_html_gen_template = \"\"\"\n1. Analyze the Question\nBegin by carefully reading the physics question to determine its nature—whether it demands computational solutions or is purely theoretical. \nThis initial analysis is critical as it dictates the necessity of incorporating placeholders for numerical values. \nConsider the context and specifics of the question thoroughly to ensure the correct categorization.\n2. Identify Parameters for Computation\nFor questions requiring computational analysis:\nIdentify all numerical values that could potentially vary or would be essential for calculations. This step is paramount and must be prioritized for computational questions.\nReplace these values with placeholders using the format {{params.variable_name}}. Ensure you choose descriptive and unique names for each variable to prevent any confusion and to clearly indicate their roles in the computations.\n3. Emphasize Placeholder Implementation",
-        "detail": "src.llm_module_generator.physics_module_generator.module_generator_templates",
+        "detail": "src.llm_module_generator.physics_module_generator.templates",
         "documentation": {}
     },
     {
         "label": "question_html_gen_template_nonadaptive",
         "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.module_generator_templates",
-        "description": "src.llm_module_generator.physics_module_generator.module_generator_templates",
+        "importPath": "src.llm_module_generator.physics_module_generator.templates",
+        "description": "src.llm_module_generator.physics_module_generator.templates",
         "peekOfCode": "question_html_gen_template_nonadaptive = \"\"\"\nGenerate a html file given the following examples\n\"\"\"\nserver_js_template_base = \"\"\"\n    Design a robust JavaScript module capable of generating computational problems across various STEM disciplines. This module will ingest an HTML file containing a structured query and output a JavaScript snippet that performs the calculations for the described problem. The JavaScript code must conform to the following outline:\n    Additionally, the only JavaScript library you are allowed to import is the mathjs library.\n    You do not have access to any external files. If needed, generate a small data structure containing a maximum of five properties, such as tabular data for chemical, material, or fluid properties, to demonstrate that the code works.\n    const generate = () => {{\n        // 1. Dynamic Parameter Selection:\n        // - Thoroughly analyze the HTML or data source to identify an extensive range of categories and units for computation.",
-        "detail": "src.llm_module_generator.physics_module_generator.module_generator_templates",
+        "detail": "src.llm_module_generator.physics_module_generator.templates",
         "documentation": {}
     },
     {
         "label": "server_js_template_base",
         "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.module_generator_templates",
-        "description": "src.llm_module_generator.physics_module_generator.module_generator_templates",
+        "importPath": "src.llm_module_generator.physics_module_generator.templates",
+        "description": "src.llm_module_generator.physics_module_generator.templates",
         "peekOfCode": "server_js_template_base = \"\"\"\n    Design a robust JavaScript module capable of generating computational problems across various STEM disciplines. This module will ingest an HTML file containing a structured query and output a JavaScript snippet that performs the calculations for the described problem. The JavaScript code must conform to the following outline:\n    Additionally, the only JavaScript library you are allowed to import is the mathjs library.\n    You do not have access to any external files. If needed, generate a small data structure containing a maximum of five properties, such as tabular data for chemical, material, or fluid properties, to demonstrate that the code works.\n    const generate = () => {{\n        // 1. Dynamic Parameter Selection:\n        // - Thoroughly analyze the HTML or data source to identify an extensive range of categories and units for computation.\n        // - Ensure the inclusion of a wide variety of units and values, covering different global measurement systems.\n        // - Develop a randomized selection algorithm to fairly choose a category or unit system, ensuring equitable representation.\n        // - When applicable, ensure that it alternates between SI and USCS for unit selection.",
-        "detail": "src.llm_module_generator.physics_module_generator.module_generator_templates",
+        "detail": "src.llm_module_generator.physics_module_generator.templates",
         "documentation": {}
     },
     {
         "label": "server_template_code_guide",
         "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.module_generator_templates",
-        "description": "src.llm_module_generator.physics_module_generator.module_generator_templates",
+        "importPath": "src.llm_module_generator.physics_module_generator.templates",
+        "description": "src.llm_module_generator.physics_module_generator.templates",
         "peekOfCode": "server_template_code_guide = \"\"\"\n    Additionally, you have access to both a code guide and a solution guide. The solution guide provides an accurate, step-by-step method for solving the problem, dictating the logical approach. \n    The code guide offers guidance on how to implement this solution in code, including formatting and other relevant considerations.\n\"\"\"\nsolution_html_template= \"\"\"\nObjective:\n        Develop an HTML module to generate comprehensive solutions and step-by-step guides for STEM problems. Utilize specific HTML tags for structural organization and LaTeX for mathematical equations and symbols.\n        HTML Tags and LaTeX Integration:\n        - <pl-solution-panel>: Used to encapsulate the entire solution guide.\n        - <pl-hint level=\"1\" data-type=\"text\">: Employed for providing hints and detailed step-by-step explanations within the guide.",
-        "detail": "src.llm_module_generator.physics_module_generator.module_generator_templates",
+        "detail": "src.llm_module_generator.physics_module_generator.templates",
         "documentation": {}
     },
     {
         "label": "solution_improvement_prompt",
         "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.module_generator_templates",
-        "description": "src.llm_module_generator.physics_module_generator.module_generator_templates",
+        "importPath": "src.llm_module_generator.physics_module_generator.templates",
+        "description": "src.llm_module_generator.physics_module_generator.templates",
         "peekOfCode": "solution_improvement_prompt = \"\"\"Given the current HTML module for STEM problem-solving, your task is to enhance it using the provided code as a foundational guide. This code is designed to dynamically generate problem parameters and their correct answers. Your objective is to integrate these elements into the HTML solution guide effectively.\n        Your Specific Tasks:\n        1. **Review the Current ssolution guide  **: \n        Begin by examining the provided HTML solution guide  {solution_generated}. \n        2. **Integrate Dynamic Content Using Placeholders**: Insert placeholders into the HTML that correspond to the outputs of the code found in the params datastructure. Use placeholders like `{{params.placeholder_value}}` or `{{correct_answers.placeholder_value}}` that align with the variable names and data formats in the code. This ensures the HTML will dynamically display the correct data when the module runs.\n         Reference Code for Integration:\n         {code_guide}\n          Include your revised HTML code below:\n        return the generated code\n        \"\"\"",
-        "detail": "src.llm_module_generator.physics_module_generator.module_generator_templates",
+        "detail": "src.llm_module_generator.physics_module_generator.templates",
         "documentation": {}
     },
     {
         "label": "server_py_template_base",
         "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.module_generator_templates",
-        "description": "src.llm_module_generator.physics_module_generator.module_generator_templates",
+        "importPath": "src.llm_module_generator.physics_module_generator.templates",
+        "description": "src.llm_module_generator.physics_module_generator.templates",
         "peekOfCode": "server_py_template_base = \"\"\"\nYou have access to Python modules such as `numpy`, `sympy`, and `pandas`, which you may use when necessary.\nYour task is to design a robust Python module that generates computational problems across various STEM disciplines. This module will ingest an HTML file containing a structured query and output a Python snippet that performs the required calculations. The Python code must adhere to the following outline:\n```python\ndef generate():\n    # 1. Dynamic Parameter Selection:\n    # - Thoroughly analyze the HTML or data source to identify relevant categories and units for computation.\n    # - Ensure the inclusion of a diverse set of units and values, covering different global measurement systems (SI and USCS).\n    # - Implement a randomized selection algorithm that fairly alternates between unit systems (SI and USCS), ensuring balanced representation.\n    # - Avoid embedding HTML within the Python code.",
-        "detail": "src.llm_module_generator.physics_module_generator.module_generator_templates",
+        "detail": "src.llm_module_generator.physics_module_generator.templates",
         "documentation": {}
     },
     {
@@ -8146,7 +8343,16 @@
         "kind": 2,
         "importPath": "src.prairielearn.elements.pl-drawing.elements",
         "description": "src.prairielearn.elements.pl-drawing.elements",
-        "peekOfCode": "def register_extension(name, module, data):\n    data_obj = {\n        \"clientFilesUrl\": data[\"options\"]\n        .get(\"client_files_extensions_url\", {})\n        .get(name, None)\n    }\n    for elem_name, elem in module.elements.items():\n        registered_elements[elem_name] = data_obj\n        elements[elem_name] = elem",
+        "peekOfCode": "def register_extension(name, module, data):\n    data_obj = {\n        \"clientFilesUrl\": data[\"options\"]\n        .get(\"client_files_extensions_url\", {})\n        .get(name, None)\n    }\n    for elem_name, elem in module.elements.items():\n        registered_elements[elem_name] = data_obj\n        elements[elem_name] = elem\ndef main():",
+        "detail": "src.prairielearn.elements.pl-drawing.elements",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "src.prairielearn.elements.pl-drawing.elements",
+        "description": "src.prairielearn.elements.pl-drawing.elements",
+        "peekOfCode": "def main():\n    import xml.etree.ElementTree as ET\n    html_string = r\"\"\"<pl-coordinates x1=80 y1=320 width=\"60\" ></pl-coordinates>\"\"\"\n    import numpy as np\n    import random\n    data = pl.QuestionData = {\n        \"params\": {},\n        \"correct_answers\": {},\n        \"submitted_answers\": {},  # Empty initially\n        \"format_errors\": {},",
         "detail": "src.prairielearn.elements.pl-drawing.elements",
         "documentation": {}
     },

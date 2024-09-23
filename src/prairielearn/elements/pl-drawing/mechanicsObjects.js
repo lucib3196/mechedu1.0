@@ -1,17 +1,19 @@
 /* eslint-env browser, jquery */
 /* global _, fabric, Sylvester, PLDrawingBaseElement, MathJax */
 
-var $V = Sylvester.Vector.create;
-Sylvester.Vector.prototype.multElementwise = function (other) {
-  return $V([this.e(1) * other.e(1), this.e(2) * other.e(2)]);
-};
-// Rename the Sylvester vector functions to something much more sane...
-Sylvester.Vector.prototype.norm = Sylvester.Vector.prototype.modulus;
-Sylvester.Vector.prototype.normalize = Sylvester.Vector.prototype.toUnitVector;
-Sylvester.Vector.prototype.divide = function (k) {
-  return this.multiply(1 / k);
-};
+// var $V = Sylvester.Vector.create;
+// Sylvester.Vector.prototype.multElementwise = function (other) {
+//   return $V([this.e(1) * other.e(1), this.e(2) * other.e(2)]);
+// };
+// // Rename the Sylvester vector functions to something much more sane...
+// Sylvester.Vector.prototype.norm = Sylvester.Vector.prototype.modulus;
+// Sylvester.Vector.prototype.normalize = Sylvester.Vector.prototype.toUnitVector;
+// Sylvester.Vector.prototype.divide = function (k) {
+//   return this.multiply(1 / k);
+// };
 
+
+import { util, Object as _Object, Image, Group, Circle, Line, Path, Text, Polygon, Rect } from 'fabric';
 const pt2vec = function (pt) {
   return $V([pt.x, pt.y]);
 };
@@ -26,7 +28,7 @@ var mechanicsObjects = {};
  * These are all classes that create and return the object, but don't add it to the canvas.
  * These are helper functions/classes for the actual canvas adding functions below.
  */
-mechanicsObjects.Spring = fabric.util.createClass(fabric.Object, {
+mechanicsObjects.Spring = fabric.util.createClass(_Object, {
   type: 'spring',
   initialize(options) {
     options = options || {};
@@ -106,7 +108,7 @@ mechanicsObjects.Spring = fabric.util.createClass(fabric.Object, {
   },
 });
 
-mechanicsObjects.Coil = fabric.util.createClass(fabric.Object, {
+mechanicsObjects.Coil = util.createClass(_Object, {
   type: 'coil',
   initialize(options) {
     options = options || {};
@@ -181,7 +183,7 @@ mechanicsObjects.Coil = fabric.util.createClass(fabric.Object, {
   },
 });
 
-mechanicsObjects.Rod = fabric.util.createClass(fabric.Object, {
+mechanicsObjects.Rod = util.createClass(_Object, {
   type: 'rod',
   initialize(options) {
     options = options || {};
@@ -244,7 +246,7 @@ mechanicsObjects.Rod = fabric.util.createClass(fabric.Object, {
   },
 });
 
-mechanicsObjects.CollarRod = fabric.util.createClass(fabric.Object, {
+mechanicsObjects.CollarRod = util.createClass(_Object, {
   type: 'rod',
   initialize(options) {
     options = options || {};
@@ -339,7 +341,7 @@ mechanicsObjects.CollarRod = fabric.util.createClass(fabric.Object, {
   },
 });
 
-mechanicsObjects.LShapeRod = fabric.util.createClass(fabric.Object, {
+mechanicsObjects.LShapeRod = util.createClass(_Object, {
   type: 'Lshaperod',
   initialize(options) {
     options = options || {};
@@ -438,7 +440,7 @@ mechanicsObjects.LShapeRod = fabric.util.createClass(fabric.Object, {
   },
 });
 
-mechanicsObjects.TShapeRod = fabric.util.createClass(fabric.Object, {
+mechanicsObjects.TShapeRod = util.createClass(_Object, {
   type: 'Tshaperod',
   initialize(options) {
     options = options || {};
@@ -593,7 +595,7 @@ mechanicsObjects.TShapeRod = fabric.util.createClass(fabric.Object, {
   },
 });
 
-mechanicsObjects.ClampedEnd = fabric.util.createClass(fabric.Object, {
+mechanicsObjects.ClampedEnd = util.createClass(_Object, {
   type: 'clamped',
   initialize(options) {
     options = options || {};
@@ -633,7 +635,7 @@ mechanicsObjects.ClampedEnd = fabric.util.createClass(fabric.Object, {
   },
 });
 
-mechanicsObjects.FixedPin = fabric.util.createClass(fabric.Object, {
+mechanicsObjects.FixedPin = util.createClass(_Object, {
   type: 'fixed-pin',
   initialize(options) {
     options = options || {};
@@ -698,7 +700,7 @@ mechanicsObjects.FixedPin = fabric.util.createClass(fabric.Object, {
   },
 });
 
-mechanicsObjects.Roller = fabric.util.createClass(fabric.Object, {
+mechanicsObjects.Roller = util.createClass(_Object, {
   type: 'roller',
   initialize(options) {
     options = options || {};
@@ -778,7 +780,7 @@ mechanicsObjects.Roller = fabric.util.createClass(fabric.Object, {
   },
 });
 
-mechanicsObjects.Arrow = fabric.util.createClass(fabric.Object, {
+mechanicsObjects.Arrow = util.createClass(_Object, {
   type: 'arrow',
   initialize(options) {
     options = options || {};
@@ -805,7 +807,7 @@ mechanicsObjects.Arrow = fabric.util.createClass(fabric.Object, {
     }
   },
   toObject() {
-    return fabric.util.object.extend(this.callSuper('toObject'), {
+    return util.object.extend(this.callSuper('toObject'), {
       // Should write here the properties that were added in initialize
       // and that should appear on the server
       name: this.get('name'),
@@ -859,7 +861,7 @@ mechanicsObjects.Arrow = fabric.util.createClass(fabric.Object, {
   },
 });
 
-mechanicsObjects.DoubleArrow = fabric.util.createClass(fabric.Object, {
+mechanicsObjects.DoubleArrow = util.createClass(_Object, {
   type: 'arrow',
   initialize(options) {
     options = options || {};
@@ -886,7 +888,7 @@ mechanicsObjects.DoubleArrow = fabric.util.createClass(fabric.Object, {
     }
   },
   toObject() {
-    return fabric.util.object.extend(this.callSuper('toObject'), {
+    return util.object.extend(this.callSuper('toObject'), {
       // should write here the properties that were added in initialize
       // and that should appear on the server
       name: this.get('name'),
@@ -931,7 +933,7 @@ mechanicsObjects.DoubleArrow = fabric.util.createClass(fabric.Object, {
   },
 });
 
-mechanicsObjects.LatexText = fabric.util.createClass(fabric.Object, {
+mechanicsObjects.LatexText = util.createClass(_Object, {
   type: 'latex-text',
   parse(str) {
     // Because the MathJax renderer expects text to be already formatted in LaTeX,
@@ -1000,7 +1002,7 @@ mechanicsObjects.LatexText = fabric.util.createClass(fabric.Object, {
 
     let base64svg = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgSource)));
 
-    fabric.Image.fromURL(
+    Image.fromURL(
       base64svg,
       (img) => {
         this.width = Math.ceil(width);
@@ -1051,7 +1053,7 @@ mechanicsObjects.LatexText = fabric.util.createClass(fabric.Object, {
   },
 });
 
-mechanicsObjects.DistTrianLoad = fabric.util.createClass(fabric.Object, {
+mechanicsObjects.DistTrianLoad = util.createClass(_Object, {
   type: 'dist-force',
   initialize(options) {
     this.callSuper('initialize', options);
@@ -1187,7 +1189,7 @@ mechanicsObjects.DistTrianLoad = fabric.util.createClass(fabric.Object, {
   },
 });
 
-mechanicsObjects.pulley = fabric.util.createClass(fabric.Object, {
+mechanicsObjects.pulley = util.createClass(_Object, {
   type: 'pulley',
   initialize(options) {
     options = options || {};
@@ -1293,7 +1295,7 @@ mechanicsObjects.pulley = fabric.util.createClass(fabric.Object, {
   },
 });
 
-mechanicsObjects.arcVector = fabric.util.createClass(fabric.Object, {
+mechanicsObjects.arcVector = util.createClass(_Object, {
   type: 'arc',
   initialize(options) {
     options = options || {};
@@ -1324,7 +1326,7 @@ mechanicsObjects.arcVector = fabric.util.createClass(fabric.Object, {
     }
   },
   toObject() {
-    return fabric.util.object.extend(this.callSuper('toObject'), {
+    return util.object.extend(this.callSuper('toObject'), {
       name: this.get('name'),
       // Should write here the properties that were added in initialize
       // and that should appear on the server
@@ -1414,7 +1416,7 @@ mechanicsObjects.makeCoordinates = function (options) {
     options.angle = 0;
   }
 
-  var group = new fabric.Group([], {
+  var group = new Group([], {
     left: 0,
     top: 0,
     name: 'coordinates',
@@ -1445,7 +1447,7 @@ mechanicsObjects.makeCoordinates = function (options) {
     options,
   );
 
-  let obj3 = new fabric.Circle(options3);
+  let obj3 = new Circle(options3);
   group.addWithUpdate(obj3);
 
   if (selectable) {
@@ -1457,7 +1459,7 @@ mechanicsObjects.makeCoordinates = function (options) {
 };
 
 mechanicsObjects.makeControlHandle = function (left, top, handleRadius, strokeWidth) {
-  var c = new fabric.Circle({
+  var c = new Circle({
     left,
     top,
     strokeWidth,
@@ -1474,7 +1476,7 @@ mechanicsObjects.makeControlHandle = function (left, top, handleRadius, strokeWi
 };
 
 mechanicsObjects.makeControlStraightLine = function (x1, y1, x2, y2, options) {
-  var line = new fabric.Line([x1, y1, x2, y2], {
+  var line = new Line([x1, y1, x2, y2], {
     stroke: options.stroke,
     strokeWidth: options.strokeWidth,
     selectable: false,
@@ -1487,7 +1489,7 @@ mechanicsObjects.makeControlStraightLine = function (x1, y1, x2, y2, options) {
 };
 
 mechanicsObjects.makeControlCurvedLine = function (x1, y1, x2, y2, x3, y3, options) {
-  var line = new fabric.Path('M 0 0 Q 1, 1, 3, 0', {
+  var line = new Path('M 0 0 Q 1, 1, 3, 0', {
     fill: '',
     stroke: options.stroke,
     strokeWidth: options.strokeWidth,
@@ -1518,10 +1520,10 @@ mechanicsObjects.addCanvasBackground = function (canvas, w, h, gridsize) {
   };
 
   for (let i = 1; i < w / gridsize; i++) {
-    canvas.add(new fabric.Line([gridsize * i, 0, gridsize * i, h], options));
+    canvas.add(new Line([gridsize * i, 0, gridsize * i, h], options));
   }
   for (let i = 1; i < h / gridsize; i++) {
-    canvas.add(new fabric.Line([0, gridsize * i, w, gridsize * i], options));
+    canvas.add(new Line([0, gridsize * i, w, gridsize * i], options));
   }
 };
 
@@ -1543,7 +1545,7 @@ mechanicsObjects.byType['pl-text'] = class extends PLDrawingBaseElement {
         scaleY: options.scaleY || 1,
       });
     } else {
-      textObj = new fabric.Text(options.label, {
+      textObj = new Text(options.label, {
         left: options.left + options.offsetx,
         top: options.top + options.offsety,
         fontSize: options.fontSize,
@@ -2107,13 +2109,13 @@ mechanicsObjects.byType['pl-dimensions'] = class extends PLDrawingBaseElement {
       originY: 'top',
     };
     if (options.startSupportLine) {
-      let line1 = new fabric.Line([p1.e(1), p1.e(2), p1d.e(1), p1d.e(2)], options1);
+      let line1 = new Line([p1.e(1), p1.e(2), p1d.e(1), p1d.e(2)], options1);
       line1.selectable = false;
       line1.evented = false;
       canvas.add(line1);
     }
     if (options.endSupportLine) {
-      let line2 = new fabric.Line([p2.e(1), p2.e(2), p2d.e(1), p2d.e(2)], options1);
+      let line2 = new Line([p2.e(1), p2.e(2), p2d.e(1), p2d.e(2)], options1);
       line2.selectable = false;
       line2.evented = false;
       canvas.add(line2);
@@ -2153,7 +2155,7 @@ mechanicsObjects.byType['pl-arc-dimensions'] = class extends PLDrawingBaseElemen
     if (options.startSupportLine) {
       let xend = obj.left + 1.5 * obj.radius * Math.cos((obj.startAngle * Math.PI) / 180);
       let yend = obj.top + 1.5 * obj.radius * Math.sin((obj.startAngle * Math.PI) / 180);
-      let line1 = new fabric.Line([obj.left, obj.top, xend, yend], options1);
+      let line1 = new Line([obj.left, obj.top, xend, yend], options1);
       line1.selectable = false;
       line1.evented = false;
       canvas.add(line1);
@@ -2161,7 +2163,7 @@ mechanicsObjects.byType['pl-arc-dimensions'] = class extends PLDrawingBaseElemen
     if (options.endSupportLine) {
       let xend = obj.left + 1.5 * obj.radius * Math.cos((obj.endAngle * Math.PI) / 180);
       let yend = obj.top + 1.5 * obj.radius * Math.sin((obj.endAngle * Math.PI) / 180);
-      let line1 = new fabric.Line([obj.left, obj.top, xend, yend], options1);
+      let line1 = new Line([obj.left, obj.top, xend, yend], options1);
       line1.selectable = false;
       line1.evented = false;
       canvas.add(line1);
@@ -2244,7 +2246,7 @@ mechanicsObjects.byType['pl-coil'] = class extends PLDrawingBaseElement {
 
 mechanicsObjects.byType['pl-triangle'] = class extends PLDrawingBaseElement {
   static generate(canvas, options, submittedAnswer) {
-    let obj = new fabric.Polygon([options.p1, options.p2, options.p3], options);
+    let obj = new Polygon([options.p1, options.p2, options.p3], options);
     if (!('id' in obj)) {
       obj.id = window.PLDrawingApi.generateID();
     }
@@ -2294,7 +2296,7 @@ mechanicsObjects.byType['pl-triangle'] = class extends PLDrawingBaseElement {
 
 mechanicsObjects.byType['pl-rectangle'] = class extends PLDrawingBaseElement {
   static generate(canvas, options, submittedAnswer) {
-    let obj = new fabric.Rect(options);
+    let obj = new Rect(options);
     if (!('id' in obj)) {
       obj.id = window.PLDrawingApi.generateID();
     }
@@ -2321,7 +2323,7 @@ mechanicsObjects.byType['pl-rectangle'] = class extends PLDrawingBaseElement {
 
 mechanicsObjects.byType['pl-polygon'] = class extends PLDrawingBaseElement {
   static generate(canvas, options, submittedAnswer) {
-    let obj = new fabric.Polygon(options.pointlist, options);
+    let obj = new Polygon(options.pointlist, options);
     if (!('id' in obj)) {
       obj.id = window.PLDrawingApi.generateID();
     }
@@ -2340,7 +2342,7 @@ mechanicsObjects.byType['pl-polygon'] = class extends PLDrawingBaseElement {
 
 mechanicsObjects.byType['pl-line'] = class extends PLDrawingBaseElement {
   static generate(canvas, options, submittedAnswer) {
-    let obj = new fabric.Line(
+    let obj = new Line(
       [options.x1, options.y1, options.x2, options.y2],
       _.omit(options, 'left', 'top'),
     );
@@ -2512,7 +2514,7 @@ mechanicsObjects.byType['pl-coordinates'] = class extends PLDrawingBaseElement {
 
 mechanicsObjects.byType['pl-axes'] = class extends PLDrawingBaseElement {
   static generate(canvas, options, _submittedAnswer) {
-    var obj = new fabric.Group([], { left: 0, top: 0 });
+    var obj = new Group([], { left: 0, top: 0 });
     obj.evented = false;
     obj.selectable = false;
 
@@ -2615,14 +2617,14 @@ mechanicsObjects.byType['pl-axes'] = class extends PLDrawingBaseElement {
         let x1 = options.left + supporting_line['x'];
         let y1 = options.top + options.yneg;
         let y2 = options.top - options.ypos;
-        let line1 = new fabric.Line([x1, y1, x1, y2], opt_line);
+        let line1 = new Line([x1, y1, x1, y2], opt_line);
         canvas.add(line1);
       }
       if ('y' in supporting_line) {
         let x1 = options.left - options.xneg;
         let x2 = options.left + options.xpos;
         let y1 = options.top - supporting_line['y'];
-        let line1 = new fabric.Line([x1, y1, x2, y1], opt_line);
+        let line1 = new Line([x1, y1, x2, y1], opt_line);
         canvas.add(line1);
       }
     }
@@ -2633,7 +2635,7 @@ mechanicsObjects.byType['pl-axes'] = class extends PLDrawingBaseElement {
 
 mechanicsObjects.byType['pl-arc'] = class extends PLDrawingBaseElement {
   static generate(canvas, options, submittedAnswer) {
-    let obj = new fabric.Circle(options);
+    let obj = new Circle(options);
     if (!('id' in obj)) {
       obj.id = window.PLDrawingApi.generateID();
     }
@@ -2873,7 +2875,7 @@ mechanicsObjects.byType['pl-arc-vector'] = class extends PLDrawingBaseElement {
     canvas.add(obj);
 
     if (options.drawErrorBox) {
-      var error_box = new fabric.Rect({
+      var error_box = new Rect({
         left: options.XcenterErrorBox,
         top: options.YcenterErrorBox,
         originX: 'center',
@@ -2950,7 +2952,7 @@ mechanicsObjects.byType['pl-vector'] = class extends PLDrawingBaseElement {
     canvas.add(obj);
 
     if (options.drawErrorBox) {
-      var error_box = new fabric.Rect({
+      var error_box = new Rect({
         left: options.XcenterErrorBox,
         top: options.YcenterErrorBox,
         originX: 'center',
@@ -3079,7 +3081,7 @@ mechanicsObjects.byType['pl-paired-vector'] = class extends PLDrawingBaseElement
     canvas.add(obj2);
 
     if (options.drawErrorBox) {
-      var error_box1 = new fabric.Rect({
+      var error_box1 = new Rect({
         left: options.XcenterErrorBox1,
         top: options.YcenterErrorBox1,
         originX: 'center',
@@ -3090,7 +3092,7 @@ mechanicsObjects.byType['pl-paired-vector'] = class extends PLDrawingBaseElement
         fill: '',
         stroke: myColors[this.myIndex % myColors.length],
       });
-      var error_box2 = new fabric.Rect({
+      var error_box2 = new Rect({
         left: options.XcenterErrorBox2,
         top: options.YcenterErrorBox2,
         originX: 'center',
@@ -3183,7 +3185,7 @@ mechanicsObjects.byType['pl-double-headed-vector'] = class extends PLDrawingBase
     canvas.add(obj);
 
     if (options.drawErrorBox) {
-      var error_box = new fabric.Rect({
+      var error_box = new Rect({
         left: options.XcenterErrorBox,
         top: options.YcenterErrorBox,
         originX: 'center',
@@ -3239,7 +3241,7 @@ mechanicsObjects.byType['pl-distributed-load'] = class extends PLDrawingBaseElem
     canvas.add(obj);
 
     if (options.drawErrorBox) {
-      var error_box = new fabric.Rect({
+      var error_box = new Rect({
         left: options.XcenterErrorBox,
         top: options.YcenterErrorBox,
         originX: 'center',
@@ -3302,7 +3304,7 @@ mechanicsObjects.byType['pl-distributed-load'] = class extends PLDrawingBaseElem
 
 mechanicsObjects.byType['pl-circle'] = class extends PLDrawingBaseElement {
   static generate(canvas, options, submittedAnswer) {
-    let obj = new fabric.Circle(options);
+    let obj = new Circle(options);
     obj.setControlVisible('bl', false);
     obj.setControlVisible('tl', false);
     obj.setControlVisible('br', false);
@@ -3349,7 +3351,7 @@ mechanicsObjects.byType['pl-circle'] = class extends PLDrawingBaseElement {
 
 mechanicsObjects.byType['pl-point'] = class extends PLDrawingBaseElement {
   static generate(canvas, options, submittedAnswer) {
-    let obj = new fabric.Circle(options);
+    let obj = new Circle(options);
     obj.setControlVisible('bl', false);
     obj.setControlVisible('tl', false);
     obj.setControlVisible('br', false);
@@ -3366,7 +3368,7 @@ mechanicsObjects.byType['pl-point'] = class extends PLDrawingBaseElement {
     canvas.add(obj);
 
     if (options.drawErrorBox) {
-      var error_box = new fabric.Rect({
+      var error_box = new Rect({
         left: options.XcenterErrorBox,
         top: options.YcenterErrorBox,
         originX: 'center',
@@ -3500,14 +3502,14 @@ mechanicsObjects.byType['pl-controlled-line'] = class extends PLDrawingBaseEleme
         top: options.y1,
       };
       let opt = Object.assign(options_error_box, end_points_options_1);
-      canvas.add(new fabric.Rect(opt));
+      canvas.add(new Rect(opt));
 
       var end_points_options_2 = {
         left: options.x2,
         top: options.y2,
       };
       opt = Object.assign(options_error_box, end_points_options_2);
-      canvas.add(new fabric.Rect(opt));
+      canvas.add(new Rect(opt));
     }
 
     if (!submittedAnswer) return [line, c1, c2];
@@ -3611,14 +3613,14 @@ mechanicsObjects.byType['pl-controlled-curved-line'] = class extends PLDrawingBa
         top: options.y1,
       };
       let opt = Object.assign(options_error_box, end_points_options_1);
-      canvas.add(new fabric.Rect(opt));
+      canvas.add(new Rect(opt));
 
       var end_points_options_2 = {
         left: options.x3,
         top: options.y3,
       };
       opt = Object.assign(options_error_box, end_points_options_2);
-      canvas.add(new fabric.Rect(opt));
+      canvas.add(new Rect(opt));
 
       var control_point_options = {
         left: options.x2,
@@ -3628,7 +3630,7 @@ mechanicsObjects.byType['pl-controlled-curved-line'] = class extends PLDrawingBa
         height: options.heightErrorBoxControl,
       };
       opt = Object.assign(options_error_box, control_point_options);
-      canvas.add(new fabric.Rect(opt));
+      canvas.add(new Rect(opt));
     }
 
     if (!submittedAnswer) return [line, c1, c2, c3];
@@ -3722,7 +3724,7 @@ mechanicsObjects.byType['pl-capacitor'] = class extends PLDrawingBaseElement {
     var xm2 = options.x1 + ((d + gap) / 2) * Math.cos(theta);
     var ym2 = options.y1 + ((d + gap) / 2) * Math.sin(theta);
 
-    let supportingLine1 = new fabric.Line([options.x1, options.y1, xm1, ym1], {
+    let supportingLine1 = new Line([options.x1, options.y1, xm1, ym1], {
       stroke: options.stroke,
       strokeWidth: options.strokeWidth,
       selectable: options.selectable,
@@ -3733,7 +3735,7 @@ mechanicsObjects.byType['pl-capacitor'] = class extends PLDrawingBaseElement {
     if (!('id' in supportingLine1)) {
       supportingLine1.id = window.PLDrawingApi.generateID();
     }
-    let supportingLine2 = new fabric.Line([xm2, ym2, options.x2, options.y2], {
+    let supportingLine2 = new Line([xm2, ym2, options.x2, options.y2], {
       stroke: options.stroke,
       strokeWidth: options.strokeWidth,
       selectable: options.selectable,
@@ -3756,7 +3758,7 @@ mechanicsObjects.byType['pl-capacitor'] = class extends PLDrawingBaseElement {
     var c2x2 = xm2 + cline * Math.sin(theta);
     var c2y2 = ym2 - cline * Math.cos(theta);
 
-    let capacitorPlate1 = new fabric.Line([c1x1, c1y1, c1x2, c1y2], {
+    let capacitorPlate1 = new Line([c1x1, c1y1, c1x2, c1y2], {
       stroke: options.stroke,
       strokeWidth: options.strokeWidth,
       selectable: options.selectable,
@@ -3767,7 +3769,7 @@ mechanicsObjects.byType['pl-capacitor'] = class extends PLDrawingBaseElement {
     if (!('id' in capacitorPlate1)) {
       capacitorPlate1.id = window.PLDrawingApi.generateID();
     }
-    let capacitorPlate2 = new fabric.Line([c2x1, c2y1, c2x2, c2y2], {
+    let capacitorPlate2 = new Line([c2x1, c2y1, c2x2, c2y2], {
       stroke: options.stroke,
       strokeWidth: options.strokeWidth,
       selectable: options.selectable,
@@ -3784,7 +3786,7 @@ mechanicsObjects.byType['pl-capacitor'] = class extends PLDrawingBaseElement {
     if (options.polarized) {
       var xm3 = xm2 + 4 * Math.cos(theta);
       var ym3 = ym2 + 4 * Math.sin(theta);
-      let textObj = new fabric.Text('+', {
+      let textObj = new Text('+', {
         left: xm3,
         top: ym3,
         textAlign: 'left',
@@ -3827,7 +3829,7 @@ mechanicsObjects.byType['pl-battery'] = class extends PLDrawingBaseElement {
     var xm2 = options.x1 + ((d + gap) / 2) * Math.cos(theta);
     var ym2 = options.y1 + ((d + gap) / 2) * Math.sin(theta);
 
-    let supportingLine1 = new fabric.Line([options.x1, options.y1, xm1, ym1], {
+    let supportingLine1 = new Line([options.x1, options.y1, xm1, ym1], {
       stroke: options.stroke,
       strokeWidth: options.strokeWidth,
       selectable: false,
@@ -3838,7 +3840,7 @@ mechanicsObjects.byType['pl-battery'] = class extends PLDrawingBaseElement {
     if (!('id' in supportingLine1)) {
       supportingLine1.id = window.PLDrawingApi.generateID();
     }
-    let supportingLine2 = new fabric.Line([xm2, ym2, options.x2, options.y2], {
+    let supportingLine2 = new Line([xm2, ym2, options.x2, options.y2], {
       stroke: options.stroke,
       strokeWidth: options.strokeWidth,
       selectable: false,
@@ -3863,7 +3865,7 @@ mechanicsObjects.byType['pl-battery'] = class extends PLDrawingBaseElement {
     var c2x2 = xm2 + cline2 * Math.sin(theta);
     var c2y2 = ym2 - cline2 * Math.cos(theta);
 
-    let batteryPlate1 = new fabric.Line([c1x1, c1y1, c1x2, c1y2], {
+    let batteryPlate1 = new Line([c1x1, c1y1, c1x2, c1y2], {
       stroke: options.stroke,
       strokeWidth: options.strokeWidth,
       selectable: false,
@@ -3874,7 +3876,7 @@ mechanicsObjects.byType['pl-battery'] = class extends PLDrawingBaseElement {
     if (!('id' in batteryPlate1)) {
       batteryPlate1.id = window.PLDrawingApi.generateID();
     }
-    let batteryPlate2 = new fabric.Line([c2x1, c2y1, c2x2, c2y2], {
+    let batteryPlate2 = new Line([c2x1, c2y1, c2x2, c2y2], {
       stroke: options.stroke,
       strokeWidth: options.strokeWidth,
       selectable: false,
@@ -3920,7 +3922,7 @@ mechanicsObjects.byType['pl-resistor'] = class extends PLDrawingBaseElement {
     var xm2 = options.x1 + ((d + gap) / 2) * Math.cos(theta);
     var ym2 = options.y1 + ((d + gap) / 2) * Math.sin(theta);
 
-    let supportingLine1 = new fabric.Line([options.x1, options.y1, xm1, ym1], {
+    let supportingLine1 = new Line([options.x1, options.y1, xm1, ym1], {
       stroke: options.stroke,
       strokeWidth: options.strokeWidth,
       selectable: false,
@@ -3931,7 +3933,7 @@ mechanicsObjects.byType['pl-resistor'] = class extends PLDrawingBaseElement {
     if (!('id' in supportingLine1)) {
       supportingLine1.id = window.PLDrawingApi.generateID();
     }
-    let supportingLine2 = new fabric.Line([xm2, ym2, options.x2, options.y2], {
+    let supportingLine2 = new Line([xm2, ym2, options.x2, options.y2], {
       stroke: options.stroke,
       strokeWidth: options.strokeWidth,
       selectable: false,
@@ -3998,7 +4000,7 @@ mechanicsObjects.byType['pl-inductor'] = class extends PLDrawingBaseElement {
     var xm2 = options.x1 + ((d + gap) / 2) * Math.cos(theta);
     var ym2 = options.y1 + ((d + gap) / 2) * Math.sin(theta);
 
-    let supportingLine1 = new fabric.Line([options.x1, options.y1, xm1, ym1], {
+    let supportingLine1 = new Line([options.x1, options.y1, xm1, ym1], {
       stroke: options.stroke,
       strokeWidth: options.strokeWidth,
       selectable: false,
@@ -4009,7 +4011,7 @@ mechanicsObjects.byType['pl-inductor'] = class extends PLDrawingBaseElement {
     if (!('id' in supportingLine1)) {
       supportingLine1.id = window.PLDrawingApi.generateID();
     }
-    let supportingLine2 = new fabric.Line([xm2, ym2, options.x2, options.y2], {
+    let supportingLine2 = new Line([xm2, ym2, options.x2, options.y2], {
       stroke: options.stroke,
       strokeWidth: options.strokeWidth,
       selectable: false,
@@ -4073,7 +4075,7 @@ mechanicsObjects.byType['pl-switch'] = class extends PLDrawingBaseElement {
     var xm2 = options.x1 + ((d + gap) / 2) * Math.cos(theta);
     var ym2 = options.y1 + ((d + gap) / 2) * Math.sin(theta);
 
-    let supportingLine1 = new fabric.Line([options.x1, options.y1, xm1, ym1], {
+    let supportingLine1 = new Line([options.x1, options.y1, xm1, ym1], {
       stroke: options.stroke,
       strokeWidth: options.strokeWidth,
       selectable: false,
@@ -4084,7 +4086,7 @@ mechanicsObjects.byType['pl-switch'] = class extends PLDrawingBaseElement {
     if (!('id' in supportingLine1)) {
       supportingLine1.id = window.PLDrawingApi.generateID();
     }
-    let supportingLine2 = new fabric.Line([xm2, ym2, options.x2, options.y2], {
+    let supportingLine2 = new Line([xm2, ym2, options.x2, options.y2], {
       stroke: options.stroke,
       strokeWidth: options.strokeWidth,
       selectable: false,
@@ -4110,7 +4112,7 @@ mechanicsObjects.byType['pl-switch'] = class extends PLDrawingBaseElement {
         },
         options,
       );
-      let objPin1 = new fabric.Circle(circleOptions);
+      let objPin1 = new Circle(circleOptions);
       if (!('id' in objPin1)) {
         objPin1.id = window.PLDrawingApi.generateID();
       }
@@ -4121,7 +4123,7 @@ mechanicsObjects.byType['pl-switch'] = class extends PLDrawingBaseElement {
         },
         circleOptions,
       );
-      let objPin2 = new fabric.Circle(circleOptions2);
+      let objPin2 = new Circle(circleOptions2);
       if (!('id' in objPin2)) {
         objPin2.id = window.PLDrawingApi.generateID();
       }
@@ -4136,7 +4138,7 @@ mechanicsObjects.byType['pl-switch'] = class extends PLDrawingBaseElement {
     var cx = xm1 + l * Math.cos(theta2 + theta);
     var cy = ym1 + l * Math.sin(theta2 + theta);
 
-    let objSwitch = new fabric.Line([xm1, ym1, cx, cy], {
+    let objSwitch = new Line([xm1, ym1, cx, cy], {
       stroke: options.stroke,
       strokeWidth: options.strokeWidth,
       selectable: false,
