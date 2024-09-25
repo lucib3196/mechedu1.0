@@ -1,0 +1,14 @@
+{
+  "name": "mechedu1.0",
+  "version": "1.0.0",
+  "description": "The STEM Module Generator is designed to help educators create adaptive quizzes and content for STEM disciplines, with a focus on mechanical engineering subjects. Our platform generates modules containing multiple files, including HTML for solutions and step-by-step guides, and JavaScript for computation and value generation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mathjs": "^13.1.1"
+  }
+}
