@@ -1,184 +1,85 @@
-/* General Styles */
-.lecture-webpage {
-    max-width: 1200px;
-    margin: 0 auto;
+/* Base Font Size */
+body {
+    font-size: 16px;
+}
+
+/* Derivation Sections */
+.derivation-section,
+.single-derivation-section {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.single-derivation-container,.derivation-section {
+    background-color: #f9f9f9; /* Light gray background */
+    border: 1px solid #ddd;    /* Light gray border */
+    border-radius: 5px;        /* Rounded corners */
     padding: 20px;
-    background-color: #ffffff; /* White background for a clean look */
+    margin: 20px 0;
     font-family: Arial, sans-serif;
+    line-height: 1.6;
 }
 
-.footer-section {
-    background-color: #002855; /* UCR Blue */
-    color: #ffffff;
-    padding: 15px;
+
+/* Main Headings */
+.derivation-section .main-heading,
+.single-derivation-container .main-heading {
+    color: #333;
+    font-weight: bold;
+    font-size: 2rem;
     text-align: center;
-    font-size: 0.8em;
 }
 
-/* Headers */
-.main-heading {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #002855; /* UCR Blue */
-}
-
-.sub-heading {
-    font-size: 2em;
-    margin-bottom: 15px;
-    color: #005daa; /* Slightly lighter blue for sub-headings */
-}
-
-.minor-heading {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    color: #0073e6; /* Even lighter blue for minor headings */
-}
-
-/* Summary and Key Concepts */
-.summary-section {
-    background-color: #e1f0ff; /* Light blue background */
-    padding: 20px;
-    border-left: 5px solid #005daa; /* UCR Blue border */
-    margin-bottom: 20px;
-}
-
-.concepts-section {
-    background-color: #fff8e1; /* Light yellow background */
-    padding: 20px;
-    border-left: 5px solid #ffb400; /* UCR Gold */
-    margin-bottom: 20px;
-}
-
-.highlighted-content {
-    background-color: #fffdcc; /* Very light yellow background */
-    padding: 15px;
-    margin-bottom: 15px;
-    border: 1px solid #ffeb3b; /* Bright yellow border */
-}
-
-/* Computational Questions */
-.questions-section {
-    background-color: #e7f4ff; /* Light blue background */
-    padding: 20px;
-    border: 1px solid #cce5ff; /* Soft blue border */
-    margin-bottom: 20px;
-}
-
-.image-container {
+/* Introductory Paragraphs */
+.derivation-section .intro-paragraph,
+.single-derivation-section .intro-paragraph {
+    color: #333;
+    font-weight: bold;
+    font-size: 1rem;
     text-align: center;
-    margin: 15px 0;
+    margin-bottom: 30px;
 }
 
-.main-list {
-    list-style-type: disc;
+/* Ordered Lists */
+.derivation-section ol.numbered-list,
+.single-derivation-section ol.numbered-list {
     margin-left: 20px;
-    color: #002855; /* UCR Blue for list bullets */
+    padding-left: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    /* Remove counter-reset if not using custom counters */
 }
 
-.nested-list {
-    list-style-type: circle;
-    margin-left: 40px;
-    color: #005daa; /* Lighter blue for nested list bullets */
+/* List Items */
+.derivation-section li.list-item,
+.single-derivation-section li.list-item {
+    margin: 10px 0; /* Combines top and bottom margins */
+    padding-left: 5px;
+    font-weight: 500;
+    color: #555;
+    position: relative;
 }
 
-.numbered-list {
-    list-style-type: decimal;
-    margin-left: 20px;
-    color: #002855; /* UCR Blue for numbered list */
+/* Derived Math Formulas */
+.derived-math-formula {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
 }
 
-.list-item {
-    margin-bottom: 5px;
-    color: #002855; /* UCR Blue for list items */
-}
-
-.highlighted-item {
-    font-weight: bold;
-    color: #ffb400; /* UCR Gold for highlighted list items */
-}
-
-/* Derivations */
-.derivation-container {
-    background-color: #f0f0f0; /* Light gray background */
+/* Derivation Stat Container */
+.derivation-stat-container {
+    border: 1px solid black;
+    border-radius: 3px;
     padding: 20px;
-    border: 1px solid #ccc;
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
-.single-derivation-container {
-    background-color: #ffffff; /* White background */
-    padding: 15px;
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
-}
-
-.small-note {
-    font-size: 0.9em;
-    color: #666666; /* Dark gray for small notes */
-}
-
-.important-text {
-    font-weight: bold;
-    color: #002855; /* UCR Blue for important text */
-}
-
-.highlighted-important-text {
-    font-weight: bold;
-    color: #d9534f; /* Red for highlighted important text */
-}
-
-/* Conceptual Questions */
-.multiple-choice-container {
-    background-color: #e0f7fa; /* Light blue background */
-    padding: 20px;
-    border: 1px solid #b3daff; /* Soft blue border */
-    margin-bottom: 20px;
-}
-
-.question-container {
-    margin-bottom: 15px;
-    color: #002855; /* UCR Blue for questions */
-}
-
-.option-container {
-    margin-left: 20px;
-}
-
-.options-list {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.option-item {
-    margin-bottom: 5px;
-    color: #002855; /* UCR Blue for options */
-}
-
-.selected-option {
-    background-color: #ffecb3; /* Light yellow background for selected options */
-    border-left: 3px solid #ffb400; /* UCR Gold border for selected options */
-    padding: 5px;
-}
-
-.question-heading {
-    font-size: 1.5em;
-    color: #005daa; /* Lighter blue for question headings */
-}
-
-/* Paragraphs and Spans */
-.intro-paragraph {
-    font-size: 1.1em;
-    margin-bottom: 15px;
-    color: #002855; /* UCR Blue for introductory paragraphs */
-}
-
-.note-paragraph {
-    font-style: italic;
-    margin-bottom: 10px;
-    color: #666666; /* Dark gray for notes */
-}
-
-.highlight-text {
-    color: #d9534f; /* Red for highlighted text */
-    font-weight: bold;
+/* Text Elements in Stat Container */
+.derivation-stat-container p,
+.derivation-stat-container span,
+.derivation-stat-container h2 {
+    font-size: 1rem;
 }

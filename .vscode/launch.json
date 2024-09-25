@@ -15,6 +15,12 @@
       "module": "src.llm_module_generator.physics_module_generator.math_js_retriever"
     },
     {
+      "name": "Python Debugger: LLM Lecture Er",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.llm_module_generator.physics_module_generator.math_js_retriever"
+    },
+    {
       "name": "Python Debugger: Config Module",
       "type": "debugpy",
       "request": "launch",
@@ -79,6 +85,12 @@
       "type": "debugpy",
       "request": "launch",
       "module": "src.data_handler.test_stuff"
+    },
+    {
+      "name": "Python Debugger:llm extraction leccture ",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.llm_module_generator.image_extraction.image_llm_extraction"
     },
 
     {

@@ -22,15 +22,34 @@ def derivations_parser(response: dict) -> list[str]:
     all_derivations = []
 
     for derivation in derivations:
+        # Extract derivation name
         derivation_name = f"Derivation Name: {derivation.get('derivation_name', 'Unknown')}"
+        
+        # Extract derivation steps
         derivation_steps = "".join(
             f"\n - Explanation: {step.get('explanation', 'No explanation provided')}"
             f"\n - Step: {step.get('output', 'No output provided')}"
             for step in derivation.get("derivation_steps", [])
         )
-        all_derivations.append(f"{derivation_name}{derivation_steps}")
+        
+        # Extract derivation source
+        derivation_source = f"Derivation Source: {derivation.get('derivation_source', 'Unknown source')}"
+        
+        # Extract image stats
+        image_stats = derivation.get("image_stats", [])
+        if image_stats:
+            requires_image = image_stats[0].get("requires_image", "False")
+            recommended_image = image_stats[0].get("recommended_image", "No recommended image")
+            image_info = f"Requires Image: {requires_image}, Recommended Image: {recommended_image}"
+        else:
+            image_info = "No image information available."
+        
+        # Combine all extracted info
+        derivation_info = f"{derivation_name}{derivation_steps}\n{derivation_source}\n{image_info}"
+        all_derivations.append(derivation_info)
     
     return all_derivations
+
 
 def lecture_summary_parser(response: dict) -> list[str]:
     print(response)

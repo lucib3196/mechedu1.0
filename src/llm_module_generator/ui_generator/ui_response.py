@@ -12,7 +12,7 @@ import asyncio
 logger = get_logger(__name__)
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
-css_styles_file = os.path.join(base_dir, 'valid_css_styles_bootstrap.json')
+css_styles_file = os.path.join(base_dir, 'valid_css_styles_generator.json')
 
 with open(css_styles_file,"r") as file:
     css_styles = json.load(file)
@@ -97,6 +97,8 @@ def get_css_description(UItype: UIType,category_interest):
                 description = css_item.get("description", "")
                 css_descriptions += f"- {css_class_name}: {description}\n"
     return css_descriptions
+
+
 async def main():
     # Set valid CSS for the UI class
     print("Setting valid CSS for the UI class with the category 'summary_and_key_concepts'.")

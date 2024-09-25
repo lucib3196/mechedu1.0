@@ -15,8 +15,43 @@
         "div": [
             {
                 "name": "single-derivation-container",
-                "description": "Appropriate for containing a single derivation"
+                "description": "Wraps a single derivation including all steps, metadata, and source information. This should wrap all the content "
+            },
+            {
+                "name": "derivation-stat-container",
+                "description": "Container for image-related metadata such as whether an image is required and the recommended image. and the source of the derivation"
             }
+        ],
+        "h2": [
+            {
+                "name": "derivation-title",
+                "description": "Used for the title of the derivation, typically a heading summarizing the derivation topic."
+            }
+        ],
+        "p": [
+            {
+                "name": "step-explanation",
+                "description": "Applies to the textual explanation for each derivation step, providing context for the equations."
+            },
+            {
+                "name": "derivation-source",
+                "description": "Displays the source of the derivation, often located at the end of the content."
+            }
+        ],
+        "span": [
+            {
+                "name": "requires-image",
+                "description": "Indicates whether an image is required for the derivation."
+            },
+            {
+                "name": "recommended-image",
+                "description": "Describes the recommended image for the derivation, such as diagrams or visual aids."
+            },
+            {
+                "name": "derived-math-formula",
+                "description": "span used to highlight formulas derived in the derivation steps"
+              }
+
         ]
     },
     "conceptual-question-section":{

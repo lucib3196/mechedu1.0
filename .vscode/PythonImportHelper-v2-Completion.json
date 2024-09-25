@@ -6207,7 +6207,7 @@
         "kind": 2,
         "importPath": "src.llm_module_generator.parsers.parser",
         "description": "src.llm_module_generator.parsers.parser",
-        "peekOfCode": "def derivations_parser(response: dict) -> list[str]:\n    derivations = response.get(\"derivations\", [])\n    all_derivations = []\n    for derivation in derivations:\n        derivation_name = f\"Derivation Name: {derivation.get('derivation_name', 'Unknown')}\"\n        derivation_steps = \"\".join(\n            f\"\\n - Explanation: {step.get('explanation', 'No explanation provided')}\"\n            f\"\\n - Step: {step.get('output', 'No output provided')}\"\n            for step in derivation.get(\"derivation_steps\", [])\n        )",
+        "peekOfCode": "def derivations_parser(response: dict) -> list[str]:\n    derivations = response.get(\"derivations\", [])\n    all_derivations = []\n    for derivation in derivations:\n        # Extract derivation name\n        derivation_name = f\"Derivation Name: {derivation.get('derivation_name', 'Unknown')}\"\n        # Extract derivation steps\n        derivation_steps = \"\".join(\n            f\"\\n - Explanation: {step.get('explanation', 'No explanation provided')}\"\n            f\"\\n - Step: {step.get('output', 'No output provided')}\"",
         "detail": "src.llm_module_generator.parsers.parser",
         "documentation": {}
     },
@@ -6873,7 +6873,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.ui_generator.ui_prompts",
         "description": "src.llm_module_generator.ui_generator.ui_prompts",
-        "peekOfCode": "conceptual_question_ui_prompt = \"\"\"\n    You are a web developer tasked with creating an engaging and informative HTML webpage based on the following extracted lecture notes. The webpage should be well-structured, visually appealing, and easy to navigate.\n    You are only focused on working on the following sections. When you need to format any mathematical symbols or equations, use LaTeX enclosed within appropriate delimiters to ensure proper rendering.\n    **Instructions:**\n    1. **Conceptual Questions**: Create a section dedicated to multiple-choice conceptual questions based on the lecture material. Each question should be clearly presented, with four possible answer choices labeled (A), (B), (C), and (D). Indicate the correct answer for each question.\n    - Ensure that all questions and answer choices are formatted using appropriate HTML tags to enhance readability.\n    - If any mathematical notation is required within the questions or answer choices, use LaTeX to format it properly.\n    \"\"\"\nderivation_ui_prompt = \"\"\"\n    You are a web developer tasked with creating an engaging and informative HTML webpage based on the following extracted lecture notes. The webpage should be well-structured, visually appealing, and easy to navigate.",
+        "peekOfCode": "conceptual_question_ui_prompt = \"\"\"\n    You are a web developer tasked with creating an engaging and informative HTML webpage based on the following extracted lecture notes. The webpage should be well-structured, visually appealing, and easy to navigate.\n    You are only focused on working on the following sections. When you need to format any mathematical symbols or equations, use LaTeX enclosed within appropriate delimiters to ensure proper rendering.\n    **Instructions:**\n    1. **Conceptual Questions**: Create a section dedicated to multiple-choice conceptual questions based on the lecture material. Each question should be clearly presented, with four possible answer choices labeled (A), (B), (C), and (D). Indicate the correct answer for each question.\n    - Ensure that all questions and answer choices are formatted using appropriate HTML tags to enhance readability.\n    - If any mathematical notation is required within the questions or answer choices, use LaTeX to format it properly.\n    \"\"\"\nderivation_ui_prompt = \"\"\"\n    You are a web developer tasked with creating an engaging, well-structured, and informative HTML webpage based on the following extracted lecture notes. The webpage should prioritize clarity, ease of navigation, and visual appeal, with a focus on presenting mathematical derivations.",
         "detail": "src.llm_module_generator.ui_generator.ui_prompts",
         "documentation": {}
     },
@@ -6882,7 +6882,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.ui_generator.ui_prompts",
         "description": "src.llm_module_generator.ui_generator.ui_prompts",
-        "peekOfCode": "derivation_ui_prompt = \"\"\"\n    You are a web developer tasked with creating an engaging and informative HTML webpage based on the following extracted lecture notes. The webpage should be well-structured, visually appealing, and easy to navigate.\n    You are only focused on working on the following sections. When you need to format any mathematical symbols or equations, use LaTeX enclosed within appropriate delimiters to ensure proper rendering.\n    **Instructions:**\n    1. **Derivations**: Present any mathematical derivations or logical arguments discussed in the lecture. This section should be meticulously formatted to showcase each step clearly, allowing readers to follow the derivation process step by step. Utilize appropriate HTML tags for mathematical notation and consider using ordered lists or numbered headings to denote each step.\n    - Ensure that all derivations are presented in full detail:\n    \"\"\"\nsummary_ui_prompt = f\"\"\"\n    You are a web developer tasked with creating an engaging and informative HTML webpage based on the following extracted lecture notes. The webpage should be well-structured, visually appealing, and easy to navigate.\n    You are only focused on working on the following sections. When you need to format any mathematical symbols or equations, use LaTeX enclosed within appropriate delimiters to ensure proper rendering.",
+        "peekOfCode": "derivation_ui_prompt = \"\"\"\n    You are a web developer tasked with creating an engaging, well-structured, and informative HTML webpage based on the following extracted lecture notes. The webpage should prioritize clarity, ease of navigation, and visual appeal, with a focus on presenting mathematical derivations.\n    **Goal:**\n    The purpose of the webpage is to clearly showcase mathematical derivations and logical arguments from the lecture in a way that is easy to read, well-organized, and aesthetically pleasing. Pay particular attention to the presentation of the derivation steps and ensure that all mathematical symbols or equations are properly formatted using LaTeX.\n    **Instructions:**\n    1. **Derivations**:\n       - Present each mathematical derivation or logical argument in full, broken down into clear and understandable steps. For each derivation:\n         - **Use Ordered Lists or Numbered Headings** to display the step-by-step process, ensuring that each step is easy to follow.\n         - Ensure the **explanation** of each step is concise, using HTML `<p>` tags for descriptions.\n         - For mathematical expressions, use **LaTeX** enclosed within `$$` or `\\\\(\\\\)` delimiters to ensure proper rendering.",
         "detail": "src.llm_module_generator.ui_generator.ui_prompts",
         "documentation": {}
     },
@@ -6936,7 +6936,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.ui_generator.ui_response",
         "description": "src.llm_module_generator.ui_generator.ui_response",
-        "peekOfCode": "logger = get_logger(__name__)\nbase_dir = os.path.dirname(os.path.abspath(__file__))\ncss_styles_file = os.path.join(base_dir, 'valid_css_styles_bootstrap.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"\n        ol = \"ol\"",
+        "peekOfCode": "logger = get_logger(__name__)\nbase_dir = os.path.dirname(os.path.abspath(__file__))\ncss_styles_file = os.path.join(base_dir, 'valid_css_styles_generator.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"\n        ol = \"ol\"",
         "detail": "src.llm_module_generator.ui_generator.ui_response",
         "documentation": {}
     },
@@ -6945,7 +6945,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.ui_generator.ui_response",
         "description": "src.llm_module_generator.ui_generator.ui_response",
-        "peekOfCode": "base_dir = os.path.dirname(os.path.abspath(__file__))\ncss_styles_file = os.path.join(base_dir, 'valid_css_styles_bootstrap.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"\n        ol = \"ol\"\n        li = \"li\"",
+        "peekOfCode": "base_dir = os.path.dirname(os.path.abspath(__file__))\ncss_styles_file = os.path.join(base_dir, 'valid_css_styles_generator.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"\n        ol = \"ol\"\n        li = \"li\"",
         "detail": "src.llm_module_generator.ui_generator.ui_response",
         "documentation": {}
     },
@@ -6954,7 +6954,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.ui_generator.ui_response",
         "description": "src.llm_module_generator.ui_generator.ui_response",
-        "peekOfCode": "css_styles_file = os.path.join(base_dir, 'valid_css_styles_bootstrap.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"\n        ol = \"ol\"\n        li = \"li\"\n        h1 = \"h1\"",
+        "peekOfCode": "css_styles_file = os.path.join(base_dir, 'valid_css_styles_generator.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"\n        ol = \"ol\"\n        li = \"li\"\n        h1 = \"h1\"",
         "detail": "src.llm_module_generator.ui_generator.ui_response",
         "documentation": {}
     },
