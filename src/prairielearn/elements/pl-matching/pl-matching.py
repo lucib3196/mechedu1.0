@@ -21,9 +21,13 @@ BLANK_ANSWER = " "
 NOTA_DEFAULT = False
 COUNTER_TYPE_DEFAULT = "lower-alpha"
 
+# Get the absolute path of the current module
 current_module_path = os.path.abspath(__file__)
-print(current_module_path)
-MATCHING_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,"..","pl-matching.mustache")
+
+# Get the directory of the current module
+current_module_dir = os.path.dirname(current_module_path)
+
+MATCHING_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,"pl-matching.mustache")
 
 class OptionsPlacementType(Enum):
     RIGHT = "right"

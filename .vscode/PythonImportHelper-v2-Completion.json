@@ -7530,7 +7530,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "description": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
-        "peekOfCode": "HIDE_ANSWER_PANEL_DEFAULT = False\nHIDE_HELP_TEXT_DEFAULT = False\nDETAILED_HELP_TEXT_DEFAULT = False\nHIDE_LETTER_KEYS_DEFAULT = False\nHIDE_SCORE_BADGE_DEFAULT = False\nSHOW_NUMBER_CORRECT_DEFAULT = False\nMIN_CORRECT_DEFAULT = 1\nMIN_SELECT_DEFAULT = 1\nFEEDBACK_DEFAULT = None\ncurrent_module_path = os.path.abspath(__file__)",
+        "peekOfCode": "HIDE_ANSWER_PANEL_DEFAULT = False\nHIDE_HELP_TEXT_DEFAULT = False\nDETAILED_HELP_TEXT_DEFAULT = False\nHIDE_LETTER_KEYS_DEFAULT = False\nHIDE_SCORE_BADGE_DEFAULT = False\nSHOW_NUMBER_CORRECT_DEFAULT = False\nMIN_CORRECT_DEFAULT = 1\nMIN_SELECT_DEFAULT = 1\nFEEDBACK_DEFAULT = None\n# Get the absolute path of the current module",
         "detail": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "documentation": {}
     },
@@ -7539,7 +7539,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "description": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
-        "peekOfCode": "HIDE_HELP_TEXT_DEFAULT = False\nDETAILED_HELP_TEXT_DEFAULT = False\nHIDE_LETTER_KEYS_DEFAULT = False\nHIDE_SCORE_BADGE_DEFAULT = False\nSHOW_NUMBER_CORRECT_DEFAULT = False\nMIN_CORRECT_DEFAULT = 1\nMIN_SELECT_DEFAULT = 1\nFEEDBACK_DEFAULT = None\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)",
+        "peekOfCode": "HIDE_HELP_TEXT_DEFAULT = False\nDETAILED_HELP_TEXT_DEFAULT = False\nHIDE_LETTER_KEYS_DEFAULT = False\nHIDE_SCORE_BADGE_DEFAULT = False\nSHOW_NUMBER_CORRECT_DEFAULT = False\nMIN_CORRECT_DEFAULT = 1\nMIN_SELECT_DEFAULT = 1\nFEEDBACK_DEFAULT = None\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)",
         "detail": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "documentation": {}
     },
@@ -7548,7 +7548,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "description": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
-        "peekOfCode": "DETAILED_HELP_TEXT_DEFAULT = False\nHIDE_LETTER_KEYS_DEFAULT = False\nHIDE_SCORE_BADGE_DEFAULT = False\nSHOW_NUMBER_CORRECT_DEFAULT = False\nMIN_CORRECT_DEFAULT = 1\nMIN_SELECT_DEFAULT = 1\nFEEDBACK_DEFAULT = None\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nCHECKBOX_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-checkbox.mustache\" )",
+        "peekOfCode": "DETAILED_HELP_TEXT_DEFAULT = False\nHIDE_LETTER_KEYS_DEFAULT = False\nHIDE_SCORE_BADGE_DEFAULT = False\nSHOW_NUMBER_CORRECT_DEFAULT = False\nMIN_CORRECT_DEFAULT = 1\nMIN_SELECT_DEFAULT = 1\nFEEDBACK_DEFAULT = None\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module",
         "detail": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "documentation": {}
     },
@@ -7557,7 +7557,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "description": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
-        "peekOfCode": "HIDE_LETTER_KEYS_DEFAULT = False\nHIDE_SCORE_BADGE_DEFAULT = False\nSHOW_NUMBER_CORRECT_DEFAULT = False\nMIN_CORRECT_DEFAULT = 1\nMIN_SELECT_DEFAULT = 1\nFEEDBACK_DEFAULT = None\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nCHECKBOX_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-checkbox.mustache\" )\ndef prepare(element_html, data):",
+        "peekOfCode": "HIDE_LETTER_KEYS_DEFAULT = False\nHIDE_SCORE_BADGE_DEFAULT = False\nSHOW_NUMBER_CORRECT_DEFAULT = False\nMIN_CORRECT_DEFAULT = 1\nMIN_SELECT_DEFAULT = 1\nFEEDBACK_DEFAULT = None\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)",
         "detail": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "documentation": {}
     },
@@ -7566,7 +7566,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "description": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
-        "peekOfCode": "HIDE_SCORE_BADGE_DEFAULT = False\nSHOW_NUMBER_CORRECT_DEFAULT = False\nMIN_CORRECT_DEFAULT = 1\nMIN_SELECT_DEFAULT = 1\nFEEDBACK_DEFAULT = None\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nCHECKBOX_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-checkbox.mustache\" )\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)",
+        "peekOfCode": "HIDE_SCORE_BADGE_DEFAULT = False\nSHOW_NUMBER_CORRECT_DEFAULT = False\nMIN_CORRECT_DEFAULT = 1\nMIN_SELECT_DEFAULT = 1\nFEEDBACK_DEFAULT = None\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nCHECKBOX_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-checkbox.mustache\" )",
         "detail": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "documentation": {}
     },
@@ -7575,7 +7575,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "description": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
-        "peekOfCode": "SHOW_NUMBER_CORRECT_DEFAULT = False\nMIN_CORRECT_DEFAULT = 1\nMIN_SELECT_DEFAULT = 1\nFEEDBACK_DEFAULT = None\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nCHECKBOX_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-checkbox.mustache\" )\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    print(element)",
+        "peekOfCode": "SHOW_NUMBER_CORRECT_DEFAULT = False\nMIN_CORRECT_DEFAULT = 1\nMIN_SELECT_DEFAULT = 1\nFEEDBACK_DEFAULT = None\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nCHECKBOX_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-checkbox.mustache\" )\ndef prepare(element_html, data):",
         "detail": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "documentation": {}
     },
@@ -7584,7 +7584,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "description": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
-        "peekOfCode": "MIN_CORRECT_DEFAULT = 1\nMIN_SELECT_DEFAULT = 1\nFEEDBACK_DEFAULT = None\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nCHECKBOX_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-checkbox.mustache\" )\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    print(element)\n    required_attribs = [\"answers-name\"]",
+        "peekOfCode": "MIN_CORRECT_DEFAULT = 1\nMIN_SELECT_DEFAULT = 1\nFEEDBACK_DEFAULT = None\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nCHECKBOX_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-checkbox.mustache\" )\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)",
         "detail": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "documentation": {}
     },
@@ -7593,7 +7593,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "description": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
-        "peekOfCode": "MIN_SELECT_DEFAULT = 1\nFEEDBACK_DEFAULT = None\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nCHECKBOX_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-checkbox.mustache\" )\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    print(element)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [",
+        "peekOfCode": "MIN_SELECT_DEFAULT = 1\nFEEDBACK_DEFAULT = None\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nCHECKBOX_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-checkbox.mustache\" )\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    print(element)",
         "detail": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "documentation": {}
     },
@@ -7602,7 +7602,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "description": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
-        "peekOfCode": "FEEDBACK_DEFAULT = None\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nCHECKBOX_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-checkbox.mustache\" )\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    print(element)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",",
+        "peekOfCode": "FEEDBACK_DEFAULT = None\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nCHECKBOX_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-checkbox.mustache\" )\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    print(element)\n    required_attribs = [\"answers-name\"]",
         "detail": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "documentation": {}
     },
@@ -7611,7 +7611,16 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "description": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
-        "peekOfCode": "current_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nCHECKBOX_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-checkbox.mustache\" )\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    print(element)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",\n        \"number-answers\",",
+        "peekOfCode": "current_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nCHECKBOX_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-checkbox.mustache\" )\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    print(element)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",",
+        "detail": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
+        "documentation": {}
+    },
+    {
+        "label": "current_module_dir",
+        "kind": 5,
+        "importPath": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
+        "description": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
+        "peekOfCode": "current_module_dir = os.path.dirname(current_module_path)\nCHECKBOX_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-checkbox.mustache\" )\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    print(element)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",\n        \"number-answers\",\n        \"min-correct\",",
         "detail": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "documentation": {}
     },
@@ -7620,7 +7629,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "description": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
-        "peekOfCode": "CHECKBOX_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-checkbox.mustache\" )\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    print(element)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",\n        \"number-answers\",\n        \"min-correct\",\n        \"max-correct\",",
+        "peekOfCode": "CHECKBOX_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-checkbox.mustache\" )\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    print(element)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",\n        \"number-answers\",\n        \"min-correct\",\n        \"max-correct\",",
         "detail": "src.prairielearn.elements.pl-checkbox.pl-checkbox",
         "documentation": {}
     },
@@ -9915,7 +9924,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "description": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
-        "peekOfCode": "LABEL_DEFAULT = None\nSUFFIX_DEFAULT = None\nDISPLAY_DEFAULT = DisplayType.INLINE\nSIZE_DEFAULT = 35\nSHOW_HELP_TEXT_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\nBASE_DEFAULT = 10\nSHOW_SCORE_DEFAULT = True\ncurrent_module_path = os.path.abspath(__file__)",
+        "peekOfCode": "LABEL_DEFAULT = None\nSUFFIX_DEFAULT = None\nDISPLAY_DEFAULT = DisplayType.INLINE\nSIZE_DEFAULT = 35\nSHOW_HELP_TEXT_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\nBASE_DEFAULT = 10\nSHOW_SCORE_DEFAULT = True\n# Get the absolute path of the current module",
         "detail": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "documentation": {}
     },
@@ -9924,7 +9933,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "description": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
-        "peekOfCode": "SUFFIX_DEFAULT = None\nDISPLAY_DEFAULT = DisplayType.INLINE\nSIZE_DEFAULT = 35\nSHOW_HELP_TEXT_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\nBASE_DEFAULT = 10\nSHOW_SCORE_DEFAULT = True\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)",
+        "peekOfCode": "SUFFIX_DEFAULT = None\nDISPLAY_DEFAULT = DisplayType.INLINE\nSIZE_DEFAULT = 35\nSHOW_HELP_TEXT_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\nBASE_DEFAULT = 10\nSHOW_SCORE_DEFAULT = True\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)",
         "detail": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "documentation": {}
     },
@@ -9933,7 +9942,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "description": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
-        "peekOfCode": "DISPLAY_DEFAULT = DisplayType.INLINE\nSIZE_DEFAULT = 35\nSHOW_HELP_TEXT_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\nBASE_DEFAULT = 10\nSHOW_SCORE_DEFAULT = True\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nINTEGER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-integer-input.mustache\")",
+        "peekOfCode": "DISPLAY_DEFAULT = DisplayType.INLINE\nSIZE_DEFAULT = 35\nSHOW_HELP_TEXT_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\nBASE_DEFAULT = 10\nSHOW_SCORE_DEFAULT = True\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module",
         "detail": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "documentation": {}
     },
@@ -9942,7 +9951,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "description": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
-        "peekOfCode": "SIZE_DEFAULT = 35\nSHOW_HELP_TEXT_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\nBASE_DEFAULT = 10\nSHOW_SCORE_DEFAULT = True\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nINTEGER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-integer-input.mustache\")\ndef prepare(element_html: str, data: pl.QuestionData) -> None:",
+        "peekOfCode": "SIZE_DEFAULT = 35\nSHOW_HELP_TEXT_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\nBASE_DEFAULT = 10\nSHOW_SCORE_DEFAULT = True\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)",
         "detail": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "documentation": {}
     },
@@ -9951,7 +9960,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "description": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
-        "peekOfCode": "SHOW_HELP_TEXT_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\nBASE_DEFAULT = 10\nSHOW_SCORE_DEFAULT = True\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nINTEGER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-integer-input.mustache\")\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)",
+        "peekOfCode": "SHOW_HELP_TEXT_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\nBASE_DEFAULT = 10\nSHOW_SCORE_DEFAULT = True\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nINTEGER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-integer-input.mustache\")",
         "detail": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "documentation": {}
     },
@@ -9960,7 +9969,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "description": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
-        "peekOfCode": "ALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\nBASE_DEFAULT = 10\nSHOW_SCORE_DEFAULT = True\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nINTEGER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-integer-input.mustache\")\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]",
+        "peekOfCode": "ALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\nBASE_DEFAULT = 10\nSHOW_SCORE_DEFAULT = True\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nINTEGER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-integer-input.mustache\")\ndef prepare(element_html: str, data: pl.QuestionData) -> None:",
         "detail": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "documentation": {}
     },
@@ -9969,7 +9978,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "description": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
-        "peekOfCode": "BLANK_VALUE_DEFAULT = 0\nBASE_DEFAULT = 10\nSHOW_SCORE_DEFAULT = True\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nINTEGER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-integer-input.mustache\")\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [",
+        "peekOfCode": "BLANK_VALUE_DEFAULT = 0\nBASE_DEFAULT = 10\nSHOW_SCORE_DEFAULT = True\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nINTEGER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-integer-input.mustache\")\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)",
         "detail": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "documentation": {}
     },
@@ -9978,7 +9987,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "description": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
-        "peekOfCode": "BASE_DEFAULT = 10\nSHOW_SCORE_DEFAULT = True\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nINTEGER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-integer-input.mustache\")\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",",
+        "peekOfCode": "BASE_DEFAULT = 10\nSHOW_SCORE_DEFAULT = True\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nINTEGER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-integer-input.mustache\")\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]",
         "detail": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "documentation": {}
     },
@@ -9987,7 +9996,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "description": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
-        "peekOfCode": "SHOW_SCORE_DEFAULT = True\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nINTEGER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-integer-input.mustache\")\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",\n        \"correct-answer\",",
+        "peekOfCode": "SHOW_SCORE_DEFAULT = True\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nINTEGER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-integer-input.mustache\")\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [",
         "detail": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "documentation": {}
     },
@@ -9996,7 +10005,16 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "description": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
-        "peekOfCode": "current_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nINTEGER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-integer-input.mustache\")\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",\n        \"correct-answer\",\n        \"label\",",
+        "peekOfCode": "current_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nINTEGER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-integer-input.mustache\")\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",\n        \"correct-answer\",",
+        "detail": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
+        "documentation": {}
+    },
+    {
+        "label": "current_module_dir",
+        "kind": 5,
+        "importPath": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
+        "description": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
+        "peekOfCode": "current_module_dir = os.path.dirname(current_module_path)\nINTEGER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-integer-input.mustache\")\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",\n        \"correct-answer\",\n        \"label\",\n        \"suffix\",",
         "detail": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "documentation": {}
     },
@@ -10005,7 +10023,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "description": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
-        "peekOfCode": "INTEGER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-integer-input.mustache\")\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",\n        \"correct-answer\",\n        \"label\",\n        \"suffix\",\n        \"display\",",
+        "peekOfCode": "INTEGER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-integer-input.mustache\")\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",\n        \"correct-answer\",\n        \"label\",\n        \"suffix\",\n        \"display\",",
         "detail": "src.prairielearn.elements.pl-integer-input.pl-integer-input",
         "documentation": {}
     },
@@ -10185,7 +10203,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matching.pl-matching",
         "description": "src.prairielearn.elements.pl-matching.pl-matching",
-        "peekOfCode": "HIDE_ANSWER_PANEL_DEFAULT = False\nHIDE_HELP_TEXT_DEFAULT = False\nDETAILED_HELP_TEXT_DEFAULT = False\nHIDE_SCORE_BADGE_DEFAULT = False\nALLOW_BLANK_DEFAULT = False\nBLANK_DEFAULT = True\nBLANK_ANSWER = \" \"\nNOTA_DEFAULT = False\nCOUNTER_TYPE_DEFAULT = \"lower-alpha\"\ncurrent_module_path = os.path.abspath(__file__)",
+        "peekOfCode": "HIDE_ANSWER_PANEL_DEFAULT = False\nHIDE_HELP_TEXT_DEFAULT = False\nDETAILED_HELP_TEXT_DEFAULT = False\nHIDE_SCORE_BADGE_DEFAULT = False\nALLOW_BLANK_DEFAULT = False\nBLANK_DEFAULT = True\nBLANK_ANSWER = \" \"\nNOTA_DEFAULT = False\nCOUNTER_TYPE_DEFAULT = \"lower-alpha\"\n# Get the absolute path of the current module",
         "detail": "src.prairielearn.elements.pl-matching.pl-matching",
         "documentation": {}
     },
@@ -10194,7 +10212,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matching.pl-matching",
         "description": "src.prairielearn.elements.pl-matching.pl-matching",
-        "peekOfCode": "HIDE_HELP_TEXT_DEFAULT = False\nDETAILED_HELP_TEXT_DEFAULT = False\nHIDE_SCORE_BADGE_DEFAULT = False\nALLOW_BLANK_DEFAULT = False\nBLANK_DEFAULT = True\nBLANK_ANSWER = \" \"\nNOTA_DEFAULT = False\nCOUNTER_TYPE_DEFAULT = \"lower-alpha\"\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)",
+        "peekOfCode": "HIDE_HELP_TEXT_DEFAULT = False\nDETAILED_HELP_TEXT_DEFAULT = False\nHIDE_SCORE_BADGE_DEFAULT = False\nALLOW_BLANK_DEFAULT = False\nBLANK_DEFAULT = True\nBLANK_ANSWER = \" \"\nNOTA_DEFAULT = False\nCOUNTER_TYPE_DEFAULT = \"lower-alpha\"\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)",
         "detail": "src.prairielearn.elements.pl-matching.pl-matching",
         "documentation": {}
     },
@@ -10203,7 +10221,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matching.pl-matching",
         "description": "src.prairielearn.elements.pl-matching.pl-matching",
-        "peekOfCode": "DETAILED_HELP_TEXT_DEFAULT = False\nHIDE_SCORE_BADGE_DEFAULT = False\nALLOW_BLANK_DEFAULT = False\nBLANK_DEFAULT = True\nBLANK_ANSWER = \" \"\nNOTA_DEFAULT = False\nCOUNTER_TYPE_DEFAULT = \"lower-alpha\"\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nMATCHING_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-matching.mustache\")",
+        "peekOfCode": "DETAILED_HELP_TEXT_DEFAULT = False\nHIDE_SCORE_BADGE_DEFAULT = False\nALLOW_BLANK_DEFAULT = False\nBLANK_DEFAULT = True\nBLANK_ANSWER = \" \"\nNOTA_DEFAULT = False\nCOUNTER_TYPE_DEFAULT = \"lower-alpha\"\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module",
         "detail": "src.prairielearn.elements.pl-matching.pl-matching",
         "documentation": {}
     },
@@ -10212,7 +10230,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matching.pl-matching",
         "description": "src.prairielearn.elements.pl-matching.pl-matching",
-        "peekOfCode": "HIDE_SCORE_BADGE_DEFAULT = False\nALLOW_BLANK_DEFAULT = False\nBLANK_DEFAULT = True\nBLANK_ANSWER = \" \"\nNOTA_DEFAULT = False\nCOUNTER_TYPE_DEFAULT = \"lower-alpha\"\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nMATCHING_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-matching.mustache\")\nclass OptionsPlacementType(Enum):",
+        "peekOfCode": "HIDE_SCORE_BADGE_DEFAULT = False\nALLOW_BLANK_DEFAULT = False\nBLANK_DEFAULT = True\nBLANK_ANSWER = \" \"\nNOTA_DEFAULT = False\nCOUNTER_TYPE_DEFAULT = \"lower-alpha\"\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)",
         "detail": "src.prairielearn.elements.pl-matching.pl-matching",
         "documentation": {}
     },
@@ -10221,7 +10239,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matching.pl-matching",
         "description": "src.prairielearn.elements.pl-matching.pl-matching",
-        "peekOfCode": "ALLOW_BLANK_DEFAULT = False\nBLANK_DEFAULT = True\nBLANK_ANSWER = \" \"\nNOTA_DEFAULT = False\nCOUNTER_TYPE_DEFAULT = \"lower-alpha\"\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nMATCHING_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-matching.mustache\")\nclass OptionsPlacementType(Enum):\n    RIGHT = \"right\"",
+        "peekOfCode": "ALLOW_BLANK_DEFAULT = False\nBLANK_DEFAULT = True\nBLANK_ANSWER = \" \"\nNOTA_DEFAULT = False\nCOUNTER_TYPE_DEFAULT = \"lower-alpha\"\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nMATCHING_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"pl-matching.mustache\")",
         "detail": "src.prairielearn.elements.pl-matching.pl-matching",
         "documentation": {}
     },
@@ -10230,7 +10248,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matching.pl-matching",
         "description": "src.prairielearn.elements.pl-matching.pl-matching",
-        "peekOfCode": "BLANK_DEFAULT = True\nBLANK_ANSWER = \" \"\nNOTA_DEFAULT = False\nCOUNTER_TYPE_DEFAULT = \"lower-alpha\"\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nMATCHING_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-matching.mustache\")\nclass OptionsPlacementType(Enum):\n    RIGHT = \"right\"\n    BOTTOM = \"bottom\"",
+        "peekOfCode": "BLANK_DEFAULT = True\nBLANK_ANSWER = \" \"\nNOTA_DEFAULT = False\nCOUNTER_TYPE_DEFAULT = \"lower-alpha\"\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nMATCHING_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"pl-matching.mustache\")\nclass OptionsPlacementType(Enum):",
         "detail": "src.prairielearn.elements.pl-matching.pl-matching",
         "documentation": {}
     },
@@ -10239,7 +10257,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matching.pl-matching",
         "description": "src.prairielearn.elements.pl-matching.pl-matching",
-        "peekOfCode": "BLANK_ANSWER = \" \"\nNOTA_DEFAULT = False\nCOUNTER_TYPE_DEFAULT = \"lower-alpha\"\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nMATCHING_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-matching.mustache\")\nclass OptionsPlacementType(Enum):\n    RIGHT = \"right\"\n    BOTTOM = \"bottom\"\ndef get_form_name(answers_name, index):",
+        "peekOfCode": "BLANK_ANSWER = \" \"\nNOTA_DEFAULT = False\nCOUNTER_TYPE_DEFAULT = \"lower-alpha\"\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nMATCHING_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"pl-matching.mustache\")\nclass OptionsPlacementType(Enum):\n    RIGHT = \"right\"",
         "detail": "src.prairielearn.elements.pl-matching.pl-matching",
         "documentation": {}
     },
@@ -10248,7 +10266,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matching.pl-matching",
         "description": "src.prairielearn.elements.pl-matching.pl-matching",
-        "peekOfCode": "NOTA_DEFAULT = False\nCOUNTER_TYPE_DEFAULT = \"lower-alpha\"\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nMATCHING_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-matching.mustache\")\nclass OptionsPlacementType(Enum):\n    RIGHT = \"right\"\n    BOTTOM = \"bottom\"\ndef get_form_name(answers_name, index):\n    return f\"{answers_name}-dropdown-{index}\"",
+        "peekOfCode": "NOTA_DEFAULT = False\nCOUNTER_TYPE_DEFAULT = \"lower-alpha\"\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nMATCHING_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"pl-matching.mustache\")\nclass OptionsPlacementType(Enum):\n    RIGHT = \"right\"\n    BOTTOM = \"bottom\"",
         "detail": "src.prairielearn.elements.pl-matching.pl-matching",
         "documentation": {}
     },
@@ -10257,7 +10275,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matching.pl-matching",
         "description": "src.prairielearn.elements.pl-matching.pl-matching",
-        "peekOfCode": "COUNTER_TYPE_DEFAULT = \"lower-alpha\"\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nMATCHING_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-matching.mustache\")\nclass OptionsPlacementType(Enum):\n    RIGHT = \"right\"\n    BOTTOM = \"bottom\"\ndef get_form_name(answers_name, index):\n    return f\"{answers_name}-dropdown-{index}\"\ndef get_counter(i, counter_type):",
+        "peekOfCode": "COUNTER_TYPE_DEFAULT = \"lower-alpha\"\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nMATCHING_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"pl-matching.mustache\")\nclass OptionsPlacementType(Enum):\n    RIGHT = \"right\"\n    BOTTOM = \"bottom\"\ndef get_form_name(answers_name, index):",
         "detail": "src.prairielearn.elements.pl-matching.pl-matching",
         "documentation": {}
     },
@@ -10266,7 +10284,16 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matching.pl-matching",
         "description": "src.prairielearn.elements.pl-matching.pl-matching",
-        "peekOfCode": "current_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nMATCHING_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-matching.mustache\")\nclass OptionsPlacementType(Enum):\n    RIGHT = \"right\"\n    BOTTOM = \"bottom\"\ndef get_form_name(answers_name, index):\n    return f\"{answers_name}-dropdown-{index}\"\ndef get_counter(i, counter_type):\n    \"\"\"Converts an integer counter to the specified CSS counter type\"\"\"",
+        "peekOfCode": "current_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nMATCHING_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"pl-matching.mustache\")\nclass OptionsPlacementType(Enum):\n    RIGHT = \"right\"\n    BOTTOM = \"bottom\"\ndef get_form_name(answers_name, index):\n    return f\"{answers_name}-dropdown-{index}\"\ndef get_counter(i, counter_type):",
+        "detail": "src.prairielearn.elements.pl-matching.pl-matching",
+        "documentation": {}
+    },
+    {
+        "label": "current_module_dir",
+        "kind": 5,
+        "importPath": "src.prairielearn.elements.pl-matching.pl-matching",
+        "description": "src.prairielearn.elements.pl-matching.pl-matching",
+        "peekOfCode": "current_module_dir = os.path.dirname(current_module_path)\nMATCHING_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"pl-matching.mustache\")\nclass OptionsPlacementType(Enum):\n    RIGHT = \"right\"\n    BOTTOM = \"bottom\"\ndef get_form_name(answers_name, index):\n    return f\"{answers_name}-dropdown-{index}\"\ndef get_counter(i, counter_type):\n    \"\"\"Converts an integer counter to the specified CSS counter type\"\"\"\n    if counter_type == \"lower-alpha\":",
         "detail": "src.prairielearn.elements.pl-matching.pl-matching",
         "documentation": {}
     },
@@ -10275,7 +10302,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matching.pl-matching",
         "description": "src.prairielearn.elements.pl-matching.pl-matching",
-        "peekOfCode": "MATCHING_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-matching.mustache\")\nclass OptionsPlacementType(Enum):\n    RIGHT = \"right\"\n    BOTTOM = \"bottom\"\ndef get_form_name(answers_name, index):\n    return f\"{answers_name}-dropdown-{index}\"\ndef get_counter(i, counter_type):\n    \"\"\"Converts an integer counter to the specified CSS counter type\"\"\"\n    if counter_type == \"lower-alpha\":\n        return pl.index2key(i - 1)",
+        "peekOfCode": "MATCHING_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"pl-matching.mustache\")\nclass OptionsPlacementType(Enum):\n    RIGHT = \"right\"\n    BOTTOM = \"bottom\"\ndef get_form_name(answers_name, index):\n    return f\"{answers_name}-dropdown-{index}\"\ndef get_counter(i, counter_type):\n    \"\"\"Converts an integer counter to the specified CSS counter type\"\"\"\n    if counter_type == \"lower-alpha\":\n        return pl.index2key(i - 1)",
         "detail": "src.prairielearn.elements.pl-matching.pl-matching",
         "documentation": {}
     },
@@ -10347,7 +10374,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "description": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
-        "peekOfCode": "LABEL_DEFAULT = None\nCOMPARISON_DEFAULT = \"relabs\"\nRTOL_DEFAULT = 1e-2\nATOL_DEFAULT = 1e-8\nDIGITS_DEFAULT = 2\nALLOW_PARTIAL_CREDIT_DEFAULT = False\nALLOW_FRACTIONS_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\ncurrent_module_path = os.path.abspath(__file__)",
+        "peekOfCode": "LABEL_DEFAULT = None\nCOMPARISON_DEFAULT = \"relabs\"\nRTOL_DEFAULT = 1e-2\nATOL_DEFAULT = 1e-8\nDIGITS_DEFAULT = 2\nALLOW_PARTIAL_CREDIT_DEFAULT = False\nALLOW_FRACTIONS_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\n# Get the absolute path of the current module",
         "detail": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "documentation": {}
     },
@@ -10356,7 +10383,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "description": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
-        "peekOfCode": "COMPARISON_DEFAULT = \"relabs\"\nRTOL_DEFAULT = 1e-2\nATOL_DEFAULT = 1e-8\nDIGITS_DEFAULT = 2\nALLOW_PARTIAL_CREDIT_DEFAULT = False\nALLOW_FRACTIONS_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)",
+        "peekOfCode": "COMPARISON_DEFAULT = \"relabs\"\nRTOL_DEFAULT = 1e-2\nATOL_DEFAULT = 1e-8\nDIGITS_DEFAULT = 2\nALLOW_PARTIAL_CREDIT_DEFAULT = False\nALLOW_FRACTIONS_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)",
         "detail": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "documentation": {}
     },
@@ -10365,7 +10392,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "description": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
-        "peekOfCode": "RTOL_DEFAULT = 1e-2\nATOL_DEFAULT = 1e-8\nDIGITS_DEFAULT = 2\nALLOW_PARTIAL_CREDIT_DEFAULT = False\nALLOW_FRACTIONS_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nMATRIX_COMP_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-matrix-component-input.mustache\")",
+        "peekOfCode": "RTOL_DEFAULT = 1e-2\nATOL_DEFAULT = 1e-8\nDIGITS_DEFAULT = 2\nALLOW_PARTIAL_CREDIT_DEFAULT = False\nALLOW_FRACTIONS_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module",
         "detail": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "documentation": {}
     },
@@ -10374,7 +10401,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "description": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
-        "peekOfCode": "ATOL_DEFAULT = 1e-8\nDIGITS_DEFAULT = 2\nALLOW_PARTIAL_CREDIT_DEFAULT = False\nALLOW_FRACTIONS_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nMATRIX_COMP_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-matrix-component-input.mustache\")\ndef prepare(element_html, data):",
+        "peekOfCode": "ATOL_DEFAULT = 1e-8\nDIGITS_DEFAULT = 2\nALLOW_PARTIAL_CREDIT_DEFAULT = False\nALLOW_FRACTIONS_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)",
         "detail": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "documentation": {}
     },
@@ -10383,7 +10410,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "description": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
-        "peekOfCode": "DIGITS_DEFAULT = 2\nALLOW_PARTIAL_CREDIT_DEFAULT = False\nALLOW_FRACTIONS_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nMATRIX_COMP_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-matrix-component-input.mustache\")\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)",
+        "peekOfCode": "DIGITS_DEFAULT = 2\nALLOW_PARTIAL_CREDIT_DEFAULT = False\nALLOW_FRACTIONS_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nMATRIX_COMP_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-matrix-component-input.mustache\")",
         "detail": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "documentation": {}
     },
@@ -10392,7 +10419,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "description": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
-        "peekOfCode": "ALLOW_PARTIAL_CREDIT_DEFAULT = False\nALLOW_FRACTIONS_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nMATRIX_COMP_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-matrix-component-input.mustache\")\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]",
+        "peekOfCode": "ALLOW_PARTIAL_CREDIT_DEFAULT = False\nALLOW_FRACTIONS_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nMATRIX_COMP_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-matrix-component-input.mustache\")\ndef prepare(element_html, data):",
         "detail": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "documentation": {}
     },
@@ -10401,7 +10428,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "description": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
-        "peekOfCode": "ALLOW_FRACTIONS_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nMATRIX_COMP_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-matrix-component-input.mustache\")\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [",
+        "peekOfCode": "ALLOW_FRACTIONS_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nMATRIX_COMP_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-matrix-component-input.mustache\")\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)",
         "detail": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "documentation": {}
     },
@@ -10410,7 +10437,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "description": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
-        "peekOfCode": "ALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nMATRIX_COMP_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-matrix-component-input.mustache\")\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",",
+        "peekOfCode": "ALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nMATRIX_COMP_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-matrix-component-input.mustache\")\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]",
         "detail": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "documentation": {}
     },
@@ -10419,7 +10446,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "description": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
-        "peekOfCode": "BLANK_VALUE_DEFAULT = 0\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nMATRIX_COMP_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-matrix-component-input.mustache\")\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",\n        \"label\",",
+        "peekOfCode": "BLANK_VALUE_DEFAULT = 0\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nMATRIX_COMP_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-matrix-component-input.mustache\")\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [",
         "detail": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "documentation": {}
     },
@@ -10428,7 +10455,16 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "description": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
-        "peekOfCode": "current_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nMATRIX_COMP_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-matrix-component-input.mustache\")\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",\n        \"label\",\n        \"comparison\",",
+        "peekOfCode": "current_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nMATRIX_COMP_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-matrix-component-input.mustache\")\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",\n        \"label\",",
+        "detail": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
+        "documentation": {}
+    },
+    {
+        "label": "current_module_dir",
+        "kind": 5,
+        "importPath": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
+        "description": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
+        "peekOfCode": "current_module_dir = os.path.dirname(current_module_path)\nMATRIX_COMP_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-matrix-component-input.mustache\")\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",\n        \"label\",\n        \"comparison\",\n        \"rtol\",",
         "detail": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "documentation": {}
     },
@@ -10437,7 +10473,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "description": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
-        "peekOfCode": "MATRIX_COMP_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-matrix-component-input.mustache\")\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",\n        \"label\",\n        \"comparison\",\n        \"rtol\",\n        \"atol\",",
+        "peekOfCode": "MATRIX_COMP_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-matrix-component-input.mustache\")\ndef prepare(element_html, data):\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",\n        \"label\",\n        \"comparison\",\n        \"rtol\",\n        \"atol\",",
         "detail": "src.prairielearn.elements.pl-matrix-component-input.pl-matrix-component-input",
         "documentation": {}
     },
@@ -10851,7 +10887,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
         "description": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
-        "peekOfCode": "EXTERNAL_JSON_DEFAULT = None\nHIDE_LETTER_KEYS_DEFAULT = False\nEXTERNAL_JSON_CORRECT_KEY_DEFAULT = \"correct\"\nEXTERNAL_JSON_INCORRECT_KEY_DEFAULT = \"incorrect\"\nFEEDBACK_DEFAULT = None\nHIDE_SCORE_BADGE_DEFAULT = False\nALLOW_BLANK_DEFAULT = False\nSIZE_DEFAULT = None\nSUBMITTED_ANSWER_BLANK = {\"html\": \"No answer submitted\"}\nMULTIPLE_CHOICE_MUSTACHE_TEMPLATE_NAME = os.path.join(current_directory, \"pl-multiple-choice.mustache\")",
+        "peekOfCode": "EXTERNAL_JSON_DEFAULT = None\nHIDE_LETTER_KEYS_DEFAULT = False\nEXTERNAL_JSON_CORRECT_KEY_DEFAULT = \"correct\"\nEXTERNAL_JSON_INCORRECT_KEY_DEFAULT = \"incorrect\"\nFEEDBACK_DEFAULT = None\nHIDE_SCORE_BADGE_DEFAULT = False\nALLOW_BLANK_DEFAULT = False\nSIZE_DEFAULT = None\nSUBMITTED_ANSWER_BLANK = {\"html\": \"No answer submitted\"}\n# Get the absolute path of the current module",
         "detail": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
         "documentation": {}
     },
@@ -10860,7 +10896,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
         "description": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
-        "peekOfCode": "HIDE_LETTER_KEYS_DEFAULT = False\nEXTERNAL_JSON_CORRECT_KEY_DEFAULT = \"correct\"\nEXTERNAL_JSON_INCORRECT_KEY_DEFAULT = \"incorrect\"\nFEEDBACK_DEFAULT = None\nHIDE_SCORE_BADGE_DEFAULT = False\nALLOW_BLANK_DEFAULT = False\nSIZE_DEFAULT = None\nSUBMITTED_ANSWER_BLANK = {\"html\": \"No answer submitted\"}\nMULTIPLE_CHOICE_MUSTACHE_TEMPLATE_NAME = os.path.join(current_directory, \"pl-multiple-choice.mustache\")\ndef categorize_options(",
+        "peekOfCode": "HIDE_LETTER_KEYS_DEFAULT = False\nEXTERNAL_JSON_CORRECT_KEY_DEFAULT = \"correct\"\nEXTERNAL_JSON_INCORRECT_KEY_DEFAULT = \"incorrect\"\nFEEDBACK_DEFAULT = None\nHIDE_SCORE_BADGE_DEFAULT = False\nALLOW_BLANK_DEFAULT = False\nSIZE_DEFAULT = None\nSUBMITTED_ANSWER_BLANK = {\"html\": \"No answer submitted\"}\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)",
         "detail": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
         "documentation": {}
     },
@@ -10869,7 +10905,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
         "description": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
-        "peekOfCode": "EXTERNAL_JSON_CORRECT_KEY_DEFAULT = \"correct\"\nEXTERNAL_JSON_INCORRECT_KEY_DEFAULT = \"incorrect\"\nFEEDBACK_DEFAULT = None\nHIDE_SCORE_BADGE_DEFAULT = False\nALLOW_BLANK_DEFAULT = False\nSIZE_DEFAULT = None\nSUBMITTED_ANSWER_BLANK = {\"html\": \"No answer submitted\"}\nMULTIPLE_CHOICE_MUSTACHE_TEMPLATE_NAME = os.path.join(current_directory, \"pl-multiple-choice.mustache\")\ndef categorize_options(\n    element: lxml.html.HtmlElement, data: pl.QuestionData",
+        "peekOfCode": "EXTERNAL_JSON_CORRECT_KEY_DEFAULT = \"correct\"\nEXTERNAL_JSON_INCORRECT_KEY_DEFAULT = \"incorrect\"\nFEEDBACK_DEFAULT = None\nHIDE_SCORE_BADGE_DEFAULT = False\nALLOW_BLANK_DEFAULT = False\nSIZE_DEFAULT = None\nSUBMITTED_ANSWER_BLANK = {\"html\": \"No answer submitted\"}\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module",
         "detail": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
         "documentation": {}
     },
@@ -10878,7 +10914,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
         "description": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
-        "peekOfCode": "EXTERNAL_JSON_INCORRECT_KEY_DEFAULT = \"incorrect\"\nFEEDBACK_DEFAULT = None\nHIDE_SCORE_BADGE_DEFAULT = False\nALLOW_BLANK_DEFAULT = False\nSIZE_DEFAULT = None\nSUBMITTED_ANSWER_BLANK = {\"html\": \"No answer submitted\"}\nMULTIPLE_CHOICE_MUSTACHE_TEMPLATE_NAME = os.path.join(current_directory, \"pl-multiple-choice.mustache\")\ndef categorize_options(\n    element: lxml.html.HtmlElement, data: pl.QuestionData\n) -> tuple[list[AnswerTuple], list[AnswerTuple]]:",
+        "peekOfCode": "EXTERNAL_JSON_INCORRECT_KEY_DEFAULT = \"incorrect\"\nFEEDBACK_DEFAULT = None\nHIDE_SCORE_BADGE_DEFAULT = False\nALLOW_BLANK_DEFAULT = False\nSIZE_DEFAULT = None\nSUBMITTED_ANSWER_BLANK = {\"html\": \"No answer submitted\"}\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)",
         "detail": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
         "documentation": {}
     },
@@ -10887,7 +10923,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
         "description": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
-        "peekOfCode": "FEEDBACK_DEFAULT = None\nHIDE_SCORE_BADGE_DEFAULT = False\nALLOW_BLANK_DEFAULT = False\nSIZE_DEFAULT = None\nSUBMITTED_ANSWER_BLANK = {\"html\": \"No answer submitted\"}\nMULTIPLE_CHOICE_MUSTACHE_TEMPLATE_NAME = os.path.join(current_directory, \"pl-multiple-choice.mustache\")\ndef categorize_options(\n    element: lxml.html.HtmlElement, data: pl.QuestionData\n) -> tuple[list[AnswerTuple], list[AnswerTuple]]:\n    \"\"\"Get provided correct and incorrect answers\"\"\"",
+        "peekOfCode": "FEEDBACK_DEFAULT = None\nHIDE_SCORE_BADGE_DEFAULT = False\nALLOW_BLANK_DEFAULT = False\nSIZE_DEFAULT = None\nSUBMITTED_ANSWER_BLANK = {\"html\": \"No answer submitted\"}\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nMULTIPLE_CHOICE_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir, \"pl-multiple-choice.mustache\")",
         "detail": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
         "documentation": {}
     },
@@ -10896,7 +10932,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
         "description": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
-        "peekOfCode": "HIDE_SCORE_BADGE_DEFAULT = False\nALLOW_BLANK_DEFAULT = False\nSIZE_DEFAULT = None\nSUBMITTED_ANSWER_BLANK = {\"html\": \"No answer submitted\"}\nMULTIPLE_CHOICE_MUSTACHE_TEMPLATE_NAME = os.path.join(current_directory, \"pl-multiple-choice.mustache\")\ndef categorize_options(\n    element: lxml.html.HtmlElement, data: pl.QuestionData\n) -> tuple[list[AnswerTuple], list[AnswerTuple]]:\n    \"\"\"Get provided correct and incorrect answers\"\"\"\n    correct_answers = []",
+        "peekOfCode": "HIDE_SCORE_BADGE_DEFAULT = False\nALLOW_BLANK_DEFAULT = False\nSIZE_DEFAULT = None\nSUBMITTED_ANSWER_BLANK = {\"html\": \"No answer submitted\"}\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nMULTIPLE_CHOICE_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir, \"pl-multiple-choice.mustache\")\ndef categorize_options(",
         "detail": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
         "documentation": {}
     },
@@ -10905,7 +10941,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
         "description": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
-        "peekOfCode": "ALLOW_BLANK_DEFAULT = False\nSIZE_DEFAULT = None\nSUBMITTED_ANSWER_BLANK = {\"html\": \"No answer submitted\"}\nMULTIPLE_CHOICE_MUSTACHE_TEMPLATE_NAME = os.path.join(current_directory, \"pl-multiple-choice.mustache\")\ndef categorize_options(\n    element: lxml.html.HtmlElement, data: pl.QuestionData\n) -> tuple[list[AnswerTuple], list[AnswerTuple]]:\n    \"\"\"Get provided correct and incorrect answers\"\"\"\n    correct_answers = []\n    incorrect_answers = []",
+        "peekOfCode": "ALLOW_BLANK_DEFAULT = False\nSIZE_DEFAULT = None\nSUBMITTED_ANSWER_BLANK = {\"html\": \"No answer submitted\"}\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nMULTIPLE_CHOICE_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir, \"pl-multiple-choice.mustache\")\ndef categorize_options(\n    element: lxml.html.HtmlElement, data: pl.QuestionData",
         "detail": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
         "documentation": {}
     },
@@ -10914,7 +10950,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
         "description": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
-        "peekOfCode": "SIZE_DEFAULT = None\nSUBMITTED_ANSWER_BLANK = {\"html\": \"No answer submitted\"}\nMULTIPLE_CHOICE_MUSTACHE_TEMPLATE_NAME = os.path.join(current_directory, \"pl-multiple-choice.mustache\")\ndef categorize_options(\n    element: lxml.html.HtmlElement, data: pl.QuestionData\n) -> tuple[list[AnswerTuple], list[AnswerTuple]]:\n    \"\"\"Get provided correct and incorrect answers\"\"\"\n    correct_answers = []\n    incorrect_answers = []\n    index_counter = it.count(0)",
+        "peekOfCode": "SIZE_DEFAULT = None\nSUBMITTED_ANSWER_BLANK = {\"html\": \"No answer submitted\"}\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nMULTIPLE_CHOICE_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir, \"pl-multiple-choice.mustache\")\ndef categorize_options(\n    element: lxml.html.HtmlElement, data: pl.QuestionData\n) -> tuple[list[AnswerTuple], list[AnswerTuple]]:",
         "detail": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
         "documentation": {}
     },
@@ -10923,7 +10959,25 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
         "description": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
-        "peekOfCode": "SUBMITTED_ANSWER_BLANK = {\"html\": \"No answer submitted\"}\nMULTIPLE_CHOICE_MUSTACHE_TEMPLATE_NAME = os.path.join(current_directory, \"pl-multiple-choice.mustache\")\ndef categorize_options(\n    element: lxml.html.HtmlElement, data: pl.QuestionData\n) -> tuple[list[AnswerTuple], list[AnswerTuple]]:\n    \"\"\"Get provided correct and incorrect answers\"\"\"\n    correct_answers = []\n    incorrect_answers = []\n    index_counter = it.count(0)\n    # First, check internal HTML for answer choices",
+        "peekOfCode": "SUBMITTED_ANSWER_BLANK = {\"html\": \"No answer submitted\"}\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nMULTIPLE_CHOICE_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir, \"pl-multiple-choice.mustache\")\ndef categorize_options(\n    element: lxml.html.HtmlElement, data: pl.QuestionData\n) -> tuple[list[AnswerTuple], list[AnswerTuple]]:\n    \"\"\"Get provided correct and incorrect answers\"\"\"",
+        "detail": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
+        "documentation": {}
+    },
+    {
+        "label": "current_module_path",
+        "kind": 5,
+        "importPath": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
+        "description": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
+        "peekOfCode": "current_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nMULTIPLE_CHOICE_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir, \"pl-multiple-choice.mustache\")\ndef categorize_options(\n    element: lxml.html.HtmlElement, data: pl.QuestionData\n) -> tuple[list[AnswerTuple], list[AnswerTuple]]:\n    \"\"\"Get provided correct and incorrect answers\"\"\"\n    correct_answers = []\n    incorrect_answers = []",
+        "detail": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
+        "documentation": {}
+    },
+    {
+        "label": "current_module_dir",
+        "kind": 5,
+        "importPath": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
+        "description": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
+        "peekOfCode": "current_module_dir = os.path.dirname(current_module_path)\nMULTIPLE_CHOICE_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir, \"pl-multiple-choice.mustache\")\ndef categorize_options(\n    element: lxml.html.HtmlElement, data: pl.QuestionData\n) -> tuple[list[AnswerTuple], list[AnswerTuple]]:\n    \"\"\"Get provided correct and incorrect answers\"\"\"\n    correct_answers = []\n    incorrect_answers = []\n    index_counter = it.count(0)\n    # First, check internal HTML for answer choices",
         "detail": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
         "documentation": {}
     },
@@ -10932,7 +10986,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
         "description": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
-        "peekOfCode": "MULTIPLE_CHOICE_MUSTACHE_TEMPLATE_NAME = os.path.join(current_directory, \"pl-multiple-choice.mustache\")\ndef categorize_options(\n    element: lxml.html.HtmlElement, data: pl.QuestionData\n) -> tuple[list[AnswerTuple], list[AnswerTuple]]:\n    \"\"\"Get provided correct and incorrect answers\"\"\"\n    correct_answers = []\n    incorrect_answers = []\n    index_counter = it.count(0)\n    # First, check internal HTML for answer choices\n    for child in element:",
+        "peekOfCode": "MULTIPLE_CHOICE_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir, \"pl-multiple-choice.mustache\")\ndef categorize_options(\n    element: lxml.html.HtmlElement, data: pl.QuestionData\n) -> tuple[list[AnswerTuple], list[AnswerTuple]]:\n    \"\"\"Get provided correct and incorrect answers\"\"\"\n    correct_answers = []\n    incorrect_answers = []\n    index_counter = it.count(0)\n    # First, check internal HTML for answer choices\n    for child in element:",
         "detail": "src.prairielearn.elements.pl-multiple-choice.pl-multiple-choice",
         "documentation": {}
     },
@@ -13101,7 +13155,16 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-units-input.pl-units-input",
         "description": "src.prairielearn.elements.pl-units-input.pl-units-input",
-        "peekOfCode": "current_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nUNITS_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-units-input.mustache\")\nclass DisplayType(Enum):\n    INLINE = \"inline\"\n    BLOCK = \"block\"\nclass GradingMode(Enum):\n    ONLY_UNITS = 1\n    EXACT_UNITS = 2\n    WITH_UNITS = 3",
+        "peekOfCode": "current_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\nUNITS_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-units-input.mustache\")\nclass DisplayType(Enum):\n    INLINE = \"inline\"\n    BLOCK = \"block\"\nclass GradingMode(Enum):\n    ONLY_UNITS = 1\n    EXACT_UNITS = 2",
+        "detail": "src.prairielearn.elements.pl-units-input.pl-units-input",
+        "documentation": {}
+    },
+    {
+        "label": "current_module_dir",
+        "kind": 5,
+        "importPath": "src.prairielearn.elements.pl-units-input.pl-units-input",
+        "description": "src.prairielearn.elements.pl-units-input.pl-units-input",
+        "peekOfCode": "current_module_dir = os.path.dirname(current_module_path)\nUNITS_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-units-input.mustache\")\nclass DisplayType(Enum):\n    INLINE = \"inline\"\n    BLOCK = \"block\"\nclass GradingMode(Enum):\n    ONLY_UNITS = 1\n    EXACT_UNITS = 2\n    WITH_UNITS = 3\nGRADING_MODE_DEFAULT = GradingMode.WITH_UNITS",
         "detail": "src.prairielearn.elements.pl-units-input.pl-units-input",
         "documentation": {}
     },
@@ -13110,7 +13173,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-units-input.pl-units-input",
         "description": "src.prairielearn.elements.pl-units-input.pl-units-input",
-        "peekOfCode": "UNITS_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-units-input.mustache\")\nclass DisplayType(Enum):\n    INLINE = \"inline\"\n    BLOCK = \"block\"\nclass GradingMode(Enum):\n    ONLY_UNITS = 1\n    EXACT_UNITS = 2\n    WITH_UNITS = 3\nGRADING_MODE_DEFAULT = GradingMode.WITH_UNITS\nWEIGHT_DEFAULT = 1",
+        "peekOfCode": "UNITS_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,\"pl-units-input.mustache\")\nclass DisplayType(Enum):\n    INLINE = \"inline\"\n    BLOCK = \"block\"\nclass GradingMode(Enum):\n    ONLY_UNITS = 1\n    EXACT_UNITS = 2\n    WITH_UNITS = 3\nGRADING_MODE_DEFAULT = GradingMode.WITH_UNITS\nWEIGHT_DEFAULT = 1",
         "detail": "src.prairielearn.elements.pl-units-input.pl-units-input",
         "documentation": {}
     },

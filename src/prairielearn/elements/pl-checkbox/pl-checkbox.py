@@ -23,9 +23,12 @@ MIN_SELECT_DEFAULT = 1
 FEEDBACK_DEFAULT = None
 
 
+# Get the absolute path of the current module
 current_module_path = os.path.abspath(__file__)
-print(current_module_path)
-CHECKBOX_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,"..","pl-checkbox.mustache" )
+
+# Get the directory of the current module
+current_module_dir = os.path.dirname(current_module_path)
+CHECKBOX_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,"pl-checkbox.mustache" )
 
 
 

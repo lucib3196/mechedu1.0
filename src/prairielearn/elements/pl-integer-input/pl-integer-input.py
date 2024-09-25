@@ -26,10 +26,13 @@ BLANK_VALUE_DEFAULT = 0
 BASE_DEFAULT = 10
 SHOW_SCORE_DEFAULT = True
 
+# Get the absolute path of the current module
 current_module_path = os.path.abspath(__file__)
-print(current_module_path)
 
-INTEGER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,"..","pl-integer-input.mustache")
+# Get the directory of the current module
+current_module_dir = os.path.dirname(current_module_path)
+
+INTEGER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,"pl-integer-input.mustache")
 
 
 def prepare(element_html: str, data: pl.QuestionData) -> None:

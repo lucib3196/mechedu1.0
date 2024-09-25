@@ -13,9 +13,12 @@ import unit_utils as uu
 from pint import UnitRegistry, errors
 from typing_extensions import assert_never
 import os
+# Get the absolute path of the current module
 current_module_path = os.path.abspath(__file__)
-print(current_module_path)
-UNITS_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,"..","pl-units-input.mustache")
+
+# Get the directory of the current module
+current_module_dir = os.path.dirname(current_module_path)
+UNITS_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,"pl-units-input.mustache")
 
 class DisplayType(Enum):
     INLINE = "inline"

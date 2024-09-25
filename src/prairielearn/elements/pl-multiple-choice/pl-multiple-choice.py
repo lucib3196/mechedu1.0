@@ -57,8 +57,12 @@ HIDE_SCORE_BADGE_DEFAULT = False
 ALLOW_BLANK_DEFAULT = False
 SIZE_DEFAULT = None
 SUBMITTED_ANSWER_BLANK = {"html": "No answer submitted"}
+# Get the absolute path of the current module
+current_module_path = os.path.abspath(__file__)
 
-MULTIPLE_CHOICE_MUSTACHE_TEMPLATE_NAME = os.path.join(current_directory, "pl-multiple-choice.mustache")
+# Get the directory of the current module
+current_module_dir = os.path.dirname(current_module_path)
+MULTIPLE_CHOICE_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir, "pl-multiple-choice.mustache")
 
 
 def categorize_options(

@@ -19,9 +19,12 @@ ALLOW_BLANK_DEFAULT = False
 BLANK_VALUE_DEFAULT = 0
 
 
+# Get the absolute path of the current module
 current_module_path = os.path.abspath(__file__)
-print(current_module_path)
-MATRIX_COMP_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,"..","pl-matrix-component-input.mustache")
+
+# Get the directory of the current module
+current_module_dir = os.path.dirname(current_module_path)
+MATRIX_COMP_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir,"pl-matrix-component-input.mustache")
 def prepare(element_html, data):
     element = lxml.html.fragment_fromstring(element_html)
     required_attribs = ["answers-name"]
