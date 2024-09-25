@@ -106,11 +106,13 @@ async def mathjs_code_snippet_chain(question:str)->str:
     response = response_instance["response"]
     # Build the example code snippets
     example_code_snippets = "\nThe following are useful code snippets\n"
-    for analysis in response:
-        anal = analysis.get("analysis")
-        code_snippet = analysis.get("code_snippet")
-        example_code_snippets += f"\nReasoning to use: {anal}\n Code Snippet: {code_snippet}"
-    return example_code_snippets
+    if response:
+        for analysis in response:
+            anal = analysis.get("analysis")
+            code_snippet = analysis.get("code_snippet")
+            example_code_snippets += f"\nReasoning to use: {anal}\n Code Snippet: {code_snippet}"
+        return example_code_snippets
+    return None
 
 
 async def main():

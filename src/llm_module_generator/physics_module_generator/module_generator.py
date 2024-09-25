@@ -47,7 +47,7 @@ class ModuleCodeGenerator(LLM_Call):
     
     async def acall_generate_code(self, question:str, additional_instructions:str=None)->str:
         prompt = self.generate_prompt(question,additional_instructions)
-        logger.info(prompt)
+        # logger.info(prompt)
         class Response(BaseModel):
             generated_code:str = Field(...,description="The generated code only return the generated code")
         response =await  self.acall(prompt, response_format=Response)
@@ -63,7 +63,7 @@ class ModuleCodeGenerator(LLM_Call):
 
 
 # Define the LLM configuration with the specified model
-llm_config = LLMConfig(api_key=api_key, model="gpt-4o-mini", temperature=0)
+llm_config = LLMConfig(api_key=api_key, model="gpt-4o-2024-08-06", temperature=0)
 
 # Initialize all the generators
 question_html_generator = ModuleCodeGenerator(
