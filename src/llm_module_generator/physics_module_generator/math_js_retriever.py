@@ -22,6 +22,8 @@ logger = get_logger(__name__)
 
 ## Define the LLM and Load the Vector Store
 llm = ChatOpenAI(model="gpt-4o-mini")
+
+
 embedding_function = OpenAIEmbeddings()
 vectorstore = Chroma(persist_directory=r"src\llm_module_generator\physics_module_generator\chroma_db", embedding_function=embedding_function)
 docs = vectorstore.similarity_search("Matrices")

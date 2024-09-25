@@ -63,7 +63,7 @@ class ModuleCodeGenerator(LLM_Call):
 
 
 # Define the LLM configuration with the specified model
-llm_config = LLMConfig(api_key=api_key, model="gpt-4o-2024-08-06", temperature=0)
+llm_config = LLMConfig(api_key=api_key, model="gpt-4o-mini", temperature=0)
 
 # Initialize all the generators
 question_html_generator = ModuleCodeGenerator(
@@ -86,21 +86,24 @@ question_solution_generator = ModuleCodeGenerator(
     base_prompt=solution_html_template,
     example_input_column="question.html",
     example_output_column="solution.html",
-    llm_config=llm_config
+    llm_config=llm_config,
+    num_examples = 1
 )
 
 server_js_generator = ModuleCodeGenerator(
     base_prompt=server_js_template_base,
     example_input_column="question.html",
     example_output_column="server.js",
-    llm_config=llm_config
+    llm_config=llm_config,
+    num_examples = 1
 )
 
 server_py_generator = ModuleCodeGenerator(
     base_prompt=server_py_template_base,
     example_input_column="question.html",
     example_output_column="server.py",
-    llm_config=llm_config
+    llm_config=llm_config,
+    num_examples = 1
 )
 
 async def main():

@@ -1,6 +1,8 @@
 from flask.app import Flask
 from flask_wtf import FlaskForm
 from wtforms import PasswordField, StringField, SubmitField, BooleanField,TextAreaField
+from wtforms import PasswordField, StringField, SubmitField, BooleanField, TextAreaField
+>>>>>>> d8a721d (Your commit message)
 from flask_wtf.file import MultipleFileField, FileRequired,FileField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 from ..db_models.models import User
@@ -21,7 +23,7 @@ class QuestionForm(FlaskForm):
     Args:
         FlaskForm (FlaskForm): Inherits from FlaskForm, which provides the base functionality for forms in Flask.
     """
-    question = StringField("Enter question to generate", validators=[DataRequired()])
+    question = TextAreaField("Enter question to generate", validators=[DataRequired()])
     module_name = StringField("Enter Name of Module",validators=[DataRequired()])
     submit = SubmitField('Generate')
 
