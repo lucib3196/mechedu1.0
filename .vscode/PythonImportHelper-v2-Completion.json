@@ -11139,7 +11139,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-number-input.pl-number-input",
         "description": "src.prairielearn.elements.pl-number-input.pl-number-input",
-        "peekOfCode": "SHOW_CORRECT_ANSWER_DEFAULT = True\nALLOW_FRACTIONS_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\nCUSTOM_FORMAT_DEFAULT = '.12g'\nSHOW_SCORE_DEFAULT = True\nANSWER_INSUFFICIENT_PRECISION_WARNING = (\n    \"Your answer does not have precision within the specified relative tolerance.\"\n)\ncurrent_module_path = os.path.abspath(__file__)",
+        "peekOfCode": "SHOW_CORRECT_ANSWER_DEFAULT = True\nALLOW_FRACTIONS_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\nCUSTOM_FORMAT_DEFAULT = '.12g'\nSHOW_SCORE_DEFAULT = True\nANSWER_INSUFFICIENT_PRECISION_WARNING = (\n    \"Your answer does not have precision within the specified relative tolerance.\"\n)\n# Get the absolute path of the current module",
         "detail": "src.prairielearn.elements.pl-number-input.pl-number-input",
         "documentation": {}
     },
@@ -11148,7 +11148,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-number-input.pl-number-input",
         "description": "src.prairielearn.elements.pl-number-input.pl-number-input",
-        "peekOfCode": "ALLOW_FRACTIONS_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\nCUSTOM_FORMAT_DEFAULT = '.12g'\nSHOW_SCORE_DEFAULT = True\nANSWER_INSUFFICIENT_PRECISION_WARNING = (\n    \"Your answer does not have precision within the specified relative tolerance.\"\n)\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)",
+        "peekOfCode": "ALLOW_FRACTIONS_DEFAULT = True\nALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\nCUSTOM_FORMAT_DEFAULT = '.12g'\nSHOW_SCORE_DEFAULT = True\nANSWER_INSUFFICIENT_PRECISION_WARNING = (\n    \"Your answer does not have precision within the specified relative tolerance.\"\n)\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)",
         "detail": "src.prairielearn.elements.pl-number-input.pl-number-input",
         "documentation": {}
     },
@@ -11157,7 +11157,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-number-input.pl-number-input",
         "description": "src.prairielearn.elements.pl-number-input.pl-number-input",
-        "peekOfCode": "ALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\nCUSTOM_FORMAT_DEFAULT = '.12g'\nSHOW_SCORE_DEFAULT = True\nANSWER_INSUFFICIENT_PRECISION_WARNING = (\n    \"Your answer does not have precision within the specified relative tolerance.\"\n)\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nNUMBER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-number-input.mustache\" )",
+        "peekOfCode": "ALLOW_BLANK_DEFAULT = False\nBLANK_VALUE_DEFAULT = 0\nCUSTOM_FORMAT_DEFAULT = '.12g'\nSHOW_SCORE_DEFAULT = True\nANSWER_INSUFFICIENT_PRECISION_WARNING = (\n    \"Your answer does not have precision within the specified relative tolerance.\"\n)\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module",
         "detail": "src.prairielearn.elements.pl-number-input.pl-number-input",
         "documentation": {}
     },
@@ -11166,7 +11166,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-number-input.pl-number-input",
         "description": "src.prairielearn.elements.pl-number-input.pl-number-input",
-        "peekOfCode": "BLANK_VALUE_DEFAULT = 0\nCUSTOM_FORMAT_DEFAULT = '.12g'\nSHOW_SCORE_DEFAULT = True\nANSWER_INSUFFICIENT_PRECISION_WARNING = (\n    \"Your answer does not have precision within the specified relative tolerance.\"\n)\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nNUMBER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-number-input.mustache\" )\ndef prepare(element_html: str, data: pl.QuestionData) -> None:",
+        "peekOfCode": "BLANK_VALUE_DEFAULT = 0\nCUSTOM_FORMAT_DEFAULT = '.12g'\nSHOW_SCORE_DEFAULT = True\nANSWER_INSUFFICIENT_PRECISION_WARNING = (\n    \"Your answer does not have precision within the specified relative tolerance.\"\n)\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)",
         "detail": "src.prairielearn.elements.pl-number-input.pl-number-input",
         "documentation": {}
     },
@@ -11175,7 +11175,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-number-input.pl-number-input",
         "description": "src.prairielearn.elements.pl-number-input.pl-number-input",
-        "peekOfCode": "CUSTOM_FORMAT_DEFAULT = '.12g'\nSHOW_SCORE_DEFAULT = True\nANSWER_INSUFFICIENT_PRECISION_WARNING = (\n    \"Your answer does not have precision within the specified relative tolerance.\"\n)\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nNUMBER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-number-input.mustache\" )\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)",
+        "peekOfCode": "CUSTOM_FORMAT_DEFAULT = '.12g'\nSHOW_SCORE_DEFAULT = True\nANSWER_INSUFFICIENT_PRECISION_WARNING = (\n    \"Your answer does not have precision within the specified relative tolerance.\"\n)\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\n# Construct the path to the 'pl-number-input.mustache' file in the same directory",
         "detail": "src.prairielearn.elements.pl-number-input.pl-number-input",
         "documentation": {}
     },
@@ -11184,7 +11184,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-number-input.pl-number-input",
         "description": "src.prairielearn.elements.pl-number-input.pl-number-input",
-        "peekOfCode": "SHOW_SCORE_DEFAULT = True\nANSWER_INSUFFICIENT_PRECISION_WARNING = (\n    \"Your answer does not have precision within the specified relative tolerance.\"\n)\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nNUMBER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-number-input.mustache\" )\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]",
+        "peekOfCode": "SHOW_SCORE_DEFAULT = True\nANSWER_INSUFFICIENT_PRECISION_WARNING = (\n    \"Your answer does not have precision within the specified relative tolerance.\"\n)\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\n# Construct the path to the 'pl-number-input.mustache' file in the same directory\nNUMBER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir, \"pl-number-input.mustache\")",
         "detail": "src.prairielearn.elements.pl-number-input.pl-number-input",
         "documentation": {}
     },
@@ -11193,7 +11193,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-number-input.pl-number-input",
         "description": "src.prairielearn.elements.pl-number-input.pl-number-input",
-        "peekOfCode": "ANSWER_INSUFFICIENT_PRECISION_WARNING = (\n    \"Your answer does not have precision within the specified relative tolerance.\"\n)\ncurrent_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nNUMBER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-number-input.mustache\" )\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [",
+        "peekOfCode": "ANSWER_INSUFFICIENT_PRECISION_WARNING = (\n    \"Your answer does not have precision within the specified relative tolerance.\"\n)\n# Get the absolute path of the current module\ncurrent_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\n# Construct the path to the 'pl-number-input.mustache' file in the same directory\nNUMBER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir, \"pl-number-input.mustache\")\nprint(NUMBER_INPUT_MUSTACHE_TEMPLATE_NAME)",
         "detail": "src.prairielearn.elements.pl-number-input.pl-number-input",
         "documentation": {}
     },
@@ -11202,7 +11202,16 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-number-input.pl-number-input",
         "description": "src.prairielearn.elements.pl-number-input.pl-number-input",
-        "peekOfCode": "current_module_path = os.path.abspath(__file__)\nprint(current_module_path)\nNUMBER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-number-input.mustache\" )\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",\n        \"correct-answer\",\n        \"label\",",
+        "peekOfCode": "current_module_path = os.path.abspath(__file__)\n# Get the directory of the current module\ncurrent_module_dir = os.path.dirname(current_module_path)\n# Construct the path to the 'pl-number-input.mustache' file in the same directory\nNUMBER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir, \"pl-number-input.mustache\")\nprint(NUMBER_INPUT_MUSTACHE_TEMPLATE_NAME)\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [",
+        "detail": "src.prairielearn.elements.pl-number-input.pl-number-input",
+        "documentation": {}
+    },
+    {
+        "label": "current_module_dir",
+        "kind": 5,
+        "importPath": "src.prairielearn.elements.pl-number-input.pl-number-input",
+        "description": "src.prairielearn.elements.pl-number-input.pl-number-input",
+        "peekOfCode": "current_module_dir = os.path.dirname(current_module_path)\n# Construct the path to the 'pl-number-input.mustache' file in the same directory\nNUMBER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir, \"pl-number-input.mustache\")\nprint(NUMBER_INPUT_MUSTACHE_TEMPLATE_NAME)\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",\n        \"correct-answer\",",
         "detail": "src.prairielearn.elements.pl-number-input.pl-number-input",
         "documentation": {}
     },
@@ -11211,7 +11220,7 @@
         "kind": 5,
         "importPath": "src.prairielearn.elements.pl-number-input.pl-number-input",
         "description": "src.prairielearn.elements.pl-number-input.pl-number-input",
-        "peekOfCode": "NUMBER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,\"..\",\"pl-number-input.mustache\" )\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",\n        \"correct-answer\",\n        \"label\",\n        \"suffix\",\n        \"display\",",
+        "peekOfCode": "NUMBER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir, \"pl-number-input.mustache\")\nprint(NUMBER_INPUT_MUSTACHE_TEMPLATE_NAME)\ndef prepare(element_html: str, data: pl.QuestionData) -> None:\n    element = lxml.html.fragment_fromstring(element_html)\n    required_attribs = [\"answers-name\"]\n    optional_attribs = [\n        \"weight\",\n        \"correct-answer\",\n        \"label\",\n        \"suffix\",",
         "detail": "src.prairielearn.elements.pl-number-input.pl-number-input",
         "documentation": {}
     },

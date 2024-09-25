@@ -43,9 +43,16 @@ ANSWER_INSUFFICIENT_PRECISION_WARNING = (
     "Your answer does not have precision within the specified relative tolerance."
 )
 
+# Get the absolute path of the current module
 current_module_path = os.path.abspath(__file__)
-print(current_module_path)
-NUMBER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_path,"..","pl-number-input.mustache" )
+
+# Get the directory of the current module
+current_module_dir = os.path.dirname(current_module_path)
+
+# Construct the path to the 'pl-number-input.mustache' file in the same directory
+NUMBER_INPUT_MUSTACHE_TEMPLATE_NAME = os.path.join(current_module_dir, "pl-number-input.mustache")
+
+print(NUMBER_INPUT_MUSTACHE_TEMPLATE_NAME)
 
 
 
