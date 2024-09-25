@@ -128,7 +128,7 @@ server_py_template_base = """
 You have access to Python modules such as `numpy`, `sympy`, and `pandas`, which you may use when necessary.
 
 Your task is to design a robust Python module that generates computational problems across various STEM disciplines. This module will ingest an HTML file containing a structured query and output a Python snippet that performs the required calculations. The Python code must adhere to the following outline:
-
+You do not have access to any external files. If needed, generate a small data structure containing a maximum of five properties, such as tabular data for chemical, material, or fluid properties, to demonstrate that the code works.
 ```python
 def generate():
     # 1. Dynamic Parameter Selection:
