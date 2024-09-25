@@ -166,3 +166,13 @@ def generate():
     }
 
     """
+
+
+generate_metadata_template = f""" You are tasked with analyzing the given question and classifying it by generating the appropriate metadata. Use the following structure to ensure accurate classification:
+
+Title: Provide a suitable title for the question in CamelCase format.
+Stem: Offer additional context or subtopic related to the main topic of the question.
+Topic: Identify the main subject or topic that the question pertains to.
+Tags: Provide an array of relevant keywords or tags associated with the question's content.
+Prerequisites: List any necessary prerequisites required to understand or engage with the question.
+IsAdaptive: Determine whether the question involves any numerical computation. Return true if it requires numerical computation, and false otherwise."""

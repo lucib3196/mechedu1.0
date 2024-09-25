@@ -2,27 +2,30 @@
 
 {% block title %}Quiz{% endblock %}
 {% block content %}
-<div class="container">
+<div class="question-container">
     <!-- Form for downloading a module -->
-    <form method="POST" action="{{ url_for('quiz_overview_bp.download_module') }}">
+    <form method="POST" action="{{ url_for('quiz_overview_bp.download_module') }}" class="mb-4">
         <!-- Hidden input for folder data -->
         <input type="hidden" name="folder_data" value="{{ folder_data }}">
-        <button type="submit" class="btn btn-primary">Download</button>
+        <button type="submit" class="btn btn-primary">Download Module</button>
     </form>
 
-    <!-- Main quiz content inside form -->
-    <form method="POST" action="{{ url_for('adaptive_quiz_bp.grade_quiz') }}" class="form-group mt-4">
-        <h1>{{ quiz_name }}</h1>
-        
-        <!-- Safely render the entire question HTML, including the form fields -->
-        <div class="form-field">
+    <!-- Main quiz content form -->
+    <form method="POST" action="{{ url_for('adaptive_quiz_bp.grade_quiz') }}" class="form-group">
+        <!-- Quiz Title -->
+        <h1 class="mb-4">{{ quiz_name }}</h1>
+
+        <!-- Render the question HTML with form fields -->
+        <div class="form-field mb-3">
             {{ question_html | safe }}
         </div>
 
-        <div class="mt-3">
+        <!-- Buttons for submitting or refreshing the quiz -->
+        <div class="quiz-btn-container">
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="button" class="btn btn-secondary" onclick="location.reload()">New Variant</button>
         </div>
     </form>
 </div>
+
 {% endblock %}

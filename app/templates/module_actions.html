@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="action-container my-5">
+    <h1 class="text-center mb-4">Module Actions</h1>
+
+    <!-- Module Action Buttons -->
+    <div class="module-action-container text-center mb-4">
+        <button type="button" class="btn " id="modify-btn" data-bs-toggle="button" onclick="showContent('modify') ">Modify</button>
+        <button type="button" class="btn " aria-pressed="true" data-bs-toggle="button" id="practice-btn" onclick="showContent('practice')">Practice</button>
+    </div>
+
+    <!-- Dynamic Content Section -->
+    <div id="dynamic-content">
+        <!-- Practice Section (initially hidden) -->
+        <div id="practice-content" class="" style="display: none;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <a href="{{ url_for('quiz_overview_bp.render_content', folder_id=folder.id) }}">{{ folder.name }}</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Modify Section (initially hidden) -->
+        <div id="modify-content" style="display: none;">
+            <ul class="list-group list-group-flush">
+                {% for file in folder.files %}
+                <li class="list-group-item">
+                    <a href="{{ url_for('quiz_overview_bp.edit_code', fileid=file.id) }}">{{ file.filename }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script>
+    const practiceSection = document.getElementById('practice-content');
+    const modifySection = document.getElementById('modify-content');
+    const practiceButton = document.getElementById('practice-btn'); // Fixed typo
+    const modifyButton = document.getElementById('modify-btn'); // Fixed typo
+
+    // Show the practice section by default
+    practiceSection.style.display = 'block';
+
+    function showContent(contentType) {
+        if (contentType === "practice") {
+            // Show practice section, hide modify section
+            practiceSection.style.display = 'block';
+            modifySection.style.display = 'none';
+
+            // Add active class to practice button, remove from modify button
+            practiceButton.classList.add('active');
+            modifyButton.classList.remove('active');
+        } 
+        else if (contentType === "modify") {
+            // Show modify section, hide practice section
+            modifySection.style.display = 'block';
+            practiceSection.style.display = 'none';
+
+            // Add active class to modify button, remove from practice button
+            modifyButton.classList.add('active');
+            practiceButton.classList.remove('active');
+        }
+    }
+</script>
+
+{% endblock %}
+
+

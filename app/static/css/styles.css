@@ -1,0 +1,672 @@
+@import 'bootstrap/scss/bootstrap';
+/* Color Scheme */
+:root {
+    --light-shades: #FAF8F7;
+    --light-accent: #EEAF48;
+    --main-brand-color: #75B0D9;
+    --dark-accent: #2AAFDA;
+    --dark-shades: #363962;
+}
+/* General Styles */
+body{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 16px;
+
+}
+
+.ital{
+    
+    color:var(--dark-shades);
+    font-size: 1.1rem;
+}
+.text-container{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+/* Dividers */
+.divider{
+    border-color: var(--light-accent);
+    border: 2px solid var(--light-accent);
+    max-width: 75%;
+    margin: 10px auto 0 auto; /* Centers the line under the text */
+}
+.divider.div-dark{
+    border-color: var(--dark-shades);
+    border: 2px solid var(--dark-shades);
+}
+/* Intro Section */
+#hero-section {
+    background: linear-gradient(135deg,var(--main-brand-color) 0%, var(--light-shades) 100%);/* Gradient with hex colors */
+    background-size: cover !important;
+    color: var(--dark-shades); /* Light text on dark background */
+    padding: 100px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full screen height */
+    text-align: center;
+}
+.main-heading {
+    font-size: 4rem; /* Large heading */
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--dark-shades); /* Main brand color */
+}
+.subheading{
+    font-style: italic;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color:var(--dark-shades);
+    line-height: 1.5;
+    margin-bottom: 10%;
+}
+
+.cta-button{
+    background-color: var(--light-accent);
+    color:var(--dark-shades);
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    
+}
+
+/* Generator Section */
+#generators-section{
+    background: var(--light-shades);
+    background-size: cover;
+    padding: 50px 25px;
+    text-align: center;
+    justify-content: center;
+}
+
+.generators-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: stretch; /* Ensure all flex items (cards) have the same height */
+    gap: 20px;
+    flex-grow: 1; /* Allow the card to grow */
+}
+
+.generator-card {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 400px;
+    text-align: left;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.generator-card h3{
+    font-size: 1.7rem;
+    color:var(--dark-accent);
+    font-weight: bold;
+}
+.generator-card p{
+    font-size: 1rem;
+    color:var(--dark-shades);
+    font-style: italic;
+}
+
+.generator-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+.generator-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10%;
+}
+
+.generator-card ul li {
+    margin-bottom: 10px;
+}
+
+
+
+/* Override the default Bootstrap button */
+.btn-primary {
+    background-color: var(--light-accent);
+    border-color: var(--dark-shades); /* Change button border color */
+    padding: 10px 30px; /* Change padding */
+    font-size: 1.2rem; /* Change font size */
+    border-radius: 25px;
+    margin-top: 10px;
+    position: sticky;
+    top: 90%;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+
+.btn-primary:hover {
+    background-color: #2918be; /* Change hover color */
+    border-color: var(--dark-shades); /* Change border on hover */
+}
+
+
+/* Key Features  */
+#key-features {
+    background: var(--light-shades)
+    color: #EEAF48; /* Text color for key features */
+    padding: 50px 20px; /* Added padding for spacing around content */
+    text-align: center;
+}
+
+/* Container for Key Features */
+.key-feature-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping of items into multiple rows */
+    justify-content: space-evenly; /* Evenly distribute space between items */
+    gap: 20px; /* Space between cards */
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto; /* Center the container */
+}
+
+/* Individual Key Feature Item */
+.key-feature-item {
+    flex: 1 1 calc(25% - 20px); /* Each item takes up 25% of the container width minus the gap */
+    display: flex;
+    flex-direction: column; /* Vertical layout within the card */
+    justify-content: space-between; /* Distribute space between items inside the card */
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 350px; /* Ensures all cards have at least this height */
+}
+
+.key-feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Key Feature Body */
+.key-feature-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Ensures text stays centered vertically */
+    text-align: center;
+    flex-grow: 1; /* Ensure body takes full height and grows */
+}
+
+/* Key Feature Heading */
+.key-feature-body h5 {
+    font-weight: bold;
+    color: var(--dark-shades);
+    margin-bottom: 10px;
+}
+/* Sticky text-container */
+.key-feature-body .text-container {
+    position: -webkit-sticky; /* Sticky for Safari support */
+    position: sticky;
+    top: 20px; /* Keeps text container at 20px from the top */
+    margin-bottom: 20px !important;
+}
+
+/* Feature Title */
+.feature-title {
+    font-size: 1.5rem;
+    color: var(--dark-shades);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+
+/* Feature Text */
+.feature-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--dark-shades);
+    margin-bottom: 0;
+}
+
+/* How it works section */
+
+#how-it-works{
+    background: radial-gradient(circle, var(--dark-shades), var(--main-brand-color));
+    color: var(--light-accent);
+}
+
+.square {
+    width: 200px; /* Width of the square */
+    height: 200px; /* Height of the square */
+    background-color: #75B0D9; /* Color of the square */
+    position: relative; /* Enables absolute positioning for the circle */
+    border-radius: 10px;
+}
+.circle {
+    width: 40%;
+    aspect-ratio: 1/1;
+    background-color: var(--main-brand-color); /* Color of the circle */
+    border-radius: 50%; /* Makes it a circle */
+    position: absolute; /* Allows positioning relative to the square */
+    top: -25; /* Position in the middle vertically */
+    left: 50%; /* Position in the middle horizontally */
+    transform: translate(-50%, -50%); /* Center the circle exactly */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+    margin-bottom: 10px;
+}
+.step-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-items: stretch
+}
+.step-by-step-item{
+    width: 100%;
+    max-width: 18rem;
+    height: auto; /* Auto height for flexibility */
+    min-height: 15rem; /* Ensures it doesn't collapse on small content */
+    margin-right: 3%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); /* Sleek shadow */
+    transition: box-shadow 0.3s ease; /* Smooth transition on hover */
+
+}
+.box:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+.step-by-step-body{
+    margin-top: 25%;
+    margin-bottom: 25%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+.step-by-step-body h5{
+    color:var(--light-accent)
+}
+.num-step{
+    position: absolute;
+    left:50%;
+    top:50%;
+    font-size: 2.5rem;
+    transform: translate(-50%, -50%);
+}
+
+
+/* Footer */
+.custom_footer {
+    background: linear-gradient(135deg,var(--dark-shades) 0%,var(--light-shades) 0%, var(--main-brand-color) 100%);/* Gradient with hex colors */; /* Light background for subtle separation */
+    color: var(--dark-shades); /* Muted text color */
+    border-top: 1px solid #e9ecef; /* Soft border on top */
+    padding: 20px 0;
+    font-size: 0.9rem;
+    margin-top: 30px;
+}
+
+.custom_footer .container {
+    max-width: 1140px; /* Ensures the footer content is centered and has a max width */
+    margin: 0 auto;
+}
+
+.custom_footer p {
+    margin-bottom: 5px;
+}
+
+.footer-link {
+    color: #086fdd; /* Same as Bootstrap’s primary color */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #0056b3; /* Darker shade on hover for better contrast */
+    text-decoration: underline;
+}
+
+
+/* General container for the generator section */
+.gen-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px; /* Limit the width for better readability */
+    margin: 0 auto;
+}
+
+/* Title Section */
+.gen-title-container {
+    text-align: center;
+    margin-top: 40px; /* Increased margin for better spacing */
+}
+
+.gen-title {
+    font-size: 3.5rem; /* Larger font for the main title */
+    font-weight: 700;
+    margin-bottom: 15px; /* Reduced margin to tighten the space */
+    color: var(--dark-shades);
+}
+
+.gen-subheading {
+    font-size: 1.2rem; /* Slightly larger and more readable */
+    font-style: italic;
+    color: var(--light-accent); /* Add light accent color to subheading */
+}
+.gen-example-text {
+    font-size:1rem;
+    color: var(--dark-accent);
+    font-style: italic;
+    margin-bottom: 10px;
+}
+/* Info Section for Examples */
+.gen-info-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    max-width: 100%;
+}
+
+/* Example Section */
+.example-section {
+    padding: 40px;
+    background-color: #f9f9f9; /* Light background for distinction */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+}
+
+.example-section .list-group-item {
+    border: none; /* Remove default borders for cleaner look */
+    padding: 15px 10px;
+    border-radius: 5px;
+    background-color: #ffffff; /* White background for list items */
+    margin-bottom: 15px; /* Space between each item */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+.example-section .fw-bold {
+    color: var(--main-brand-color); /* Bold question titles with brand color */
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.example-section p {
+    margin: 10px 0 0 0;
+    line-height: 1.6;
+    font-size: 1rem;
+    color: var(--dark-shades); /* Main text color */
+}
+
+/* Form Styles */
+.form-group {
+    width: 100%;
+    max-width: 600px; /* Form width for better control */
+    margin: 20px 0;
+}
+
+.form-group label {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.form-group .form-control {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-group .btn-primary {
+    background-color: var(--main-brand-color);
+    border-color: var(--main-brand-color);
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+}
+
+.form-group .btn-primary:hover {
+    background-color: var(--dark-shades);
+    border-color: var(--main-brand-color);
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+}
+.form-group-button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .gen-title {
+        font-size: 2.5rem;
+    }
+
+    .gen-subheading {
+        font-size: 1rem;
+    }
+
+    .example-section {
+        padding: 20px;
+    }
+}
+
+
+.table-container {
+    min-height: calc(100vh - 200px); /* Adjust the value based on the height of your header/footer */
+    padding: 20px;
+    margin-bottom: 20px; /* Adds space between the table and footer */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Table styling */
+.table {
+    width: 75%;
+    margin: 0 auto; /* Center the table on the page */
+    
+}
+.table a{
+    text-decoration: none;
+    color:var(--dark-accent)
+}
+
+.table a:hover{
+    color:var(--dark-shades)
+}
+
+/* Module Actions */
+.action-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.module-action-container{
+    display: flex;
+    justify-content: space-between;
+    gap:100px;
+}
+
+/* Editor  */
+/* Container for the editor */
+.editor-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px; /* Consistent spacing between elements */
+    max-width: 100%; /* Ensure full width usage */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+/* Editor styling */
+#editor {
+    height: 500px;
+    width: 100%;
+    border: 1px solid var(--dark-shades); /* Add a subtle border around the editor */
+    border-radius: 8px; /* Rounded corners for the editor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+
+/* Save button styling */
+.save-btn {
+    background-color: var(--light-accent); /* Light accent for background */
+    color: var(--dark-shades); /* Text color */
+    border: 2px solid var(--dark-shades); /* Solid border */
+    padding: 10px 30px;
+    font-size: 1.2rem;
+    border-radius: 25px;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.save-btn:hover {
+    background-color: var(--main-brand-color); /* Change background on hover */
+    transform: translateY(-3px); /* Slight lift on hover */
+}
+
+/* Format button styling */
+.format-btn {
+    background-color: var(--main-brand-color); /* Main brand color for background */
+    color: #ffffff; /* White text for contrast */
+    border: 2px solid var(--dark-shades); /* Solid border */
+    padding: 10px 30px;
+    font-size: 1.2rem;
+    border-radius: 25px;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.format-btn:hover {
+    background-color: var(--dark-accent); /* Dark accent on hover */
+    transform: translateY(-3px); /* Slight lift on hover */
+}
+
+/* Container for button alignment */
+.button-container {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px; /* Space between buttons */
+    margin-top: 20px; /* Margin for separation from other content */
+}
+
+
+/* Action page */
+.action-container {
+    padding: 30px;
+    background-color: #f8f9fa; /* Light background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.module-action-container .btn {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.module-action-container .btn:hover {
+    transform: translateY(-3px); /* Lift effect */
+}
+
+.content-section h2 {
+    font-size: 1.5rem;
+    color: #343a40;
+}
+
+.list-group-item {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.list-group-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Anchor Tag Styling */
+.list-group-item a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.list-group-item a:hover {
+    text-decoration: underline;
+}
+
+/* Content Section Transitions */
+.content-section {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Question base */
+.question-container{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fa-question-circle {
+    margin-left: 8px; /* Space between the text and icon */
+    color: #6c757d; /* Grey color for the icon */
+    font-size: 1.2rem; /* Icon size slightly larger */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+.fa-question-circle:hover {
+    color: #495057; /* Darken color on hover */
+}
+.popover-body {
+    font-size: 0.9rem; /* Adjust the font size */
+    color: #212529; /* Dark text color */
+    background-color: #ffffff; /* White background */
+    border: 1px solid #dee2e6; /* Light border */
+    padding: 15px; /* Padding inside the popover */
+    border-radius: 5px; /* Slightly rounded corners */
+}
+
+.popover-header {
+    background-color: #f8f9fa; /* Light background for the header */
+    color: #343a40; /* Darker text color */
+    font-weight: bold; /* Bold text */
+    padding: 10px 15px; /* Padding for the header */
+    border-bottom: 1px solid #dee2e6; /* Separator line for the header */
+}
+
+.quiz-btn-container{
+    display: flex;
+    flex-direction: row;
+    gap:30px;
+    justify-content: center;
+    align-items: baseline;
+}
+.quiz-btn-container button{
+    flex-grow: 1;
+    flex-basis: 30%;
+    padding: 10px 20px;
+    text-align: center;
+    height: auto;
+}

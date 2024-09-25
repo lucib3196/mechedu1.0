@@ -1,7 +1,7 @@
 import asyncio
 from ..llm_module_generator.physics_module_generator.module_generator import question_html_generator, question_solution_generator, server_js_generator, server_py_generator,question_html_generator_nonadaptive
 import asyncio
-from ..llm_module_generator.physics_module_generator.llm_templates import server_template_code_guide, solution_improvement_prompt
+from ..llm_module_generator.physics_module_generator.templates import server_template_code_guide, solution_improvement_prompt
 # from ..llm_module_generator.question_html_ui.question_html_builder import question_html_generator
 from ..logging_config.logging_config import get_logger
 

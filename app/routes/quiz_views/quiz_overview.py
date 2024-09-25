@@ -9,17 +9,57 @@ from ast import literal_eval
 from io import BytesIO
 
 # Third-Party Imports
-from flask import Blueprint, render_template, request, send_file, jsonify, session, redirect, url_for, Response
+from flask import (
+    Blueprint, render_template, request, send_file, jsonify, session,
+    redirect, url_for, Response, flash
+)
+from src.logging_config.logging_config import get_logger
+# Initialize the logger
+logger = get_logger(__name__)
 
 # Local Application Imports
-from ...db_models.models import File, EduModule, Folder
+from ...db_models.models import File, EduModule, Folder, db
 from .utils import retrieve_files_session, retrieve_files_folder
 from src.utils.file_handler import create_zip_file
-
+from ...form.forms import UPDATE_CODE
 
 quiz_overview_bp = Blueprint('quiz_overview_bp', __name__)
+# This is perfect as is 
+@quiz_overview_bp.route("/quiz_overview/<folder_id>/actions", methods=['GET', 'POST'])
+def modules_action(folder_id):
+    folder = Folder.query.filter_by(id=folder_id).first_or_404(description="Quiz Not Found")
+    session["folder_id"] = folder.id
+    return render_template('module_actions.html',folder=folder)
 
-# This needs to be fixed eventually with databases and the info.jsonm file 
+@quiz_overview_bp.route('/edit_code/<int:fileid>', methods=['GET', 'POST'])
+def edit_code(fileid):
+    # Retrieve the file from the database using its ID
+    file = File.query.filter_by(id=fileid).first_or_404(description="File Not Found")
+    session["fileid"] = file.id
+    code_content = file.content.decode('utf-8')
+
+    language_map = {
+        "py":"python",
+        "js":"javascript",
+        "html":"html"
+    }
+    extension = file.filename.split('.')[1]
+    return render_template('edit_code.html', code = code_content, data = json.dumps(language_map.get(extension)))
+
+@quiz_overview_bp.route('/save_code', methods=['GET', 'POST','FETCH'])
+def save_code():
+    data = request.get_json()
+    updated_code = data.get('code')
+    fileid = session.get("fileid","")
+
+    old_file = File.query.filter_by(id=fileid).first_or_404(description="File Not Found")
+    old_file.content = updated_code.encode('utf-8')
+    db.session.commit()
+    flash('Code saved successfully!', 'success')
+    return redirect(url_for('quiz_overview_bp.edit_code', fileid=fileid))
+
+# All This needs to be fixed eventually with databases and the info.json file 
+
 def determine_file_type(file_names:dict)->str:
     adaptive_files = {'question.html', 'server.js', 'server.py', 'solution.html', 'info.json'}
     nonadaptive_files = {'question.html', 'info.json'}
@@ -30,34 +70,40 @@ def determine_file_type(file_names:dict)->str:
         return "Adaptive"
     else:
         return "Lecture"
+@quiz_overview_bp.route('/quiz_overview/<int:folder_id>', methods=['GET', 'POST'])
+def render_content(folder_id):
+    # Retrieve the folder
+    folder = Folder.query.filter_by(id=folder_id).first_or_404(description="Quiz Not Found")
     
-@quiz_overview_bp.route("/quiz_overview/<folder_id>", methods=['GET', 'POST'])
-def module_details(folder_id):
-    folder = Folder.query.filter_by(id=folder_id).first()
-    if not folder:
-        return "<h1>Quiz Not Found</h1>", 404
-    # Get the name of the files
-    files_names = [{
-        "filename": file.filename,
-    }for file in folder.files]
-    # Store folder information  in session
-    session["folder_id"] = folder.id
-    session["files_names"] = files_names
-    
-    file_names_filter = {filename.get("filename") for filename in files_names}
-    file_type = determine_file_type(file_names_filter)
+    # Try to retrieve the metadata file and lecture file
+    metadata_file = File.query.filter_by(folder_id=folder_id, filename="info.json").first()
+    lecture_file = File.query.filter_by(folder_id=folder_id, filename="lecture.html").first()
 
-    if file_type == "NonAdaptive":
-        return redirect(url_for("non_adaptive_quiz_bp.render_non_adaptive_quiz"))
-    elif file_type == "Adaptive":
-        return redirect(url_for("adaptive_quiz_bp.render_adaptive_quiz"))
-    else:
-        # Decode the bytes content to a string
-        files_names = [{
-        "filename": file.filename,
-        "content": file.content.decode('utf-8', errors='ignore') } for file in folder.files]
-        return render_template('lecture.html', lecture=files_names[0].get("content"))
+    # Case 1: Adaptive/Non-Adaptive Content based on metadata
+    if metadata_file:
+        # Load the metadata content
+        metadata = json.loads(metadata_file.content.decode('utf-8'))
+        is_adaptive = metadata.get("isAdaptive")
+        
+        # Adaptive Content
+        if is_adaptive:
+            return redirect(url_for('adaptive_quiz_bp.render_adaptive_quiz', folder_id=folder_id))
+        
+        # Non-Adaptive Content
+        else:
+            return redirect(url_for('non_adaptive_quiz_bp.render_non_adaptive_quiz', folder_id=folder_id))
+    # Case 2: Lecture Content (HTML file)
+    elif lecture_file:
+        # Render the lecture HTML file content
+        lecture_content = lecture_file.content.decode('utf-8')
+        return render_template('lecture.html', lecture=lecture_content)
     
+    # Case 3: No content found
+    else:
+        return "No valid content found for this folder", 404
+
+
+
 @quiz_overview_bp.route("/quiz_overview/download", methods=['GET', 'POST'])
 def download_module():
     folder_id = session["folder_id"]

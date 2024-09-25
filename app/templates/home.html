@@ -1,86 +1,185 @@
 {% extends "base.html" %}
-
-{% block title %}Home page{% endblock %}
-
+{% block hero %}
+<section id="hero-section" class="p-5">
+    <div class="container text-center mt-3">
+        <h1 class="main-heading">Gestalt Generator</h1>
+        <p class="subheading">Empowering Educators with AI-Powered STEM Content Creation</p>
+        <a href="{{ url_for('routes.home') }}#generators-section" class="cta-button">Get Started</a>
+    </div>
+</section>
+{% endblock %}
 {% block content %}
 
-<div class="container my-5">
-    <!-- Title Section -->
-    <h1 class="text-center mb-5">2024 GESTALT Question Generator</h1>
-    <p class="subheading">Generate Custom Modules from Your Questions</p>
 
-    <!-- Welcome Section -->
-    <section>
-        <h3>Welcome</h3>
-        <p>
-            The STEM Module Generator is designed to help educators create adaptive quizzes and content for STEM disciplines, with a focus on mechanical engineering subjects.
-            Our platform generates modules containing multiple files, including HTML for solutions and step-by-step guides, and JavaScript for computation and value generation.
-        </p>
-    </section>
+<section id="generators-section" class="generators-section">
+    <div class="container text-container">
+        <h2>Our Generators</h2>
+        <hr class="divider div-dark d-flex">
+    </div>
+    <div class="generators-container">
+        <div class="generator-card">
+            <div class="text-container">
+                <h3 class="text-center">QuickQuery Generator</h3>
+                <hr class="divider">
+            </div>
+            <p class="text-center ital">Instantly transform individual text-based questions into comprehensive modules.
+            </p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Best For:</strong> Fast, single-question processing.</li>
+                <li class="list-group-item"><strong>Input:</strong> Text-based questions.</li>
+                <li class="list-group-item"><strong>Output:</strong> Complete modules with all necessary content.</li>
+            </ul>
+            <a href="{{ url_for('text_generator_bp.generate_text') }}" class="btn btn-primary ">Try QuickQuery</a>
+        </div>
 
-    <!-- Features Section -->
-    <section class="mt-5">
-        <h3>Features</h3>
-        <ul class="list-group">
-            <li class="list-group-item">Instant Generation of Adaptive Content</li>
-            <li class="list-group-item">Process both text and image inputs</li>
-            <li class="list-group-item">Automatic Unit Conversion and Random Value Generation</li>
-            <li class="list-group-item">Upload text questions to generate content</li>
-            <li class="list-group-item">Generate content from images, including lecture notes, handwritten work, and textbook solutions</li>
-            <li class="list-group-item">Advanced lecture analysis tool for comprehensive content generation</li>
-        </ul>
-    </section>
 
-    <!-- How It Works Section -->
-    <section class="mt-5">
-        <h3>How It Works</h3>
-        <p>Step 1: Enter your question in the input box or upload an image of your question.</p>
-        <p>Step 2: Click the "Generate" button.</p>
-        <p>Step 3: Review and download your custom module.</p>
-    </section>
+        <!-- VisualExtract Generator -->
+        <div class="generator-card">
+            <div class="text-container">
+                <h3 class="text-center">VisualExtract Generator</h3>
+                <hr class="divider">
+            </div>
+            <p class="text-center ital">Extract and process multiple questions from images or PDFs.</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Best For:</strong> Handwritten notes, scanned documents, textbook
+                    solutions.</li>
+                <li class="list-group-item"><strong>Input:</strong> Images and PDFs.</li>
+                <li class="list-group-item"><strong>Output:</strong> Individual modules for each extracted question.
+                </li>
+            </ul>
+            <a href="{{ url_for('image_generator_bp.generate_image') }}" class="btn btn-primary ">Try VisualExtract</a>
+        </div>
 
-    <!-- Generators Section -->
-    <section class="mt-5">
-        <h3>Generators</h3>
-        <p>Our platform offers three types of generators to meet your needs:</p>
+        <div class="generator-card">
+            <div class="text-container">
+                <h3 class="text-center">LectureInsight Generator</h3>
+                <hr class="divider">
+            </div>
+            <p class="text-center ital">Unlock insights from your lecture materials and generate comprehensive modules.
+            </p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Best For:</strong> Summarizing lectures, extracting key concepts,
+                    and creating a suite of modules.</li>
+                <li class="list-group-item"><strong>Input:</strong> Lecture notes, multiple documents, PDFs.</li>
+                <li class="list-group-item"><strong>Output:</strong> Summaries, key concepts, and modules for each
+                    extracted question.</li>
+            </ul>
+            <a href="{{ url_for('lecture_generator_bp.generate_lecture') }}" class="btn btn-primary">Try
+                LectureInsight</a>
+        </div>
+    </div>
+</section>
+<section id="how-it-works" class="p-5">
+    <div class="container text-center mb-5">
+        <h2>How it Works</h2>
+    </div>
 
-        <h4>1. Text Generator</h4>
-        <p>This tool works best with simple questions. It is faster and ideal for quick tests. Just type your question and get an instant response. Feel free to experiment with the complexity of the questions to see what works best.</p>
+    <div class="container step-container">
+        <div class="card step-by-step-item">
+            <div class="circle">
+                <h5 class="num-step">1</h5>
+            </div>
+            <div class="card-body step-by-step-body">
+                <h5 class="card-title">Input Your Content</h5>
+                <hr class="divider div-dark">
+                <p class="card-text">Enter a question, or upload images or PDFs of your content.</p>
+            </div>
+        </div>
+        <div class="card step-by-step-item">
+            <div class="circle">
+                <h5 class="num-step">2</h5>
+            </div>
+            <div class="card-body step-by-step-body">
+                <h5 class="card-title">Select a Generator</h5>
+                <hr class="divider div-dark">
+                <p class="card-text">Choose from the QuickQuery Generator, VisualExtract Generator, or LectureInsight
+                    Generator based on your needs.</p>
+            </div>
+        </div>
+        <div class="card step-by-step-item">
+            <div class="circle">
+                <h5 class="num-step">3</h5>
+            </div>
 
-        <h4>2. Image Input Generator</h4>
-        <p>This generator is ideal for more complex questions that are represented visually. Upload an image of your lecture notes, handwritten work, or textbook solutions, and the platform will generate content based on the provided image.</p>
+            <div class="card-body step-by-step-body">
+                <h5 class="card-title">Generate Modules</h5>
+                <hr class="divider div-dark">
+                <p class="card-text">Click "Generate" to create your customized modules.</p>
+            </div>
+        </div>
+        <div class="card step-by-step-item">
+            <div class="circle">
+                <h5 class="num-step">4</h5>
+            </div>
 
-        <h4>3. Lecture Analysis Tool</h4>
-        <p>The Lecture Analysis Tool is our most advanced generator. It analyzes a collection of documents, typically lecture notes, and decides on key options for extraction. This tool can extract key concepts and fundamental ideas, generate conceptual questions, identify mathematical derivations, and create computational questions. Essentially, it combines the capabilities of the first two generators, generating all necessary modules and creating an HTML webpage of the lecture material.</p>
-    </section>
+            <div class="card-body step-by-step-body">
+                <h5 class="card-title">Review & Customize</h5>
+                <hr class="divider div-dark">
+                <p class="card-text">Manually test the content, make adjustments, and download your files.</p>
+            </div>
+        </div>
 
-    <!-- Important Notice Section -->
-    <section class="mt-5">
-        <h3>Important Notice</h3>
-        <p>
-            While our STEM Module Generator is designed to provide quick and efficient creation of educational modules based on user input, it is important to note that 
-            the generated content is not guaranteed to be perfect, as there can be inaccuracies or areas that need improvement.
-        </p>
+    </div>
 
-        <h4>Why Review is Necessary</h4>
-        <ul class="list-group">
-            <li class="list-group-item"><strong>Accuracy:</strong> The generated modules might contain factual errors or misinterpretations of the input question. It is crucial to verify the accuracy of the content to ensure it meets your specific requirements and standards.</li>
-            <li class="list-group-item"><strong>Relevance:</strong> The generated content might not always be fully aligned with the intended context or specific nuances of the question. Reviewing helps to tailor the content more precisely to your needs.</li>
-            <li class="list-group-item"><strong>Quality:</strong> Automated generation can sometimes result in content that lacks the depth, clarity, or coherence required for effective learning. Reviewing allows for refinement and enhancement of the material.</li>
-            <li class="list-group-item"><strong>Customization:</strong> Each educational context is unique. Reviewing and editing the generated modules enable customization to better fit the specific learning objectives and audience.</li>
-        </ul>
-        <p class="mt-3">
-            By thoroughly reviewing and refining the generated modules before deployment, you can ensure that the content is accurate, relevant, high-quality, and customized to your needs. This step is essential for maintaining the integrity and effectiveness of your educational materials.
-        </p>
-    </section>
+</section>
 
-    <!-- Powered by OpenAI Section -->
-    <section class="mt-5">
-        <h3>Powered by OpenAI</h3>
-        <p>
-            Our generators use OpenAI's GPT models to create content. These advanced language models help in generating accurate and relevant educational materials based on your input questions.
-        </p>
-    </section>
-</div>
+<section id="key-features" class="p-5">
+    <div class="container text-center mb-5">
+        <h2 class="section-heading">Key Features</h2>
+        <hr class="divider div-dark">
+    </div>
+    <div class="container key-feature-container my-2">
+        <div class="card m-2 key-feature-item">
+            <div class="card-body key-feature-body">
+                <div class="text-container">
+                    <h5 class="card-title feature-title">Adaptive Content Generation</h5>
+                    <hr class="divider">
+                </div>
+                <p class="card-text feature-text">Quickly generate tailored modules from text, images, or PDFs.</p>
+            </div>
+        </div>
+        <div class="card m-2 key-feature-item">
+            <div class="card-body key-feature-body">
+                <div class="text-container">
+                    <h5 class="card-title feature-title">Multi-Question Extraction</h5>
+                    <hr class="divider">
+                </div>
+                <p class="card-text feature-text">Extract multiple questions from a single input and generate individual
+                    modules for each.</p>
+            </div>
+        </div>
+        <div class="card m-2 key-feature-item">
+            <div class="card-body key-feature-body">
+                <div class="text-container">
+                    <h5 class="card-title feature-title">Code-Enhanced AI Generation</h5>
+                    <hr class="divider">
+                </div>
+                <p class="card-text feature-text">Leverage Retrieval-Augmented Generation (RAG) to search relevant code
+                    documentation, enhancing module quality and overcoming traditional training data limitations.</p>
+            </div>
+        </div>
+        <div class="card m-2 key-feature-item">
+            <div class="card-body key-feature-body">
+                <div class="text-container">
+                    <h5 class="card-title feature-title">Comprehensive Output</h5>
+                    <hr class="divider">
+                </div>
+                <p class="card-text feature-text">Generate JavaScript, Python, and HTML files for computational
+                    questions and step-by-step solution guides.</p>
+            </div>
+        </div>
+        <div class="card m-2 key-feature-item">
+            <div class="card-body key-feature-body">
+                <div class="text-container">
+                    <h5 class="card-title feature-title">Customization & Review</h5>
+                    <hr class="divider">
+                </div>
+                <p class="card-text feature-text">Manually test, tweak, and adjust outputs for precision and
+                    personalization.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 {% endblock %}
-

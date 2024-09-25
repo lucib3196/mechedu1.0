@@ -7,6 +7,9 @@ from pickle import TRUE
 from src.prairielearn.python import prairielearn
 from src.prairielearn.python import prairielearn as pl
 import json
+from flask_wtf import CSRFProtect 
+
+
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or "6Vicv382oz3PyNOAYP2SlAo/uO2750TY4+5fjNRoi8ccH0fpoEP/QLznbI07K36v"
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN', "").split(",")
@@ -29,6 +32,8 @@ config: dict[str, type[DevelopmentConfig]] = {
 def create_app():
     app = Flask(__name__)
     app.config.from_object(config['development'])
+
+    csrf = CSRFProtect(app) 
 
     # Initialize database
     from .db_models.models import db, User,Role,QuestionMetadata,Folder

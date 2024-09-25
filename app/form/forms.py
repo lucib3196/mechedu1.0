@@ -1,6 +1,6 @@
 from flask.app import Flask
 from flask_wtf import FlaskForm
-from wtforms import PasswordField, StringField, SubmitField, BooleanField
+from wtforms import PasswordField, StringField, SubmitField, BooleanField,TextAreaField
 from flask_wtf.file import MultipleFileField, FileRequired,FileField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 from ..db_models.models import User
@@ -62,3 +62,7 @@ class SignUp(FlaskForm):
     def validate_email(self, field):
         if User.query.filter_by(email=field.data).first():
             raise ValidationError('Email already registered.')
+        
+class UPDATE_CODE(FlaskForm):
+    code = TextAreaField('Code', validators=[DataRequired()])
+    save = SubmitField("Save Code")

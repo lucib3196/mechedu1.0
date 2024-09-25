@@ -1,27 +1,30 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 {% block content %}
-<h1>Module Content</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-        </tr>
-    </thead>
-    
-    <tbody>
-        {% for folder in folder_data %}
-        <tr>
-            <td>{{ folder.id }}</td>  
-            <td><a href="{{ url_for('quiz_overview_bp.module_details', folder_id = folder.id) }}">{{ folder.folder_name }}</a></td>
-        </tr>
-        {% endfor %}    
-    </tbody>
-</table>
-<div class="container">
-    <form method="POST" action="{{ url_for('quiz_overview_bp.download_all_modules') }}">
-        <input type="hidden" name="folder_data" value="{{ folder_data }}">
-        <button type="submit" class="btn btn-primary">Download</button>
-    </form>
+<div class="table-container">
+    <h1 class="text-center">Content</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for folder in folder_data %}
+            <tr>
+                <td>{{ folder.id }}</td>
+                <td><a href="{{ url_for('quiz_overview_bp.modules_action', folder_id = folder.id) }}">{{
+                        folder.folder_name }}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="container d-flex justify-content-center mt-4">
+        <form method="POST" action="{{ url_for('quiz_overview_bp.download_all_modules') }}">
+            <input type="hidden" name="folder_data" value="{{ folder_data }}">
+            <button type="submit" class="btn btn-primary">Download All</button>
+        </form>
+    </div>
 </div>
 {% endblock %}

@@ -1896,6 +1896,14 @@
         "documentation": {}
     },
     {
+        "label": "flash",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
         "label": "session",
         "importPath": "flask",
         "description": "flask",
@@ -1961,6 +1969,14 @@
     },
     {
         "label": "BooleanField",
+        "importPath": "wtforms",
+        "description": "wtforms",
+        "isExtraImport": true,
+        "detail": "wtforms",
+        "documentation": {}
+    },
+    {
+        "label": "TextAreaField",
         "importPath": "wtforms",
         "description": "wtforms",
         "isExtraImport": true,
@@ -2096,6 +2112,14 @@
         "description": "src.llm_content_assembly.assembly",
         "isExtraImport": true,
         "detail": "src.llm_content_assembly.assembly",
+        "documentation": {}
+    },
+    {
+        "label": "get_logger",
+        "importPath": "src.logging_config.logging_config",
+        "description": "src.logging_config.logging_config",
+        "isExtraImport": true,
+        "detail": "src.logging_config.logging_config",
         "documentation": {}
     },
     {
@@ -4950,7 +4974,16 @@
         "kind": 6,
         "importPath": "app.form.forms",
         "description": "app.form.forms",
-        "peekOfCode": "class SignUp(FlaskForm):\n    first_name = StringField(\"First Name\", validators=[DataRequired(), Length(1, 64)])\n    email = StringField('Email', validators=[DataRequired(), Length(1, 64), Email()])\n    password = PasswordField('Password', validators=[DataRequired(), EqualTo('password2', message='Passwords must match.')])\n    password2 = PasswordField('Confirm Password', validators=[DataRequired()])\n    submit = SubmitField(\"Sign Up\")\n    def validate_email(self, field):\n        if User.query.filter_by(email=field.data).first():\n            raise ValidationError('Email already registered.')",
+        "peekOfCode": "class SignUp(FlaskForm):\n    first_name = StringField(\"First Name\", validators=[DataRequired(), Length(1, 64)])\n    email = StringField('Email', validators=[DataRequired(), Length(1, 64), Email()])\n    password = PasswordField('Password', validators=[DataRequired(), EqualTo('password2', message='Passwords must match.')])\n    password2 = PasswordField('Confirm Password', validators=[DataRequired()])\n    submit = SubmitField(\"Sign Up\")\n    def validate_email(self, field):\n        if User.query.filter_by(email=field.data).first():\n            raise ValidationError('Email already registered.')\nclass UPDATE_CODE(FlaskForm):",
+        "detail": "app.form.forms",
+        "documentation": {}
+    },
+    {
+        "label": "UPDATE_CODE",
+        "kind": 6,
+        "importPath": "app.form.forms",
+        "description": "app.form.forms",
+        "peekOfCode": "class UPDATE_CODE(FlaskForm):\n    code = TextAreaField('Code', validators=[DataRequired()])\n    save = SubmitField(\"Save Code\")",
         "detail": "app.form.forms",
         "documentation": {}
     },
@@ -5270,20 +5303,47 @@
         "documentation": {}
     },
     {
-        "label": "determine_file_type",
+        "label": "modules_action",
         "kind": 2,
         "importPath": "app.routes.quiz_views.quiz_overview",
         "description": "app.routes.quiz_views.quiz_overview",
-        "peekOfCode": "def determine_file_type(file_names:dict)->str:\n    adaptive_files = {'question.html', 'server.js', 'server.py', 'solution.html', 'info.json'}\n    nonadaptive_files = {'question.html', 'info.json'}\n    if file_names == nonadaptive_files:\n        return \"NonAdaptive\"\n    elif file_names == adaptive_files:\n        return \"Adaptive\"\n    else:\n        return \"Lecture\"\n@quiz_overview_bp.route(\"/quiz_overview/<folder_id>\", methods=['GET', 'POST'])",
+        "peekOfCode": "def modules_action(folder_id):\n    folder = Folder.query.filter_by(id=folder_id).first_or_404(description=\"Quiz Not Found\")\n    session[\"folder_id\"] = folder.id\n    return render_template('module_actions.html',folder=folder)\n@quiz_overview_bp.route('/edit_code/<int:fileid>', methods=['GET', 'POST'])\ndef edit_code(fileid):\n    # Retrieve the file from the database using its ID\n    file = File.query.filter_by(id=fileid).first_or_404(description=\"File Not Found\")\n    session[\"fileid\"] = file.id\n    code_content = file.content.decode('utf-8')",
         "detail": "app.routes.quiz_views.quiz_overview",
         "documentation": {}
     },
     {
-        "label": "module_details",
+        "label": "edit_code",
         "kind": 2,
         "importPath": "app.routes.quiz_views.quiz_overview",
         "description": "app.routes.quiz_views.quiz_overview",
-        "peekOfCode": "def module_details(folder_id):\n    folder = Folder.query.filter_by(id=folder_id).first()\n    if not folder:\n        return \"<h1>Quiz Not Found</h1>\", 404\n    # Get the name of the files\n    files_names = [{\n        \"filename\": file.filename,\n    }for file in folder.files]\n    # Store folder information  in session\n    session[\"folder_id\"] = folder.id",
+        "peekOfCode": "def edit_code(fileid):\n    # Retrieve the file from the database using its ID\n    file = File.query.filter_by(id=fileid).first_or_404(description=\"File Not Found\")\n    session[\"fileid\"] = file.id\n    code_content = file.content.decode('utf-8')\n    language_map = {\n        \"py\":\"python\",\n        \"js\":\"javascript\",\n        \"html\":\"html\"\n    }",
+        "detail": "app.routes.quiz_views.quiz_overview",
+        "documentation": {}
+    },
+    {
+        "label": "save_code",
+        "kind": 2,
+        "importPath": "app.routes.quiz_views.quiz_overview",
+        "description": "app.routes.quiz_views.quiz_overview",
+        "peekOfCode": "def save_code():\n    data = request.get_json()\n    updated_code = data.get('code')\n    fileid = session.get(\"fileid\",\"\")\n    old_file = File.query.filter_by(id=fileid).first_or_404(description=\"File Not Found\")\n    old_file.content = updated_code.encode('utf-8')\n    db.session.commit()\n    flash('Code saved successfully!', 'success')\n    return redirect(url_for('quiz_overview_bp.edit_code', fileid=fileid))\n# All This needs to be fixed eventually with databases and the info.json file ",
+        "detail": "app.routes.quiz_views.quiz_overview",
+        "documentation": {}
+    },
+    {
+        "label": "determine_file_type",
+        "kind": 2,
+        "importPath": "app.routes.quiz_views.quiz_overview",
+        "description": "app.routes.quiz_views.quiz_overview",
+        "peekOfCode": "def determine_file_type(file_names:dict)->str:\n    adaptive_files = {'question.html', 'server.js', 'server.py', 'solution.html', 'info.json'}\n    nonadaptive_files = {'question.html', 'info.json'}\n    if file_names == nonadaptive_files:\n        return \"NonAdaptive\"\n    elif file_names == adaptive_files:\n        return \"Adaptive\"\n    else:\n        return \"Lecture\"\n@quiz_overview_bp.route('/quiz_overview/<int:folder_id>', methods=['GET', 'POST'])",
+        "detail": "app.routes.quiz_views.quiz_overview",
+        "documentation": {}
+    },
+    {
+        "label": "render_content",
+        "kind": 2,
+        "importPath": "app.routes.quiz_views.quiz_overview",
+        "description": "app.routes.quiz_views.quiz_overview",
+        "peekOfCode": "def render_content(folder_id):\n    # Retrieve the folder\n    folder = Folder.query.filter_by(id=folder_id).first_or_404(description=\"Quiz Not Found\")\n    # Try to retrieve the metadata file and lecture file\n    metadata_file = File.query.filter_by(folder_id=folder_id, filename=\"info.json\").first()\n    lecture_file = File.query.filter_by(folder_id=folder_id, filename=\"lecture.html\").first()\n    # Case 1: Adaptive/Non-Adaptive Content based on metadata\n    if metadata_file:\n        # Load the metadata content\n        metadata = json.loads(metadata_file.content.decode('utf-8'))",
         "detail": "app.routes.quiz_views.quiz_overview",
         "documentation": {}
     },
@@ -5306,11 +5366,20 @@
         "documentation": {}
     },
     {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "app.routes.quiz_views.quiz_overview",
+        "description": "app.routes.quiz_views.quiz_overview",
+        "peekOfCode": "logger = get_logger(__name__)\n# Local Application Imports\nfrom ...db_models.models import File, EduModule, Folder, db\nfrom .utils import retrieve_files_session, retrieve_files_folder\nfrom src.utils.file_handler import create_zip_file\nfrom ...form.forms import UPDATE_CODE\nquiz_overview_bp = Blueprint('quiz_overview_bp', __name__)\n# This is perfect as is \n@quiz_overview_bp.route(\"/quiz_overview/<folder_id>/actions\", methods=['GET', 'POST'])\ndef modules_action(folder_id):",
+        "detail": "app.routes.quiz_views.quiz_overview",
+        "documentation": {}
+    },
+    {
         "label": "quiz_overview_bp",
         "kind": 5,
         "importPath": "app.routes.quiz_views.quiz_overview",
         "description": "app.routes.quiz_views.quiz_overview",
-        "peekOfCode": "quiz_overview_bp = Blueprint('quiz_overview_bp', __name__)\n# This needs to be fixed eventually with databases and the info.jsonm file \ndef determine_file_type(file_names:dict)->str:\n    adaptive_files = {'question.html', 'server.js', 'server.py', 'solution.html', 'info.json'}\n    nonadaptive_files = {'question.html', 'info.json'}\n    if file_names == nonadaptive_files:\n        return \"NonAdaptive\"\n    elif file_names == adaptive_files:\n        return \"Adaptive\"\n    else:",
+        "peekOfCode": "quiz_overview_bp = Blueprint('quiz_overview_bp', __name__)\n# This is perfect as is \n@quiz_overview_bp.route(\"/quiz_overview/<folder_id>/actions\", methods=['GET', 'POST'])\ndef modules_action(folder_id):\n    folder = Folder.query.filter_by(id=folder_id).first_or_404(description=\"Quiz Not Found\")\n    session[\"folder_id\"] = folder.id\n    return render_template('module_actions.html',folder=folder)\n@quiz_overview_bp.route('/edit_code/<int:fileid>', methods=['GET', 'POST'])\ndef edit_code(fileid):\n    # Retrieve the file from the database using its ID",
         "detail": "app.routes.quiz_views.quiz_overview",
         "documentation": {}
     },
@@ -6183,7 +6252,7 @@
         "kind": 6,
         "importPath": "src.llm_module_generator.physics_module_generator.generate_metadata",
         "description": "src.llm_module_generator.physics_module_generator.generate_metadata",
-        "peekOfCode": "class MetaData(BaseModel):\n    uuid: str = Field(..., description=\"UUID: A universally unique identifier (UUID) for this item\")\n    title: str = Field(..., description=\"An appropriate title for the given question, returned using CamelCase format\")\n    stem: str = Field(..., description=\"Additional context or a subtopic related to the main topic\")\n    topic: str = Field(..., description=\"The main topic or subject of the educational content\")\n    tags: List[str] = Field(..., description=\"An array of keywords or tags associated with the content\")\n    prereqs: List[str] = Field(..., description=\"An array of prerequisites needed to access or understand the content\")\n    isAdaptive: bool = Field(..., description=\"Designates whether the content necessitates any form of numerical computation. 'true' if the question involves numerical computation, otherwise 'false'\")\nclass Response(BaseModel):\n    question: str = Field(..., description=\"The original question that was classified\")",
+        "peekOfCode": "class MetaData(BaseModel):\n    title: str = Field(..., description=\"An appropriate title for the given question, returned using CamelCase format\")\n    stem: str = Field(..., description=\"Additional context or a subtopic related to the main topic\")\n    topic: str = Field(..., description=\"The main topic or subject of the educational content\")\n    tags: List[str] = Field(..., description=\"An array of keywords or tags associated with the content\")\n    prereqs: List[str] = Field(..., description=\"An array of prerequisites needed to access or understand the content\")\n    isAdaptive: bool = Field(..., description=\"Designates whether the content necessitates any form of numerical computation. 'true' if the question involves numerical computation, otherwise 'false'\")\nclass Response(BaseModel):\n    question: str = Field(..., description=\"The original question that was classified\")\n    metadata: MetaData",
         "detail": "src.llm_module_generator.physics_module_generator.generate_metadata",
         "documentation": {}
     },
@@ -6535,6 +6604,15 @@
         "importPath": "src.llm_module_generator.physics_module_generator.templates",
         "description": "src.llm_module_generator.physics_module_generator.templates",
         "peekOfCode": "server_py_template_base = \"\"\"\nYou have access to Python modules such as `numpy`, `sympy`, and `pandas`, which you may use when necessary.\nYour task is to design a robust Python module that generates computational problems across various STEM disciplines. This module will ingest an HTML file containing a structured query and output a Python snippet that performs the required calculations. The Python code must adhere to the following outline:\n```python\ndef generate():\n    # 1. Dynamic Parameter Selection:\n    # - Thoroughly analyze the HTML or data source to identify relevant categories and units for computation.\n    # - Ensure the inclusion of a diverse set of units and values, covering different global measurement systems (SI and USCS).\n    # - Implement a randomized selection algorithm that fairly alternates between unit systems (SI and USCS), ensuring balanced representation.\n    # - Avoid embedding HTML within the Python code.",
+        "detail": "src.llm_module_generator.physics_module_generator.templates",
+        "documentation": {}
+    },
+    {
+        "label": "generate_metadata_template",
+        "kind": 5,
+        "importPath": "src.llm_module_generator.physics_module_generator.templates",
+        "description": "src.llm_module_generator.physics_module_generator.templates",
+        "peekOfCode": "generate_metadata_template = f\"\"\" You are tasked with analyzing the given question and classifying it by generating the appropriate metadata. Use the following structure to ensure accurate classification:\nTitle: Provide a suitable title for the question in CamelCase format.\nStem: Offer additional context or subtopic related to the main topic of the question.\nTopic: Identify the main subject or topic that the question pertains to.\nTags: Provide an array of relevant keywords or tags associated with the question's content.\nPrerequisites: List any necessary prerequisites required to understand or engage with the question.\nIsAdaptive: Determine whether the question involves any numerical computation. Return true if it requires numerical computation, and false otherwise.\"\"\"",
         "detail": "src.llm_module_generator.physics_module_generator.templates",
         "documentation": {}
     },

@@ -28,7 +28,6 @@ class GenerateMetadata(LLM_Call):
         return await self.acall(prompt, response_format=self.response_format)
 
 class MetaData(BaseModel):
-    uuid: str = Field(..., description="UUID: A universally unique identifier (UUID) for this item")
     title: str = Field(..., description="An appropriate title for the given question, returned using CamelCase format")
     stem: str = Field(..., description="Additional context or a subtopic related to the main topic")
     topic: str = Field(..., description="The main topic or subject of the educational content")

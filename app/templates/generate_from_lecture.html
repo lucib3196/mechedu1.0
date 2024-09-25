@@ -1,25 +1,28 @@
-{% extends "base.html" %} 
-{% block content %}
+{% extends "base.html" %}
 
-    <!-- Content Section -->
-    <div class="text-center p-4">
-        <!-- Title Section -->
-        <div class="mb-4">
-            <h1>Generate from Lecture</h1>
-            <h5 class="text-muted">Upload your images below to generate personalized modules instantly.</h5>
+{% block content %}
+<!-- Main Container -->
+<div class="gen-container">
+
+    <!-- Title and Subheading Section -->
+    <div class="gen-info-container">
+        <div class="gen-title-container">
+            <h1 class="gen-title">LectureInsight</h1>
+            <h2 class="gen-subheading">Upload your lecture notes or materials to generate comprehensive educational modules.</h2>
         </div>
 
-        <!-- Example Questions Section -->
-        <div class="example-questions">
-            <p class="mb-3">
-                This advanced module generator allows you to upload images or PDFs that contain both the problem statement and its corresponding solution. These files will be processed to generate personalized educational modules. Currently, the generator accepts PDF files, as well as images in JPEG and PNG formats. Below are some examples of the types of content you can upload:
+        <!-- Description and Example Section -->
+        <div class="example-section">
+            <p class="gen-description mb-3 text-center">
+                The LectureInsight Generator processes lecture materials, including images, PDFs, and handwritten notes, to create fully detailed educational modules. It extracts key concepts, summaries, derivations, and questions from your lecture content. Below are examples of the types of materials you can upload:
             </p>
             <ul class="list-group list-group-flush p-3">
-                <li class="list-group-item">Textbook solutions: These provide officially published problems and solutions, ensuring high accuracy.</li>
-                <li class="list-group-item">Handwritten solutions: Personal notes or solutions written by hand are also accepted and will be processed effectively.</li>
-                <li class="list-group-item">Lecture materials: Slides or other instructional content presented during lectures can be used to create modules.</li>
+                <li class="list-group-item">Lecture slides: Upload presentation slides to extract summaries, key concepts, and questions.</li>
+                <li class="list-group-item">Handwritten notes: Personal handwritten notes will be processed to create structured modules, including conceptual and computational questions.</li>
+                <li class="list-group-item">PDF lecture documents: Detailed lecture materials in PDF format can be used to generate comprehensive content with derivations and step-by-step guides.</li>
             </ul>
         </div>
+    </div>
 
     <!-- Form Section -->
     <form method="POST" action="{{ url_for('lecture_generator_bp.generate_lecture') }}" class="p-4" enctype="multipart/form-data">
@@ -27,7 +30,10 @@
             {{ form.hidden_tag() }}
             {{ form.files(class="form-control") }}
         </div>
-        {{ form.submit(class="btn btn-primary mt-3 mb-3") }}
+        <div class="form-group mt-3 mb-3">
+            {{ form.submit(class="btn btn-primary mt-3 mb-3") }}
+        </div>
+        
     </form>
 </div>
 {% endblock %}

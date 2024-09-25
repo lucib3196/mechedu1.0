@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block scriptheader %}
+<script src="https://cdn.jsdelivr.net/npm/ace-builds@1.4.12/src-min-noconflict/ace.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.13.0/beautify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.13.0/beautify-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.13.0/beautify-html.min.js"></script>
+
+{% endblock %}
+
+{% block content %}
+<div class="editor-container">
+    <h1 class="sub-heading text-center">Code Editor</h1>
+    <div id="editor" >{{ code }}</div>
+    <div class="button-container">
+        <button id="save-btn" class="btn save-btn" onclick="saveCode()">Save</button>
+        <button id="format-btn" class="btn format-btn" onclick="formatCode()">Format Code</button>
+        <input type="hidden" id="csrf_token" value="{{ csrf_token() }}">
+    </div>
+
+</div>
+
+
+<script>
+
+    window.onload = function () {
+        // Your code that should run when the page loads
+        console.log("Page fully loaded. Running the script.");
+        setAceEditor({{ data| safe }})
+        };
+    const editor = ace.edit("editor");
+    function setAceEditor(file_extension) {
+        editor.setTheme("ace/theme/monokai");
+        let mode = `ace/mode/${file_extension}`
+        console.log(`Setting mode to ${mode}`)
+        editor.session.setMode(mode);
+    }
+    function formatCode() {
+        var code = editor.getValue();
+        var formattedCode;
+
+        var mode = editor.session.getMode().$id
+
+        if (mode === "ace/mode/javascript") {
+            formattedCode = js_beautify(code, { indent_size: 2 });
+        } else if (mode === "ace/mode/python") {
+            formattedCode = js_beautify(code, { indent_size: 2 });
+        } else if (mode === "ace/mode/html") {
+            formattedCode = html_beautify(code, { indent_size: 2 });
+        } else if (mode === "ace/mode/css") {
+            formattedCode = css_beautify(code, { indent_size: 2 });
+        } else {
+            formattedCode = code;
+        }
+        editor.setValue(formattedCode, 1);
+    }
+
+    function saveCode() {
+        var updatedCode = editor.getValue();
+        var csrfToken = document.getElementById('csrf_token').value;
+
+        fetch('/save_code', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken  // Add CSRF token for protection
+            },
+            body: JSON.stringify({
+                code: updatedCode
+            })
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error saving the code');
+                }
+                return response.text();
+            })
+            .then(data => {
+                alert('Code saved successfully!');
+            })
+            .catch(error => {
+                alert('Error: ' + error.message);
+            });
+    }
+</script>
+{% endblock %}
