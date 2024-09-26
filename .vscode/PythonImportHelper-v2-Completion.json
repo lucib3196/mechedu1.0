@@ -344,6 +344,30 @@
         "documentation": {}
     },
     {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Union",
         "importPath": "typing",
         "description": "typing",
@@ -2188,6 +2212,14 @@
     },
     {
         "label": "lecture_assembly",
+        "importPath": "src.llm_content_assembly.assembly",
+        "description": "src.llm_content_assembly.assembly",
+        "isExtraImport": true,
+        "detail": "src.llm_content_assembly.assembly",
+        "documentation": {}
+    },
+    {
+        "label": "lecture_assembly_simple",
         "importPath": "src.llm_content_assembly.assembly",
         "description": "src.llm_content_assembly.assembly",
         "isExtraImport": true,
@@ -6113,6 +6145,24 @@
         "documentation": {}
     },
     {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "src.llm_content_assembly.llm_lecture_processor_simple",
+        "description": "src.llm_content_assembly.llm_lecture_processor_simple",
+        "peekOfCode": "logger = get_logger(__name__)\nTOTAL_TOKENS = 0\nasync def extract_summary_and_key_concepts(image_paths: List[str]) -> str:\n    \"\"\"\n    Extracts summary and key concepts from lecture images and generates HTML.\n    Args:\n        image_paths (List[str]): List of paths to the lecture images.\n    Returns:\n        str: Generated HTML for the summary and key concepts section.\n    \"\"\"",
+        "detail": "src.llm_content_assembly.llm_lecture_processor_simple",
+        "documentation": {}
+    },
+    {
+        "label": "TOTAL_TOKENS",
+        "kind": 5,
+        "importPath": "src.llm_content_assembly.llm_lecture_processor_simple",
+        "description": "src.llm_content_assembly.llm_lecture_processor_simple",
+        "peekOfCode": "TOTAL_TOKENS = 0\nasync def extract_summary_and_key_concepts(image_paths: List[str]) -> str:\n    \"\"\"\n    Extracts summary and key concepts from lecture images and generates HTML.\n    Args:\n        image_paths (List[str]): List of paths to the lecture images.\n    Returns:\n        str: Generated HTML for the summary and key concepts section.\n    \"\"\"\n    global TOTAL_TOKENS",
+        "detail": "src.llm_content_assembly.llm_lecture_processor_simple",
+        "documentation": {}
+    },
+    {
         "label": "TemporaryDirectoryManager",
         "kind": 6,
         "importPath": "src.llm_content_assembly.temporary_directory_manager",
@@ -6207,7 +6257,7 @@
         "kind": 6,
         "importPath": "src.llm_module_generator.agent.lecture_triaging_agent",
         "description": "src.llm_module_generator.agent.lecture_triaging_agent",
-        "peekOfCode": "class Response(BaseModel):\n    functions_call: List[str] = Field(...,description=\"An array of functions to call\")\n    summary: str = Field(\"A consise summary of the content of the content provided \")\n    pages: int = Field(\"A number of pages/slides you were given. This is meant to indicate how much content you were given\")\nagent_schema = Response.model_json_schema()\nlecture_triaging_agent = ImageToLLMProcessor(triaging_system_prompt,agent_schema)\nasync def main():\n    try:\n        print(\"Please enter the absolute paths to the image files, separated by commas:\")\n        image_paths_input = input()",
+        "peekOfCode": "class Response(BaseModel):\n    functions_call: List[str] = Field(...,description=\"An array of functions to call\")\n    summary: str = Field(\"A consise summary of the content of the content provided \")\n    pages: int = Field(\"A number of pages/slides you were given. This is meant to indicate how much content you were given\")\nagent_schema = Response.model_json_schema()\nlecture_triaging_agent = ImageToLLMProcessor(triaging_system_prompt,agent_schema)\nlecture_triaging_agent_simple = ImageToLLMProcessor(triaging_system_prompt_simple,agent_schema)\nasync def main():\n    try:\n        print(\"Please enter the absolute paths to the image files, separated by commas:\")",
         "detail": "src.llm_module_generator.agent.lecture_triaging_agent",
         "documentation": {}
     },
@@ -6221,11 +6271,20 @@
         "documentation": {}
     },
     {
+        "label": "triaging_system_prompt_simple",
+        "kind": 5,
+        "importPath": "src.llm_module_generator.agent.lecture_triaging_agent",
+        "description": "src.llm_module_generator.agent.lecture_triaging_agent",
+        "peekOfCode": "triaging_system_prompt_simple = \"\"\"\nYou are responsible for assessing the user's query and analyzing the provided material. Route the query to the appropriate functions based on the content. The available functions are:\n- **extract_summary_and_key_concepts**: This function is typically the default choice and should be used to extract the summary and key concepts when the material is formatted like a lecture. It should be called in most cases where the content is detailed and lecture-like.\n- **conceptual_question_extraction**: This function is also generally a default choice, particularly when **extract_summary_and_key_concepts** is used. It complements the extraction by generating or identifying related conceptual questions. For shorter materials, such as collections of questions, apply the same conditions as for the **computational_question_extraction** function.\n- **extract_derivations**:  This function should be called on a case-by-case basis, specifically when the material includes formal mathematical derivations. A derivation refers to a detailed, step-by-step explanation or proof that shows how a particular mathematical formula, equation, or result is derived. This function is most applicable when dealing with content related to physics or engineering subjects, where such detailed mathematical processes are often presented.\nIn most scenarios, **extract_summary_and_key_concepts** and **conceptual_question_extraction** are the primary functions to use, while **extract_derivations** and are more specialized and should be used based on specific content characteristics.\nForward the user's query to the relevant functions using the send_query_to_functions tool based on the material's content and format.\nAdditionally, provide an overall summary of the content you are analyzing. If possible, indicate how many pages or slides were provided and whether the material consists of a single page or multiple pages/slides.\n\"\"\"\nclass Response(BaseModel):",
+        "detail": "src.llm_module_generator.agent.lecture_triaging_agent",
+        "documentation": {}
+    },
+    {
         "label": "agent_schema",
         "kind": 5,
         "importPath": "src.llm_module_generator.agent.lecture_triaging_agent",
         "description": "src.llm_module_generator.agent.lecture_triaging_agent",
-        "peekOfCode": "agent_schema = Response.model_json_schema()\nlecture_triaging_agent = ImageToLLMProcessor(triaging_system_prompt,agent_schema)\nasync def main():\n    try:\n        print(\"Please enter the absolute paths to the image files, separated by commas:\")\n        image_paths_input = input()\n        # Split the input into a list of paths\n        image_paths = [path.strip() for path in image_paths_input.split(',')]\n        # Validate each provided path\n        for image_path in image_paths:",
+        "peekOfCode": "agent_schema = Response.model_json_schema()\nlecture_triaging_agent = ImageToLLMProcessor(triaging_system_prompt,agent_schema)\nlecture_triaging_agent_simple = ImageToLLMProcessor(triaging_system_prompt_simple,agent_schema)\nasync def main():\n    try:\n        print(\"Please enter the absolute paths to the image files, separated by commas:\")\n        image_paths_input = input()\n        # Split the input into a list of paths\n        image_paths = [path.strip() for path in image_paths_input.split(',')]\n        # Validate each provided path",
         "detail": "src.llm_module_generator.agent.lecture_triaging_agent",
         "documentation": {}
     },
@@ -6234,7 +6293,16 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.agent.lecture_triaging_agent",
         "description": "src.llm_module_generator.agent.lecture_triaging_agent",
-        "peekOfCode": "lecture_triaging_agent = ImageToLLMProcessor(triaging_system_prompt,agent_schema)\nasync def main():\n    try:\n        print(\"Please enter the absolute paths to the image files, separated by commas:\")\n        image_paths_input = input()\n        # Split the input into a list of paths\n        image_paths = [path.strip() for path in image_paths_input.split(',')]\n        # Validate each provided path\n        for image_path in image_paths:\n            if not os.path.isabs(image_path):",
+        "peekOfCode": "lecture_triaging_agent = ImageToLLMProcessor(triaging_system_prompt,agent_schema)\nlecture_triaging_agent_simple = ImageToLLMProcessor(triaging_system_prompt_simple,agent_schema)\nasync def main():\n    try:\n        print(\"Please enter the absolute paths to the image files, separated by commas:\")\n        image_paths_input = input()\n        # Split the input into a list of paths\n        image_paths = [path.strip() for path in image_paths_input.split(',')]\n        # Validate each provided path\n        for image_path in image_paths:",
+        "detail": "src.llm_module_generator.agent.lecture_triaging_agent",
+        "documentation": {}
+    },
+    {
+        "label": "lecture_triaging_agent_simple",
+        "kind": 5,
+        "importPath": "src.llm_module_generator.agent.lecture_triaging_agent",
+        "description": "src.llm_module_generator.agent.lecture_triaging_agent",
+        "peekOfCode": "lecture_triaging_agent_simple = ImageToLLMProcessor(triaging_system_prompt_simple,agent_schema)\nasync def main():\n    try:\n        print(\"Please enter the absolute paths to the image files, separated by commas:\")\n        image_paths_input = input()\n        # Split the input into a list of paths\n        image_paths = [path.strip() for path in image_paths_input.split(',')]\n        # Validate each provided path\n        for image_path in image_paths:\n            if not os.path.isabs(image_path):",
         "detail": "src.llm_module_generator.agent.lecture_triaging_agent",
         "documentation": {}
     },
@@ -6244,6 +6312,15 @@
         "importPath": "src.llm_module_generator.image_extraction.image_extraction_prompts",
         "description": "src.llm_module_generator.image_extraction.image_extraction_prompts",
         "peekOfCode": "conceptual_question_prompt = \"\"\"\n    You are tasked with analyzing the following lecture slides covering a specific class topic. Please address the following:\n    1. **Conceptual Questions**: Generate 4 multiple-choice conceptual questions based on the lecture material, each with 4 options. Indicate the correct answer for each question.\n    These questions can either be derived based on the information from the lecture slides or they can be generated by you. If you decide to generate, you need to indicate this in the response as a bool.\n    Always return the sources of where these questions are derived from.\n    Format any mathematical symbols or equations using LaTeX.\n    \"\"\"\nlecture_analysis_prompt =\"\"\"\n    You are tasked with analyzing the following lecture slides covering a specific class topic. Please address the following questions and return the results as a JSON structure with the specified keys:\n    1. **summary**: Provide a comprehensive summary of the lecture material.",
+        "detail": "src.llm_module_generator.image_extraction.image_extraction_prompts",
+        "documentation": {}
+    },
+    {
+        "label": "extract_derivations_prompt",
+        "kind": 5,
+        "importPath": "src.llm_module_generator.image_extraction.image_extraction_prompts",
+        "description": "src.llm_module_generator.image_extraction.image_extraction_prompts",
+        "peekOfCode": "extract_derivations_prompt = \"\"\"\n    You are tasked with analyzing the following lecture slides covering a specific class topic. Please address the following points and return the results as a JSON structure with the specified keys:\n    1. **Derivations**: Extract all derivations found in the lecture material. For each derivation:\n        - Provide a descriptive name that clearly explains what the derivation is trying to demonstrate.\n        - Extract the full solution, including all steps as if explaining to a student. Ensure that any mathematical expressions, symbols, or equations are properly formatted using LaTeX, enclosed within `$` symbols for inline math and `$$` symbols for block-level equations.\n        - Be aware that similar derivations may exist for different cases. These distinctions are often marked by changes in images or unique contexts. Ensure that these derivations are correctly identified and separated.\n        - Indicate the completeness of each derivation. If a derivation appears incomplete, explicitly state this.\n        - If no derivations are found in the material, return \"NaN\".\n\"\"\"\nextract_computation_questions_prompt = \"\"\"",
         "detail": "src.llm_module_generator.image_extraction.image_extraction_prompts",
         "documentation": {}
     },
@@ -6513,7 +6590,7 @@
         "kind": 2,
         "importPath": "src.llm_module_generator.parsers.parser",
         "description": "src.llm_module_generator.parsers.parser",
-        "peekOfCode": "def derivations_parser(response: dict) -> list[str]:\n    derivations = response.get(\"derivations\", [])\n    all_derivations = []\n    for derivation in derivations:\n        # Extract derivation name\n        derivation_name = f\"Derivation Name: {derivation.get('derivation_name', 'Unknown')}\"\n        # Extract derivation steps\n        derivation_steps = \"\".join(\n            f\"\\n - Explanation: {step.get('explanation', 'No explanation provided')}\"\n            f\"\\n - Step: {step.get('output', 'No output provided')}\"",
+        "peekOfCode": "def derivations_parser(response: dict) -> list[str]:\n    derivations = response.get(\"derivations\", [])\n    all_derivations = []\n    for derivation in derivations:\n        # Extract derivation name\n        derivation_name = f\"Derivation Name: {derivation.get('derivation_name', 'Unknown')}\"\n        # Extract derivation steps, ensuring LaTeX backslashes are properly escaped\n        derivation_steps = \"\\n\".join(\n            \"- Explanation: \" + step.get('explanation', 'No explanation provided').replace('\\\\', '\\\\\\\\') +  # Escaping LaTeX backslashes\n            \"\\n  Step: \" + step.get('output', 'No output provided').replace('\\\\', '\\\\\\\\')  # Escaping LaTeX backslashes",
         "detail": "src.llm_module_generator.parsers.parser",
         "documentation": {}
     },
@@ -6522,7 +6599,7 @@
         "kind": 2,
         "importPath": "src.llm_module_generator.parsers.parser",
         "description": "src.llm_module_generator.parsers.parser",
-        "peekOfCode": "def lecture_summary_parser(response: dict) -> list[str]:\n    print(response)\n    analysis = response.get(\"analysis\",\"\")\n    summary = analysis.get('summary', \"No summary provided.\")\n    key_concepts_list = analysis.get('key_concepts', [])\n    foundational_concepts_list = analysis.get('foundational_concepts', [])\n    # Parsing key concepts\n    key_concepts = \"\\n\".join([\n        f\"- {concept}\\n\"\n        for concept in key_concepts_list",
+        "peekOfCode": "def lecture_summary_parser(response: dict) -> list[str]:\n    analysis = response.get(\"analysis\", {})\n    if analysis:\n        summary = analysis.get('summary', \"No summary provided.\")\n        key_concepts_list = analysis.get('key_concepts', [])\n        foundational_concepts_list = analysis.get('foundational_concepts', [])\n    else:\n        summary = response.get('summary', \"No summary provided.\")\n        key_concepts_list = response.get('key_concepts', [])\n        foundational_concepts_list = response.get('foundational_concepts', [])",
         "detail": "src.llm_module_generator.parsers.parser",
         "documentation": {}
     },
@@ -7395,7 +7472,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.ui_generator.ui_generators",
         "description": "src.llm_module_generator.ui_generator.ui_generators",
-        "peekOfCode": "llm_config = LLMConfig(\n    api_key=api_key, \n    model=\"gpt-4o-2024-08-06\", \n    temperature=0\n)\n# Define the image paths\nimage_paths = [\n    r\"C:\\Users\\lberm\\OneDrive\\Desktop\\GitHub_Repository\\mechedu1.0\\mechedu1\\test_images\\textbook_section\\Screenshot 2024-08-21 191624.png\"\n]\n# Initialize all the generators",
+        "peekOfCode": "llm_config = LLMConfig(\n    api_key=api_key, \n    model=\"gpt-4o-mini\", \n    temperature=0\n)\n# Define the image paths\nimage_paths = [\n    r\"C:\\Users\\lberm\\OneDrive\\Desktop\\GitHub_Repository\\mechedu1.0\\mechedu1\\test_images\\textbook_section\\Screenshot 2024-08-21 191624.png\"\n]\n# Initialize all the generators",
         "detail": "src.llm_module_generator.ui_generator.ui_generators",
         "documentation": {}
     },
@@ -7431,7 +7508,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.ui_generator.ui_generators",
         "description": "src.llm_module_generator.ui_generator.ui_generators",
-        "peekOfCode": "summary_ui_generator = MultiUIContentGenerator(\n    llm_config=llm_config,\n    css_category=\"summary_and_key_concepts\",\n    base_prompt=summary_ui_prompt,\n    extractor=extract_summary,\n    parser=lecture_summary_parser\n)\nasync def main():\n    # Run all the generators concurrently using asyncio.gather\n    derivation_html, conceptual_html, lecture_ui = await asyncio.gather(",
+        "peekOfCode": "summary_ui_generator = MultiUIContentGenerator(\n    llm_config=llm_config,\n    css_category=\"summary_and_key_concepts\",\n    base_prompt=summary_ui_prompt,\n    extractor=extract_summary,\n    parser=lecture_summary_parser\n)\nasync def main():\n    # Run all the generators concurrently using asyncio.gather\n    # derivation_html, conceptual_html, lecture_ui = await asyncio.gather(",
         "detail": "src.llm_module_generator.ui_generator.ui_generators",
         "documentation": {}
     },
@@ -7440,7 +7517,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.ui_generator.ui_prompts",
         "description": "src.llm_module_generator.ui_generator.ui_prompts",
-        "peekOfCode": "conceptual_question_ui_prompt = \"\"\"\n    You are a web developer tasked with creating an engaging and informative HTML webpage based on the following extracted lecture notes. The webpage should be well-structured, visually appealing, and easy to navigate.\n    You are only focused on working on the following sections. When you need to format any mathematical symbols or equations, use LaTeX enclosed within appropriate delimiters to ensure proper rendering.\n    **Instructions:**\n    1. **Conceptual Questions**: Create a section dedicated to multiple-choice conceptual questions based on the lecture material. Each question should be clearly presented, with four possible answer choices labeled (A), (B), (C), and (D). Indicate the correct answer for each question.\n    - Ensure that all questions and answer choices are formatted using appropriate HTML tags to enhance readability.\n    - If any mathematical notation is required within the questions or answer choices, use LaTeX to format it properly.\n    \"\"\"\nderivation_ui_prompt = \"\"\"\n    You are a web developer tasked with creating an engaging, well-structured, and informative HTML webpage based on the following extracted lecture notes. The webpage should prioritize clarity, ease of navigation, and visual appeal, with a focus on presenting mathematical derivations.",
+        "peekOfCode": "conceptual_question_ui_prompt = \"\"\"\n    You are a web developer tasked with creating an engaging and informative HTML webpage based on the following extracted lecture notes. The webpage should be well-structured, visually appealing, and easy to navigate. Focus on creating a dedicated section for conceptual multiple-choice questions, ensuring that each question is easy to read and interact with. Use LaTeX to format any mathematical symbols or equations as needed.\n    **Instructions:**\n    1. **Conceptual Questions**:\n       - Each question should have an appropriate, descriptive name that clearly summarizes the topic or concept being tested (e.g., \"Newton's Third Law\").\n       - Present each question in a clear and structured format with four possible answer choices labeled (A), (B), (C), and (D).\n       - Use proper HTML tags to ensure readability, such as `<h1>` for the question title, `<h2>` for the question text, and an unordered list (`<ul>`) for the answer choices.\n       - Clearly indicate the correct answer for each question, either by adding a note or by using a specific class or tag.\n       - If any mathematical notation is required within the question or answer choices, use LaTeX formatting.\n    **Example Format** (for reference only, do not include this in your output):",
         "detail": "src.llm_module_generator.ui_generator.ui_prompts",
         "documentation": {}
     },
@@ -7449,7 +7526,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.ui_generator.ui_prompts",
         "description": "src.llm_module_generator.ui_generator.ui_prompts",
-        "peekOfCode": "derivation_ui_prompt = \"\"\"\n    You are a web developer tasked with creating an engaging, well-structured, and informative HTML webpage based on the following extracted lecture notes. The webpage should prioritize clarity, ease of navigation, and visual appeal, with a focus on presenting mathematical derivations.\n    **Goal:**\n    The purpose of the webpage is to clearly showcase mathematical derivations and logical arguments from the lecture in a way that is easy to read, well-organized, and aesthetically pleasing. Pay particular attention to the presentation of the derivation steps and ensure that all mathematical symbols or equations are properly formatted using LaTeX.\n    **Instructions:**\n    1. **Derivations**:\n       - Present each mathematical derivation or logical argument in full, broken down into clear and understandable steps. For each derivation:\n         - **Use Ordered Lists or Numbered Headings** to display the step-by-step process, ensuring that each step is easy to follow.\n         - Ensure the **explanation** of each step is concise, using HTML `<p>` tags for descriptions.\n         - For mathematical expressions, use **LaTeX** enclosed within `$$` or `\\\\(\\\\)` delimiters to ensure proper rendering.",
+        "peekOfCode": "derivation_ui_prompt = \"\"\"\n    You are a web developer tasked with creating an engaging, well-structured, and informative HTML webpage based on the following extracted lecture notes. The webpage should prioritize clarity, ease of navigation, and visual appeal, with a focus on presenting mathematical derivations.\n    **Goal:**\n    The purpose of the webpage is to clearly showcase mathematical derivations and logical arguments from the lecture in a way that is easy to read, well-organized, and aesthetically pleasing. Pay particular attention to the presentation of the derivation steps and ensure that all mathematical symbols or equations are properly formatted using LaTeX.\n    **Instructions:**\n    1. **Derivations**:\n       - For each derivation, generate a **descriptive name** that summarizes the key concept or mathematical principle being derived.\n       - Present the derivation or logical argument in full, broken down into clear, understandable steps:\n         - **Use Ordered Lists** to display the step-by-step process, ensuring that each step is easy to follow.\n         - Provide a concise **explanation** for each step using HTML `<p>` tags for descriptions.",
         "detail": "src.llm_module_generator.ui_generator.ui_prompts",
         "documentation": {}
     },
@@ -7458,7 +7535,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.ui_generator.ui_prompts",
         "description": "src.llm_module_generator.ui_generator.ui_prompts",
-        "peekOfCode": "summary_ui_prompt = f\"\"\"\n    You are a web developer tasked with creating an engaging and informative HTML webpage based on the following extracted lecture notes. The webpage should be well-structured, visually appealing, and easy to navigate.\n    You are only focused on working on the following sections. When you need to format any mathematical symbols or equations, use LaTeX enclosed within appropriate delimiters to ensure proper rendering.\n    \"\"\"",
+        "peekOfCode": "summary_ui_prompt = f\"\"\"\n    You are a web developer tasked with creating an engaging and informative HTML webpage based on the following extracted lecture notes. The webpage should be well-structured, visually appealing, and easy to navigate. Focus on the specific sections outlined below, and ensure proper formatting for mathematical symbols or equations using LaTeX.\n    **Summary Section:**\n        - Use a `div` container for the summary content.\n        - Present key points in bullet form using unordered lists (`ul`) where applicable, or in paragraphs if the content is more narrative.\n        - Ensure the summary highlights the most critical information from the lecture, providing readers with a concise overview.\n    **Key Concepts Section:**\n        - Use a `div` container for the Key Concepts content.\n        - Present key concepts in bullet form using unordered lists (`ul`), or in paragraphs for more detailed explanations.\n        - Ensure key concepts are clearly structured and easy to identify.",
         "detail": "src.llm_module_generator.ui_generator.ui_prompts",
         "documentation": {}
     },
@@ -7503,7 +7580,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.ui_generator.ui_response",
         "description": "src.llm_module_generator.ui_generator.ui_response",
-        "peekOfCode": "logger = get_logger(__name__)\nbase_dir = os.path.dirname(os.path.abspath(__file__))\ncss_styles_file = os.path.join(base_dir, 'valid_css_styles_generator.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"\n        ol = \"ol\"",
+        "peekOfCode": "logger = get_logger(__name__)\nbase_dir = os.path.dirname(os.path.abspath(__file__))\ncss_styles_file = os.path.join(base_dir, 'valid_css_styles_new.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nprint(css_styles)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"",
         "detail": "src.llm_module_generator.ui_generator.ui_response",
         "documentation": {}
     },
@@ -7512,7 +7589,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.ui_generator.ui_response",
         "description": "src.llm_module_generator.ui_generator.ui_response",
-        "peekOfCode": "base_dir = os.path.dirname(os.path.abspath(__file__))\ncss_styles_file = os.path.join(base_dir, 'valid_css_styles_generator.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"\n        ol = \"ol\"\n        li = \"li\"",
+        "peekOfCode": "base_dir = os.path.dirname(os.path.abspath(__file__))\ncss_styles_file = os.path.join(base_dir, 'valid_css_styles_new.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nprint(css_styles)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"\n        ol = \"ol\"",
         "detail": "src.llm_module_generator.ui_generator.ui_response",
         "documentation": {}
     },
@@ -7521,7 +7598,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.ui_generator.ui_response",
         "description": "src.llm_module_generator.ui_generator.ui_response",
-        "peekOfCode": "css_styles_file = os.path.join(base_dir, 'valid_css_styles_generator.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"\n        ol = \"ol\"\n        li = \"li\"\n        h1 = \"h1\"",
+        "peekOfCode": "css_styles_file = os.path.join(base_dir, 'valid_css_styles_new.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nprint(css_styles)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"\n        ol = \"ol\"\n        li = \"li\"",
         "detail": "src.llm_module_generator.ui_generator.ui_response",
         "documentation": {}
     },

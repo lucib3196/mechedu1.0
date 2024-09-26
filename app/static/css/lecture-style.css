@@ -1,85 +1,103 @@
-/* Base Font Size */
+Color Variables
+:root {
+    --light-shades: #FAF8F7;
+    --light-accent: #EEAF48;
+    --main-brand-color: #75B0D9;
+    --dark-accent: #2AAFDA;
+    --dark-shades: #363962;
+}
+
+/* General Styling
 body {
-    font-size: 16px;
-}
-
-/* Derivation Sections */
-.derivation-section,
-.single-derivation-section {
-    display: flex;
-    flex-direction: column;
-    padding: 30px;
-}
-
-.single-derivation-container,.derivation-section {
-    background-color: #f9f9f9; /* Light gray background */
-    border: 1px solid #ddd;    /* Light gray border */
-    border-radius: 5px;        /* Rounded corners */
-    padding: 20px;
-    margin: 20px 0;
+    background-color: var(--light-shades);
+    color: var(--dark-shades);
     font-family: Arial, sans-serif;
     line-height: 1.6;
-}
-
-
-/* Main Headings */
-.derivation-section .main-heading,
-.single-derivation-container .main-heading {
-    color: #333;
-    font-weight: bold;
-    font-size: 2rem;
-    text-align: center;
-}
-
-/* Introductory Paragraphs */
-.derivation-section .intro-paragraph,
-.single-derivation-section .intro-paragraph {
-    color: #333;
-    font-weight: bold;
-    font-size: 1rem;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-/* Ordered Lists */
-.derivation-section ol.numbered-list,
-.single-derivation-section ol.numbered-list {
-    margin-left: 20px;
-    padding-left: 20px;
-    font-size: 16px;
-    line-height: 1.6;
-    /* Remove counter-reset if not using custom counters */
-}
-
-/* List Items */
-.derivation-section li.list-item,
-.single-derivation-section li.list-item {
-    margin: 10px 0; /* Combines top and bottom margins */
-    padding-left: 5px;
-    font-weight: 500;
-    color: #555;
-    position: relative;
-}
-
-/* Derived Math Formulas */
-.derived-math-formula {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    margin: 30px 0;
-}
-
-/* Derivation Stat Container */
-.derivation-stat-container {
-    border: 1px solid black;
-    border-radius: 3px;
+    margin: 20px;
     padding: 20px;
-    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+} */
+
+/* Derivation Section */
+.derivation-container {
+    background-color: var(--light-shades);
+    border-left: 4px solid var(--dark-accent);
+    padding: 20px; /* More padding for better spacing */
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px; /* Adds space between children for readability */
 }
 
-/* Text Elements in Stat Container */
-.derivation-stat-container p,
-.derivation-stat-container span,
-.derivation-stat-container h2 {
-    font-size: 1rem;
+/* Conceptual Question Section */
+.single-concepetual-question-container {
+    background-color: var(--light-shades);
+    color: var(--dark-shades);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px; /* Slightly increased radius for a softer look */
+    border: 1px solid var(--dark-accent); /* Adds a border to better define the container */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for better definition */
+}
+
+/* Summary and Key Concepts */
+.summary-container,
+.concepts-container {
+    background-color: var(--light-shades);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--main-brand-color); /* Adds a border to better define the container */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for better definition */
+}
+
+/* General Headings */
+.title-heading {
+    font-size: 2rem;
+    color: var(--dark-shades);
+    border-bottom: 2px solid var(--dark-accent);
+    padding-bottom: 10px; /* Slightly increased padding for spacing */
+}
+
+.sub-heading {
+    font-size: 1.5rem;
+    color: var(--dark-shades);
+    margin-bottom: 10px; /* Adds some spacing below the sub-heading */
+}
+
+.minor-heading {
+    font-size: 1.2rem;
+    color: var(--dark-accent);
+    margin-bottom: 8px;
+}
+
+/* Ordered and Unordered Lists */
+ol, ul {
+    padding-left: 20px; /* Moves the bullet points closer */
+    margin-bottom: 15px; /* Adds margin below the list */
+}
+
+li {
+    margin-bottom: 8px; /* Adds spacing between list items */
+    padding-left: 10px; /* Reduces indent for cleaner look */
+    list-style-position: inside; /* Ensures the bullet/number is inside the content box */
+}
+
+/* Span Elements */
+span.highlight-text {
+    background-color: yellow;
+    color: var(--dark-shades);
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+span.bold {
+    font-weight: bold;
+}
+
+span.ital {
+    font-style: italic;
 }

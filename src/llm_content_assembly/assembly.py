@@ -5,6 +5,7 @@ from numpy import imag
 
 from .file_converter import FileConverter
 from .llm_lecture_processor import analyze_lecture
+from .llm_lecture_processor_simple import analyze_lecture_simple
 from .generate_module import generate_module_from_question
 from ..logging_config.logging_config import get_logger
 from ..llm_module_generator.parsers.parser import computational_question_parser
@@ -41,6 +42,28 @@ async def lecture_assembly(paths: List[str], user_data:dict) -> Tuple[str, List[
     html_module = ("lecture", {"lecture.html": result})
     all_mod.append([html_module])
     return all_mod,tokens
+
+async def lecture_assembly_simple(paths: List[str], user_data:dict) -> Tuple[str, List[str], int]:
+    """
+    Processes lecture files and generates the necessary outputs.
+
+    Args:
+        paths (List[str]): List of file or directory paths to process.
+
+    Returns:
+        Tuple[str, List[str], int]: A tuple containing the main result, all modules generated, and the total token count.
+    """
+    tokens = 0
+    file_manager = FileConverter()
+    
+    # Convert the input files to images
+    image_paths = file_manager.convert_files_images(paths)
+    print(f"These are the image paths {image_paths}")
+    
+    # Analyze the lecture images and generate the result, modules, and token count
+    result, tokens = await analyze_lecture_simple(image_paths)
+    html_module = ("lecture", {"lecture.html": result})
+    return [html_module],tokens
 
 async def generate_module_text(question: str, user_data: dict) -> Tuple[List[Tuple[str, str]], int]:
     """

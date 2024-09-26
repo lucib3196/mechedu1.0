@@ -24,11 +24,11 @@ def derivations_parser(response: dict) -> list[str]:
     for derivation in derivations:
         # Extract derivation name
         derivation_name = f"Derivation Name: {derivation.get('derivation_name', 'Unknown')}"
-        
-        # Extract derivation steps
-        derivation_steps = "".join(
-            f"\n - Explanation: {step.get('explanation', 'No explanation provided')}"
-            f"\n - Step: {step.get('output', 'No output provided')}"
+
+        # Extract derivation steps, ensuring LaTeX backslashes are properly escaped
+        derivation_steps = "\n".join(
+            "- Explanation: " + step.get('explanation', 'No explanation provided').replace('\\', '\\\\') +  # Escaping LaTeX backslashes
+            "\n  Step: " + step.get('output', 'No output provided').replace('\\', '\\\\')  # Escaping LaTeX backslashes
             for step in derivation.get("derivation_steps", [])
         )
         
@@ -45,18 +45,25 @@ def derivations_parser(response: dict) -> list[str]:
             image_info = "No image information available."
         
         # Combine all extracted info
-        derivation_info = f"{derivation_name}{derivation_steps}\n{derivation_source}\n{image_info}"
+        derivation_info = f"{derivation_name}\n{derivation_steps}\n{derivation_source}\n{image_info}"
         all_derivations.append(derivation_info)
-    
+
     return all_derivations
 
 
+
+
 def lecture_summary_parser(response: dict) -> list[str]:
-    print(response)
-    analysis = response.get("analysis","")
-    summary = analysis.get('summary', "No summary provided.")
-    key_concepts_list = analysis.get('key_concepts', [])
-    foundational_concepts_list = analysis.get('foundational_concepts', [])
+    analysis = response.get("analysis", {})
+    if analysis:
+        summary = analysis.get('summary', "No summary provided.")
+        key_concepts_list = analysis.get('key_concepts', [])
+        foundational_concepts_list = analysis.get('foundational_concepts', [])
+    else:
+        summary = response.get('summary', "No summary provided.")
+        key_concepts_list = response.get('key_concepts', [])
+        foundational_concepts_list = response.get('foundational_concepts', [])
+        
     # Parsing key concepts
     key_concepts = "\n".join([
         f"- {concept}\n"

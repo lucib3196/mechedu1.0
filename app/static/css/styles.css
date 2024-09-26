@@ -696,3 +696,84 @@ body{
     text-align: center;
     height: auto;
 }
+/* Derivation Section */
+.derivation-container {
+    background-color: var(--light-shades);
+    border-left: 4px solid var(--dark-accent);
+    padding: 20px; /* More padding for better spacing */
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px; /* Adds space between children for readability */
+}
+
+/* Conceptual Question Section */
+.single-concepetual-question-container {
+    background-color: var(--light-shades);
+    color: var(--dark-shades);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px; /* Slightly increased radius for a softer look */
+    border: 1px solid var(--dark-accent); /* Adds a border to better define the container */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for better definition */
+}
+
+/* Summary and Key Concepts */
+.summary-container,
+.concepts-container {
+    background-color: var(--light-shades);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--main-brand-color); /* Adds a border to better define the container */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for better definition */
+}
+
+/* General Headings */
+.title-heading {
+    font-size: 2rem;
+    color: var(--dark-shades);
+    border-bottom: 2px solid var(--dark-accent);
+    padding-bottom: 10px; /* Slightly increased padding for spacing */
+}
+
+.sub-heading {
+    font-size: 1.5rem;
+    color: var(--dark-shades);
+    margin-bottom: 10px; /* Adds some spacing below the sub-heading */
+}
+
+.minor-heading {
+    font-size: 1.2rem;
+    color: var(--dark-accent);
+    margin-bottom: 8px;
+}
+
+/* Ordered and Unordered Lists */
+ol, ul {
+    padding-left: 20px; /* Moves the bullet points closer */
+    margin-bottom: 15px; /* Adds margin below the list */
+}
+
+li {
+    margin-bottom: 8px; /* Adds spacing between list items */
+    padding-left: 10px; /* Reduces indent for cleaner look */
+    list-style-position: inside; /* Ensures the bullet/number is inside the content box */
+}
+
+/* Span Elements */
+span.highlight-text {
+    background-color: yellow;
+    color: var(--dark-shades);
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+span.bold {
+    font-weight: bold;
+}
+
+span.ital {
+    font-style: italic;
+}

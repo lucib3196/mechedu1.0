@@ -5,7 +5,7 @@ import token
 
 # Third-party imports
 from bs4 import BeautifulSoup
-
+import json
 # Local imports
 from .ui_builder import LLMUIBuilder, LLMConfig, UI
 from ..image_extraction import (
@@ -39,7 +39,9 @@ class MultiUIContentGenerator(LLMUIBuilder):
 
     async def extract_questions(self, image_paths: list[str]) -> list[str]:
         result = await self.extractor.send_request(image_paths)
-        logger.info(f"These are the results from the initial extraction {result}")
+        if isinstance(result,str):
+            result = json.loads(result)
+        logger.info(f"These are the results from the initial extraction {result} type {type(result)}")
         all_questions = self.parser(result)
         return all_questions
 
@@ -60,7 +62,7 @@ class MultiUIContentGenerator(LLMUIBuilder):
         soup = BeautifulSoup(total_html, "html.parser")
         outer_div = soup.find("div")
         if outer_div:
-            wrapper_div = soup.new_tag("div", **{"class": outer_div_class})
+            wrapper_div = soup.new_tag("section", **{"class": outer_div_class})
             outer_div.wrap(wrapper_div)
         return str(soup)
 
@@ -83,7 +85,7 @@ class MultiUIContentGenerator(LLMUIBuilder):
 # Define the LLM configuration with the specified model
 llm_config = LLMConfig(
     api_key=api_key, 
-    model="gpt-4o-2024-08-06", 
+    model="gpt-4o-mini", 
     temperature=0
 )
 
@@ -119,27 +121,31 @@ summary_ui_generator = MultiUIContentGenerator(
 
 async def main():
     # Run all the generators concurrently using asyncio.gather
-    derivation_html, conceptual_html, lecture_ui = await asyncio.gather(
-        derivation_ui_generator.generate_multiple_ui(image_paths, "derivation-section"),
-        conceptual_ui_generator.generate_multiple_ui(image_paths, "conceptual-question-section"),
-        summary_ui_generator.generate_multiple_ui(image_paths, "summary-section")
-    )
+    # derivation_html, conceptual_html, lecture_ui = await asyncio.gather(
+    #     derivation_ui_generator.generate_multiple_ui(image_paths, "derivation-section")
+    #     # conceptual_ui_generator.generate_multiple_ui(image_paths, "conceptual-question-section"),
+    #     # summary_ui_generator.generate_multiple_ui(image_paths, "summary-section")
+    # )
+    derivation_html = await derivation_ui_generator.generate_multiple_ui(image_paths, "derivation-section")
+        # conceptual_ui_generator.generate_multiple_ui(image_paths, "conceptual-question-section"),
+        # summary_ui_generator.generate_multiple_ui(image_paths, "summary-section")
+    
     
     # Print the generated HTML
-    print(lecture_ui)
-    print(conceptual_html)
+    # print(lecture_ui)
+    # print(conceptual_html)
     print(derivation_html)
     
     # Get the total tokens for each generator
     derivation_tokens = derivation_ui_generator.get_sum_tokens()
-    conceptual_tokens = conceptual_ui_generator.get_sum_tokens()
-    lecture_tokens = summary_ui_generator.get_sum_tokens()
+    # conceptual_tokens = conceptual_ui_generator.get_sum_tokens()
+    # lecture_tokens = summary_ui_generator.get_sum_tokens()
 
     # Print token counts
-    print(f"These are the total tokens from the derivation class: {derivation_tokens}")
-    print(f"These are the total tokens from the conceptual class: {conceptual_tokens}")
-    print(f"These are the total tokens from the lecture class: {lecture_tokens}")
-    print(f"These are the total tokens: {derivation_tokens + conceptual_tokens + lecture_tokens}")
+    # print(f"These are the total tokens from the derivation class: {derivation_tokens}")
+    # print(f"These are the total tokens from the conceptual class: {conceptual_tokens}")
+    # print(f"These are the total tokens from the lecture class: {lecture_tokens}")
+    # print(f"These are the total tokens: {derivation_tokens + conceptual_tokens + lecture_tokens}")
 
 if __name__ == "__main__":
     asyncio.run(main())

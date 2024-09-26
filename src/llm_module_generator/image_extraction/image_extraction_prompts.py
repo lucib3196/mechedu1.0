@@ -15,16 +15,17 @@ lecture_analysis_prompt ="""
     3. **keywords**: Describe the lecture content using relevant keywords.
     4. **foundational_concepts**: Determine and outline the foundational concepts that the lecture builds upon.
     """
-extract_derivations_prompt= """
-        You are tasked with analyzing the following lecture slides covering a specific class topic. Please address the following points and return the results as a JSON structure with the specified keys:
+extract_derivations_prompt = """
+    You are tasked with analyzing the following lecture slides covering a specific class topic. Please address the following points and return the results as a JSON structure with the specified keys:
 
-        1. **Derivations**: Extract all derivations found in the lecture material. For each derivation:
-            - Provide a name that describes what the derivation is trying to show.
-            - Extract the full solution, including all steps as if teaching a student. Ensure to use LaTeX to render any mathematical symbols or equations, delimited by $ symbols.
-            - Note that similar derivations may exist for different cases. Distinctions are often indicated by differences in images or new derivation contexts. Identify and separate these accurately.
-            - Mention the completeness of each derivation. If a derivation appears incomplete, explicitly indicate this.
-            - If no derivations are present, return "NaN".
-            """
+    1. **Derivations**: Extract all derivations found in the lecture material. For each derivation:
+        - Provide a descriptive name that clearly explains what the derivation is trying to demonstrate.
+        - Extract the full solution, including all steps as if explaining to a student. Ensure that any mathematical expressions, symbols, or equations are properly formatted using LaTeX, enclosed within `$` symbols for inline math and `$$` symbols for block-level equations.
+        - Be aware that similar derivations may exist for different cases. These distinctions are often marked by changes in images or unique contexts. Ensure that these derivations are correctly identified and separated.
+        - Indicate the completeness of each derivation. If a derivation appears incomplete, explicitly state this.
+        - If no derivations are found in the material, return "NaN".
+"""
+
 extract_computation_questions_prompt = """
 Extract and process the content from the provided image according to these guidelines:
 

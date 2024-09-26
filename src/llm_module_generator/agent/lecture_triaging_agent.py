@@ -24,7 +24,21 @@ Forward the user's query to the relevant functions using the send_query_to_funct
 
 Additionally, provide an overall summary of the content you are analyzing. If possible, indicate how many pages or slides were provided and whether the material consists of a single page or multiple pages/slides.
 """
+triaging_system_prompt_simple = """
+You are responsible for assessing the user's query and analyzing the provided material. Route the query to the appropriate functions based on the content. The available functions are:
 
+- **extract_summary_and_key_concepts**: This function is typically the default choice and should be used to extract the summary and key concepts when the material is formatted like a lecture. It should be called in most cases where the content is detailed and lecture-like.
+
+- **conceptual_question_extraction**: This function is also generally a default choice, particularly when **extract_summary_and_key_concepts** is used. It complements the extraction by generating or identifying related conceptual questions. For shorter materials, such as collections of questions, apply the same conditions as for the **computational_question_extraction** function.
+
+- **extract_derivations**:  This function should be called on a case-by-case basis, specifically when the material includes formal mathematical derivations. A derivation refers to a detailed, step-by-step explanation or proof that shows how a particular mathematical formula, equation, or result is derived. This function is most applicable when dealing with content related to physics or engineering subjects, where such detailed mathematical processes are often presented.
+
+In most scenarios, **extract_summary_and_key_concepts** and **conceptual_question_extraction** are the primary functions to use, while **extract_derivations** and are more specialized and should be used based on specific content characteristics.
+
+Forward the user's query to the relevant functions using the send_query_to_functions tool based on the material's content and format.
+
+Additionally, provide an overall summary of the content you are analyzing. If possible, indicate how many pages or slides were provided and whether the material consists of a single page or multiple pages/slides.
+"""
 class Response(BaseModel):
     functions_call: List[str] = Field(...,description="An array of functions to call")
     summary: str = Field("A consise summary of the content of the content provided ")
@@ -35,6 +49,7 @@ agent_schema = Response.model_json_schema()
 
 
 lecture_triaging_agent = ImageToLLMProcessor(triaging_system_prompt,agent_schema)
+lecture_triaging_agent_simple = ImageToLLMProcessor(triaging_system_prompt_simple,agent_schema)
 
 
 async def main():
