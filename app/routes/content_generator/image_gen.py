@@ -40,6 +40,7 @@ def generate_image():
     
     if form.validate_on_submit():
         logger.info("Form passed validation.")
+        session["module_name"] = form.module_name.data
         try:
             file_paths = []
             with tempfile.TemporaryDirectory() as tmpdir:
@@ -67,7 +68,7 @@ def generate_image():
                 logger.info(f"Image-based content generation completed. Tokens used: {tokens}")
 
                 # Call the function to save the generated content
-                save_response, status_code = save_generated_content(generated_content)
+                save_response, status_code = save_generated_content(generated_content,module_name=session['module_name'])
                 if status_code != 200:
                     logger.error(f"Failed to save generated content. Status code: {status_code}")
                     return jsonify(save_response), status_code

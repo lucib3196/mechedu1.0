@@ -5348,7 +5348,7 @@
         "kind": 2,
         "importPath": "app.routes.content_generator.lecture_gen",
         "description": "app.routes.content_generator.lecture_gen",
-        "peekOfCode": "def generate_lecture():\n    form = ImageForm()\n    print(form)\n    if form.validate_on_submit():\n        print(\"Passed validation\")\n        try:\n            file_paths = []\n            with tempfile.TemporaryDirectory() as tmpdir:\n                print(\"About to save files\")\n                # Save uploaded files to the temporary directory",
+        "peekOfCode": "def generate_lecture():\n    form = ImageForm()\n    session[\"module_name\"] = form.module_name.data\n    print(form)\n    if form.validate_on_submit():\n        print(\"Passed validation\")\n        try:\n            file_paths = []\n            with tempfile.TemporaryDirectory() as tmpdir:\n                print(\"About to save files\")",
         "detail": "app.routes.content_generator.lecture_gen",
         "documentation": {}
     },
@@ -5357,7 +5357,7 @@
         "kind": 5,
         "importPath": "app.routes.content_generator.lecture_gen",
         "description": "app.routes.content_generator.lecture_gen",
-        "peekOfCode": "user_data = {\n        \"created_by\": \"lberm007@ucr.edu\",  # Replace with the actual creator identifier\n        \"code_language\": \"javascript\",\n    }\nlecture_generator_bp = Blueprint('lecture_generator_bp', __name__)\n@lecture_generator_bp.route(\"/lecture-generator\", methods=['GET', 'POST'])\ndef generate_lecture():\n    form = ImageForm()\n    print(form)\n    if form.validate_on_submit():",
+        "peekOfCode": "user_data = {\n        \"created_by\": \"lberm007@ucr.edu\",  # Replace with the actual creator identifier\n        \"code_language\": \"javascript\",\n    }\nlecture_generator_bp = Blueprint('lecture_generator_bp', __name__)\n@lecture_generator_bp.route(\"/lecture-generator\", methods=['GET', 'POST'])\ndef generate_lecture():\n    form = ImageForm()\n    session[\"module_name\"] = form.module_name.data\n    print(form)",
         "detail": "app.routes.content_generator.lecture_gen",
         "documentation": {}
     },
@@ -5366,7 +5366,7 @@
         "kind": 5,
         "importPath": "app.routes.content_generator.lecture_gen",
         "description": "app.routes.content_generator.lecture_gen",
-        "peekOfCode": "lecture_generator_bp = Blueprint('lecture_generator_bp', __name__)\n@lecture_generator_bp.route(\"/lecture-generator\", methods=['GET', 'POST'])\ndef generate_lecture():\n    form = ImageForm()\n    print(form)\n    if form.validate_on_submit():\n        print(\"Passed validation\")\n        try:\n            file_paths = []\n            with tempfile.TemporaryDirectory() as tmpdir:",
+        "peekOfCode": "lecture_generator_bp = Blueprint('lecture_generator_bp', __name__)\n@lecture_generator_bp.route(\"/lecture-generator\", methods=['GET', 'POST'])\ndef generate_lecture():\n    form = ImageForm()\n    session[\"module_name\"] = form.module_name.data\n    print(form)\n    if form.validate_on_submit():\n        print(\"Passed validation\")\n        try:\n            file_paths = []",
         "detail": "app.routes.content_generator.lecture_gen",
         "documentation": {}
     },

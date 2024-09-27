@@ -25,6 +25,7 @@ lecture_generator_bp = Blueprint('lecture_generator_bp', __name__)
 def generate_lecture():
 
     form = ImageForm()
+    session["module_name"] = form.module_name.data
     print(form)
     if form.validate_on_submit():
         print("Passed validation")
@@ -50,7 +51,7 @@ def generate_lecture():
                 generated_content, tokens = loop.run_until_complete(lecture_assembly_simple(paths = file_paths, user_data=user_data))
                 loop.close()
                 # Call the function to save the generated content
-                save_response, status_code = save_generated_content(generated_content)
+                save_response, status_code = save_generated_content(generated_content,module_name=form.module_name.data)
                 if status_code != 200:
                     return jsonify(save_response), status_code
 
