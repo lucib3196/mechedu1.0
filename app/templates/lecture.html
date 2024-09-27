@@ -2,9 +2,38 @@
 
 {% block title %}Quiz{% endblock %}
 {% block content %}
-<div class="container" id="lecture-content">  
+<select id="theme-switcher">
+    <option value="light">Light Theme</option>
+    <option value="dark">Dark Theme</option>
+    <option value="blue">Blue Theme</option>
+    <option value="green">Gark Theme</option>
+    <option value="red">Red Theme</option>
+    <option value="default">Default Theme</option>
+
+</select>
     {{ lecture | safe }}
 </div>
 
+<script>
+    const themeSwitcher = document.getElementById("theme-switcher");
+    const bodyElement = document.body;
+    console.log(bodyElement)
+    const savedTheme = localStorage.getItem('theme')
+    if (savedTheme){
+        bodyElement.classList.add(savedTheme+"-theme")
+        console.log(bodyElement.classList)
+        themeSwitcher.value = savedTheme;
+    }
 
+    function changeTheme(theme){
+        bodyElement.classList.remove("dark-theme","light-theme","blue-theme","green-theme","red-theme","default-theme");
+        bodyElement.classList.add(`${theme}-theme`);
+        localStorage.setItem('theme',theme);
+    }
+    themeSwitcher.addEventListener('change', (e) => {
+    const selectedTheme = e.target.value;
+    changeTheme(selectedTheme);
+});
+</script>
 {% endblock %}
+

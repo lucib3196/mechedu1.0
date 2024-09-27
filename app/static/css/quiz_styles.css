@@ -3,6 +3,9 @@ body {
     margin: 20px;
     background-color: #f9f9f9;
 }
+
+
+
 /* General styles to reset margin and padding */
 body, div, form, fieldset, legend, p, label {
     margin: 0;

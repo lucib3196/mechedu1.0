@@ -1,24 +1,76 @@
-Color Variables
+
 :root {
     --light-shades: #FAF8F7;
     --light-accent: #EEAF48;
     --main-brand-color: #75B0D9;
     --dark-accent: #2AAFDA;
     --dark-shades: #363962;
+    --text-color: #000000;
 }
 
-/* General Styling
+/* Theme 1: Dark Theme */
+.dark-theme {
+    --light-shades: #000000 ;
+    --light-accent: #FFB742;
+    --main-brand-color: #4A90E2;
+    --dark-accent: #1F8EF1;
+    --dark-shades: #ffffff;
+    --text-color: #FFFFFF;
+}
+
+/* Theme 2: Light Theme */
+.light-theme {
+    --light-shades: #FFFFFF !important;
+    --light-accent: #FFEB3B;
+    --main-brand-color: #00BCD4;
+    --dark-accent: #FF5722;
+    --dark-shades: #795548;
+    --text-color: #212121;
+}
+
+/* Theme 3: Blue Theme */
+.blue-theme {
+    --light-shades: #F0F8FF;
+    --light-accent: #ADD8E6;
+    --main-brand-color: #4682B4;
+    --dark-accent: #1E90FF;
+    --dark-shades: #000080;
+    --text-color: #000000;
+}
+
+/* Theme 4: Green Theme */
+.green-theme {
+    --light-shades: #E8F5E9;
+    --light-accent: #A5D6A7;
+    --main-brand-color: #66BB6A;
+    --dark-accent: #388E3C;
+    --dark-shades: #1B5E20;
+    --text-color: #263238;
+}
+
+/* Theme 5: Red Theme */
+.red-theme {
+    --light-shades: #FFEBEE;
+    --light-accent: #EF9A9A;
+    --main-brand-color: #E57373;
+    --dark-accent: #C62828;
+    --dark-shades: #B71C1C;
+    --text-color: #212121;
+}
+.default-theme{
+    --light-shades: #FAF8F7;
+    --light-accent: #EEAF48;
+    --main-brand-color: #75B0D9;
+    --dark-accent: #2AAFDA;
+    --dark-shades: #363962;
+    --text-color: #000000;
+}
+
+/* Default Styles */
 body {
     background-color: var(--light-shades);
-    color: var(--dark-shades);
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 20px;
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-} */
+    color: var(--text-color);
+}
 
 /* Derivation Section */
 .derivation-container {
