@@ -51,6 +51,7 @@ def prepare_additional_instructions(solution_guide: Optional[str] = None) -> Opt
     if solution_guide:
         instructions = f"{templates.server_template_code_guide}\n{solution_guide}"
         logger.info("Solution guide provided. Preparing additional instructions.")
+        print(f"This is the solution guidde",solution_guide)
         return instructions
     logger.info("No solution guide provided.")
     return None

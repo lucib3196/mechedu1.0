@@ -133,34 +133,33 @@ def computational_question_parser(response: dict)->list[dict]:
     # Iterate over each extracted question
     for extracted_question in extracted_questions:
         question_text = extracted_question.get("question")
-        print(question_text)
         
         if question_text:
             # Check if the question is marked as complete
             is_complete = extracted_question.get("complete", False)
             
-            if is_complete:
-                solution_steps = extracted_question.get("solution", [])
-                solution_guide = []
+            if not is_complete:
+                logger.warning(f"Question '{question_text}' is incomplete or missing solutions may not produce desired results")
 
-                # Construct the solution guide by iterating over each step in the solution
-                for step in solution_steps:
-                    explanation = step.get('explanation', 'No explanation provided')
-                    output = step.get('output', 'No output provided')
-                    solution_guide.append(f"\n{explanation}\n{output}")
+            solution_steps = extracted_question.get("solution", [])
+            solution_guide = []
 
-                # Map the question and its corresponding details
-                question_mapping = {
-                    "question": question_text,
-                    "solution": ''.join(solution_guide),
-                    "image_req": extracted_question.get("image_req", ""),
-                    "external_data_req": extracted_question.get("external_data_req", "")
-                }
-                
-                # Add the question and solution to the list
-                question_solution_pairs.append(question_mapping)
-            else:
-                logger.warning(f"Question '{question_text}' is incomplete or missing solutions.")
+            # Construct the solution guide by iterating over each step in the solution
+            for step in solution_steps:
+                explanation = step.get('explanation', 'No explanation provided')
+                output = step.get('output', 'No output provided')
+                solution_guide.append(f"\n{explanation}\n{output}")
+
+            # Map the question and its corresponding details
+            question_mapping = {
+                "question": question_text,
+                "solution": ''.join(solution_guide),
+                "image_req": extracted_question.get("image_req", ""),
+                "external_data_req": extracted_question.get("external_data_req", "")
+            }
+            
+            # Add the question and solution to the list
+            question_solution_pairs.append(question_mapping)
         else:
             logger.warning("No question found in the extracted data.")
 
