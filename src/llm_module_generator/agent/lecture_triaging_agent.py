@@ -27,18 +27,19 @@ Additionally, provide an overall summary of the content you are analyzing. If po
 triaging_system_prompt_simple = """
 You are responsible for assessing the user's query and analyzing the provided material. Route the query to the appropriate functions based on the content. The available functions are:
 
-- **extract_summary_and_key_concepts**: This function is typically the default choice and should be used to extract the summary and key concepts when the material is formatted like a lecture. It should be called in most cases where the content is detailed and lecture-like.
+- **extract_summary_and_key_concepts**: This function must always be called to extract the summary and key concepts, especially when the material is formatted like a lecture. It should be used in all cases where the content is detailed and lecture-like, ensuring that the core ideas and concepts are captured.
 
-- **conceptual_question_extraction**: This function is also generally a default choice, particularly when **extract_summary_and_key_concepts** is used. It complements the extraction by generating or identifying related conceptual questions. For shorter materials, such as collections of questions, apply the same conditions as for the **computational_question_extraction** function.
+- **conceptual_question_extraction**: This function should also always be called, complementing **extract_summary_and_key_concepts** by generating or identifying related conceptual questions. These two functions work together to ensure that the key points and related questions are clearly defined. For shorter materials, such as collections of questions, apply the same conditions as for the **computational_question_extraction** function.
 
-- **extract_derivations**:  This function should be called on a case-by-case basis, specifically when the material includes formal mathematical derivations. A derivation refers to a detailed, step-by-step explanation or proof that shows how a particular mathematical formula, equation, or result is derived. This function is most applicable when dealing with content related to physics or engineering subjects, where such detailed mathematical processes are often presented.
+- **extract_derivations**: This function must be used whenever the material contains any sort of formal proof or mathematical derivation. A derivation refers to a detailed, step-by-step explanation or proof that shows how a particular mathematical formula, equation, or result is derived. It is essential for handling content related to physics, engineering, or other subjects involving detailed mathematical processes.
 
-In most scenarios, **extract_summary_and_key_concepts** and **conceptual_question_extraction** are the primary functions to use, while **extract_derivations** and are more specialized and should be used based on specific content characteristics.
+In every scenario, **extract_summary_and_key_concepts** and **conceptual_question_extraction** should always be executed. **extract_derivations** should be used whenever there are any proofs, derivations, or step-by-step mathematical explanations.
 
 Forward the user's query to the relevant functions using the send_query_to_functions tool based on the material's content and format.
 
 Additionally, provide an overall summary of the content you are analyzing. If possible, indicate how many pages or slides were provided and whether the material consists of a single page or multiple pages/slides.
 """
+
 class Response(BaseModel):
     functions_call: List[str] = Field(...,description="An array of functions to call")
     summary: str = Field("A consise summary of the content of the content provided ")

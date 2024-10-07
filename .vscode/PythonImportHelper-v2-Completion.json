@@ -1,5 +1,14 @@
 [
     {
+        "label": "typing",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "typing",
+        "description": "typing",
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Any",
         "importPath": "typing",
         "description": "typing",
@@ -601,6 +610,14 @@
     },
     {
         "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -6059,7 +6076,7 @@
         "kind": 2,
         "importPath": "src.llm_content_assembly.generate_adaptive_module",
         "description": "src.llm_content_assembly.generate_adaptive_module",
-        "peekOfCode": "def prepare_additional_instructions(solution_guide: Optional[str] = None) -> Optional[str]:\n    \"\"\"\n    Prepares additional instructions based on the solution guide.\n    Args:\n        solution_guide (Optional[str], optional): Instructions for solution improvement. Defaults to None.\n    Returns:\n        Optional[str]: Formatted additional instructions or None.\n    \"\"\"\n    if solution_guide:\n        instructions = f\"{templates.server_template_code_guide}\\n{solution_guide}\"",
+        "peekOfCode": "def prepare_additional_instructions(solution_guide: Optional[str] = None,analyzed_question:Optional[str]=None) -> Optional[str]:\n    \"\"\"\n    Prepares additional instructions based on the solution guide.\n    Args:\n        solution_guide (Optional[str], optional): Instructions for solution improvement. Defaults to None.\n    Returns:\n        Optional[str]: Formatted additional instructions or None.\n    \"\"\"\n    instructions = \"\"\n    if solution_guide:",
         "detail": "src.llm_content_assembly.generate_adaptive_module",
         "documentation": {}
     },
@@ -6275,7 +6292,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.agent.lecture_triaging_agent",
         "description": "src.llm_module_generator.agent.lecture_triaging_agent",
-        "peekOfCode": "triaging_system_prompt_simple = \"\"\"\nYou are responsible for assessing the user's query and analyzing the provided material. Route the query to the appropriate functions based on the content. The available functions are:\n- **extract_summary_and_key_concepts**: This function is typically the default choice and should be used to extract the summary and key concepts when the material is formatted like a lecture. It should be called in most cases where the content is detailed and lecture-like.\n- **conceptual_question_extraction**: This function is also generally a default choice, particularly when **extract_summary_and_key_concepts** is used. It complements the extraction by generating or identifying related conceptual questions. For shorter materials, such as collections of questions, apply the same conditions as for the **computational_question_extraction** function.\n- **extract_derivations**:  This function should be called on a case-by-case basis, specifically when the material includes formal mathematical derivations. A derivation refers to a detailed, step-by-step explanation or proof that shows how a particular mathematical formula, equation, or result is derived. This function is most applicable when dealing with content related to physics or engineering subjects, where such detailed mathematical processes are often presented.\nIn most scenarios, **extract_summary_and_key_concepts** and **conceptual_question_extraction** are the primary functions to use, while **extract_derivations** and are more specialized and should be used based on specific content characteristics.\nForward the user's query to the relevant functions using the send_query_to_functions tool based on the material's content and format.\nAdditionally, provide an overall summary of the content you are analyzing. If possible, indicate how many pages or slides were provided and whether the material consists of a single page or multiple pages/slides.\n\"\"\"\nclass Response(BaseModel):",
+        "peekOfCode": "triaging_system_prompt_simple = \"\"\"\nYou are responsible for assessing the user's query and analyzing the provided material. Route the query to the appropriate functions based on the content. The available functions are:\n- **extract_summary_and_key_concepts**: This function must always be called to extract the summary and key concepts, especially when the material is formatted like a lecture. It should be used in all cases where the content is detailed and lecture-like, ensuring that the core ideas and concepts are captured.\n- **conceptual_question_extraction**: This function should also always be called, complementing **extract_summary_and_key_concepts** by generating or identifying related conceptual questions. These two functions work together to ensure that the key points and related questions are clearly defined. For shorter materials, such as collections of questions, apply the same conditions as for the **computational_question_extraction** function.\n- **extract_derivations**: This function must be used whenever the material contains any sort of formal proof or mathematical derivation. A derivation refers to a detailed, step-by-step explanation or proof that shows how a particular mathematical formula, equation, or result is derived. It is essential for handling content related to physics, engineering, or other subjects involving detailed mathematical processes.\nIn every scenario, **extract_summary_and_key_concepts** and **conceptual_question_extraction** should always be executed. **extract_derivations** should be used whenever there are any proofs, derivations, or step-by-step mathematical explanations.\nForward the user's query to the relevant functions using the send_query_to_functions tool based on the material's content and format.\nAdditionally, provide an overall summary of the content you are analyzing. If possible, indicate how many pages or slides were provided and whether the material consists of a single page or multiple pages/slides.\n\"\"\"\nclass Response(BaseModel):",
         "detail": "src.llm_module_generator.agent.lecture_triaging_agent",
         "documentation": {}
     },
@@ -7607,7 +7624,7 @@
         "kind": 6,
         "importPath": "src.llm_module_generator.utils",
         "description": "src.llm_module_generator.utils",
-        "peekOfCode": "class Response(BaseModel):\n    question:str = Field(...,description =\"The full question that will converted into a online assesment\")\n    additional_instructions: Optional[str] = Field(...,description=\"The cleaned up additional instructions\")\nasync def analyze_input_query(query:str):\n    llm = LLM_Call(LLMConfig(api_key, \"gpt-4o-mini\",0))\n    prompt = f\"\"\"You are tasked with analyzing and refining a given query, which will be used to generate complete, answerable questions for an online educational assessment for students. The goal of this analysis is to convert the input into questions that can be part of an online module, ensuring the questions are relevant, usable, and clearly defined for students. The process of refining and extracting the question and instructions should help define the scope of the module, making sure it aligns with the learning objectives.\n    The query may come in different forms:\n    A clear, complete question.\n    A question with additional instructions (guiding how the assessment should be shaped).\n    Vague instructions or an incomplete question.",
+        "peekOfCode": "class Response(BaseModel):\n    question: str = Field(..., description=\"The full question that will be converted into an online assessment.\")\n    additional_instructions: Optional[str] = Field(None, description=\"The cleaned up additional instructions.\")\n    units: Optional[List[str]] = Field(None, description=\"Extracted units from the question (e.g., kW, J, mph, ft).\")\nasync def analyze_input_query(query:str):\n    llm = LLM_Call(LLMConfig(api_key, \"gpt-4o-mini\",0))\n    prompt = f\"\"\"\n    You are tasked with analyzing and refining a given query, which will be used to generate complete, answerable questions for an online educational assessment for students. The goal of this analysis is to convert the input into questions that can be part of an online module, ensuring the questions are relevant, usable, and clearly defined for students. The process of refining and extracting the question and instructions should help define the scope of the module, making sure it aligns with the learning objectives.\n    The query may come in different forms:\n    - A clear, complete question.",
         "detail": "src.llm_module_generator.utils",
         "documentation": {}
     },

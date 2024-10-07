@@ -38,7 +38,7 @@ async def generate_question_html(question_instructions: str) -> str:
         raise
 
 
-def prepare_additional_instructions(solution_guide: Optional[str] = None) -> Optional[str]:
+def prepare_additional_instructions(solution_guide: Optional[str] = None,analyzed_question:Optional[str]=None) -> Optional[str]:
     """
     Prepares additional instructions based on the solution guide.
 
@@ -48,12 +48,16 @@ def prepare_additional_instructions(solution_guide: Optional[str] = None) -> Opt
     Returns:
         Optional[str]: Formatted additional instructions or None.
     """
+    instructions = ""
     if solution_guide:
-        instructions = f"{templates.server_template_code_guide}\n{solution_guide}"
+        instructions += f"{templates.server_template_code_guide}\n{solution_guide}"
         logger.info("Solution guide provided. Preparing additional instructions.")
         print(f"This is the solution guidde",solution_guide)
-        return instructions
-    logger.info("No solution guide provided.")
+    if analyzed_question:
+        instructions += {analyzed_question}
+    
+    if (solution_guide is None) and (analyzed_question is None):
+        logger.info("No solution guide provided.")
     return None
 
 
