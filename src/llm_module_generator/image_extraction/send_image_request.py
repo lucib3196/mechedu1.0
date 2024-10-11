@@ -35,7 +35,7 @@ async def create_payload(
     image_contents: Optional[List[dict]], 
     response_format: Optional[str] = None, 
     tools: Optional[str] = None, 
-    model: str = "gpt-4o-mini"
+    model: str = "gpt-4o"
 ) -> Union[dict, str]:
     """
     Creates the payload for the API request based on the given parameters.
