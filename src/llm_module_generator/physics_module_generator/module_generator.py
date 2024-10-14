@@ -26,7 +26,7 @@ class ModuleCodeGenerator(LLM_Call):
     base_prompt: str
     example_input_column: str
     example_output_column: str
-    threshold: float = 0.1
+    threshold: float = 0
     num_examples: int = field(default=1)
     is_adaptive: bool = True
     def __post_init__(self):
@@ -63,7 +63,7 @@ class ModuleCodeGenerator(LLM_Call):
 
 
 # Define the LLM configuration with the specified model
-llm_config = LLMConfig(api_key=api_key, model="gpt-4o-2024-08-06", temperature=0)
+llm_config = LLMConfig(api_key=api_key, model="gpt-4o-mini", temperature=0)
 
 # Initialize all the generators
 question_html_generator = ModuleCodeGenerator(
@@ -71,7 +71,7 @@ question_html_generator = ModuleCodeGenerator(
     example_input_column="question",
     example_output_column="question.html",
     llm_config=llm_config,
-    num_examples = 3
+    num_examples = 2
 )
 question_html_generator_nonadaptive = ModuleCodeGenerator(
     base_prompt=question_html_gen_template_nonadaptive,
@@ -79,7 +79,7 @@ question_html_generator_nonadaptive = ModuleCodeGenerator(
     example_output_column="question.html",
     llm_config=llm_config,
     is_adaptive=False,
-    num_examples = 3
+    num_examples = 2
 )
 
 question_solution_generator = ModuleCodeGenerator(

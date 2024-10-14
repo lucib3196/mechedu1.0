@@ -6877,7 +6877,7 @@
         "kind": 6,
         "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
         "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "class ModuleCodeGenerator(LLM_Call):\n    llm_config: LLMConfig\n    base_prompt: str\n    example_input_column: str\n    example_output_column: str\n    threshold: float = 0.1\n    num_examples: int = field(default=1)\n    is_adaptive: bool = True\n    def __post_init__(self):\n        super().__post_init__()",
+        "peekOfCode": "class ModuleCodeGenerator(LLM_Call):\n    llm_config: LLMConfig\n    base_prompt: str\n    example_input_column: str\n    example_output_column: str\n    threshold: float = 0\n    num_examples: int = field(default=1)\n    is_adaptive: bool = True\n    def __post_init__(self):\n        super().__post_init__()",
         "detail": "src.llm_module_generator.physics_module_generator.module_generator",
         "documentation": {}
     },
@@ -6886,7 +6886,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
         "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "logger = get_logger(__name__)\nfrom .templates import question_html_gen_template,server_js_template_base,server_py_template_base,solution_html_template,question_html_gen_template_nonadaptive\n@dataclass\nclass ModuleCodeGenerator(LLM_Call):\n    llm_config: LLMConfig\n    base_prompt: str\n    example_input_column: str\n    example_output_column: str\n    threshold: float = 0.1\n    num_examples: int = field(default=1)",
+        "peekOfCode": "logger = get_logger(__name__)\nfrom .templates import question_html_gen_template,server_js_template_base,server_py_template_base,solution_html_template,question_html_gen_template_nonadaptive\n@dataclass\nclass ModuleCodeGenerator(LLM_Call):\n    llm_config: LLMConfig\n    base_prompt: str\n    example_input_column: str\n    example_output_column: str\n    threshold: float = 0\n    num_examples: int = field(default=1)",
         "detail": "src.llm_module_generator.physics_module_generator.module_generator",
         "documentation": {}
     },
@@ -6895,7 +6895,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
         "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "llm_config = LLMConfig(api_key=api_key, model=\"gpt-4o-2024-08-06\", temperature=0)\n# Initialize all the generators\nquestion_html_generator = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",\n    llm_config=llm_config,\n    num_examples = 3\n)\nquestion_html_generator_nonadaptive = ModuleCodeGenerator(",
+        "peekOfCode": "llm_config = LLMConfig(api_key=api_key, model=\"gpt-4o-mini\", temperature=0)\n# Initialize all the generators\nquestion_html_generator = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",\n    llm_config=llm_config,\n    num_examples = 2\n)\nquestion_html_generator_nonadaptive = ModuleCodeGenerator(",
         "detail": "src.llm_module_generator.physics_module_generator.module_generator",
         "documentation": {}
     },
@@ -6904,7 +6904,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
         "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "question_html_generator = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",\n    llm_config=llm_config,\n    num_examples = 3\n)\nquestion_html_generator_nonadaptive = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template_nonadaptive,\n    example_input_column=\"question\",",
+        "peekOfCode": "question_html_generator = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",\n    llm_config=llm_config,\n    num_examples = 2\n)\nquestion_html_generator_nonadaptive = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template_nonadaptive,\n    example_input_column=\"question\",",
         "detail": "src.llm_module_generator.physics_module_generator.module_generator",
         "documentation": {}
     },
@@ -6913,7 +6913,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
         "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "question_html_generator_nonadaptive = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template_nonadaptive,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",\n    llm_config=llm_config,\n    is_adaptive=False,\n    num_examples = 3\n)\nquestion_solution_generator = ModuleCodeGenerator(\n    base_prompt=solution_html_template,",
+        "peekOfCode": "question_html_generator_nonadaptive = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template_nonadaptive,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",\n    llm_config=llm_config,\n    is_adaptive=False,\n    num_examples = 2\n)\nquestion_solution_generator = ModuleCodeGenerator(\n    base_prompt=solution_html_template,",
         "detail": "src.llm_module_generator.physics_module_generator.module_generator",
         "documentation": {}
     },

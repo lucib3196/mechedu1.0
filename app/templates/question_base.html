@@ -5,6 +5,7 @@
 <div class="question-container">
     <!-- Form for downloading a module -->
     <form method="POST" action="{{ url_for('quiz_overview_bp.download_module') }}" class="mb-4">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
         <!-- Hidden input for folder data -->
         <input type="hidden" name="folder_data" value="{{ folder_data }}">
         <button type="submit" class="btn btn-primary">Download Module</button>
