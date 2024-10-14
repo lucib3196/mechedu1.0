@@ -4,14 +4,14 @@
 {% block content %}
 <div class="question-container">
     <!-- Form for downloading a module -->
-    <form method="POST" action="{{ url_for('quiz_overview_bp.download_module') }}" class="mb-4">
+    <!-- <form method="POST" action="{{ url_for('quiz_overview_bp.download_module') }}" class="mb-4">
         <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
-        <!-- Hidden input for folder data -->
+        Hidden input for folder data
         <input type="hidden" name="folder_data" value="{{ folder_data }}">
         <button type="submit" class="btn btn-primary">Download Module</button>
     </form>
 
-    <!-- Main quiz content form -->
+    Main quiz content form -->
     <form method="POST" action="{{ url_for('adaptive_quiz_bp.grade_quiz') }}" class="form-group">
         <!-- Quiz Title -->
         <h1 class="mb-4">{{ quiz_name }}</h1>

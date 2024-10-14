@@ -11,7 +11,7 @@ from flask_wtf import CSRFProtect
 
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY') or "6Vicv382oz3PyNOAYP2SlAo/uO2750TY4+5fjNRoi8ccH0fpoEP/QLznbI07K36v"
+    SECRET_KEY = "6Vicv382oz3PyNOAYP2SlAo/uO2750TY4+5fjNRoi8ccH0fpoEP/QLznbI07K36v"
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN', "").split(",")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SESSION_TYPE = 'filesystem'
@@ -34,6 +34,7 @@ def create_app():
     app.config.from_object(config['development'])
 
     csrf = CSRFProtect(app) 
+    csrf.init_app(app)
 
     # Initialize database
     from .db_models.models import db, User,Role,QuestionMetadata,Folder

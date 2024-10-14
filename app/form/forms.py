@@ -68,3 +68,7 @@ class SignUp(FlaskForm):
 class UPDATE_CODE(FlaskForm):
     code = TextAreaField('Code', validators=[DataRequired()])
     save = SubmitField("Save Code")
+
+
+class DOWNLOAD(FlaskForm):
+    submit = SubmitField("Download")

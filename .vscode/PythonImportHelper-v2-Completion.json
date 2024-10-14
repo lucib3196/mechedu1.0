@@ -2543,6 +2543,14 @@
         "documentation": {}
     },
     {
+        "label": "generate_csrf",
+        "importPath": "flask_wtf.csrf",
+        "description": "flask_wtf.csrf",
+        "isExtraImport": true,
+        "detail": "flask_wtf.csrf",
+        "documentation": {}
+    },
+    {
         "label": "traceback",
         "kind": 6,
         "isExtraImport": true,
@@ -5320,7 +5328,16 @@
         "kind": 6,
         "importPath": "app.form.forms",
         "description": "app.form.forms",
-        "peekOfCode": "class UPDATE_CODE(FlaskForm):\n    code = TextAreaField('Code', validators=[DataRequired()])\n    save = SubmitField(\"Save Code\")",
+        "peekOfCode": "class UPDATE_CODE(FlaskForm):\n    code = TextAreaField('Code', validators=[DataRequired()])\n    save = SubmitField(\"Save Code\")\nclass DOWNLOAD(FlaskForm):\n    submit = SubmitField(\"Download\")",
+        "detail": "app.form.forms",
+        "documentation": {}
+    },
+    {
+        "label": "DOWNLOAD",
+        "kind": 6,
+        "importPath": "app.form.forms",
+        "description": "app.form.forms",
+        "peekOfCode": "class DOWNLOAD(FlaskForm):\n    submit = SubmitField(\"Download\")",
         "detail": "app.form.forms",
         "documentation": {}
     },
@@ -5536,7 +5553,7 @@
         "kind": 2,
         "importPath": "app.routes.module_retrieval.view_modules",
         "description": "app.routes.module_retrieval.view_modules",
-        "peekOfCode": "def view_module_details(module_name,module_id):\n    module = EduModule.query.filter_by(id=module_id).first()\n    folder_data = []\n    for folder in module.folders:\n        files_data = []\n        for file in folder.files:\n            files_data.append({\n                'id': file.id,\n                'filename': file.filename,\n                'content': file.content.decode('utf-8', errors='ignore') if file.content else ''",
+        "peekOfCode": "def view_module_details(module_name,module_id):\n    csrf_token = generate_csrf()\n    module = EduModule.query.filter_by(id=module_id).first()\n    folder_data = []\n    for folder in module.folders:\n        files_data = []\n        for file in folder.files:\n            files_data.append({\n                'id': file.id,\n                'filename': file.filename,",
         "detail": "app.routes.module_retrieval.view_modules",
         "documentation": {}
     },
@@ -5554,7 +5571,7 @@
         "kind": 2,
         "importPath": "app.routes.module_retrieval.view_modules",
         "description": "app.routes.module_retrieval.view_modules",
-        "peekOfCode": "def view_adaptive_quiz(folder_name, folder_id):\n    files_data = session.get(\"files_data\")\n    if not files_data:\n        return \"<h1>No files data found in session</h1>\", 404\n    # Re-fetch file contents if needed\n    folder = Folder.query.filter_by(id=folder_id).first()\n    if not folder:\n        return \"<h1>Folder not found</h1>\", 404\n    # Retrieve full file data based on filenames stored in the session\n    full_files_data = [{",
+        "peekOfCode": "def view_adaptive_quiz(folder_name, folder_id):\n    files_data = session.get(\"files_data\")\n    csrf_token = generate_csrf()\n    if not files_data:\n        return \"<h1>No files data found in session</h1>\", 404\n    # Re-fetch file contents if needed\n    folder = Folder.query.filter_by(id=folder_id).first()\n    if not folder:\n        return \"<h1>Folder not found</h1>\", 404\n    # Retrieve full file data based on filenames stored in the session",
         "detail": "app.routes.module_retrieval.view_modules",
         "documentation": {}
     },
@@ -5698,7 +5715,7 @@
         "kind": 2,
         "importPath": "app.routes.quiz_views.quiz_overview",
         "description": "app.routes.quiz_views.quiz_overview",
-        "peekOfCode": "def download_all_modules():\n    \"\"\"\n    Downloads a combined ZIP file containing ZIP files for all modules and folders in the session.\n    The function retrieves folder data from the session, processes each folder to create individual ZIP files, \n    and then combines these ZIP files into a single downloadable ZIP file.\n    Returns:\n        Response: A Flask response object that triggers the download of the combined ZIP file.\n    \"\"\"\n    folder_data = session.get(\"folder_data\", [])\n    print(\"Downloading all\")",
+        "peekOfCode": "def download_all_modules():\n    \"\"\"\n    Downloads a combined ZIP file containing ZIP files for all modules and folders in the session.\n    The function retrieves folder data from the session, processes each folder to create individual ZIP files, \n    and then combines these ZIP files into a single downloadable ZIP file.\n    Returns:\n        Response: A Flask response object that triggers the download of the combined ZIP file.\n    \"\"\"                             \n    folder_data = session.get(\"folder_data\", [])\n    print(\"Downloading all\")",
         "detail": "app.routes.quiz_views.quiz_overview",
         "documentation": {}
     },
@@ -5707,7 +5724,7 @@
         "kind": 5,
         "importPath": "app.routes.quiz_views.quiz_overview",
         "description": "app.routes.quiz_views.quiz_overview",
-        "peekOfCode": "logger = get_logger(__name__)\n# Local Application Imports\nfrom ...db_models.models import File, EduModule, Folder, db\nfrom .utils import retrieve_files_session, retrieve_files_folder\nfrom src.utils.file_handler import create_zip_file\nfrom ...form.forms import UPDATE_CODE\nquiz_overview_bp = Blueprint('quiz_overview_bp', __name__)\n# This is perfect as is \n@quiz_overview_bp.route(\"/quiz_overview/<folder_id>/actions\", methods=['GET', 'POST'])\ndef modules_action(folder_id):",
+        "peekOfCode": "logger = get_logger(__name__)\n# Local Application Imports\nfrom ...db_models.models import File, EduModule, Folder, db\nfrom .utils import retrieve_files_session, retrieve_files_folder\nfrom src.utils.file_handler import create_zip_file\nfrom ...form.forms import UPDATE_CODE,DOWNLOAD \nquiz_overview_bp = Blueprint('quiz_overview_bp', __name__)\n# This is perfect as is \n@quiz_overview_bp.route(\"/quiz_overview/<folder_id>/actions\", methods=['GET', 'POST'])\ndef modules_action(folder_id):",
         "detail": "app.routes.quiz_views.quiz_overview",
         "documentation": {}
     },

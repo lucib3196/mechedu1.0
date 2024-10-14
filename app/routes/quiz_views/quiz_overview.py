@@ -21,7 +21,7 @@ logger = get_logger(__name__)
 from ...db_models.models import File, EduModule, Folder, db
 from .utils import retrieve_files_session, retrieve_files_folder
 from src.utils.file_handler import create_zip_file
-from ...form.forms import UPDATE_CODE
+from ...form.forms import UPDATE_CODE,DOWNLOAD 
 
 quiz_overview_bp = Blueprint('quiz_overview_bp', __name__)
 # This is perfect as is 
@@ -137,8 +137,9 @@ def download_all_modules():
 
     Returns:
         Response: A Flask response object that triggers the download of the combined ZIP file.
-    """
+    """                             
     folder_data = session.get("folder_data", [])
+    
     print("Downloading all")
     
     # Create an in-memory ZIP file
