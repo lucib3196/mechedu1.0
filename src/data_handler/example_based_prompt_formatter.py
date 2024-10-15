@@ -6,19 +6,20 @@ from typing import List, Dict
 from .semantic_search import SemanticSearchManager
 from .generate_embeddings import GenerateEmbeddings
 from .embedded_dataframe import EmbeddingDataFrame
-from ..llm_module_generator.llm_base import LLMConfig
 
 # Determine the base directory
 base_dir = os.path.dirname(os.path.abspath(__file__))
 
 
-
+@dataclass
+class LLMConfig:
+    model:str
+    temperature:int
 @dataclass
 class ExampleBasedPromptDataFrame:
     example_input_column: str
     example_output_column: str
 
-    api_key: str
     embedding_engine: str = "text-embedding-3-small"
     embedding_columns: str = "embeddings-3-small"
     embedding_file: str = os.path.join(base_dir, '..', 'data', 'question_embeddings_2024_9_11.csv')
@@ -52,11 +53,10 @@ class ExampleBasedPromptDataFrame:
             self.dataframe = self.df_config.validate_dataframe()
 
             self.llm_config = LLMConfig(
-                api_key=self.api_key,
                 model=self.embedding_engine,
                 temperature=0
             )
-            self.embedding_generator = GenerateEmbeddings(self.api_key,self.embedding_engine,0)
+            self.embedding_generator = GenerateEmbeddings(self.embedding_engine,0)
             self.semantic_search = SemanticSearchManager(self.df_config, self.embedding_generator)
             self._initialized = True
             print("Initialization complete.")
@@ -64,13 +64,12 @@ class ExampleBasedPromptDataFrame:
             print("ExampleBasedPromptDataFrame already initialized.")
 
     @classmethod
-    def get_instance(cls, example_input_column, example_output_column, api_key):
+    def get_instance(cls, example_input_column, example_output_column):
         global _example_based_prompt_dataframe_instance
         if _example_based_prompt_dataframe_instance is None:
             _example_based_prompt_dataframe_instance = cls(
                 example_input_column=example_input_column, 
                 example_output_column=example_output_column, 
-                api_key=api_key
             )
         return _example_based_prompt_dataframe_instance
 

@@ -7,8 +7,8 @@ from .file_converter import FileConverter
 from .llm_lecture_processor import analyze_lecture
 from .generate_module import generate_module_from_question
 from ..logging_config.logging_config import get_logger
-from ..llm_module_generator.parsers.parser import computational_question_parser
-from ..llm_module_generator.image_extraction.image_llm_extraction import extract_computational_questions
+from . import computational_question_parser
+from . import extract_computational_questions
 
 # Initialize the logger
 logger = get_logger(__name__)
@@ -37,10 +37,10 @@ async def lecture_assembly(paths: List[str], user_data:dict) -> Tuple[str, List[
     print(f"These are the image paths {image_paths}")
     
     # Analyze the lecture images and generate the result, modules, and token count
-    result, all_mod, tokens = await analyze_lecture(image_paths)
+    result, all_mod= await analyze_lecture(image_paths)
     html_module = ("lecture", {"lecture.html": result})
     all_mod.append([html_module])
-    return all_mod,tokens
+    return all_mod
 
 async def generate_module_text(question: str, user_data: dict) -> Tuple[List[Tuple[str, str]], int]:
     """
@@ -58,10 +58,8 @@ async def generate_module_text(question: str, user_data: dict) -> Tuple[List[Tup
     
     question_title = result.get("question_title", "")
     content = result.get("generated_content", "")
-    tokens += result.get("mod_tokens")
     modules.append((question_title, content))
 
-    logger.info(f"Finished generating module from text, total tokens {tokens}")
     return modules, tokens
 
 async def generate_from_image(paths: List[str] ,user_data: dict) -> Tuple[List[Tuple[str, str]], int]:
@@ -88,8 +86,6 @@ async def generate_from_image(paths: List[str] ,user_data: dict) -> Tuple[List[T
     computational_question_images = await extract_computational_questions.send_request(image_paths)
     computational_questions = computational_question_parser(response=computational_question_images)
     
-    # Track token usage
-    total_tokens += extract_computational_questions.get_total_tokens()
 
     # Generate modules from extracted questions
     results = await asyncio.gather(*[
@@ -106,7 +102,6 @@ async def generate_from_image(paths: List[str] ,user_data: dict) -> Tuple[List[T
     for result in results:
         question_title = result.get("question_title", "")
         content = result.get("generated_content", "")
-        total_tokens += result.get("mod_tokens")
         modules.append((question_title, content))
 
     logger.info("Finished extracting computational questions")
@@ -134,9 +129,7 @@ async def main():
 
     # Run the lecture assembly
     print("\nRunning lecture assembly...")
-    lecture_result, all_modules, lecture_tokens = await lecture_assembly(lecture_paths,user_data=user_data)
-    print(f"Lecture assembly completed. Tokens used: {lecture_tokens}")
-    print(f"Lecture result: {lecture_result}")
+    all_modules= await lecture_assembly(lecture_paths,user_data=user_data)
     for module in all_modules:
         print(f"Module: {module}")
 

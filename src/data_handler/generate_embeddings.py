@@ -2,9 +2,12 @@ from dataclasses import dataclass
 from typing import Optional, List
 
 from openai import OpenAI
-from ..credentials import api_key
-from ..llm_module_generator.llm_base import LLMConfig
 
+@dataclass
+class LLMConfig:
+    model:str
+    temperature:int
+        
 
 @dataclass
 class GenerateEmbeddings(LLMConfig):
@@ -33,7 +36,7 @@ class GenerateEmbeddings(LLMConfig):
         Returns:
             List[float]: A list of floating-point numbers representing the embedding of the input text.
         """
-        client = OpenAI(api_key=self.api_key)
+        client = OpenAI()
         response = client.embeddings.create(input=query, model=self.model)
         embeddings = response.data[0].embedding
         return embeddings

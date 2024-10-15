@@ -2,19 +2,19 @@ from typing import Dict,Union
 import asyncio
 
 from numpy import mean
-from ..llm_module_generator.physics_module_generator.generate_metadata import metadata_gen
+from . import metadata_chain
 from  ..logging_config.logging_config import get_logger
 
 # Set up the logger
 logger = get_logger(__name__)
 
-async def generate_module_metadata(question: str, user_data: Dict[str, str]) -> tuple[Dict[str, Union[str, bool, int]], int]:
+async def generate_module_metadata(question: str, user_data: Dict[str, str]) -> dict:
     logger.info("Generating initial metadata for the question.")
     
     # Generate the initial metadata
-    initial_metadata = await metadata_gen.generate_metadata(question)
+    initial_metadata = await metadata_chain.ainvoke({"question":question})
     logger.debug(f"Initial metadata: {initial_metadata}")
-
+    initial_metadata = initial_metadata.dict()
     # Create the final metadata dictionary by adding additional fields
     metadata = {
         **initial_metadata.get("metadata", {}),
@@ -29,10 +29,7 @@ async def generate_module_metadata(question: str, user_data: Dict[str, str]) -> 
     
     logger.info("Final metadata generated.")
     logger.debug(f"Final metadata: {metadata}")
-
-    logger.info(f"Token Count {metadata_gen.get_total_tokens()}")
-    
-    return metadata,metadata_gen.get_total_tokens()
+    return metadata
 
 async def main():
     logger.info("Starting main function.")

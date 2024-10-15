@@ -670,3 +670,223 @@ body{
     text-align: center;
     height: auto;
 }
+
+
+.title_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.title_section .title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.title_section .subtitle {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin: 0 0 20px 0;
+}
+
+.summary_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #ccc;  /* Added border */
+    border-radius: 10px;      /* Added border radius */
+    background-color: #fff;   /* Background color for the section */
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added shadow */
+}
+
+.summary_section h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.summary_section .summary {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.key_concepts_section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 800px;
+    padding: 20px;
+    border: 2px solid #ccc;  /* Added border */
+    border-radius: 10px;      /* Added border radius */
+    background-color: #fff;   /* Background color for the section */
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added shadow */
+}
+
+.key_concepts_section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    align-self: center;
+}
+
+.key_concepts_section p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    align-self: center;
+    text-align: left;
+}
+
+.foundational_concepts_section {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    padding: 20px;
+    border: 2px solid #ccc;  /* Added border */
+    border-radius: 10px;      /* Added border radius */
+    background-color: #fff;   /* Background color for the section */
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added shadow */
+}
+
+.foundational_concepts_section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    align-self: center;
+}
+
+.foundational_concepts_section p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    align-self: center;
+    text-align: left;
+}
+
+/* Styling for ul and li elements */
+ul {
+    padding-left: 20px;
+    list-style-type: disc;
+    margin-bottom: 20px;
+}
+
+li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+li .bold {
+    font-weight: bold;
+}
+
+
+/* \ */
+
+.questions_section {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 1000px;
+    text-align: left; /* Change to left-aligned for better readability */
+    padding: 20px;
+    margin: 20px auto; /* Add margin to center the section */
+}
+
+.question_container {
+    margin-top: 30px; /* Increased spacing between questions */
+    padding: 20px; /* Add padding around each question container */
+    border: 1px solid #ccc; /* Add border to visually separate questions */
+    flex: 1; /* Only works if parent container is a flexbox */
+    border-radius: 10px; /* Rounded corners for a polished look */
+    background-color: #f9f9f9; /* Light background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+}
+
+
+.question_container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px; /* Spacing between question title and options */
+}
+
+.question_container h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px; /* Spacing between subtitle and list */
+}
+
+.multiple_choice_options {
+    align-self: flex-start;
+    list-style-type: lower-alpha;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    margin-left: 20px; /* Indent the list for a better look */
+    margin-bottom: 15px; /* Space below the list */
+    padding-left: 20px; /* Add padding for better readability */
+}
+
+li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.data_container {
+    display: none; /* Still hidden, will be shown when needed */
+}
+
+/* Add margin between sections for better spacing */
+.questions_section + .questions_section {
+    margin-top: 40px; /* Increased spacing between multiple question sections */
+}
+
+.derivation_section {
+    padding: 20px;
+    margin-bottom: 20px; /* Add space between derivation sections */
+    background-color: #f9f9f9; /* Light background color */
+    border: 1px solid #ccc; /* Border to visually separate sections */
+    border-radius: 10px; /* Rounded corners for a polished look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.derivation_container {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-left: 4px solid #007bff; /* A blue accent on the left for visual hierarchy */
+    background-color: #ffffff; /* Background color for container */
+    border-radius: 8px;
+}
+
+.derivation_name {
+    font-size: 1.5rem; /* Larger font for the derivation name */
+    font-weight: bold;
+    color: #333; /* Dark gray text color */
+    margin-bottom: 10px;
+}
+
+.derivation_steps {
+    margin-top: 15px;
+    padding-left: 20px; /* Indent steps for better readability */
+    list-style-type: decimal; /* Numbered list for steps */
+    color: #555; /* Slightly lighter text color for the steps */
+}
+
+.derivation_steps li {
+    margin-bottom: 10px; /* Add space between steps */
+    line-height: 1.6; /* Better line height for readability */
+    font-size: 1rem; /* Standard font size for steps */
+}
+
+.derivations_section h3{
+   font-size: 1.2rem;
+}

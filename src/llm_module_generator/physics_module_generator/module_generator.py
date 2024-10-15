@@ -1,148 +1,148 @@
 # Standard library imports
 import asyncio
-import json
+import langchain_core.messages
+import os
 from dataclasses import dataclass, field
-from venv import logger
-
 from typing import Optional
+from dotenv import load_dotenv
+from langchain_core.output_parsers import StrOutputParser
 # Third-party imports
-import openai
 from pydantic import BaseModel, Field
-from openai import AsyncOpenAI
-
+from langchain_openai import ChatOpenAI
+from langchain import hub
 
 # Local application imports
-from ..llm_base import LLM_Call, LLMConfig
 from ...data_handler.example_based_prompt_formatter import ExampleBasedPromptDataFrame
-from ...credentials import api_key
 from ...logging_config.logging_config import get_logger
+from langchain.prompts import HumanMessagePromptTemplate
+# Load .env file
+load_dotenv()
+api_key = os.getenv("OPENAI_API_KEY")
+
+# Initialize logger
 logger = get_logger(__name__)
-from .templates import question_html_gen_template,server_js_template_base,server_py_template_base,solution_html_template,question_html_gen_template_nonadaptive
 
 
 @dataclass
-class ModuleCodeGenerator(LLM_Call):
-    llm_config: LLMConfig
+class ModuleCodeGenerator:
+    model: str
     base_prompt: str
     example_input_column: str
     example_output_column: str
-    threshold: float = 0.1
+    response: BaseModel
+    threshold: float = 0.0
     num_examples: int = field(default=1)
     is_adaptive: bool = True
+
     def __post_init__(self):
-        super().__post_init__()
         self.example_formatter = ExampleBasedPromptDataFrame(
             example_input_column=self.example_input_column,
             example_output_column=self.example_output_column,
-            api_key=self.llm_config.api_key,
             is_adaptive=self.is_adaptive
         )
-
-    def generate_prompt(self, question:str, additional_instructions=None)->str:
-        prompt = self.example_formatter.format_examples_prompt(self.base_prompt,query=question,threshold=self.threshold,num_examples=self.num_examples)
-        if additional_instructions:
-            prompt += f"\n{additional_instructions}"
-        prompt += f"\n\n BASED ON THIS KNOWLEDGE CONVERT THE FOLLOWING QUESTION INTO ITS RESPECTIVE CODE **new_question** {question} \n only return the generate the code"
-        return prompt
-    
-    async def acall_generate_code(self, question:str, additional_instructions:str=None)->str:
-        prompt = self.generate_prompt(question,additional_instructions)
-        # logger.info(prompt)
-        class Response(BaseModel):
-            generated_code:str = Field(...,description="The generated code only return the generated code")
-        response =await  self.acall(prompt, response_format=Response)
+        self.llm = ChatOpenAI(model=self.model)
         try:
-            if isinstance(response, str):
-                extracted_response = json.loads(response)
-            elif isinstance(response,dict):
-                extracted_response = response
-            return extracted_response.get('generated_code',0)
-        except ValueError as e:
-            logger.exception(f"Could not generate code and exeption {e} ")
-            return None
+            self.base = self.base_prompt.messages[0].prompt.template
+        except:
+             self.base = self.base_prompt.messages[0]
 
 
-# Define the LLM configuration with the specified model
-llm_config = LLMConfig(api_key=api_key, model="gpt-4o-2024-08-06", temperature=0)
 
-# Initialize all the generators
+    def generate_prompt(self, query: str, additional_instructions: Optional[str] = None,solution_guide:Optional[str]=None) -> str:
+        prompt = self.example_formatter.format_examples_prompt(
+            self.base,
+            query=query,
+            threshold=self.threshold,
+            num_examples=self.num_examples
+        )
+        prompt += (
+            f"\n\n BASED ON THIS KNOWLEDGE CONVERT THE FOLLOWING QUESTION INTO ITS RESPECTIVE "
+            f"CODE **new_question** {query} \nOnly return the generated code"
+        )
+        if solution_guide:
+            prompt += f"""SOLUTION GUIDE: The user provided a solution guide Analyze 
+            the following solution guide and ensure that all logic provided is correctly 
+            implemented in any generated code. When generating code, use the solution steps and 
+            calculations as the foundation for the computation, adhering strictly to the logic provided in the guide. """
+        if additional_instructions:
+            prompt += f"\nADDITIONAL INSTRUCTIONS: {additional_instructions}\n"
+        return prompt
+
+    async def acall_generate_code(self, query: str, additional_instructions: Optional[str] = None,solution_guide:Optional[str]=None):
+        prompt = self.generate_prompt(query, additional_instructions)
+        response = await self.llm.with_structured_output(self.response).ainvoke([prompt])
+        response = response.dict()
+        return response.get("generated_code","")
+
+    
+class Response(BaseModel):
+    generated_code:str = Field(...,description="The generated code only return the generated code")
+
 question_html_generator = ModuleCodeGenerator(
-    base_prompt=question_html_gen_template,
+    base_prompt=hub.pull("question_html_template"),
+    model="gpt-4o-mini",
+    response=Response,
     example_input_column="question",
     example_output_column="question.html",
-    llm_config=llm_config,
-    num_examples = 3
+    num_examples = 2
 )
 question_html_generator_nonadaptive = ModuleCodeGenerator(
-    base_prompt=question_html_gen_template_nonadaptive,
+    base_prompt=hub.pull("question_html_template"),
+    model="gpt-4o-mini",
+    response=Response,
     example_input_column="question",
     example_output_column="question.html",
-    llm_config=llm_config,
-    is_adaptive=False,
-    num_examples = 3
+    num_examples = 3,
+    is_adaptive=False
 )
-
 question_solution_generator = ModuleCodeGenerator(
-    base_prompt=solution_html_template,
+    base_prompt=hub.pull("solution_html_template"),
     example_input_column="question.html",
     example_output_column="solution.html",
-    llm_config=llm_config,
+    model="gpt-4o-mini",
+    response=Response,
     num_examples = 1
 )
-
 server_js_generator = ModuleCodeGenerator(
-    base_prompt=server_js_template_base,
+    base_prompt=hub.pull("server_js_template_base"),
     example_input_column="question.html",
     example_output_column="server.js",
-    llm_config=llm_config,
+    model="gpt-4o-mini",
+    response=Response,
     num_examples = 1
 )
-
 server_py_generator = ModuleCodeGenerator(
-    base_prompt=server_py_template_base,
+    base_prompt=hub.pull("server_py_template_base1"),
     example_input_column="question.html",
     example_output_column="server.py",
-    llm_config=llm_config,
+    model="gpt-4o-mini",
+    response=Response,
     num_examples = 1
 )
 
 async def main():
     # The question to be processed
-    question = "A ball travels a distance of 5 meters during a period of 5 minutes determine its average speed"
+    question = ("How much should be deposited at t = 0 into a fund paying 3% compounded per period in order to withdraw "
+                "$2000 at t = 1, $1500 at t = 3, and $750 at t = 7 such that the fund is depleted at the last withdrawal?")
 
     # Run all the generators concurrently using asyncio.gather
     results = await asyncio.gather(
         question_html_generator.acall_generate_code(question),
-        question_html_generator_nonadaptive.acall_generate_code(question),
         question_solution_generator.acall_generate_code(question),
-        server_js_generator.acall_generate_code(question),
+        server_js_generator.acall_generate_code(
+            question,
+            additional_instructions=("I want to generate different possible periods ranging from 1-10 and have interest values "
+                                     "between 1-5%, then I want the withdrawals to be between 1000-5000 chosen randomly, "
+                                     "and then I want the amounts of withdrawals to be random.")
+        ),
         server_py_generator.acall_generate_code(question)
     )
 
     # Print the results
-    for result in results:
+    for idx, result in enumerate(results, 1):
+        print(f"RESULT {idx}:")
         print(result)
 
-    # Get and print the total tokens used by each generator
-    question_html_tokens = question_html_generator.get_total_tokens()
-    question_solution_tokens = question_solution_generator.get_total_tokens()
-    server_js_tokens = server_js_generator.get_total_tokens()
-    server_py_tokens = server_py_generator.get_total_tokens()
-
-    # Print individual costs
-    print(f"Tokens used by question_html_generator: {question_html_tokens}")
-    print(f"Tokens used by question_solution_generator: {question_solution_tokens}")
-    print(f"Tokens used by server_js_generator: {server_js_tokens}")
-    print(f"Tokens used by server_py_generator: {server_py_tokens}")
-
-    # Calculate and print the total cost
-    total_tokens = (
-        question_html_tokens +
-        question_solution_tokens +
-        server_js_tokens +
-        server_py_tokens
-    )
-    print(f"Total tokens used: {total_tokens}")
 
 if __name__ == "__main__":
     asyncio.run(main())

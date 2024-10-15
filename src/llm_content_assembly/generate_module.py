@@ -1,10 +1,11 @@
 import asyncio
 from typing import Tuple, Dict, Optional,Union
-from .generate_adaptive_module import generate_adaptive_module
-from .generate_nonadaptive_module import generate_nonadaptive
 from .generate_module_metadata import generate_module_metadata
 from .utils import extract_question_title, is_adaptive_question
 from ..logging_config.logging_config import get_logger
+from . import chain
+from .generate_adaptive_module import generate_adaptive_module
+from .generate_nonadaptive_module import generate_nonadaptive
 
 # Initialize the logger
 logger = get_logger(__name__)
@@ -34,33 +35,40 @@ async def generate_module_from_question(
         Dict[str, Union[str, int]]: A dictionary containing the question title, 
         the generated content, and the total token count used in generating the module.
     """
-    global TOKEN_COUNT
 
     logger.info("Starting module generation from question.")
     
-    # Generate metadata and count tokens
-    metadata, metadata_tokens = await generate_module_metadata(question, user_data)
+    # Initial analysis of the question to determine any specific instructions
+    analysis = await chain.ainvoke({"query": question})
+    analysis = analysis.dict()
+    question = analysis.get("question")
+    question_html_instructions = analysis.get("question_html_instructions")
+    server_instructions = analysis.get("server_instructions")
+    instructions ={
+        "question_html_instructiosn": analysis.get("question_html_instructions"),
+        "server_instructions": analysis.get("server_instructions"),
+        "solution_guide": solution_guide if not None else None
+    }
+
+    # Generate metadata and get title
+    metadata = await generate_module_metadata(question, user_data)
     question_title = extract_question_title(metadata)
-    TOKEN_COUNT += metadata_tokens
-    logger.debug(f"Metadata tokens: {metadata_tokens}, Total token count: {TOKEN_COUNT}")
     
+
     # Determine if the question is adaptive and generate content accordingly
     if is_adaptive_question(metadata):
         logger.info("Question identified as adaptive. Generating adaptive module.")
-        generated_content, adaptive_tokens = await generate_adaptive_module(question, metadata, solution_guide)
+        generated_content = await generate_adaptive_module(question, metadata, instructions=instructions)
     else:
         logger.info("Question identified as non-adaptive. Generating non-adaptive module.")
-        generated_content, adaptive_tokens = await generate_nonadaptive(question, metadata)
+        generated_content = await generate_nonadaptive(question, metadata,instructions=instructions)
     
-    TOKEN_COUNT += adaptive_tokens
-    logger.debug(f"Adaptive/Non-adaptive tokens: {adaptive_tokens}, Total token count: {TOKEN_COUNT}")
 
     logger.info("Module generation complete.")
 
     result = {
         "question_title": question_title,
-        "generated_content": generated_content,
-        "mod_tokens": TOKEN_COUNT
+        "generated_content": generated_content
     }
     
     return result
@@ -69,7 +77,7 @@ async def generate_module_from_question(
 async def main():
     logger.info("Running main function.")
     
-    question = "A ball travels a total distance of 40 meters in 1 minute. Calculate its speed."
+    question = "A ball travels a total distance of 40 meters in 1 minute. Calculate its speed. I want this question to contain different unit systems specifically for SI I want to have m, km and m/s and km/s while for USCS i want to have ft, ft/s, mph and miles. I want proper conversion for everything"
     user_data = {
         "created_by": "lberm007@ucr.edu",
         "code_language": "javascript"

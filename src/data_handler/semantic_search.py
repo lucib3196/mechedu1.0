@@ -6,8 +6,6 @@ import os
 
 from .generate_embeddings import GenerateEmbeddings
 from .embedded_dataframe import EmbeddingDataFrame
-from ..llm_module_generator.llm_base import LLMConfig
-from ..credentials import api_key
 
 
 

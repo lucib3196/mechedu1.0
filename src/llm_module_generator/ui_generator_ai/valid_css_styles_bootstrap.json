@@ -1,0 +1,352 @@
+{
+    "summary_and_key_concepts": {
+        "div": [
+            {
+                "name": "container my-5",
+                "description": "Container with margin for the summary and key concepts section."
+            }
+        ],
+        "h1": [
+            {
+                "name": "display-4",
+                "description": "Main heading for the summary and key concepts sections."
+            }
+        ],
+        "p": [
+            {
+                "name": "lead",
+                "description": "Used for the introductory paragraph in the summary section."
+            }
+        ],
+        "ul": [
+            {
+                "name": "list-group",
+                "description": "Bootstrap's list group, ideal for displaying key concepts."
+            }
+        ],
+        "li": [
+            {
+                "name": "list-group-item",
+                "description": "Bootstrap class for individual items within the key concepts list."
+            }
+        ]
+    },
+    "derivation-section": {
+        "div": [
+            {
+                "name": "mb-5",
+                "description": "Margin-bottom utility class for spacing the derivation section."
+            }
+        ],
+        "h2": [
+            {
+                "name": "h4",
+                "description": "Sub-heading for derivation sections."
+            }
+        ],
+        "p": [
+            {
+                "name": "lead",
+                "description": "Used for introductory text before derivations."
+            }
+        ],
+        "ol": [
+            {
+                "name": "list-group",
+                "description": "Bootstrap's list group, ideal for ordered derivations."
+            }
+        ],
+        "li": [
+            {
+                "name": "list-group-item font-weight-bold",
+                "description": "Bold text for key derivation steps."
+            }
+        ]
+    },
+    "conceptual-question-section": {
+        "div": [
+            {
+                "name": "mb-5",
+                "description": "Margin-bottom utility class for spacing the conceptual question section."
+            }
+        ],
+        "h3": [
+            {
+                "name": "h5",
+                "description": "Minor heading for individual conceptual questions."
+            }
+        ],
+        "ol": [
+            {
+                "name": "list-group",
+                "description": "Bootstrap's list group for listing question options."
+            }
+        ],
+        "li": [
+            {
+                "name": "list-group-item",
+                "description": "Bootstrap class for each option in conceptual questions."
+            }
+        ],
+        "p": [
+            {
+                "name": "font-italic",
+                "description": "Italic text for correct answer notes in conceptual questions."
+            }
+        ]
+    },
+    "general_styles": {
+        "h1": [
+            {
+                "name": "display-4",
+                "description": "Main heading for any section, providing a large, prominent title."
+            }
+        ],
+        "h2": [
+            {
+                "name": "h4",
+                "description": "Sub-heading within any section, providing a smaller, secondary title."
+            }
+        ],
+        "h3": [
+            {
+                "name": "h5",
+                "description": "Minor heading, used for lower-level titles within subsections."
+            }
+        ],
+        "span": [
+            {
+                "name": "font-weight-bold",
+                "description": "Bold text to emphasize important inline content."
+            },
+            {
+                "name": "text-muted",
+                "description": "Muted text for less prominent inline content."
+            }
+        ],
+        "strong": [
+            {
+                "name": "font-weight-bold",
+                "description": "Bold text to emphasize key content in various sections."
+            }
+        ],
+        "p": [
+            {
+                "name": "lead",
+                "description": "For introductory or important paragraphs across sections."
+            },
+            {
+                "name": "font-italic",
+                "description": "Italic text for notes or additional information."
+            }
+        ],
+        "ul": [
+            {
+                "name": "list-group",
+                "description": "Used for unordered lists where items need to be visually distinct."
+            }
+        ],
+        "ol": [
+            {
+                "name": "list-group",
+                "description": "Used for ordered lists with a Bootstrap-styled appearance."
+            }
+        ],
+        "li": [
+            {
+                "name": "list-group-item",
+                "description": "For individual list items in both ordered and unordered lists."
+            },
+            {
+                "name": "font-weight-bold",
+                "description": "Emphasized list items that require attention."
+            }
+        ]
+    },
+    "question.html": [
+        {
+            "pl-question-panel-element": [
+                {
+                    "name": "pl-question-panel-element",
+                    "description": "The `<pl-question-panel>` custom HTML tag is specifically designed to display content that should only be visible in the question panel of a quiz or assessment interface, as opposed to other panels such as submission or answer panels. This tag is useful in educational contexts where instructors want to provide specific instructions, hints, or direction related to a question that the student should see before they attempt to answer, but which should not be accessible after submission or while reviewing answers. By using this tag, important information can be appropriately scoped to enhance the learning experience without cluttering the user's view in different contexts."
+                }
+            ]
+        },
+        {
+            "pl-number-input-element": [
+                {
+                    "name": "pl-number-input-element",
+                    "description": "The <pl-number-input-element> is a custom HTML tag designed specifically for educational environments where numeric value inputs are required. This tag allows users to submit numbers with varying degrees of tolerances based on the context of the question. The purpose of this tag is to facilitate input for complex mathematical or scientific inquiries where precision is crucial, while also integrating automatic grading functionalities. It can be utilized in quizzes or exams where numeric answers need to be assessed for correctness based on either absolute or relative tolerances, ensuring that students can express their understanding of numeric values in a flexible and educational way."
+                }
+            ]
+        },
+        {
+            "pl-number-input-element": [
+                {
+                    "name": "pl-number-input-element",
+                    "description": "The <pl-number-input-element> is a custom HTML tag designed for web-based educational platforms that require user input of numeric values. Its primary function is to serve as an interactive fill-in-the-blank field, where users can input numeric values constrained by specified tolerances, such as relative and absolute deviations, or significant figures. This element is particularly useful in assessments where precision and the correct handling of numerical inputs are crucial, such as in mathematics, science, and engineering education. The tag allows for robust input validation and grading, ensuring that user responses are accurate within a defined range, accommodating both real and complex numbers when necessary. It is conceptually aimed at enhancing the learning experience by providing direct interaction and immediate feedback on students' responses."
+                }
+            ]
+        },
+        {
+            "pl-checkbox-element": [
+                {
+                    "name": "pl-checkbox-element",
+                    "description": "The <code>pl-checkbox</code> element is designed for educational contexts where instructors want to assess student understanding of concepts by allowing them to select multiple answers from a randomized list. This tag enhances interactivity in assessments and is particularly useful for quizzes that require students to identify multiple correct answers among several options. The functionality supports diverse grading methods, including options for partial credit, enabling instructors to tailor assessments based on desired learning outcomes. This tag is beneficial in scenarios where knowledge is not black and white, allowing students to demonstrate nuanced understanding by selecting all applicable answers."
+                }
+            ]
+        },
+        {
+            "pl-checkbox-element": [
+                {
+                    "name": "pl-checkbox-element",
+                    "description": "The `pl-checkbox` element is designed for educational assessments where multiple answers can be selected from a list. It is particularly useful in scenarios where there might be several correct answers to a question, as it allows students to check all that apply instead of being limited to a single option. The ability to randomize answers and provide feedback on correct and incorrect choices further enhances the learning experience. This element is optimal in an online quiz format that requires interaction and allows for partial credit based on the selection of answers, rewarding students for their understanding rather than punishing them for the miss of a single choice."
+                }
+            ]
+        },
+        {
+            "pl-figure-element": [
+                {
+                    "name": "pl-figure-element",
+                    "description": "The <pl-figure-element> tag is specifically designed to display images within a web application. It serves as a way to integrate both static and dynamically generated images into a webpage, making it particularly useful in courses where visual aids are essential. This tag can pull images from a specified directory or generate them on-the-fly by executing server-side code. Utilizing this tag enhances the accessibility of educational content by offering visual examples that complement textual information."
+                }
+            ]
+        },
+        {
+            "pl-figure-element": [
+                {
+                    "name": "pl-figure-element",
+                    "description": "The `pl-figure-element` HTML tag is designed to display images, whether they are pre-existing or generated dynamically through server-side code. This tag enhances flexibility in web applications by allowing developers to easily integrate visual resources that can adapt based on user interactions or changing data conditions. The `file-name` attribute allows specifying the image to be displayed, while the `type` attribute defines whether the image is static (a pre-existing file) or dynamic (generated programmatically on the server). This tag is especially useful in educational content, data visualization, and interactive applications where visual representation of information is crucial."
+                }
+            ]
+        },
+        {
+            "pl-figure-element": [
+                {
+                    "name": "pl-figure-element",
+                    "description": "The <pl-figure-element> is a custom HTML tag specifically designed for displaying images in an educational context. It allows users to incorporate both static and dynamically generated images into web pages or online quizzes. Its purpose is to enhance the learning experience by visually representing data, concepts, or any relevant imagery that aids comprehension. The element supports attributes for file names, image types (static or dynamic), width, inline display, and alternative text for accessibility. It should be utilized whenever there is a need to present visual information, especially in educational materials, as it accommodates both pre-existing images and those generated programmatically."
+                }
+            ]
+        },
+        {
+            "pl-integer-input-element": [
+                {
+                    "name": "pl-integer-input-element",
+                    "description": "The <pl-integer-input> custom HTML tag is designed specifically for scenarios where an integer input is required from users in an online quiz or educational context. Its primary function is to restrict user inputs to whole numbers, ensuring that non-integer values are disallowed. This is particularly useful in mathematical and programming assessments where only integer values make sense as answers. With additional attributes available, the tag can be customized to support various scenarios, such as providing labels, suffixes, sizes, and displaying input in different numerical bases (like hexadecimal or binary)."
+                }
+            ]
+        },
+        {
+            "pl-matching-element": [
+                {
+                    "name": "pl-matching-element",
+                    "description": "The <code>pl-matching</code> tag is specifically designed for creating interactive matching questions where students must select the correct answer from a dropdown list corresponding to statements presented to them. This tag can be used in educational contexts where the goal is to assess a student\u2019s knowledge and understanding of relationships or associations between concepts, such as matching countries with their capitals, mathematical concepts with their definitions, or historical events with their dates. By allowing for a flexible number of statements and options, as well as customization of options including distractors and ordering, this tag enhances the interactivity and engagement of online assessments."
+                }
+            ]
+        },
+        {
+            "pl-matrix-component-input-element": [
+                {
+                    "name": "pl-matrix-component-input-element",
+                    "description": "The `pl-matrix-component-input` HTML tag is specifically designed for educational environments where students need to input multidimensional numerical data, particularly 2D arrays (matrices). This tag facilitates the input of matrix entries in a structured format, allowing for effective data capture and evaluation in mathematics and quantitative sciences. It provides flexibility in grading by supporting options such as partial credit and feedback on individual entry correctness."
+                }
+            ]
+        },
+        {
+            "pl-matrix-input-element": [
+                {
+                    "name": "pl-matrix-input-element",
+                    "description": "The `pl-matrix-input` HTML tag is specifically designed for educational environments where students are required to input matrices, formatted in either MATLAB or Python's numpy style. This tag enables interactive assessment by allowing students to enter matrices as 2-D arrays in a format they are likely familiar with, particularly in programming and data science courses. This functionality not only makes it easier for instructors to evaluate students' inputs but also provides immediate feedback by assessing the format and correctness of responses, thereby enhancing the learning experience. This tag is useful in subjects such as linear algebra, data analysis, numerical methods, and any other area that involves matrix operations."
+                }
+            ]
+        },
+        {
+            "pl-multiple-choice-element": [
+                {
+                    "name": "pl-multiple-choice-element",
+                    "description": "The <pl-multiple-choice> element is designed for online quizzes and assessments to provide learners with a question that includes multiple answer options. It specifically allows for a single correct answer selection among the given choices, which are displayed as radio buttons in a randomized order. This format encourages engagement and testing of knowledge while preventing guesswork through clever distractors. The restriction against duplicate answers enhances clarity and integrity in assessment."
+                }
+            ]
+        },
+        {
+            "pl-multiple-choice-element": [
+                {
+                    "name": "pl-multiple-choice-element",
+                    "description": "The `pl-multiple-choice` element is designed for use in educational contexts where a single correct answer is needed from a set of answer choices, along with the option for incorrect answers. This tag is particularly useful in online educational platforms to create quizzes or assessments. By using this tag, educators can ensure that the choices are displayed in a randomized order, enhancing the testing experience and minimizing the likelihood of students guessing the correct answer based on the position of choices. The flexibility in defining correct and incorrect answers, as well as the constraints on answer duplication, allows for a well-structured quiz format that can engage students effectively."
+                }
+            ]
+        },
+        {
+            "pl-order-blocks-element": [
+                {
+                    "name": "pl-order-blocks-element",
+                    "description": "The `pl-order-blocks-element` HTML tag is used to create interactive problems where students can arrange blocks of code or text in a specified order in order to solve a problem. This tag is designed for educational purposes, allowing educators to present questions where the correct sequence of answers is crucial to understanding a concept or solving a problem. The blocks are displayed in a 'source area' from which they can be dragged to a 'solution area' to form an answer. The tag offers various configurations, including grading methods for evaluating student responses based on how accurately they arrange the blocks."
+                }
+            ]
+        },
+        {
+            "pl-order-blocks-element": [
+                {
+                    "name": "pl-order-blocks-element",
+                    "description": "The <code>pl-order-blocks-element</code> is a custom HTML tag designed to create interactive problems where users can rearrange blocks of text or code in an attempt to construct a correct solution or answer. This tag is particularly useful in educational contexts, especially in programming and math, where understanding the order of steps, operations, or elements is crucial to solving a problem. The source area displays blocks that can be dragged into a solution area. The order in which blocks are placed can be graded with various methods, making it applicable for formative assessments in an interactive manner. This tag enables educators to enhance student engagement and understanding of concepts through active learning."
+                }
+            ]
+        },
+        {
+            "pl-order-blocks-element": [
+                {
+                    "name": "pl-order-blocks-element",
+                    "description": "The <code>pl-order-blocks-element</code> tag is designed to create interactive questions where users must arrange blocks of code or text in a specific order to solve a problem. This is particularly useful in educational contexts where concepts of sequencing, ordering, or logical arrangement are critical for understanding a subject matter. By using this tag, educators can facilitate engaging activities that enhance learning through hands-on participation. The element supports multiple grading strategies to provide flexibility in assessing student performance based on the nature of the task."
+                }
+            ]
+        },
+        {
+            "pl-order-blocks-element": [
+                {
+                    "name": "pl-order-blocks-element",
+                    "description": "The `<pl-order-blocks-element>` is a custom HTML tag designed to facilitate interactive coding and problem-solving activities. This component allows users to manipulate blocks of code or text, which can be moved from a source area to a solution area to construct a solution to a problem or complete a task. The primary purpose of this tag is to promote active engagement in learning, particularly in programming, mathematics, or sequences where the order of elements is significant. It serves as a tool for educators to assess understanding and reasoning by requiring students to correctly arrange the blocks based on given criteria, fostering an interactive and gamified learning experience."
+                }
+            ]
+        },
+        {
+            "pl-symbolic-input-element": [
+                {
+                    "name": "pl-symbolic-input-element",
+                    "description": "The <pl-symbolic-input> custom HTML tag is designed for educational applications where students are required to input mathematical symbols into a fill-in-the-blank format. This tag is particularly useful in online quizzes or homework systems that assess students' understanding of symbolic mathematics. The element provides enhanced functionality for teachers and integration with systems, allowing correct answers to be defined in a flexible way using sympy expressions and variables. This tag formats the input in a manner that allows for mathematical symbols and expressions to be easily entered, displayed, and graded efficiently."
+                }
+            ]
+        },
+        {
+            "pl-units-input-element": [
+                {
+                    "name": "pl-units-input-element",
+                    "description": "The <pl-units-input> HTML tag is specifically designed to facilitate the entry of numeric values along with their associated units in an educational context. It is particularly suitable for scenarios where precision in measurements and the correct use of units are crucial, such as in mathematics and science assessments. By using this tag, educators can create interactive questions that require students to input values with specific units (e.g., meters, seconds, etc.), and the system processes these inputs to provide immediate feedback. The tag leverages the Pint library to ensure correct handling of units and conversions, making it a powerful tool for online quizzes and interactive learning modules focused on quantitative subjects."
+                }
+            ]
+        },
+        {
+            "pl-matrix-latex-element": [
+                {
+                    "name": "pl-matrix-latex-element",
+                    "description": "The `pl-matrix-latex-element` HTML tag is designed to render arrays in a visually appealing and mathematically accurate manner using the MathJax library. It can display both scalar values and two-dimensional numpy arrays as LaTeX formatted matrices. This tag is particularly useful for educational contexts, such as online quizzes or assignments, where students need to see mathematical expressions neatly formatted. By utilizing this tag, educators ensure that mathematical content is both presentable and easily interpretable by students, enhancing understanding and engagement with the mathematical concepts being taught. It should be used whenever mathematic arrays or scalars are presented, especially in settings where the clarity of mathematical notation is crucial."
+                }
+            ]
+        },
+        {
+            "pl-matrix-latex-element": [
+                {
+                    "name": "pl-matrix-latex-element",
+                    "description": "The custom HTML tag <code>pl-matrix-latex-element</code> is designed to display scalar values and 2D numpy arrays in LaTeX format utilizando MathJax, making it an essential tool for educational content, particularly in mathematics and engineering courses. This tag allows educators to present complex mathematical data in a visually appealing and readable format that is essential for understanding mathematical theories and applications. It should be utilized when there is a need to present numerical data in a question or educational resource, such as quiz questions, assignments, or instructional material that utilizes LaTeX for rendering mathematical expressions and ensuring clarity in presentation."
+                }
+            ]
+        },
+        {
+            "pl-card-element": [
+                {
+                    "name": "pl-card-element",
+                    "description": "The `pl-card-element` is a custom HTML tag designed to enhance the presentation of question content within a visually appealing card-styled format. It serves the purpose of organizing question-related information in a manner that's both engaging and accessible, making it suitable for quizzes, educational contexts, or visually-driven content platforms. By utilizing this tag, educators and developers can create structured components that catch the eye and facilitate better understanding for learners, primarily due to the card layout's familiar design, which mirrors Bootstrap 4's card component. It's particularly useful when you need to display questions along with optional headers, footers, or images to add context or visual interest."
+                }
+            ]
+        }
+    ]
+}

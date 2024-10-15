@@ -1,31 +1,20 @@
 import asyncio
 from typing import Dict, List, Tuple, Union
-
 from ..llm_module_generator.agent.lecture_triaging_agent import lecture_triaging_agent
-from ..llm_module_generator.ui_generator.ui_generators import (
-    conceptual_ui_generator,
-    derivation_ui_generator,
-    summary_ui_generator
-)
-from ..llm_module_generator.image_extraction.image_llm_extraction import (
-    extract_computational_questions,
-    extract_conceptual_questions
-)
-from ..llm_module_generator.parsers.parser import conceptual_questions_parser, computational_question_parser
+from . import extract_conceptual_questions, extract_computational_questions
 from ..logging_config.logging_config import get_logger
+from . import generate_conceputal_html_static,generate_derivation_html_static,generate_lecture_html_static
 from .generate_module import generate_module_from_question
+from . import conceptual_questions_parser, computational_question_parser
 
 logger = get_logger(__name__)
-
-TOTAL_TOKENS = 0
-
 user_data = {
     "created_by": "lberm007@ucr.edu",
     "code_language": "javascript"
 }
 
 
-async def extract_summary_and_key_concepts(image_paths: List[str]) -> str:
+async def extract_summary_and_key_concepts(image_paths: List[str]) -> Tuple:
     """
     Extracts summary and key concepts from lecture images and generates HTML.
 
@@ -35,20 +24,11 @@ async def extract_summary_and_key_concepts(image_paths: List[str]) -> str:
     Returns:
         str: Generated HTML for the summary and key concepts section.
     """
-    global TOTAL_TOKENS
-    
     logger.info("Extracting summary and key concepts...\n")
-    
     # Generate HTML for the summary section
-    summary_html = await summary_ui_generator.generate_multiple_ui(image_paths, "summary-section")
+    summary_html = await generate_lecture_html_static(image_paths)
     
-    # Update the total tokens used
-    summary_tokens = summary_ui_generator.get_sum_tokens()
-    TOTAL_TOKENS += summary_tokens
-    
-    logger.info(f"Tokens from summary extraction: {summary_tokens}, Total tokens: {TOTAL_TOKENS}")
-    
-    return summary_html
+    return summary_html[0] # type: ignore
 
 
 async def extract_derivations(image_paths: List[str]) -> str:
@@ -61,19 +41,11 @@ async def extract_derivations(image_paths: List[str]) -> str:
     Returns:
         str: Generated HTML for the derivation section.
     """
-    global TOTAL_TOKENS
 
     logger.info("Starting extraction of derivations...")
 
     # Generate HTML for the derivation section
-    derivation_html = await derivation_ui_generator.generate_multiple_ui(image_paths, "derivation-section")
-    
-    # Update the total tokens used after HTML generation
-    derivation_tokens = derivation_ui_generator.get_sum_tokens()
-    TOTAL_TOKENS += derivation_tokens
-    
-    logger.info(f"Tokens used for derivation extraction: {derivation_tokens}, Total tokens: {TOTAL_TOKENS}")
-
+    derivation_html = await generate_derivation_html_static(image_paths)
     return derivation_html
 
 
@@ -87,24 +59,16 @@ async def conceptual_question_extraction(image_paths: List[str]) -> Tuple[str, L
     Returns:
         Tuple[str, List[Tuple[str, str]]]: HTML for the conceptual questions section and a list of generated modules.
     """
-    global TOTAL_TOKENS
 
     logger.info("Starting extraction of conceptual questions...")
 
     # Generate HTML for the conceptual question section
-    conceptual_html = await conceptual_ui_generator.generate_multiple_ui(image_paths, "conceptual-question-section")
-    
-    # Update total tokens used after HTML generation
-    conceptual_tokens_html = conceptual_ui_generator.get_sum_tokens()
-    TOTAL_TOKENS += conceptual_tokens_html
+    conceptual_html = await generate_conceputal_html_static(image_paths)
     
     # Extract conceptual questions from the images
     conceptual_questions_images = await extract_conceptual_questions.send_request(image_paths)
     conceptual_question_list = conceptual_questions_parser(conceptual_questions_images)
     
-    # Update total tokens used after question extraction
-    conceptual_tokens_images = extract_conceptual_questions.get_total_tokens()
-    TOTAL_TOKENS += conceptual_tokens_images
 
     # Generate modules from extracted questions
     results: List[Dict[str, Union[str, int]]] = await asyncio.gather(
@@ -115,10 +79,7 @@ async def conceptual_question_extraction(image_paths: List[str]) -> Tuple[str, L
     for result in results:
         question_title = result.get("question_title", "")
         content = result.get("generated_content", "")
-        TOTAL_TOKENS += result.get("mod_tokens")
         modules.append((question_title, content))
-
-    logger.info(f"Tokens used for conceptual question extraction: {conceptual_tokens_images}, Total tokens: {TOTAL_TOKENS}")
 
     return conceptual_html, modules
 
@@ -140,9 +101,6 @@ async def computational_question_extraction(image_paths: List[str]) -> List[Tupl
     # Extract computational questions from images
     computational_question_images = await extract_computational_questions.send_request(image_paths)
     computational_questions = computational_question_parser(response=computational_question_images)
-    
-    # Update total tokens used after question extraction
-    TOTAL_TOKENS += extract_computational_questions.get_total_tokens()
 
     # Generate modules from extracted questions
     results = await asyncio.gather(
@@ -157,7 +115,6 @@ async def computational_question_extraction(image_paths: List[str]) -> List[Tupl
     for result in results:
         question_title = result.get("question_title", "")
         content = result.get("generated_content", "")
-        TOTAL_TOKENS += result.get("mod_tokens")
         modules.append((question_title, content))
 
     logger.info("Finished extracting computational questions")
@@ -181,13 +138,8 @@ async def analyze_lecture(image_paths: List[str]) -> Tuple[str, List[Tuple[str, 
 
     # Send request to the lecture triaging agent
     functions_to_execute = await lecture_triaging_agent.send_request(image_paths)
-    
-    # Update total tokens used by the agent
-    agent_tokens = lecture_triaging_agent.get_total_tokens()
-    TOTAL_TOKENS += agent_tokens
 
     logger.info(f"Agent determined functions to execute: {functions_to_execute}")
-    logger.info(f"Tokens used by agent: {agent_tokens}, Total tokens: {TOTAL_TOKENS}")
 
     # Prepare and run the tasks concurrently
     tasks = []
@@ -233,10 +185,8 @@ async def analyze_lecture(image_paths: List[str]) -> Tuple[str, List[Tuple[str, 
     # Combine the HTML results
     result_html = f"<body>{''.join(str(html) for html in htmls)}</body>"
 
-    logger.info(f"Total Tokens: {TOTAL_TOKENS}")
     
-    return result_html, all_modules, TOTAL_TOKENS
-
+    return result_html, all_modules
 
 
 async def main():

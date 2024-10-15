@@ -46,7 +46,7 @@ def generate_lecture():
                 asyncio.set_event_loop(loop)
                 
                 # Ensure this function is truly async-compatible with Flask
-                generated_content, tokens = loop.run_until_complete(lecture_assembly(paths = file_paths, user_data=user_data))
+                generated_content = loop.run_until_complete(lecture_assembly(paths = file_paths, user_data=user_data))
                 loop.close()
                 # Call the function to save the generated content
                 save_response, status_code = save_generated_content(generated_content)

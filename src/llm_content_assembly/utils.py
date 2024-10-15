@@ -40,7 +40,7 @@ def convert_pdf_to_images(pdf_path: str, tempdir: str) -> List[str]:
         filename = f"{base_name}_pg_{page_number + 1}.jpg"
         filepath = os.path.join(tempdir, filename)
         page = document.load_page(page_number)
-        pix = page.get_pixmap()
+        pix = page.get_pixmap() # type: ignore
         pix.save(filepath)
         image_paths.append(filepath)
         logger.info(f"Converted {filename} to image")
@@ -61,7 +61,7 @@ def convert_pdf_to_images_in_memory(pdf_path: str) -> List[BytesIO]:
     document = fitz.open(pdf_path)
     for page_number in range(document.page_count):
         page = document.load_page(page_number)
-        pix = page.get_pixmap()
+        pix = page.get_pixmap() # type: ignore
         img_bytes = pix.tobytes("jpg")  # Convert pixmap to JPEG bytes
         image_data = BytesIO(img_bytes)  # Store the image in a BytesIO object
         image_data_list.append(image_data)
