@@ -1,7 +1,10 @@
 
 from src.llm_module_generator.image_extraction.image_llm import extract_derivations,extract_summary,extract_computational_questions,extract_conceptual_questions
+from src.llm_module_generator.image_extraction.image_llm import extract_derivations,extract_summary,extract_computational_questions,extract_conceptual_questions
 import asyncio
 from ...logging_config.logging_config import get_logger
+import asyncio
+
 import asyncio
 
 
@@ -21,6 +24,7 @@ def conceptual_questions_parser(result: dict) -> list[str]:
 
 def derivations_parser(response: dict) -> list[str]:
     derivations = response.get("derivations", [])
+    print("Derivations here ")
     print("Derivations here ")
     all_derivations = []
 

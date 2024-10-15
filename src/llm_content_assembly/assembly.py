@@ -10,6 +10,8 @@ from .generate_module import generate_module_from_question
 from ..logging_config.logging_config import get_logger
 from . import computational_question_parser
 from . import extract_computational_questions
+from . import computational_question_parser
+from . import extract_computational_questions
 
 # Initialize the logger
 logger = get_logger(__name__)
@@ -61,9 +63,9 @@ async def lecture_assembly_simple(paths: List[str], user_data:dict) -> Tuple[str
     print(f"These are the image paths {image_paths}")
     
     # Analyze the lecture images and generate the result, modules, and token count
-    result, tokens = await analyze_lecture_simple(image_paths)
+    result= await analyze_lecture_simple(image_paths)
     html_module = ("lecture", {"lecture.html": result})
-    return [html_module],tokens
+    return [html_module]
 
 async def generate_module_text(question: str, user_data: dict) -> Tuple[List[Tuple[str, str]], int]:
     """
@@ -75,7 +77,6 @@ async def generate_module_text(question: str, user_data: dict) -> Tuple[List[Tup
     Returns:
         Tuple[List[Tuple[str, str]], int]: A list of generated modules and the token count.
     """
-    tokens = 0
     result = await generate_module_from_question(question, user_data=user_data)
     modules = []
     
@@ -83,7 +84,7 @@ async def generate_module_text(question: str, user_data: dict) -> Tuple[List[Tup
     content = result.get("generated_content", "")
     modules.append((question_title, content))
 
-    return modules, tokens
+    return modules
 
 async def generate_from_image(paths: List[str] ,user_data: dict) -> Tuple[List[Tuple[str, str]], int]:
     """
@@ -154,6 +155,7 @@ async def main():
 
     # Run the lecture assembly
     print("\nRunning lecture assembly...")
+    all_modules= await lecture_assembly(lecture_paths,user_data=user_data)
     all_modules= await lecture_assembly(lecture_paths,user_data=user_data)
     for module in all_modules:
         print(f"Module: {module}")
