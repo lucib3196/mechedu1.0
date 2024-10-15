@@ -44,6 +44,7 @@ class ImageForm(FlaskForm):
         FlaskForm (FlaskForm): Inherits from FlaskForm, which provides the base functionality for forms in Flask.
     """
     files = MultipleFileField(validators=[FileRequired()])
+    module_name = StringField("Enter Name of Module",validators=[DataRequired()])
     submit = SubmitField('Generate')
 
 
@@ -67,3 +68,7 @@ class SignUp(FlaskForm):
 class UPDATE_CODE(FlaskForm):
     code = TextAreaField('Code', validators=[DataRequired()])
     save = SubmitField("Save Code")
+
+
+class DOWNLOAD(FlaskForm):
+    submit = SubmitField("Download")

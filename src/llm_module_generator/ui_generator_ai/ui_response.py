@@ -10,11 +10,13 @@ import asyncio
 logger = get_logger(__name__)
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
-css_styles_file = os.path.join(base_dir, 'valid_css_styles_generator.json')
+css_styles_file = os.path.join(base_dir, 'valid_css_styles_new.json')
+
 
 with open(css_styles_file,"r") as file:
     css_styles = json.load(file)
 
+print(css_styles)
 class UIType(str,Enum):
         div = "div"
         p = "p"
@@ -73,7 +75,8 @@ class UI(BaseModel):
 
             if not valid_class_names:
                 logger.warning(f"Invalid CSS classes '{attr.value}' for UI type '{ui_type}'")
-                attr.value = None  # or set it to an empty string or valid default
+                attr.value = None  # Set to none
+                return attr
             else:
                 attr.value = " ".join(valid_class_names) # Join the list of attributes
         return attr 
@@ -92,7 +95,7 @@ def get_css_description(UItype: UIType,category_interest):
          if uitype in UIType.__members__:
              for css_item in css_items:
                 css_descriptions += f"\nUI Type: {uitype}\n"
-                css_class_name = css_item.get("name")
+                css_class_name = css_item.get("name","")
                 description = css_item.get("description", "")
                 css_descriptions += f"- {css_class_name}: {description}\n"
     return css_descriptions

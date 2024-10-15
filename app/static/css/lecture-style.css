@@ -1,85 +1,155 @@
-/* Base Font Size */
-body {
-    font-size: 16px;
+
+:root {
+    --light-shades: #FAF8F7;
+    --light-accent: #EEAF48;
+    --main-brand-color: #75B0D9;
+    --dark-accent: #2AAFDA;
+    --dark-shades: #363962;
+    --text-color: #000000;
 }
 
-/* Derivation Sections */
-.derivation-section,
-.single-derivation-section {
+/* Theme 1: Dark Theme */
+.dark-theme {
+    --light-shades: #000000 ;
+    --light-accent: #FFB742;
+    --main-brand-color: #4A90E2;
+    --dark-accent: #1F8EF1;
+    --dark-shades: #ffffff;
+    --text-color: #FFFFFF;
+}
+
+/* Theme 2: Light Theme */
+.light-theme {
+    --light-shades: #FFFFFF !important;
+    --light-accent: #FFEB3B;
+    --main-brand-color: #00BCD4;
+    --dark-accent: #FF5722;
+    --dark-shades: #795548;
+    --text-color: #212121;
+}
+
+/* Theme 3: Blue Theme */
+.blue-theme {
+    --light-shades: #F0F8FF;
+    --light-accent: #ADD8E6;
+    --main-brand-color: #4682B4;
+    --dark-accent: #1E90FF;
+    --dark-shades: #000080;
+    --text-color: #000000;
+}
+
+/* Theme 4: Green Theme */
+.green-theme {
+    --light-shades: #E8F5E9;
+    --light-accent: #A5D6A7;
+    --main-brand-color: #66BB6A;
+    --dark-accent: #388E3C;
+    --dark-shades: #1B5E20;
+    --text-color: #263238;
+}
+
+/* Theme 5: Red Theme */
+.red-theme {
+    --light-shades: #FFEBEE;
+    --light-accent: #EF9A9A;
+    --main-brand-color: #E57373;
+    --dark-accent: #C62828;
+    --dark-shades: #B71C1C;
+    --text-color: #212121;
+}
+.default-theme{
+    --light-shades: #FAF8F7;
+    --light-accent: #EEAF48;
+    --main-brand-color: #75B0D9;
+    --dark-accent: #2AAFDA;
+    --dark-shades: #363962;
+    --text-color: #000000;
+}
+
+/* Default Styles */
+body {
+    background-color: var(--light-shades);
+    color: var(--text-color);
+}
+
+/* Derivation Section */
+.derivation-container {
+    background-color: var(--light-shades);
+    border-left: 4px solid var(--dark-accent);
+    padding: 20px; /* More padding for better spacing */
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-    padding: 30px;
+    justify-content: space-between;
+    gap: 15px; /* Adds space between children for readability */
 }
 
-.single-derivation-container,.derivation-section {
-    background-color: #f9f9f9; /* Light gray background */
-    border: 1px solid #ddd;    /* Light gray border */
-    border-radius: 5px;        /* Rounded corners */
+/* Conceptual Question Section */
+.single-concepetual-question-container {
+    background-color: var(--light-shades);
+    color: var(--dark-shades);
     padding: 20px;
-    margin: 20px 0;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+    margin-bottom: 20px;
+    border-radius: 8px; /* Slightly increased radius for a softer look */
+    border: 1px solid var(--dark-accent); /* Adds a border to better define the container */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for better definition */
 }
 
+/* Summary and Key Concepts */
+.summary-container,
+.concepts-container {
+    background-color: var(--light-shades);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--main-brand-color); /* Adds a border to better define the container */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for better definition */
+}
 
-/* Main Headings */
-.derivation-section .main-heading,
-.single-derivation-container .main-heading {
-    color: #333;
-    font-weight: bold;
+/* General Headings */
+.title-heading {
     font-size: 2rem;
-    text-align: center;
+    color: var(--dark-shades);
+    border-bottom: 2px solid var(--dark-accent);
+    padding-bottom: 10px; /* Slightly increased padding for spacing */
 }
 
-/* Introductory Paragraphs */
-.derivation-section .intro-paragraph,
-.single-derivation-section .intro-paragraph {
-    color: #333;
-    font-weight: bold;
-    font-size: 1rem;
-    text-align: center;
-    margin-bottom: 30px;
+.sub-heading {
+    font-size: 1.5rem;
+    color: var(--dark-shades);
+    margin-bottom: 10px; /* Adds some spacing below the sub-heading */
 }
 
-/* Ordered Lists */
-.derivation-section ol.numbered-list,
-.single-derivation-section ol.numbered-list {
-    margin-left: 20px;
-    padding-left: 20px;
-    font-size: 16px;
-    line-height: 1.6;
-    /* Remove counter-reset if not using custom counters */
+.minor-heading {
+    font-size: 1.2rem;
+    color: var(--dark-accent);
+    margin-bottom: 8px;
 }
 
-/* List Items */
-.derivation-section li.list-item,
-.single-derivation-section li.list-item {
-    margin: 10px 0; /* Combines top and bottom margins */
-    padding-left: 5px;
-    font-weight: 500;
-    color: #555;
-    position: relative;
+/* Ordered and Unordered Lists */
+ol, ul {
+    padding-left: 20px; /* Moves the bullet points closer */
+    margin-bottom: 15px; /* Adds margin below the list */
 }
 
-/* Derived Math Formulas */
-.derived-math-formula {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    margin: 30px 0;
+li {
+    margin-bottom: 8px; /* Adds spacing between list items */
+    padding-left: 10px; /* Reduces indent for cleaner look */
+    list-style-position: inside; /* Ensures the bullet/number is inside the content box */
 }
 
-/* Derivation Stat Container */
-.derivation-stat-container {
-    border: 1px solid black;
+/* Span Elements */
+span.highlight-text {
+    background-color: yellow;
+    color: var(--dark-shades);
+    padding: 2px 5px;
     border-radius: 3px;
-    padding: 20px;
-    margin-top: 20px;
 }
 
-/* Text Elements in Stat Container */
-.derivation-stat-container p,
-.derivation-stat-container span,
-.derivation-stat-container h2 {
-    font-size: 1rem;
+span.bold {
+    font-weight: bold;
+}
+
+span.ital {
+    font-style: italic;
 }

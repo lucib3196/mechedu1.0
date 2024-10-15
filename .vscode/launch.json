@@ -45,6 +45,12 @@
       "module": "src.llm_module_generator.question_html_ui.intermediate_analysis"
     },
     {
+      "name": "Python Debugger:Lecture Gen New",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.llm_module_generator.ui_generator.ui_generators"
+    },
+    {
       "name": "Python Debugger: Question HTML Response",
       "type": "debugpy",
       "request": "launch",

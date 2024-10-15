@@ -5,7 +5,7 @@ from ast import literal_eval
 from src.run_quizzes.run_module import generateAdaptive, run_generate_py,run_generate,read_file
 import tempfile
 from src.utils.plutilities import process_prairielearn_html
-
+from flask_wtf.csrf import generate_csrf
 view_modules_bp = Blueprint('view_modules_bp', __name__)
 
 
@@ -26,6 +26,7 @@ def view_modules():
 
 @view_modules_bp.route("/view_modules/<module_name><module_id>", methods=['GET', 'POST'])
 def view_module_details(module_name,module_id):
+    csrf_token = generate_csrf()
     module = EduModule.query.filter_by(id=module_id).first()
     folder_data = []
     for folder in module.folders:
@@ -43,7 +44,7 @@ def view_module_details(module_name,module_id):
         })
     print(folder_data)
 
-    return render_template("module_content.html", folder_data=folder_data)
+    return render_template("module_content.html", folder_data=folder_data,csrf_token=csrf_token)
 
 @view_modules_bp.route("/view_modules/<folder_name>_<folder_id>", methods=['GET', 'POST'])
 def view_folder(folder_name, folder_id):
@@ -76,6 +77,7 @@ def view_folder(folder_name, folder_id):
 @view_modules_bp.route("/view_modules/<folder_name>_<folder_id>_adaptive", methods=['GET', 'POST'])
 def view_adaptive_quiz(folder_name, folder_id):
     files_data = session.get("files_data")
+    csrf_token = generate_csrf()
 
     if not files_data:
         return "<h1>No files data found in session</h1>", 404
@@ -131,7 +133,7 @@ def view_adaptive_quiz(folder_name, folder_id):
         else:
             print(f"{target_file} not found in the temporary directory.")
 
-    return render_template("question_base.html", quiz_name = quiz_name,question_html = question_html_template)
+    return render_template("question_base.html", quiz_name = quiz_name,question_html = question_html_template,csrf_token=csrf_token)
 
 
 

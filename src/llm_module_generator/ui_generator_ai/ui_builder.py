@@ -82,10 +82,10 @@ class LLMUIBuilder(LLM_Call):
         **Requirements:**
         - You must strictly adhere to the following CSS classes: {self.css_description}.
         - Do not use any inline or internal styling. Only the provided CSS classes are allowed.
-        - You can even combine css classes when seen as appropriate
 
-        **Important:** All information provided must be accurately reflected and fully included on the webpage. Ensure that no content is omitted or left out.
+        Format the html page in a clean and concise manner while keeping all relevent information
         """
+        logger.debug(improved_prompt)
         
         response = await self.acall(improved_prompt, response_format=ui_instance)
         html = self.ui_to_html(ui=response)

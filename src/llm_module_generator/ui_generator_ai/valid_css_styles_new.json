@@ -1,0 +1,82 @@
+{
+    "derivation-section": {
+        "div": [
+            {
+                "name": "derivation-container",
+                "description": "Serves as the main container for the entire derivation. All elements with the class `derivation-some-class` should be nested inside this container, ensuring that it contains all the necessary information related to the derivation."
+            }
+        ]
+    },
+    "conceptual-question-section": {
+        "div": [
+            {
+                "name": "single-concepetual-question-container",
+                "description": "Appropriate for containing a single conceptual question including their options."
+            }
+        ]
+    },
+    "summary_and_key_concepts": {
+        "div": [
+            {
+                "name": "summary-container",
+                "description": "Appropriate for the summary section of a webpage."
+            },
+            {
+                "name": "concepts-container",
+                "description": "Best used for sections detailing key or fundamental concepts."
+            }
+        ]
+    },
+    "general_styles": {
+        "h1": [
+            {
+                "name": "title-heading",
+                "description": "Used as the primary heading for any section. This style is ideal for clearly distinguishing the main title of the content."
+            }
+        ],
+        "h2": [
+            {
+                "name": "sub-heading",
+                "description": "Designated for secondary headings within any section. It effectively structures content by grouping related information under a primary heading."
+            }
+        ],
+        "h3": [
+            {
+                "name": "minor-heading",
+                "description": "Best used for tertiary headings under sub-sections, particularly in contexts such as explanations, questions, or key concepts."
+            }
+        ],
+        "ul": [
+            {
+                "name": "list-group list-group-flush",
+                "description": "Removes borders and rounded corners for a clean, edge-to-edge list presentation inside a parent container. Suitable for unordered lists where the sequence of items is not important."
+            }
+        ],
+        "ol": [
+            {
+                "name": "list-group list-group-numbered",
+                "description": "Applies numbering and list-group styling for ordered lists, maintaining edge-to-edge layout. Ideal for lists where the sequence of items matters."
+            }
+        ],
+        "li": [
+            {
+                "name": "list-group-item",
+                "description": "Represents an individual item within a list. Used in both ordered and unordered list structures to indicate list elements."
+            }
+        ],
+        "span": [
+            {
+                "name": "highlight-text",
+                "description": "Used to emphasize important text elements across different sections, ideal for key terms or highlighted information within general content."
+            },
+            {
+                "name": "bold",
+                "description": "Used to emphasize text by bolding it"
+            },
+            {
+                "name": "ital",
+                "description": "Used to emphasize text by italizing it"
+            }
+        ]
+    }
+}

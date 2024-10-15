@@ -27,11 +27,11 @@ def derivations_parser(response: dict) -> list[str]:
     for derivation in derivations:
         # Extract derivation name
         derivation_name = f"Derivation Name: {derivation.get('derivation_name', 'Unknown')}"
-        
-        # Extract derivation steps
-        derivation_steps = "".join(
-            f"\n - Explanation: {step.get('explanation', 'No explanation provided')}"
-            f"\n - Step: {step.get('output', 'No output provided')}"
+
+        # Extract derivation steps, ensuring LaTeX backslashes are properly escaped
+        derivation_steps = "\n".join(
+            "- Explanation: " + step.get('explanation', 'No explanation provided').replace('\\', '\\\\') +  # Escaping LaTeX backslashes
+            "\n  Step: " + step.get('output', 'No output provided').replace('\\', '\\\\')  # Escaping LaTeX backslashes
             for step in derivation.get("derivation_steps", [])
         )
         
@@ -48,17 +48,32 @@ def derivations_parser(response: dict) -> list[str]:
             image_info = "No image information available."
         
         # Combine all extracted info
-        derivation_info = f"{derivation_name}{derivation_steps}\n{derivation_source}\n{image_info}"
+        derivation_info = f"{derivation_name}\n{derivation_steps}\n{derivation_source}\n{image_info}"
         all_derivations.append(derivation_info)
-    
+
     return all_derivations
 
 
+
+
 def lecture_summary_parser(response: dict) -> list[str]:
+<<<<<<< HEAD:src/llm_module_generator/ui_generator_ai/parser.py
     analysis = response.get("analysis","")
     summary = analysis.get('summary', "No summary provided.")
     key_concepts_list = analysis.get('key_concepts', [])
     foundational_concepts_list = analysis.get('foundational_concepts', [])
+=======
+    analysis = response.get("analysis", {})
+    if analysis:
+        summary = analysis.get('summary', "No summary provided.")
+        key_concepts_list = analysis.get('key_concepts', [])
+        foundational_concepts_list = analysis.get('foundational_concepts', [])
+    else:
+        summary = response.get('summary', "No summary provided.")
+        key_concepts_list = response.get('key_concepts', [])
+        foundational_concepts_list = response.get('foundational_concepts', [])
+        
+>>>>>>> 582037f6b5e2c16b57d45240f86c66f7a690c6c4:src/llm_module_generator/parsers/parser.py
     # Parsing key concepts
     key_concepts = "\n".join([
         f"- {concept}\n"
@@ -128,34 +143,33 @@ def computational_question_parser(response: dict)->list[dict]:
     # Iterate over each extracted question
     for extracted_question in extracted_questions:
         question_text = extracted_question.get("question")
-        print(question_text)
         
         if question_text:
             # Check if the question is marked as complete
             is_complete = extracted_question.get("complete", False)
             
-            if is_complete:
-                solution_steps = extracted_question.get("solution", [])
-                solution_guide = []
+            if not is_complete:
+                logger.warning(f"Question '{question_text}' is incomplete or missing solutions may not produce desired results")
 
-                # Construct the solution guide by iterating over each step in the solution
-                for step in solution_steps:
-                    explanation = step.get('explanation', 'No explanation provided')
-                    output = step.get('output', 'No output provided')
-                    solution_guide.append(f"\n{explanation}\n{output}")
+            solution_steps = extracted_question.get("solution", [])
+            solution_guide = []
 
-                # Map the question and its corresponding details
-                question_mapping = {
-                    "question": question_text,
-                    "solution": ''.join(solution_guide),
-                    "image_req": extracted_question.get("image_req", ""),
-                    "external_data_req": extracted_question.get("external_data_req", "")
-                }
-                
-                # Add the question and solution to the list
-                question_solution_pairs.append(question_mapping)
-            else:
-                logger.warning(f"Question '{question_text}' is incomplete or missing solutions.")
+            # Construct the solution guide by iterating over each step in the solution
+            for step in solution_steps:
+                explanation = step.get('explanation', 'No explanation provided')
+                output = step.get('output', 'No output provided')
+                solution_guide.append(f"\n{explanation}\n{output}")
+
+            # Map the question and its corresponding details
+            question_mapping = {
+                "question": question_text,
+                "solution": ''.join(solution_guide),
+                "image_req": extracted_question.get("image_req", ""),
+                "external_data_req": extracted_question.get("external_data_req", "")
+            }
+            
+            # Add the question and solution to the list
+            question_solution_pairs.append(question_mapping)
         else:
             logger.warning("No question found in the extracted data.")
 

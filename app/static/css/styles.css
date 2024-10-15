@@ -7,6 +7,35 @@
     --dark-accent: #2AAFDA;
     --dark-shades: #363962;
 }
+
+
+
+
+/* Media query for devices with a max width of 768px (tablets and mobile) */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+/* Media query for devices with a max width of 480px (mobile) */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+    .step-container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .key-feature-container{
+        flex-direction: column;
+    }
+
+}
+
+
 /* General Styles */
 body{
     font-family: "Montserrat", sans-serif;
@@ -161,7 +190,7 @@ body{
 
 /* Key Features  */
 #key-features {
-    background: var(--light-shades)
+    background: var(--light-shades);
     color: #EEAF48; /* Text color for key features */
     padding: 50px 20px; /* Added padding for spacing around content */
     text-align: center;

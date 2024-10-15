@@ -1,5 +1,14 @@
 [
     {
+        "label": "typing",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "typing",
+        "description": "typing",
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Any",
         "importPath": "typing",
         "description": "typing",
@@ -344,6 +353,30 @@
         "documentation": {}
     },
     {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Union",
         "importPath": "typing",
         "description": "typing",
@@ -513,6 +546,14 @@
     },
     {
         "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -2131,6 +2172,14 @@
         "documentation": {}
     },
     {
+        "label": "lecture_assembly_simple",
+        "importPath": "src.llm_content_assembly.assembly",
+        "description": "src.llm_content_assembly.assembly",
+        "isExtraImport": true,
+        "detail": "src.llm_content_assembly.assembly",
+        "documentation": {}
+    },
+    {
         "label": "generate_module_text",
         "importPath": "src.llm_content_assembly.assembly",
         "description": "src.llm_content_assembly.assembly",
@@ -2419,6 +2468,14 @@
         "description": "src.utils.plutilities",
         "isExtraImport": true,
         "detail": "src.utils.plutilities",
+        "documentation": {}
+    },
+    {
+        "label": "generate_csrf",
+        "importPath": "flask_wtf.csrf",
+        "description": "flask_wtf.csrf",
+        "isExtraImport": true,
+        "detail": "flask_wtf.csrf",
         "documentation": {}
     },
     {
@@ -5134,7 +5191,16 @@
         "kind": 6,
         "importPath": "app.form.forms",
         "description": "app.form.forms",
-        "peekOfCode": "class UPDATE_CODE(FlaskForm):\n    code = TextAreaField('Code', validators=[DataRequired()])\n    save = SubmitField(\"Save Code\")",
+        "peekOfCode": "class UPDATE_CODE(FlaskForm):\n    code = TextAreaField('Code', validators=[DataRequired()])\n    save = SubmitField(\"Save Code\")\nclass DOWNLOAD(FlaskForm):\n    submit = SubmitField(\"Download\")",
+        "detail": "app.form.forms",
+        "documentation": {}
+    },
+    {
+        "label": "DOWNLOAD",
+        "kind": 6,
+        "importPath": "app.form.forms",
+        "description": "app.form.forms",
+        "peekOfCode": "class DOWNLOAD(FlaskForm):\n    submit = SubmitField(\"Download\")",
         "detail": "app.form.forms",
         "documentation": {}
     },
@@ -5179,7 +5245,7 @@
         "kind": 2,
         "importPath": "app.routes.content_generator.lecture_gen",
         "description": "app.routes.content_generator.lecture_gen",
-        "peekOfCode": "def generate_lecture():\n    form = ImageForm()\n    print(form)\n    if form.validate_on_submit():\n        print(\"Passed validation\")\n        try:\n            file_paths = []\n            with tempfile.TemporaryDirectory() as tmpdir:\n                print(\"About to save files\")\n                # Save uploaded files to the temporary directory",
+        "peekOfCode": "def generate_lecture():\n    form = ImageForm()\n    session[\"module_name\"] = form.module_name.data\n    print(form)\n    if form.validate_on_submit():\n        print(\"Passed validation\")\n        try:\n            file_paths = []\n            with tempfile.TemporaryDirectory() as tmpdir:\n                print(\"About to save files\")",
         "detail": "app.routes.content_generator.lecture_gen",
         "documentation": {}
     },
@@ -5188,7 +5254,7 @@
         "kind": 5,
         "importPath": "app.routes.content_generator.lecture_gen",
         "description": "app.routes.content_generator.lecture_gen",
-        "peekOfCode": "user_data = {\n        \"created_by\": \"lberm007@ucr.edu\",  # Replace with the actual creator identifier\n        \"code_language\": \"javascript\",\n    }\nlecture_generator_bp = Blueprint('lecture_generator_bp', __name__)\n@lecture_generator_bp.route(\"/lecture-generator\", methods=['GET', 'POST'])\ndef generate_lecture():\n    form = ImageForm()\n    print(form)\n    if form.validate_on_submit():",
+        "peekOfCode": "user_data = {\n        \"created_by\": \"lberm007@ucr.edu\",  # Replace with the actual creator identifier\n        \"code_language\": \"javascript\",\n    }\nlecture_generator_bp = Blueprint('lecture_generator_bp', __name__)\n@lecture_generator_bp.route(\"/lecture-generator\", methods=['GET', 'POST'])\ndef generate_lecture():\n    form = ImageForm()\n    session[\"module_name\"] = form.module_name.data\n    print(form)",
         "detail": "app.routes.content_generator.lecture_gen",
         "documentation": {}
     },
@@ -5197,7 +5263,7 @@
         "kind": 5,
         "importPath": "app.routes.content_generator.lecture_gen",
         "description": "app.routes.content_generator.lecture_gen",
-        "peekOfCode": "lecture_generator_bp = Blueprint('lecture_generator_bp', __name__)\n@lecture_generator_bp.route(\"/lecture-generator\", methods=['GET', 'POST'])\ndef generate_lecture():\n    form = ImageForm()\n    print(form)\n    if form.validate_on_submit():\n        print(\"Passed validation\")\n        try:\n            file_paths = []\n            with tempfile.TemporaryDirectory() as tmpdir:",
+        "peekOfCode": "lecture_generator_bp = Blueprint('lecture_generator_bp', __name__)\n@lecture_generator_bp.route(\"/lecture-generator\", methods=['GET', 'POST'])\ndef generate_lecture():\n    form = ImageForm()\n    session[\"module_name\"] = form.module_name.data\n    print(form)\n    if form.validate_on_submit():\n        print(\"Passed validation\")\n        try:\n            file_paths = []",
         "detail": "app.routes.content_generator.lecture_gen",
         "documentation": {}
     },
@@ -5350,7 +5416,7 @@
         "kind": 2,
         "importPath": "app.routes.module_retrieval.view_modules",
         "description": "app.routes.module_retrieval.view_modules",
-        "peekOfCode": "def view_module_details(module_name,module_id):\n    module = EduModule.query.filter_by(id=module_id).first()\n    folder_data = []\n    for folder in module.folders:\n        files_data = []\n        for file in folder.files:\n            files_data.append({\n                'id': file.id,\n                'filename': file.filename,\n                'content': file.content.decode('utf-8', errors='ignore') if file.content else ''",
+        "peekOfCode": "def view_module_details(module_name,module_id):\n    csrf_token = generate_csrf()\n    module = EduModule.query.filter_by(id=module_id).first()\n    folder_data = []\n    for folder in module.folders:\n        files_data = []\n        for file in folder.files:\n            files_data.append({\n                'id': file.id,\n                'filename': file.filename,",
         "detail": "app.routes.module_retrieval.view_modules",
         "documentation": {}
     },
@@ -5368,7 +5434,7 @@
         "kind": 2,
         "importPath": "app.routes.module_retrieval.view_modules",
         "description": "app.routes.module_retrieval.view_modules",
-        "peekOfCode": "def view_adaptive_quiz(folder_name, folder_id):\n    files_data = session.get(\"files_data\")\n    if not files_data:\n        return \"<h1>No files data found in session</h1>\", 404\n    # Re-fetch file contents if needed\n    folder = Folder.query.filter_by(id=folder_id).first()\n    if not folder:\n        return \"<h1>Folder not found</h1>\", 404\n    # Retrieve full file data based on filenames stored in the session\n    full_files_data = [{",
+        "peekOfCode": "def view_adaptive_quiz(folder_name, folder_id):\n    files_data = session.get(\"files_data\")\n    csrf_token = generate_csrf()\n    if not files_data:\n        return \"<h1>No files data found in session</h1>\", 404\n    # Re-fetch file contents if needed\n    folder = Folder.query.filter_by(id=folder_id).first()\n    if not folder:\n        return \"<h1>Folder not found</h1>\", 404\n    # Retrieve full file data based on filenames stored in the session",
         "detail": "app.routes.module_retrieval.view_modules",
         "documentation": {}
     },
@@ -5512,7 +5578,7 @@
         "kind": 2,
         "importPath": "app.routes.quiz_views.quiz_overview",
         "description": "app.routes.quiz_views.quiz_overview",
-        "peekOfCode": "def download_all_modules():\n    \"\"\"\n    Downloads a combined ZIP file containing ZIP files for all modules and folders in the session.\n    The function retrieves folder data from the session, processes each folder to create individual ZIP files, \n    and then combines these ZIP files into a single downloadable ZIP file.\n    Returns:\n        Response: A Flask response object that triggers the download of the combined ZIP file.\n    \"\"\"\n    folder_data = session.get(\"folder_data\", [])\n    print(\"Downloading all\")",
+        "peekOfCode": "def download_all_modules():\n    \"\"\"\n    Downloads a combined ZIP file containing ZIP files for all modules and folders in the session.\n    The function retrieves folder data from the session, processes each folder to create individual ZIP files, \n    and then combines these ZIP files into a single downloadable ZIP file.\n    Returns:\n        Response: A Flask response object that triggers the download of the combined ZIP file.\n    \"\"\"                             \n    folder_data = session.get(\"folder_data\", [])\n    print(\"Downloading all\")",
         "detail": "app.routes.quiz_views.quiz_overview",
         "documentation": {}
     },
@@ -5521,7 +5587,7 @@
         "kind": 5,
         "importPath": "app.routes.quiz_views.quiz_overview",
         "description": "app.routes.quiz_views.quiz_overview",
-        "peekOfCode": "logger = get_logger(__name__)\n# Local Application Imports\nfrom ...db_models.models import File, EduModule, Folder, db\nfrom .utils import retrieve_files_session, retrieve_files_folder\nfrom src.utils.file_handler import create_zip_file\nfrom ...form.forms import UPDATE_CODE\nquiz_overview_bp = Blueprint('quiz_overview_bp', __name__)\n# This is perfect as is \n@quiz_overview_bp.route(\"/quiz_overview/<folder_id>/actions\", methods=['GET', 'POST'])\ndef modules_action(folder_id):",
+        "peekOfCode": "logger = get_logger(__name__)\n# Local Application Imports\nfrom ...db_models.models import File, EduModule, Folder, db\nfrom .utils import retrieve_files_session, retrieve_files_folder\nfrom src.utils.file_handler import create_zip_file\nfrom ...form.forms import UPDATE_CODE,DOWNLOAD \nquiz_overview_bp = Blueprint('quiz_overview_bp', __name__)\n# This is perfect as is \n@quiz_overview_bp.route(\"/quiz_overview/<folder_id>/actions\", methods=['GET', 'POST'])\ndef modules_action(folder_id):",
         "detail": "app.routes.quiz_views.quiz_overview",
         "documentation": {}
     },
@@ -5890,7 +5956,7 @@
         "kind": 2,
         "importPath": "src.llm_content_assembly.generate_adaptive_module",
         "description": "src.llm_content_assembly.generate_adaptive_module",
-        "peekOfCode": "def prepare_additional_instructions(solution_guide: Optional[str] = None) -> Optional[str]:\n    \"\"\"\n    Prepares additional instructions based on the solution guide.\n    Args:\n        solution_guide (Optional[str], optional): Instructions for solution improvement. Defaults to None.\n    Returns:\n        Optional[str]: Formatted additional instructions or None.\n    \"\"\"\n    if solution_guide:\n        instructions = f\"{templates.server_template_code_guide}\\n{solution_guide}\"",
+        "peekOfCode": "def prepare_additional_instructions(solution_guide: Optional[str] = None,analyzed_question:Optional[str]=None) -> Optional[str]:\n    \"\"\"\n    Prepares additional instructions based on the solution guide.\n    Args:\n        solution_guide (Optional[str], optional): Instructions for solution improvement. Defaults to None.\n    Returns:\n        Optional[str]: Formatted additional instructions or None.\n    \"\"\"\n    instructions = \"\"\n    if solution_guide:",
         "detail": "src.llm_content_assembly.generate_adaptive_module",
         "documentation": {}
     },
@@ -5973,6 +6039,24 @@
         "description": "src.llm_content_assembly.llm_lecture_processor",
         "peekOfCode": "user_data = {\n    \"created_by\": \"lberm007@ucr.edu\",\n    \"code_language\": \"javascript\"\n}\nasync def extract_summary_and_key_concepts(image_paths: List[str]) -> str:\n    \"\"\"\n    Extracts summary and key concepts from lecture images and generates HTML.\n    Args:\n        image_paths (List[str]): List of paths to the lecture images.\n    Returns:",
         "detail": "src.llm_content_assembly.llm_lecture_processor",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "src.llm_content_assembly.llm_lecture_processor_simple",
+        "description": "src.llm_content_assembly.llm_lecture_processor_simple",
+        "peekOfCode": "logger = get_logger(__name__)\nTOTAL_TOKENS = 0\nasync def extract_summary_and_key_concepts(image_paths: List[str]) -> str:\n    \"\"\"\n    Extracts summary and key concepts from lecture images and generates HTML.\n    Args:\n        image_paths (List[str]): List of paths to the lecture images.\n    Returns:\n        str: Generated HTML for the summary and key concepts section.\n    \"\"\"",
+        "detail": "src.llm_content_assembly.llm_lecture_processor_simple",
+        "documentation": {}
+    },
+    {
+        "label": "TOTAL_TOKENS",
+        "kind": 5,
+        "importPath": "src.llm_content_assembly.llm_lecture_processor_simple",
+        "description": "src.llm_content_assembly.llm_lecture_processor_simple",
+        "peekOfCode": "TOTAL_TOKENS = 0\nasync def extract_summary_and_key_concepts(image_paths: List[str]) -> str:\n    \"\"\"\n    Extracts summary and key concepts from lecture images and generates HTML.\n    Args:\n        image_paths (List[str]): List of paths to the lecture images.\n    Returns:\n        str: Generated HTML for the summary and key concepts section.\n    \"\"\"\n    global TOTAL_TOKENS",
+        "detail": "src.llm_content_assembly.llm_lecture_processor_simple",
         "documentation": {}
     },
     {
@@ -6070,7 +6154,7 @@
         "kind": 6,
         "importPath": "src.llm_module_generator.agent.lecture_triaging_agent",
         "description": "src.llm_module_generator.agent.lecture_triaging_agent",
-        "peekOfCode": "class Response(BaseModel):\n    functions_call: List[str] = Field(...,description=\"An array of functions to call\")\n    summary: str = Field(\"A consise summary of the content of the content provided \")\n    pages: int = Field(\"A number of pages/slides you were given. This is meant to indicate how much content you were given\")\nagent_schema = Response.model_json_schema()\nlecture_triaging_agent = ImageToLLMProcessor(triaging_system_prompt,agent_schema)\nasync def main():\n    try:\n        print(\"Please enter the absolute paths to the image files, separated by commas:\")\n        image_paths_input = input()",
+        "peekOfCode": "class Response(BaseModel):\n    functions_call: List[str] = Field(...,description=\"An array of functions to call\")\n    summary: str = Field(\"A consise summary of the content of the content provided \")\n    pages: int = Field(\"A number of pages/slides you were given. This is meant to indicate how much content you were given\")\nagent_schema = Response.model_json_schema()\nlecture_triaging_agent = ImageToLLMProcessor(triaging_system_prompt,agent_schema)\nlecture_triaging_agent_simple = ImageToLLMProcessor(triaging_system_prompt_simple,agent_schema)\nasync def main():\n    try:\n        print(\"Please enter the absolute paths to the image files, separated by commas:\")",
         "detail": "src.llm_module_generator.agent.lecture_triaging_agent",
         "documentation": {}
     },
@@ -6084,11 +6168,20 @@
         "documentation": {}
     },
     {
+        "label": "triaging_system_prompt_simple",
+        "kind": 5,
+        "importPath": "src.llm_module_generator.agent.lecture_triaging_agent",
+        "description": "src.llm_module_generator.agent.lecture_triaging_agent",
+        "peekOfCode": "triaging_system_prompt_simple = \"\"\"\nYou are responsible for assessing the user's query and analyzing the provided material. Route the query to the appropriate functions based on the content. The available functions are:\n- **extract_summary_and_key_concepts**: This function must always be called to extract the summary and key concepts, especially when the material is formatted like a lecture. It should be used in all cases where the content is detailed and lecture-like, ensuring that the core ideas and concepts are captured.\n- **conceptual_question_extraction**: This function should also always be called, complementing **extract_summary_and_key_concepts** by generating or identifying related conceptual questions. These two functions work together to ensure that the key points and related questions are clearly defined. For shorter materials, such as collections of questions, apply the same conditions as for the **computational_question_extraction** function.\n- **extract_derivations**: This function must be used whenever the material contains any sort of formal proof or mathematical derivation. A derivation refers to a detailed, step-by-step explanation or proof that shows how a particular mathematical formula, equation, or result is derived. It is essential for handling content related to physics, engineering, or other subjects involving detailed mathematical processes.\nIn every scenario, **extract_summary_and_key_concepts** and **conceptual_question_extraction** should always be executed. **extract_derivations** should be used whenever there are any proofs, derivations, or step-by-step mathematical explanations.\nForward the user's query to the relevant functions using the send_query_to_functions tool based on the material's content and format.\nAdditionally, provide an overall summary of the content you are analyzing. If possible, indicate how many pages or slides were provided and whether the material consists of a single page or multiple pages/slides.\n\"\"\"\nclass Response(BaseModel):",
+        "detail": "src.llm_module_generator.agent.lecture_triaging_agent",
+        "documentation": {}
+    },
+    {
         "label": "agent_schema",
         "kind": 5,
         "importPath": "src.llm_module_generator.agent.lecture_triaging_agent",
         "description": "src.llm_module_generator.agent.lecture_triaging_agent",
-        "peekOfCode": "agent_schema = Response.model_json_schema()\nlecture_triaging_agent = ImageToLLMProcessor(triaging_system_prompt,agent_schema)\nasync def main():\n    try:\n        print(\"Please enter the absolute paths to the image files, separated by commas:\")\n        image_paths_input = input()\n        # Split the input into a list of paths\n        image_paths = [path.strip() for path in image_paths_input.split(',')]\n        # Validate each provided path\n        for image_path in image_paths:",
+        "peekOfCode": "agent_schema = Response.model_json_schema()\nlecture_triaging_agent = ImageToLLMProcessor(triaging_system_prompt,agent_schema)\nlecture_triaging_agent_simple = ImageToLLMProcessor(triaging_system_prompt_simple,agent_schema)\nasync def main():\n    try:\n        print(\"Please enter the absolute paths to the image files, separated by commas:\")\n        image_paths_input = input()\n        # Split the input into a list of paths\n        image_paths = [path.strip() for path in image_paths_input.split(',')]\n        # Validate each provided path",
         "detail": "src.llm_module_generator.agent.lecture_triaging_agent",
         "documentation": {}
     },
@@ -6097,7 +6190,16 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.agent.lecture_triaging_agent",
         "description": "src.llm_module_generator.agent.lecture_triaging_agent",
-        "peekOfCode": "lecture_triaging_agent = ImageToLLMProcessor(triaging_system_prompt,agent_schema)\nasync def main():\n    try:\n        print(\"Please enter the absolute paths to the image files, separated by commas:\")\n        image_paths_input = input()\n        # Split the input into a list of paths\n        image_paths = [path.strip() for path in image_paths_input.split(',')]\n        # Validate each provided path\n        for image_path in image_paths:\n            if not os.path.isabs(image_path):",
+        "peekOfCode": "lecture_triaging_agent = ImageToLLMProcessor(triaging_system_prompt,agent_schema)\nlecture_triaging_agent_simple = ImageToLLMProcessor(triaging_system_prompt_simple,agent_schema)\nasync def main():\n    try:\n        print(\"Please enter the absolute paths to the image files, separated by commas:\")\n        image_paths_input = input()\n        # Split the input into a list of paths\n        image_paths = [path.strip() for path in image_paths_input.split(',')]\n        # Validate each provided path\n        for image_path in image_paths:",
+        "detail": "src.llm_module_generator.agent.lecture_triaging_agent",
+        "documentation": {}
+    },
+    {
+        "label": "lecture_triaging_agent_simple",
+        "kind": 5,
+        "importPath": "src.llm_module_generator.agent.lecture_triaging_agent",
+        "description": "src.llm_module_generator.agent.lecture_triaging_agent",
+        "peekOfCode": "lecture_triaging_agent_simple = ImageToLLMProcessor(triaging_system_prompt_simple,agent_schema)\nasync def main():\n    try:\n        print(\"Please enter the absolute paths to the image files, separated by commas:\")\n        image_paths_input = input()\n        # Split the input into a list of paths\n        image_paths = [path.strip() for path in image_paths_input.split(',')]\n        # Validate each provided path\n        for image_path in image_paths:\n            if not os.path.isabs(image_path):",
         "detail": "src.llm_module_generator.agent.lecture_triaging_agent",
         "documentation": {}
     },
@@ -6108,6 +6210,15 @@
         "description": "src.llm_module_generator.image_extraction.image_llm",
         "peekOfCode": "class ImageLLMProcessor:\n    prompt:str\n    response: BaseModel\n    model:str\n    def __post_init__(self):\n        self.llm = ChatOpenAI(model=self.model)\n    async def send_request(self, image_paths:list[str]):\n        image_contents = await create_image_content_payload(image_paths)\n        message = HumanMessage(\n        content=[",
         "detail": "src.llm_module_generator.image_extraction.image_llm",
+        "documentation": {}
+    },
+    {
+        "label": "extract_derivations_prompt",
+        "kind": 5,
+        "importPath": "src.llm_module_generator.image_extraction.image_extraction_prompts",
+        "description": "src.llm_module_generator.image_extraction.image_extraction_prompts",
+        "peekOfCode": "extract_derivations_prompt = \"\"\"\n    You are tasked with analyzing the following lecture slides covering a specific class topic. Please address the following points and return the results as a JSON structure with the specified keys:\n    1. **Derivations**: Extract all derivations found in the lecture material. For each derivation:\n        - Provide a descriptive name that clearly explains what the derivation is trying to demonstrate.\n        - Extract the full solution, including all steps as if explaining to a student. Ensure that any mathematical expressions, symbols, or equations are properly formatted using LaTeX, enclosed within `$` symbols for inline math and `$$` symbols for block-level equations.\n        - Be aware that similar derivations may exist for different cases. These distinctions are often marked by changes in images or unique contexts. Ensure that these derivations are correctly identified and separated.\n        - Indicate the completeness of each derivation. If a derivation appears incomplete, explicitly state this.\n        - If no derivations are found in the material, return \"NaN\".\n\"\"\"\nextract_computation_questions_prompt = \"\"\"",
+        "detail": "src.llm_module_generator.image_extraction.image_extraction_prompts",
         "documentation": {}
     },
     {
@@ -6309,7 +6420,43 @@
         "documentation": {}
     },
     {
-        "label": "question_solution_generator",
+        "label": "conceptual_questions_parser",
+        "kind": 2,
+        "importPath": "src.llm_module_generator.parsers.parser",
+        "description": "src.llm_module_generator.parsers.parser",
+        "peekOfCode": "def conceptual_questions_parser(result: dict) -> list[str]:\n    extracted_questions = result.get(\"questions\",\"\")\n    all_questions = []\n    for question in extracted_questions:\n        question_text = f\"Question: {question.get('question', 'Unknown')}\"\n        multiple_choice_options = question.get('multiple_choice_options', [])\n        options_text = \"\\n\".join(f\" - Option: {option}\" for option in multiple_choice_options)\n        correct_answer = f\"Correct Answer: {question.get('correct_answer', 'No answer provided')}\"\n        combined_text = f\"{question_text}\\n{options_text}\\n{correct_answer}\"\n        all_questions.append(combined_text)",
+        "detail": "src.llm_module_generator.parsers.parser",
+        "documentation": {}
+    },
+    {
+        "label": "derivations_parser",
+        "kind": 2,
+        "importPath": "src.llm_module_generator.parsers.parser",
+        "description": "src.llm_module_generator.parsers.parser",
+        "peekOfCode": "def derivations_parser(response: dict) -> list[str]:\n    derivations = response.get(\"derivations\", [])\n    all_derivations = []\n    for derivation in derivations:\n        # Extract derivation name\n        derivation_name = f\"Derivation Name: {derivation.get('derivation_name', 'Unknown')}\"\n        # Extract derivation steps\n        derivation_steps = \"\".join(\n            f\"\\n - Explanation: {step.get('explanation', 'No explanation provided')}\"\n            f\"\\n - Step: {step.get('output', 'No output provided')}\"",
+        "detail": "src.llm_module_generator.parsers.parser",
+        "documentation": {}
+    },
+    {
+        "label": "lecture_summary_parser",
+        "kind": 2,
+        "importPath": "src.llm_module_generator.parsers.parser",
+        "description": "src.llm_module_generator.parsers.parser",
+        "peekOfCode": "def lecture_summary_parser(response: dict) -> list[str]:\n    print(response)\n    analysis = response.get(\"analysis\",\"\")\n    summary = analysis.get('summary', \"No summary provided.\")\n    key_concepts_list = analysis.get('key_concepts', [])\n    foundational_concepts_list = analysis.get('foundational_concepts', [])\n    # Parsing key concepts\n    key_concepts = \"\\n\".join([\n        f\"- {concept}\\n\"\n        for concept in key_concepts_list",
+        "detail": "src.llm_module_generator.parsers.parser",
+        "documentation": {}
+    },
+    {
+        "label": "computational_question_parser",
+        "kind": 2,
+        "importPath": "src.llm_module_generator.parsers.parser",
+        "description": "src.llm_module_generator.parsers.parser",
+        "peekOfCode": "def computational_question_parser(response: dict)->list[dict]:\n    \"\"\"\n    Parses the response dictionary to extract computational questions and their corresponding solutions.\n    Args:\n        response (dict): A dictionary containing the extracted questions and their details.\n                         The expected structure includes a list under the key \"extracted_question\",\n                         where each entry is a dictionary with keys like \"question\", \"complete\", \"solution\",\n                         \"image_req\", and \"external_data_req\".\n    Returns:\n        list: A list of dictionaries, where each dictionary represents a question and its solution.",
+        "detail": "src.llm_module_generator.parsers.parser",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
         "kind": 5,
         "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
         "description": "src.llm_module_generator.physics_module_generator.module_generator",
@@ -6512,7 +6659,79 @@
         "importPath": "src.llm_module_generator.retriever.math_js_vectorstore",
         "description": "src.llm_module_generator.retriever.math_js_vectorstore",
         "peekOfCode": "def main():\n    \"\"\"\n    Main function to extract links, split the content of the webpages,\n    and store the results in a vectorstore for future use.\n    \"\"\"\n    # Base URL to extract links from\n    original_link = \"https://mathjs.org/docs/index.html\"\n    # Extract all links from the base URL\n    all_links = extract_all_links(original_link)\n    # Headers to split the HTML content on",
-        "detail": "src.llm_module_generator.retriever.math_js_vectorstore",
+        "detail": "src.llm_module_generator.physics_module_generator.math_js_vectorstore",
+        "documentation": {}
+    },
+    {
+        "label": "ModuleCodeGenerator",
+        "kind": 6,
+        "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
+        "description": "src.llm_module_generator.physics_module_generator.module_generator",
+        "peekOfCode": "class ModuleCodeGenerator(LLM_Call):\n    llm_config: LLMConfig\n    base_prompt: str\n    example_input_column: str\n    example_output_column: str\n    threshold: float = 0.1\n    num_examples: int = field(default=1)\n    is_adaptive: bool = True\n    def __post_init__(self):\n        super().__post_init__()",
+        "detail": "src.llm_module_generator.physics_module_generator.module_generator",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
+        "description": "src.llm_module_generator.physics_module_generator.module_generator",
+        "peekOfCode": "logger = get_logger(__name__)\nfrom .templates import question_html_gen_template,server_js_template_base,server_py_template_base,solution_html_template,question_html_gen_template_nonadaptive\n@dataclass\nclass ModuleCodeGenerator(LLM_Call):\n    llm_config: LLMConfig\n    base_prompt: str\n    example_input_column: str\n    example_output_column: str\n    threshold: float = 0.1\n    num_examples: int = field(default=1)",
+        "detail": "src.llm_module_generator.physics_module_generator.module_generator",
+        "documentation": {}
+    },
+    {
+        "label": "llm_config",
+        "kind": 5,
+        "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
+        "description": "src.llm_module_generator.physics_module_generator.module_generator",
+        "peekOfCode": "llm_config = LLMConfig(api_key=api_key, model=\"gpt-4o-2024-08-06\", temperature=0)\n# Initialize all the generators\nquestion_html_generator = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",\n    llm_config=llm_config,\n    num_examples = 3\n)\nquestion_html_generator_nonadaptive = ModuleCodeGenerator(",
+        "detail": "src.llm_module_generator.physics_module_generator.module_generator",
+        "documentation": {}
+    },
+    {
+        "label": "question_html_generator",
+        "kind": 5,
+        "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
+        "description": "src.llm_module_generator.physics_module_generator.module_generator",
+        "peekOfCode": "question_html_generator = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",\n    llm_config=llm_config,\n    num_examples = 3\n)\nquestion_html_generator_nonadaptive = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template_nonadaptive,\n    example_input_column=\"question\",",
+        "detail": "src.llm_module_generator.physics_module_generator.module_generator",
+        "documentation": {}
+    },
+    {
+        "label": "question_html_generator_nonadaptive",
+        "kind": 5,
+        "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
+        "description": "src.llm_module_generator.physics_module_generator.module_generator",
+        "peekOfCode": "question_html_generator_nonadaptive = ModuleCodeGenerator(\n    base_prompt=question_html_gen_template_nonadaptive,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",\n    llm_config=llm_config,\n    is_adaptive=False,\n    num_examples = 3\n)\nquestion_solution_generator = ModuleCodeGenerator(\n    base_prompt=solution_html_template,",
+        "detail": "src.llm_module_generator.physics_module_generator.module_generator",
+        "documentation": {}
+    },
+    {
+        "label": "question_solution_generator",
+        "kind": 5,
+        "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
+        "description": "src.llm_module_generator.physics_module_generator.module_generator",
+        "peekOfCode": "question_solution_generator = ModuleCodeGenerator(\n    base_prompt=solution_html_template,\n    example_input_column=\"question.html\",\n    example_output_column=\"solution.html\",\n    llm_config=llm_config,\n    num_examples = 1\n)\nserver_js_generator = ModuleCodeGenerator(\n    base_prompt=server_js_template_base,\n    example_input_column=\"question.html\",",
+        "detail": "src.llm_module_generator.physics_module_generator.module_generator",
+        "documentation": {}
+    },
+    {
+        "label": "server_js_generator",
+        "kind": 5,
+        "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
+        "description": "src.llm_module_generator.physics_module_generator.module_generator",
+        "peekOfCode": "server_js_generator = ModuleCodeGenerator(\n    base_prompt=server_js_template_base,\n    example_input_column=\"question.html\",\n    example_output_column=\"server.js\",\n    llm_config=llm_config,\n    num_examples = 1\n)\nserver_py_generator = ModuleCodeGenerator(\n    base_prompt=server_py_template_base,\n    example_input_column=\"question.html\",",
+        "detail": "src.llm_module_generator.physics_module_generator.module_generator",
+        "documentation": {}
+    },
+    {
+        "label": "server_py_generator",
+        "kind": 5,
+        "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
+        "description": "src.llm_module_generator.physics_module_generator.module_generator",
+        "peekOfCode": "server_py_generator = ModuleCodeGenerator(\n    base_prompt=server_py_template_base,\n    example_input_column=\"question.html\",\n    example_output_column=\"server.py\",\n    llm_config=llm_config,\n    num_examples = 1\n)\nasync def main():\n    # The question to be processed\n    question = \"A ball travels a distance of 5 meters during a period of 5 minutes determine its average speed\"",
+        "detail": "src.llm_module_generator.physics_module_generator.module_generator",
         "documentation": {}
     },
     {
@@ -6851,10 +7070,10 @@
     {
         "label": "llm_config",
         "kind": 5,
-        "importPath": "src.llm_module_generator.ui_generator_ai.ui_generators",
-        "description": "src.llm_module_generator.ui_generator_ai.ui_generators",
+        "importPath": "src.llm_module_generator.ui_generator.ui_generators",
+        "description": "src.llm_module_generator.ui_generator.ui_generators",
         "peekOfCode": "llm_config = LLMConfig(\n    api_key=api_key, \n    model=\"gpt-4o-2024-08-06\", \n    temperature=0\n)\n# Define the image paths\nimage_paths = [\n    r\"C:\\Users\\lberm\\OneDrive\\Desktop\\GitHub_Repository\\mechedu1.0\\mechedu1\\test_images\\textbook_section\\Screenshot 2024-08-21 191624.png\"\n]\n# Initialize all the generators",
-        "detail": "src.llm_module_generator.ui_generator_ai.ui_generators",
+        "detail": "src.llm_module_generator.ui_generator.ui_generators",
         "documentation": {}
     },
     {
@@ -6887,37 +7106,37 @@
     {
         "label": "summary_ui_generator",
         "kind": 5,
-        "importPath": "src.llm_module_generator.ui_generator_ai.ui_generators",
-        "description": "src.llm_module_generator.ui_generator_ai.ui_generators",
+        "importPath": "src.llm_module_generator.ui_generator.ui_generators",
+        "description": "src.llm_module_generator.ui_generator.ui_generators",
         "peekOfCode": "summary_ui_generator = MultiUIContentGenerator(\n    llm_config=llm_config,\n    css_category=\"summary_and_key_concepts\",\n    base_prompt=summary_ui_prompt,\n    extractor=extract_summary,\n    parser=lecture_summary_parser\n)\nasync def main():\n    # Run all the generators concurrently using asyncio.gather\n    derivation_html, conceptual_html, lecture_ui = await asyncio.gather(",
-        "detail": "src.llm_module_generator.ui_generator_ai.ui_generators",
+        "detail": "src.llm_module_generator.ui_generator.ui_generators",
         "documentation": {}
     },
     {
         "label": "conceptual_question_ui_prompt",
         "kind": 5,
-        "importPath": "src.llm_module_generator.ui_generator_ai.ui_prompts",
-        "description": "src.llm_module_generator.ui_generator_ai.ui_prompts",
+        "importPath": "src.llm_module_generator.ui_generator.ui_prompts",
+        "description": "src.llm_module_generator.ui_generator.ui_prompts",
         "peekOfCode": "conceptual_question_ui_prompt = \"\"\"\n    You are a web developer tasked with creating an engaging and informative HTML webpage based on the following extracted lecture notes. The webpage should be well-structured, visually appealing, and easy to navigate.\n    You are only focused on working on the following sections. When you need to format any mathematical symbols or equations, use LaTeX enclosed within appropriate delimiters to ensure proper rendering.\n    **Instructions:**\n    1. **Conceptual Questions**: Create a section dedicated to multiple-choice conceptual questions based on the lecture material. Each question should be clearly presented, with four possible answer choices labeled (A), (B), (C), and (D). Indicate the correct answer for each question.\n    - Ensure that all questions and answer choices are formatted using appropriate HTML tags to enhance readability.\n    - If any mathematical notation is required within the questions or answer choices, use LaTeX to format it properly.\n    \"\"\"\nderivation_ui_prompt = \"\"\"\n    You are a web developer tasked with creating an engaging, well-structured, and informative HTML webpage based on the following extracted lecture notes. The webpage should prioritize clarity, ease of navigation, and visual appeal, with a focus on presenting mathematical derivations.",
-        "detail": "src.llm_module_generator.ui_generator_ai.ui_prompts",
+        "detail": "src.llm_module_generator.ui_generator.ui_prompts",
         "documentation": {}
     },
     {
         "label": "derivation_ui_prompt",
         "kind": 5,
-        "importPath": "src.llm_module_generator.ui_generator_ai.ui_prompts",
-        "description": "src.llm_module_generator.ui_generator_ai.ui_prompts",
+        "importPath": "src.llm_module_generator.ui_generator.ui_prompts",
+        "description": "src.llm_module_generator.ui_generator.ui_prompts",
         "peekOfCode": "derivation_ui_prompt = \"\"\"\n    You are a web developer tasked with creating an engaging, well-structured, and informative HTML webpage based on the following extracted lecture notes. The webpage should prioritize clarity, ease of navigation, and visual appeal, with a focus on presenting mathematical derivations.\n    **Goal:**\n    The purpose of the webpage is to clearly showcase mathematical derivations and logical arguments from the lecture in a way that is easy to read, well-organized, and aesthetically pleasing. Pay particular attention to the presentation of the derivation steps and ensure that all mathematical symbols or equations are properly formatted using LaTeX.\n    **Instructions:**\n    1. **Derivations**:\n       - Present each mathematical derivation or logical argument in full, broken down into clear and understandable steps. For each derivation:\n         - **Use Ordered Lists or Numbered Headings** to display the step-by-step process, ensuring that each step is easy to follow.\n         - Ensure the **explanation** of each step is concise, using HTML `<p>` tags for descriptions.\n         - For mathematical expressions, use **LaTeX** enclosed within `$$` or `\\\\(\\\\)` delimiters to ensure proper rendering.",
-        "detail": "src.llm_module_generator.ui_generator_ai.ui_prompts",
+        "detail": "src.llm_module_generator.ui_generator.ui_prompts",
         "documentation": {}
     },
     {
         "label": "summary_ui_prompt",
         "kind": 5,
-        "importPath": "src.llm_module_generator.ui_generator_ai.ui_prompts",
-        "description": "src.llm_module_generator.ui_generator_ai.ui_prompts",
+        "importPath": "src.llm_module_generator.ui_generator.ui_prompts",
+        "description": "src.llm_module_generator.ui_generator.ui_prompts",
         "peekOfCode": "summary_ui_prompt = f\"\"\"\n    You are a web developer tasked with creating an engaging and informative HTML webpage based on the following extracted lecture notes. The webpage should be well-structured, visually appealing, and easy to navigate.\n    You are only focused on working on the following sections. When you need to format any mathematical symbols or equations, use LaTeX enclosed within appropriate delimiters to ensure proper rendering.\n    \"\"\"",
-        "detail": "src.llm_module_generator.ui_generator_ai.ui_prompts",
+        "detail": "src.llm_module_generator.ui_generator.ui_prompts",
         "documentation": {}
     },
     {
@@ -6959,28 +7178,28 @@
     {
         "label": "logger",
         "kind": 5,
-        "importPath": "src.llm_module_generator.ui_generator_ai.ui_response",
-        "description": "src.llm_module_generator.ui_generator_ai.ui_response",
+        "importPath": "src.llm_module_generator.ui_generator.ui_response",
+        "description": "src.llm_module_generator.ui_generator.ui_response",
         "peekOfCode": "logger = get_logger(__name__)\nbase_dir = os.path.dirname(os.path.abspath(__file__))\ncss_styles_file = os.path.join(base_dir, 'valid_css_styles_generator.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"\n        ol = \"ol\"",
-        "detail": "src.llm_module_generator.ui_generator_ai.ui_response",
+        "detail": "src.llm_module_generator.ui_generator.ui_response",
         "documentation": {}
     },
     {
         "label": "base_dir",
         "kind": 5,
-        "importPath": "src.llm_module_generator.ui_generator_ai.ui_response",
-        "description": "src.llm_module_generator.ui_generator_ai.ui_response",
+        "importPath": "src.llm_module_generator.ui_generator.ui_response",
+        "description": "src.llm_module_generator.ui_generator.ui_response",
         "peekOfCode": "base_dir = os.path.dirname(os.path.abspath(__file__))\ncss_styles_file = os.path.join(base_dir, 'valid_css_styles_generator.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"\n        ol = \"ol\"\n        li = \"li\"",
-        "detail": "src.llm_module_generator.ui_generator_ai.ui_response",
+        "detail": "src.llm_module_generator.ui_generator.ui_response",
         "documentation": {}
     },
     {
         "label": "css_styles_file",
         "kind": 5,
-        "importPath": "src.llm_module_generator.ui_generator_ai.ui_response",
-        "description": "src.llm_module_generator.ui_generator_ai.ui_response",
+        "importPath": "src.llm_module_generator.ui_generator.ui_response",
+        "description": "src.llm_module_generator.ui_generator.ui_response",
         "peekOfCode": "css_styles_file = os.path.join(base_dir, 'valid_css_styles_generator.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"\n        ol = \"ol\"\n        li = \"li\"\n        h1 = \"h1\"",
-        "detail": "src.llm_module_generator.ui_generator_ai.ui_response",
+        "detail": "src.llm_module_generator.ui_generator.ui_response",
         "documentation": {}
     },
     {
@@ -7015,43 +7234,7 @@
         "kind": 6,
         "importPath": "src.llm_module_generator.utils",
         "description": "src.llm_module_generator.utils",
-        "peekOfCode": "class Metadata(BaseModel):\n    generated: bool = Field(description=\"Indicate if the question is generated True or given False\")\n# Define the ModuleSpecification model\nclass ModuleSpecification(BaseModel):\n    \"\"\"Specification for Module\"\"\"\n    question: str = Field(description=\"The question to be generated\")\n    question_html_instructions: Optional[Union[bool, str]] = Field(description=\"Any question html instructions such as styling or type these need to be explitly stated\")\n    server_instructions: Optional[Union[bool, str]] = Field(description=\"server requirements these should be explitly stated\")\n    metadata: Metadata\n# Set up the model and chain with structured output",
-        "detail": "src.llm_module_generator.utils",
-        "documentation": {}
-    },
-    {
-        "label": "ModuleSpecification",
-        "kind": 6,
-        "importPath": "src.llm_module_generator.utils",
-        "description": "src.llm_module_generator.utils",
-        "peekOfCode": "class ModuleSpecification(BaseModel):\n    \"\"\"Specification for Module\"\"\"\n    question: str = Field(description=\"The question to be generated\")\n    question_html_instructions: Optional[Union[bool, str]] = Field(description=\"Any question html instructions such as styling or type these need to be explitly stated\")\n    server_instructions: Optional[Union[bool, str]] = Field(description=\"server requirements these should be explitly stated\")\n    metadata: Metadata\n# Set up the model and chain with structured output\nmodel = ChatOpenAI(model=\"gpt-4o-mini\")\nchain = prompt | model.with_structured_output(ModuleSpecification)\n# Main async function",
-        "detail": "src.llm_module_generator.utils",
-        "documentation": {}
-    },
-    {
-        "label": "prompt",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.utils",
-        "description": "src.llm_module_generator.utils",
-        "peekOfCode": "prompt = hub.pull(\"pollytheparot69/quiz_module_query_analyzer_refiner\")\nclass Metadata(BaseModel):\n    generated: bool = Field(description=\"Indicate if the question is generated True or given False\")\n# Define the ModuleSpecification model\nclass ModuleSpecification(BaseModel):\n    \"\"\"Specification for Module\"\"\"\n    question: str = Field(description=\"The question to be generated\")\n    question_html_instructions: Optional[Union[bool, str]] = Field(description=\"Any question html instructions such as styling or type these need to be explitly stated\")\n    server_instructions: Optional[Union[bool, str]] = Field(description=\"server requirements these should be explitly stated\")\n    metadata: Metadata",
-        "detail": "src.llm_module_generator.utils",
-        "documentation": {}
-    },
-    {
-        "label": "model",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.utils",
-        "description": "src.llm_module_generator.utils",
-        "peekOfCode": "model = ChatOpenAI(model=\"gpt-4o-mini\")\nchain = prompt | model.with_structured_output(ModuleSpecification)\n# Main async function\nasync def main():\n    # Invoke the main chain with the initial query\n    data = await chain.ainvoke({\"query\": \"I want to generate the following 'A car is traveling at a distance of 60 mph for 5 hours, what is the total distance traveled.' I want to ensure that there are a variety of units in the calculations including ft/s, mph and kmh for the speeds\"})\n    data = data.dict()\n    print(data)\n# Run the main async function\nif __name__ == \"__main__\":",
-        "detail": "src.llm_module_generator.utils",
-        "documentation": {}
-    },
-    {
-        "label": "chain",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.utils",
-        "description": "src.llm_module_generator.utils",
-        "peekOfCode": "chain = prompt | model.with_structured_output(ModuleSpecification)\n# Main async function\nasync def main():\n    # Invoke the main chain with the initial query\n    data = await chain.ainvoke({\"query\": \"I want to generate the following 'A car is traveling at a distance of 60 mph for 5 hours, what is the total distance traveled.' I want to ensure that there are a variety of units in the calculations including ft/s, mph and kmh for the speeds\"})\n    data = data.dict()\n    print(data)\n# Run the main async function\nif __name__ == \"__main__\":\n    asyncio.run(main())",
+        "peekOfCode": "class Response(BaseModel):\n    question:str = Field(...,description =\"The full question that will converted into a online assesment\")\n    additional_instructions: Optional[str] = Field(...,description=\"The cleaned up additional instructions\")\nasync def analyze_input_query(query:str):\n    llm = LLM_Call(LLMConfig(api_key, \"gpt-4o-mini\",0))\n    prompt = f\"\"\"You are tasked with analyzing and refining a given query, which will be used to generate complete, answerable questions for an online educational assessment for students. The goal of this analysis is to convert the input into questions that can be part of an online module, ensuring the questions are relevant, usable, and clearly defined for students. The process of refining and extracting the question and instructions should help define the scope of the module, making sure it aligns with the learning objectives.\n    The query may come in different forms:\n    A clear, complete question.\n    A question with additional instructions (guiding how the assessment should be shaped).\n    Vague instructions or an incomplete question.",
         "detail": "src.llm_module_generator.utils",
         "documentation": {}
     },
