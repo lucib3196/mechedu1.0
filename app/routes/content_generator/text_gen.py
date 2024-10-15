@@ -44,7 +44,7 @@ def generate_text():
             # Create an event loop to run the function asynchronously
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
-            generated_content, tokens = loop.run_until_complete(
+            generated_content = loop.run_until_complete(
                 generate_module_text(question=session["question"], user_data=user_data)
             )
             loop.close()

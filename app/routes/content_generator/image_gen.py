@@ -60,12 +60,11 @@ def generate_image():
                 asyncio.set_event_loop(loop)
                 
                 # Ensure this function is truly async-compatible with Flask
-                generated_content, tokens = loop.run_until_complete(
+                generated_content = loop.run_until_complete(
                     generate_from_image(paths=file_paths, user_data=user_data)
                 )
                 loop.close()
 
-                logger.info(f"Image-based content generation completed. Tokens used: {tokens}")
 
                 # Call the function to save the generated content
                 save_response, status_code = save_generated_content(generated_content,module_name=session['module_name'])

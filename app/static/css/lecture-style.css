@@ -1,155 +1,273 @@
-
 :root {
-    --light-shades: #FAF8F7;
-    --light-accent: #EEAF48;
-    --main-brand-color: #75B0D9;
-    --dark-accent: #2AAFDA;
-    --dark-shades: #363962;
+    /* Base Color Variables */
+    --background-color: #FAF8F7;
+    --accent-color: #EEAF48;
+    --brand-color: #75B0D9;
+    --accent-dark: #2AAFDA;
+    --shade-dark: #363962;
     --text-color: #000000;
+
+    /* Additional Variables for Consistency */
+    --border-color: #ccc;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --background-section: #fff;
+    --background-question: #f9f9f9;
+    --border-radius: 10px;
+    --box-shadow: 0 4px 8px var(--shadow-color);
 }
 
 /* Theme 1: Dark Theme */
 .dark-theme {
-    --light-shades: #000000 ;
-    --light-accent: #FFB742;
-    --main-brand-color: #4A90E2;
-    --dark-accent: #1F8EF1;
-    --dark-shades: #ffffff;
+    --background-color: #121212;
+    --accent-color: #FFB742;
+    --brand-color: #4A90E2;
+    --accent-dark: #1F8EF1;
+    --shade-dark: #1A1A1A;
     --text-color: #FFFFFF;
+    --background-section: #1A1A1A;
+    --background-question: #2C2C2C;
+    --border-color: #444;
 }
 
 /* Theme 2: Light Theme */
 .light-theme {
-    --light-shades: #FFFFFF !important;
-    --light-accent: #FFEB3B;
-    --main-brand-color: #00BCD4;
-    --dark-accent: #FF5722;
-    --dark-shades: #795548;
+    --background-color: #FFFFFF;
+    --accent-color: #FFEB3B;
+    --brand-color: #00BCD4;
+    --accent-dark: #FF5722;
+    --shade-dark: #795548;
     --text-color: #212121;
+    --background-section: #FFFFFF;
+    --background-question: #f1f1f1;
+    --border-color: #ccc;
 }
 
 /* Theme 3: Blue Theme */
 .blue-theme {
-    --light-shades: #F0F8FF;
-    --light-accent: #ADD8E6;
-    --main-brand-color: #4682B4;
-    --dark-accent: #1E90FF;
-    --dark-shades: #000080;
+    --background-color: #F0F8FF;
+    --accent-color: #ADD8E6;
+    --brand-color: #4682B4;
+    --accent-dark: #1E90FF;
+    --shade-dark: #000080;
     --text-color: #000000;
+    --background-section: #E6F0FF;
+    --background-question: #D0E7FF;
+    --border-color: #99c;
 }
 
 /* Theme 4: Green Theme */
 .green-theme {
-    --light-shades: #E8F5E9;
-    --light-accent: #A5D6A7;
-    --main-brand-color: #66BB6A;
-    --dark-accent: #388E3C;
-    --dark-shades: #1B5E20;
+    --background-color: #E8F5E9;
+    --accent-color: #A5D6A7;
+    --brand-color: #66BB6A;
+    --accent-dark: #388E3C;
+    --shade-dark: #1B5E20;
     --text-color: #263238;
+    --background-section: #FFFFFF;
+    --background-question: #E0F2E9;
+    --border-color: #8BC34A;
 }
 
 /* Theme 5: Red Theme */
 .red-theme {
-    --light-shades: #FFEBEE;
-    --light-accent: #EF9A9A;
-    --main-brand-color: #E57373;
-    --dark-accent: #C62828;
-    --dark-shades: #B71C1C;
+    --background-color: #FFEBEE;
+    --accent-color: #EF9A9A;
+    --brand-color: #E57373;
+    --accent-dark: #C62828;
+    --shade-dark: #B71C1C;
     --text-color: #212121;
+    --background-section: #FFFFFF;
+    --background-question: #FFECEC;
+    --border-color: #e57373;
 }
-.default-theme{
-    --light-shades: #FAF8F7;
-    --light-accent: #EEAF48;
-    --main-brand-color: #75B0D9;
-    --dark-accent: #2AAFDA;
-    --dark-shades: #363962;
+
+/* Default Theme */
+.default-theme {
+    --background-color: #FAF8F7;
+    --accent-color: #EEAF48;
+    --brand-color: #75B0D9;
+    --accent-dark: #2AAFDA;
+    --shade-dark: #363962;
     --text-color: #000000;
+    --background-section: #fff;
+    --background-question: #f9f9f9;
+    --border-color: #ccc;
 }
 
-/* Default Styles */
+/* Global Styles */
 body {
-    background-color: var(--light-shades);
+    font-size: 1rem;
+    background-color: var(--background-color);
     color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
 }
 
-/* Derivation Section */
-.derivation-container {
-    background-color: var(--light-shades);
-    border-left: 4px solid var(--dark-accent);
-    padding: 20px; /* More padding for better spacing */
-    margin-bottom: 20px;
+.title_section,
+.summary_section,
+.key_concepts_section,
+.foundational_concepts_section,
+.question_container,
+.derivation_section,
+.derivation_container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 15px; /* Adds space between children for readability */
-}
-
-/* Conceptual Question Section */
-.single-concepetual-question-container {
-    background-color: var(--light-shades);
-    color: var(--dark-shades);
+    align-items: center;
+    max-width: 100%;
     padding: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--background-section);
     margin-bottom: 20px;
-    border-radius: 8px; /* Slightly increased radius for a softer look */
-    border: 1px solid var(--dark-accent); /* Adds a border to better define the container */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for better definition */
+    box-shadow: var(--box-shadow);
 }
 
-/* Summary and Key Concepts */
-.summary-container,
-.concepts-container {
-    background-color: var(--light-shades);
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    border: 1px solid var(--main-brand-color); /* Adds a border to better define the container */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for better definition */
+.title_section {
+    justify-content: center;
+    text-align: center;
 }
 
-/* General Headings */
-.title-heading {
-    font-size: 2rem;
-    color: var(--dark-shades);
-    border-bottom: 2px solid var(--dark-accent);
-    padding-bottom: 10px; /* Slightly increased padding for spacing */
+.title_section .title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 10px 0;
 }
 
-.sub-heading {
+.title_section .subtitle {
     font-size: 1.5rem;
-    color: var(--dark-shades);
-    margin-bottom: 10px; /* Adds some spacing below the sub-heading */
+    font-style: italic;
+    margin: 0 0 20px 0;
 }
 
-.minor-heading {
-    font-size: 1.2rem;
-    color: var(--dark-accent);
-    margin-bottom: 8px;
+.summary_section h2,
+.key_concepts_section h2,
+.foundational_concepts_section h2,
+.derivations_section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    align-self: center;
 }
 
-/* Ordered and Unordered Lists */
-ol, ul {
-    padding-left: 20px; /* Moves the bullet points closer */
-    margin-bottom: 15px; /* Adds margin below the list */
+.summary_section .summary,
+.key_concepts_section p,
+.foundational_concepts_section p,
+.question_container p,
+.derivation_steps li {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
 }
 
-li {
-    margin-bottom: 8px; /* Adds spacing between list items */
-    padding-left: 10px; /* Reduces indent for cleaner look */
-    list-style-position: inside; /* Ensures the bullet/number is inside the content box */
-}
-
-/* Span Elements */
-span.highlight-text {
-    background-color: yellow;
-    color: var(--dark-shades);
-    padding: 2px 5px;
-    border-radius: 3px;
-}
-
-span.bold {
+.bold {
     font-weight: bold;
 }
 
-span.ital {
-    font-style: italic;
+.key_concepts_section p,
+.foundational_concepts_section p {
+    text-align: left;
+}
+
+.questions_section {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 1000px;
+    text-align: left;
+    padding: 20px;
+    margin: 20px auto;
+}
+
+.question_container {
+    margin-top: 30px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-question);
+    box-shadow: var(--box-shadow);
+}
+
+.question_container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.question_container h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.multiple_choice_options {
+    align-self: flex-start;
+    list-style-type: lower-alpha;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.data_container {
+    display: none;
+}
+
+.questions_section + .questions_section {
+    margin-top: 40px;
+}
+
+.derivation_section {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: var(--background-question);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.derivation_container {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-left: 4px solid #007bff; /* Consider using a variable if dynamic */
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+.derivation_name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.derivation_steps {
+    margin-top: 15px;
+    padding-left: 20px;
+    list-style-type: decimal;
+    color: #555;
+}
+
+.derivation_steps li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.derivations_section h3 {
+    font-size: 1.2rem;
+}
+/* Example Element Using Primary Color */
+.btn.button-primary {
+    background-color: var(--main-brand-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button-primary:hover {
+    background-color: var(--accent-dark);
 }

@@ -96,7 +96,6 @@ async def generate_from_image(paths: List[str] ,user_data: dict) -> Tuple[List[T
     Returns:
         Tuple[List[Tuple[str, str]], int]: A list of generated modules and the token count.
     """
-    total_tokens = 0
     
     # Initialize the file converter
     file_manager = FileConverter()
@@ -131,7 +130,7 @@ async def generate_from_image(paths: List[str] ,user_data: dict) -> Tuple[List[T
         modules.append((question_title, content))
 
     logger.info("Finished extracting computational questions")
-    return modules, total_tokens
+    return modules
 
 async def main():
     # Placeholder paths (replace with actual paths)
