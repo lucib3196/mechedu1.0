@@ -57,12 +57,6 @@ def derivations_parser(response: dict) -> list[str]:
 
 
 def lecture_summary_parser(response: dict) -> list[str]:
-<<<<<<< HEAD:src/llm_module_generator/ui_generator_ai/parser.py
-    analysis = response.get("analysis","")
-    summary = analysis.get('summary', "No summary provided.")
-    key_concepts_list = analysis.get('key_concepts', [])
-    foundational_concepts_list = analysis.get('foundational_concepts', [])
-=======
     analysis = response.get("analysis", {})
     if analysis:
         summary = analysis.get('summary', "No summary provided.")
@@ -73,7 +67,6 @@ def lecture_summary_parser(response: dict) -> list[str]:
         key_concepts_list = response.get('key_concepts', [])
         foundational_concepts_list = response.get('foundational_concepts', [])
         
->>>>>>> 582037f6b5e2c16b57d45240f86c66f7a690c6c4:src/llm_module_generator/parsers/parser.py
     # Parsing key concepts
     key_concepts = "\n".join([
         f"- {concept}\n"
