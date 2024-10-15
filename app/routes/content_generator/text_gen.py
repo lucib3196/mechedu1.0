@@ -50,7 +50,6 @@ def generate_text():
             loop.close()
             print(f"This is the generated content {generated_content}")
 
-            logger.info(f"Text generation completed. Tokens used: {tokens}")
 
             # Call the function to save the generated content
             save_response, status_code = save_generated_content(generated_content, module_name=session['module_name'])
