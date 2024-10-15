@@ -1,14 +1,5 @@
 [
     {
-        "label": "typing",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "typing",
-        "description": "typing",
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
         "label": "Any",
         "importPath": "typing",
         "description": "typing",
@@ -225,14 +216,6 @@
         "documentation": {}
     },
     {
-        "label": "Tuple",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
         "label": "Dict",
         "importPath": "typing",
         "description": "typing",
@@ -370,6 +353,14 @@
     },
     {
         "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -561,17 +552,6 @@
         "documentation": {}
     },
     {
-<<<<<<< Updated upstream
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-=======
->>>>>>> Stashed changes
         "label": "Callable",
         "importPath": "typing",
         "description": "typing",
@@ -2482,6 +2462,14 @@
         "documentation": {}
     },
     {
+        "label": "generate_csrf",
+        "importPath": "flask_wtf.csrf",
+        "description": "flask_wtf.csrf",
+        "isExtraImport": true,
+        "detail": "flask_wtf.csrf",
+        "documentation": {}
+    },
+    {
         "label": "traceback",
         "kind": 6,
         "isExtraImport": true,
@@ -2866,14 +2854,6 @@
         "documentation": {}
     },
     {
-        "label": "get_logger",
-        "importPath": "src.logging_config",
-        "description": "src.logging_config",
-        "isExtraImport": true,
-        "detail": "src.logging_config",
-        "documentation": {}
-    },
-    {
         "label": "shutil",
         "kind": 6,
         "isExtraImport": true,
@@ -3036,6 +3016,38 @@
         "documentation": {}
     },
     {
+        "label": "hub",
+        "importPath": "langchain",
+        "description": "langchain",
+        "isExtraImport": true,
+        "detail": "langchain",
+        "documentation": {}
+    },
+    {
+        "label": "hub",
+        "importPath": "langchain",
+        "description": "langchain",
+        "isExtraImport": true,
+        "detail": "langchain",
+        "documentation": {}
+    },
+    {
+        "label": "hub",
+        "importPath": "langchain",
+        "description": "langchain",
+        "isExtraImport": true,
+        "detail": "langchain",
+        "documentation": {}
+    },
+    {
+        "label": "hub",
+        "importPath": "langchain",
+        "description": "langchain",
+        "isExtraImport": true,
+        "detail": "langchain",
+        "documentation": {}
+    },
+    {
         "label": "ChatOpenAI",
         "importPath": "langchain_openai",
         "description": "langchain_openai",
@@ -3130,30 +3142,6 @@
         "description": "langchain_core.messages",
         "isExtraImport": true,
         "detail": "langchain_core.messages",
-        "documentation": {}
-    },
-    {
-        "label": "hub",
-        "importPath": "langchain",
-        "description": "langchain",
-        "isExtraImport": true,
-        "detail": "langchain",
-        "documentation": {}
-    },
-    {
-        "label": "hub",
-        "importPath": "langchain",
-        "description": "langchain",
-        "isExtraImport": true,
-        "detail": "langchain",
-        "documentation": {}
-    },
-    {
-        "label": "hub",
-        "importPath": "langchain",
-        "description": "langchain",
-        "isExtraImport": true,
-        "detail": "langchain",
         "documentation": {}
     },
     {
@@ -3485,6 +3473,38 @@
         "description": "langchain_text_splitters",
         "isExtraImport": true,
         "detail": "langchain_text_splitters",
+        "documentation": {}
+    },
+    {
+        "label": "extract_derivations",
+        "importPath": "src.llm_module_generator.image_extraction.image_llm",
+        "description": "src.llm_module_generator.image_extraction.image_llm",
+        "isExtraImport": true,
+        "detail": "src.llm_module_generator.image_extraction.image_llm",
+        "documentation": {}
+    },
+    {
+        "label": "extract_summary",
+        "importPath": "src.llm_module_generator.image_extraction.image_llm",
+        "description": "src.llm_module_generator.image_extraction.image_llm",
+        "isExtraImport": true,
+        "detail": "src.llm_module_generator.image_extraction.image_llm",
+        "documentation": {}
+    },
+    {
+        "label": "extract_computational_questions",
+        "importPath": "src.llm_module_generator.image_extraction.image_llm",
+        "description": "src.llm_module_generator.image_extraction.image_llm",
+        "isExtraImport": true,
+        "detail": "src.llm_module_generator.image_extraction.image_llm",
+        "documentation": {}
+    },
+    {
+        "label": "extract_conceptual_questions",
+        "importPath": "src.llm_module_generator.image_extraction.image_llm",
+        "description": "src.llm_module_generator.image_extraction.image_llm",
+        "isExtraImport": true,
+        "detail": "src.llm_module_generator.image_extraction.image_llm",
         "documentation": {}
     },
     {
@@ -5464,7 +5484,7 @@
         "kind": 2,
         "importPath": "app.routes.quiz_views.adaptive_questions",
         "description": "app.routes.quiz_views.adaptive_questions",
-        "peekOfCode": "def render_adaptive_quiz():\n    try:\n        # Retrieve folder information from session\n        folder_id = session.get(\"folder_id\")\n        if not folder_id:\n            return \"Folder ID not found in session\", 400\n        folder_name, full_files_data = retrieve_files_folder(folder_id)\n        # Create a temporary directory to handle file processing\n        with tempfile.TemporaryDirectory() as tmpdir:\n            for file in full_files_data:",
+        "peekOfCode": "def render_adaptive_quiz():\n    csrf_token = generate_csrf()\n    try:\n        # Retrieve folder information from session\n        folder_id = session.get(\"folder_id\")\n        if not folder_id:\n            return \"Folder ID not found in session\", 400\n        folder_name, full_files_data = retrieve_files_folder(folder_id)\n        # Create a temporary directory to handle file processing\n        with tempfile.TemporaryDirectory() as tmpdir:",
         "detail": "app.routes.quiz_views.adaptive_questions",
         "documentation": {}
     },
@@ -5482,7 +5502,7 @@
         "kind": 5,
         "importPath": "app.routes.quiz_views.adaptive_questions",
         "description": "app.routes.quiz_views.adaptive_questions",
-        "peekOfCode": "adaptive_quiz_bp = Blueprint('adaptive_quiz_bp', __name__)\n# Initialize logger\nlogger = get_logger(__name__)\n@adaptive_quiz_bp.route(\"/quiz_overview/_adaptive\", methods=['GET', 'POST'])\ndef render_adaptive_quiz():\n    try:\n        # Retrieve folder information from session\n        folder_id = session.get(\"folder_id\")\n        if not folder_id:\n            return \"Folder ID not found in session\", 400",
+        "peekOfCode": "adaptive_quiz_bp = Blueprint('adaptive_quiz_bp', __name__)\n# Initialize logger\nlogger = get_logger(__name__)\n@adaptive_quiz_bp.route(\"/quiz_overview/_adaptive\", methods=['GET', 'POST'])\ndef render_adaptive_quiz():\n    csrf_token = generate_csrf()\n    try:\n        # Retrieve folder information from session\n        folder_id = session.get(\"folder_id\")\n        if not folder_id:",
         "detail": "app.routes.quiz_views.adaptive_questions",
         "documentation": {}
     },
@@ -5491,7 +5511,7 @@
         "kind": 5,
         "importPath": "app.routes.quiz_views.adaptive_questions",
         "description": "app.routes.quiz_views.adaptive_questions",
-        "peekOfCode": "logger = get_logger(__name__)\n@adaptive_quiz_bp.route(\"/quiz_overview/_adaptive\", methods=['GET', 'POST'])\ndef render_adaptive_quiz():\n    try:\n        # Retrieve folder information from session\n        folder_id = session.get(\"folder_id\")\n        if not folder_id:\n            return \"Folder ID not found in session\", 400\n        folder_name, full_files_data = retrieve_files_folder(folder_id)\n        # Create a temporary directory to handle file processing",
+        "peekOfCode": "logger = get_logger(__name__)\n@adaptive_quiz_bp.route(\"/quiz_overview/_adaptive\", methods=['GET', 'POST'])\ndef render_adaptive_quiz():\n    csrf_token = generate_csrf()\n    try:\n        # Retrieve folder information from session\n        folder_id = session.get(\"folder_id\")\n        if not folder_id:\n            return \"Folder ID not found in session\", 400\n        folder_name, full_files_data = retrieve_files_folder(folder_id)",
         "detail": "app.routes.quiz_views.adaptive_questions",
         "documentation": {}
     },
@@ -5739,11 +5759,20 @@
         "documentation": {}
     },
     {
+        "label": "LLMConfig",
+        "kind": 6,
+        "importPath": "src.data_handler.example_based_prompt_formatter",
+        "description": "src.data_handler.example_based_prompt_formatter",
+        "peekOfCode": "class LLMConfig:\n    model:str\n    temperature:int\n@dataclass\nclass ExampleBasedPromptDataFrame:\n    example_input_column: str\n    example_output_column: str\n    embedding_engine: str = \"text-embedding-3-small\"\n    embedding_columns: str = \"embeddings-3-small\"\n    embedding_file: str = os.path.join(base_dir, '..', 'data', 'question_embeddings_2024_9_11.csv')",
+        "detail": "src.data_handler.example_based_prompt_formatter",
+        "documentation": {}
+    },
+    {
         "label": "ExampleBasedPromptDataFrame",
         "kind": 6,
         "importPath": "src.data_handler.example_based_prompt_formatter",
         "description": "src.data_handler.example_based_prompt_formatter",
-        "peekOfCode": "class ExampleBasedPromptDataFrame:\n    example_input_column: str\n    example_output_column: str\n    api_key: str\n    embedding_engine: str = \"text-embedding-3-small\"\n    embedding_columns: str = \"embeddings-3-small\"\n    embedding_file: str = os.path.join(base_dir, '..', 'data', 'question_embeddings_2024_9_11.csv')\n    df_config: EmbeddingDataFrame = field(init=False)\n    is_adaptive: bool = True\n    llm_config: LLMConfig = field(init=False)",
+        "peekOfCode": "class ExampleBasedPromptDataFrame:\n    example_input_column: str\n    example_output_column: str\n    embedding_engine: str = \"text-embedding-3-small\"\n    embedding_columns: str = \"embeddings-3-small\"\n    embedding_file: str = os.path.join(base_dir, '..', 'data', 'question_embeddings_2024_9_11.csv')\n    df_config: EmbeddingDataFrame = field(init=False)\n    is_adaptive: bool = True\n    llm_config: LLMConfig = field(init=False)\n    embedding_generator: GenerateEmbeddings = field(init=False)",
         "detail": "src.data_handler.example_based_prompt_formatter",
         "documentation": {}
     },
@@ -5761,8 +5790,17 @@
         "kind": 5,
         "importPath": "src.data_handler.example_based_prompt_formatter",
         "description": "src.data_handler.example_based_prompt_formatter",
-        "peekOfCode": "base_dir = os.path.dirname(os.path.abspath(__file__))\n@dataclass\nclass ExampleBasedPromptDataFrame:\n    example_input_column: str\n    example_output_column: str\n    api_key: str\n    embedding_engine: str = \"text-embedding-3-small\"\n    embedding_columns: str = \"embeddings-3-small\"\n    embedding_file: str = os.path.join(base_dir, '..', 'data', 'question_embeddings_2024_9_11.csv')\n    df_config: EmbeddingDataFrame = field(init=False)",
+        "peekOfCode": "base_dir = os.path.dirname(os.path.abspath(__file__))\n@dataclass\nclass LLMConfig:\n    model:str\n    temperature:int\n@dataclass\nclass ExampleBasedPromptDataFrame:\n    example_input_column: str\n    example_output_column: str\n    embedding_engine: str = \"text-embedding-3-small\"",
         "detail": "src.data_handler.example_based_prompt_formatter",
+        "documentation": {}
+    },
+    {
+        "label": "LLMConfig",
+        "kind": 6,
+        "importPath": "src.data_handler.generate_embeddings",
+        "description": "src.data_handler.generate_embeddings",
+        "peekOfCode": "class LLMConfig:\n    model:str\n    temperature:int\n@dataclass\nclass GenerateEmbeddings(LLMConfig):\n    \"\"\"\n    A class to generate and display embeddings for given text queries using a specified language model.\n    Attributes:\n        llm_config (LLMConfig): Configuration object for the language model, including API key and model name.\n    Methods:",
+        "detail": "src.data_handler.generate_embeddings",
         "documentation": {}
     },
     {
@@ -5955,29 +5993,11 @@
         "documentation": {}
     },
     {
-        "label": "prepare_additional_instructions",
-        "kind": 2,
-        "importPath": "src.llm_content_assembly.generate_adaptive_module",
-        "description": "src.llm_content_assembly.generate_adaptive_module",
-        "peekOfCode": "def prepare_additional_instructions(solution_guide: Optional[str] = None,analyzed_question:Optional[str]=None) -> Optional[str]:\n    \"\"\"\n    Prepares additional instructions based on the solution guide.\n    Args:\n        solution_guide (Optional[str], optional): Instructions for solution improvement. Defaults to None.\n    Returns:\n        Optional[str]: Formatted additional instructions or None.\n    \"\"\"\n    instructions = \"\"\n    if solution_guide:",
-        "detail": "src.llm_content_assembly.generate_adaptive_module",
-        "documentation": {}
-    },
-    {
-        "label": "calculate_total_tokens",
-        "kind": 2,
-        "importPath": "src.llm_content_assembly.generate_adaptive_module",
-        "description": "src.llm_content_assembly.generate_adaptive_module",
-        "peekOfCode": "def calculate_total_tokens() -> int:\n    \"\"\"\n    Calculates the total number of tokens used across all generators.\n    Returns:\n        int: The total number of tokens used.\n    \"\"\"\n    try:\n        logger.info(\"Calculating total tokens used across all generators.\")\n        question_html_tokens = module_generator.question_html_generator.get_total_tokens()\n        server_js_tokens = module_generator.server_js_generator.get_total_tokens()",
-        "detail": "src.llm_content_assembly.generate_adaptive_module",
-        "documentation": {}
-    },
-    {
         "label": "logger",
         "kind": 5,
         "importPath": "src.llm_content_assembly.generate_adaptive_module",
         "description": "src.llm_content_assembly.generate_adaptive_module",
-        "peekOfCode": "logger = get_logger(__name__)\nasync def generate_question_html(question_instructions: str) -> str:\n    \"\"\"\n    Generates HTML content for the given question instructions.\n    Args:\n        question_instructions (str): Instructions for generating question HTML.\n    Returns:\n        str: Generated question HTML.\n    \"\"\"\n    logger.info(\"Generating question HTML...\")",
+        "peekOfCode": "logger = get_logger(__name__)\nasync def generate_question_html(question: str,instructions:dict = {}) -> str:\n    \"\"\"\n    Generates HTML content for the given question instructions.\n    Args:\n        question_instructions (str): Instructions for generating question HTML.\n    Returns:\n        str: Generated question HTML.\n    \"\"\"\n    logger.info(\"Generating question HTML...\")",
         "detail": "src.llm_content_assembly.generate_adaptive_module",
         "documentation": {}
     },
@@ -6004,7 +6024,7 @@
         "kind": 5,
         "importPath": "src.llm_content_assembly.generate_module_metadata",
         "description": "src.llm_content_assembly.generate_module_metadata",
-        "peekOfCode": "logger = get_logger(__name__)\nasync def generate_module_metadata(question: str, user_data: Dict[str, str]) -> tuple[Dict[str, Union[str, bool, int]], int]:\n    logger.info(\"Generating initial metadata for the question.\")\n    # Generate the initial metadata\n    initial_metadata = await metadata_gen.generate_metadata(question)\n    logger.debug(f\"Initial metadata: {initial_metadata}\")\n    # Create the final metadata dictionary by adding additional fields\n    metadata = {\n        **initial_metadata.get(\"metadata\", {}),\n        \"createdBy\": user_data.get(\"created_by\", \"\"),",
+        "peekOfCode": "logger = get_logger(__name__)\nasync def generate_module_metadata(question: str, user_data: Dict[str, str]) -> dict:\n    logger.info(\"Generating initial metadata for the question.\")\n    # Generate the initial metadata\n    initial_metadata = await metadata_chain.ainvoke({\"question\":question})\n    logger.debug(f\"Initial metadata: {initial_metadata}\")\n    initial_metadata = initial_metadata.dict()\n    # Create the final metadata dictionary by adding additional fields\n    metadata = {\n        **initial_metadata.get(\"metadata\", {}),",
         "detail": "src.llm_content_assembly.generate_module_metadata",
         "documentation": {}
     },
@@ -6013,7 +6033,7 @@
         "kind": 5,
         "importPath": "src.llm_content_assembly.generate_nonadaptive_module",
         "description": "src.llm_content_assembly.generate_nonadaptive_module",
-        "peekOfCode": "logger = get_logger(__name__)\nasync def generate_nonadaptive(question: str, metadata_dict: dict=None) -> dict:\n    \"\"\"Generates a module for questions that do not require code files, \n    such as multiple-choice questions.\n    Args:\n        question (str): Question to be used for module creation.\n        metadata_dict (dict): Metadata to be saved for the question.\n    Returns:\n        dict: A collection of generated content with file names and content.\n    \"\"\"",
+        "peekOfCode": "logger = get_logger(__name__)\nasync def generate_nonadaptive(question: str, metadata_dict: dict=None,instructions:dict = {}) -> dict:\n    \"\"\"Generates a module for questions that do not require code files, \n    such as multiple-choice questions.\n    Args:\n        question (str): Question to be used for module creation.\n        metadata_dict (dict): Metadata to be saved for the question.\n    Returns:\n        dict: A collection of generated content with file names and content.\n    \"\"\"",
         "detail": "src.llm_content_assembly.generate_nonadaptive_module",
         "documentation": {}
     },
@@ -6022,16 +6042,7 @@
         "kind": 5,
         "importPath": "src.llm_content_assembly.llm_lecture_processor",
         "description": "src.llm_content_assembly.llm_lecture_processor",
-        "peekOfCode": "logger = get_logger(__name__)\nTOTAL_TOKENS = 0\nuser_data = {\n    \"created_by\": \"lberm007@ucr.edu\",\n    \"code_language\": \"javascript\"\n}\nasync def extract_summary_and_key_concepts(image_paths: List[str]) -> str:\n    \"\"\"\n    Extracts summary and key concepts from lecture images and generates HTML.\n    Args:",
-        "detail": "src.llm_content_assembly.llm_lecture_processor",
-        "documentation": {}
-    },
-    {
-        "label": "TOTAL_TOKENS",
-        "kind": 5,
-        "importPath": "src.llm_content_assembly.llm_lecture_processor",
-        "description": "src.llm_content_assembly.llm_lecture_processor",
-        "peekOfCode": "TOTAL_TOKENS = 0\nuser_data = {\n    \"created_by\": \"lberm007@ucr.edu\",\n    \"code_language\": \"javascript\"\n}\nasync def extract_summary_and_key_concepts(image_paths: List[str]) -> str:\n    \"\"\"\n    Extracts summary and key concepts from lecture images and generates HTML.\n    Args:\n        image_paths (List[str]): List of paths to the lecture images.",
+        "peekOfCode": "logger = get_logger(__name__)\nuser_data = {\n    \"created_by\": \"lberm007@ucr.edu\",\n    \"code_language\": \"javascript\"\n}\nasync def extract_summary_and_key_concepts(image_paths: List[str]) -> Tuple:\n    \"\"\"\n    Extracts summary and key concepts from lecture images and generates HTML.\n    Args:\n        image_paths (List[str]): List of paths to the lecture images.",
         "detail": "src.llm_content_assembly.llm_lecture_processor",
         "documentation": {}
     },
@@ -6040,7 +6051,7 @@
         "kind": 5,
         "importPath": "src.llm_content_assembly.llm_lecture_processor",
         "description": "src.llm_content_assembly.llm_lecture_processor",
-        "peekOfCode": "user_data = {\n    \"created_by\": \"lberm007@ucr.edu\",\n    \"code_language\": \"javascript\"\n}\nasync def extract_summary_and_key_concepts(image_paths: List[str]) -> str:\n    \"\"\"\n    Extracts summary and key concepts from lecture images and generates HTML.\n    Args:\n        image_paths (List[str]): List of paths to the lecture images.\n    Returns:",
+        "peekOfCode": "user_data = {\n    \"created_by\": \"lberm007@ucr.edu\",\n    \"code_language\": \"javascript\"\n}\nasync def extract_summary_and_key_concepts(image_paths: List[str]) -> Tuple:\n    \"\"\"\n    Extracts summary and key concepts from lecture images and generates HTML.\n    Args:\n        image_paths (List[str]): List of paths to the lecture images.\n    Returns:",
         "detail": "src.llm_content_assembly.llm_lecture_processor",
         "documentation": {}
     },
@@ -6049,7 +6060,7 @@
         "kind": 5,
         "importPath": "src.llm_content_assembly.llm_lecture_processor_simple",
         "description": "src.llm_content_assembly.llm_lecture_processor_simple",
-        "peekOfCode": "logger = get_logger(__name__)\nTOTAL_TOKENS = 0\nasync def extract_summary_and_key_concepts(image_paths: List[str]) -> str:\n    \"\"\"\n    Extracts summary and key concepts from lecture images and generates HTML.\n    Args:\n        image_paths (List[str]): List of paths to the lecture images.\n    Returns:\n        str: Generated HTML for the summary and key concepts section.\n    \"\"\"",
+        "peekOfCode": "logger = get_logger(__name__)\nTOTAL_TOKENS = 0\nasync def extract_summary_and_key_concepts(image_paths: List[str]) -> Tuple:\n    \"\"\"\n    Extracts summary and key concepts from lecture images and generates HTML.\n    Args:\n        image_paths (List[str]): List of paths to the lecture images.\n    Returns:\n        str: Generated HTML for the summary and key concepts section.\n    \"\"\"",
         "detail": "src.llm_content_assembly.llm_lecture_processor_simple",
         "documentation": {}
     },
@@ -6058,7 +6069,7 @@
         "kind": 5,
         "importPath": "src.llm_content_assembly.llm_lecture_processor_simple",
         "description": "src.llm_content_assembly.llm_lecture_processor_simple",
-        "peekOfCode": "TOTAL_TOKENS = 0\nasync def extract_summary_and_key_concepts(image_paths: List[str]) -> str:\n    \"\"\"\n    Extracts summary and key concepts from lecture images and generates HTML.\n    Args:\n        image_paths (List[str]): List of paths to the lecture images.\n    Returns:\n        str: Generated HTML for the summary and key concepts section.\n    \"\"\"\n    global TOTAL_TOKENS",
+        "peekOfCode": "TOTAL_TOKENS = 0\nasync def extract_summary_and_key_concepts(image_paths: List[str]) -> Tuple:\n    \"\"\"\n    Extracts summary and key concepts from lecture images and generates HTML.\n    Args:\n        image_paths (List[str]): List of paths to the lecture images.\n    Returns:\n        str: Generated HTML for the summary and key concepts section.\n    \"\"\"\n    logger.info(\"Extracting summary and key concepts...\\n\")",
         "detail": "src.llm_content_assembly.llm_lecture_processor_simple",
         "documentation": {}
     },
@@ -6130,7 +6141,7 @@
         "kind": 2,
         "importPath": "src.llm_content_assembly.utils",
         "description": "src.llm_content_assembly.utils",
-        "peekOfCode": "def convert_pdf_to_images(pdf_path: str, tempdir: str) -> List[str]:\n    image_paths = []\n    document = fitz.open(pdf_path)\n    base_name = os.path.basename(pdf_path).replace(\".pdf\", \"\")\n    logger.info(\"Converting PDF to Collection of Images\")\n    for page_number in range(document.page_count):\n        filename = f\"{base_name}_pg_{page_number + 1}.jpg\"\n        filepath = os.path.join(tempdir, filename)\n        page = document.load_page(page_number)\n        pix = page.get_pixmap()",
+        "peekOfCode": "def convert_pdf_to_images(pdf_path: str, tempdir: str) -> List[str]:\n    image_paths = []\n    document = fitz.open(pdf_path)\n    base_name = os.path.basename(pdf_path).replace(\".pdf\", \"\")\n    logger.info(\"Converting PDF to Collection of Images\")\n    for page_number in range(document.page_count):\n        filename = f\"{base_name}_pg_{page_number + 1}.jpg\"\n        filepath = os.path.join(tempdir, filename)\n        page = document.load_page(page_number)\n        pix = page.get_pixmap() # type: ignore",
         "detail": "src.llm_content_assembly.utils",
         "documentation": {}
     },
@@ -6157,34 +6168,7 @@
         "kind": 6,
         "importPath": "src.llm_module_generator.agent.lecture_triaging_agent",
         "description": "src.llm_module_generator.agent.lecture_triaging_agent",
-        "peekOfCode": "class Response(BaseModel):\n    functions_call: List[str] = Field(...,description=\"An array of functions to call\")\n    summary: str = Field(\"A consise summary of the content of the content provided \")\n    pages: int = Field(\"A number of pages/slides you were given. This is meant to indicate how much content you were given\")\nagent_schema = Response.model_json_schema()\nlecture_triaging_agent = ImageToLLMProcessor(triaging_system_prompt,agent_schema)\nlecture_triaging_agent_simple = ImageToLLMProcessor(triaging_system_prompt_simple,agent_schema)\nasync def main():\n    try:\n        print(\"Please enter the absolute paths to the image files, separated by commas:\")",
-        "detail": "src.llm_module_generator.agent.lecture_triaging_agent",
-        "documentation": {}
-    },
-    {
-        "label": "triaging_system_prompt",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.agent.lecture_triaging_agent",
-        "description": "src.llm_module_generator.agent.lecture_triaging_agent",
-        "peekOfCode": "triaging_system_prompt = \"\"\"\nYou are responsible for assessing the user's query and analyzing the provided material. Route the query to the appropriate functions based on the content. The available functions are:\n- **extract_summary_and_key_concepts**: This function is typically the default choice and should be used to extract the summary and key concepts when the material is formatted like a lecture. It should be called in most cases where the content is detailed and lecture-like.\n- **conceptual_question_extraction**: This function is also generally a default choice, particularly when **extract_summary_and_key_concepts** is used. It complements the extraction by generating or identifying related conceptual questions. For shorter materials, such as collections of questions, apply the same conditions as for the **computational_question_extraction** function.\n- **extract_derivations**:  This function should be called on a case-by-case basis, specifically when the material includes formal mathematical derivations. A derivation refers to a detailed, step-by-step explanation or proof that shows how a particular mathematical formula, equation, or result is derived. This function is most applicable when dealing with content related to physics or engineering subjects, where such detailed mathematical processes are often presented.\n- **computational_question_extraction**: Like **extract_derivations**, this function is used on a case-by-case basis. It should be called when the material includes problems with solutions, ranging from single to multiple questions.\nIn most scenarios, **extract_summary_and_key_concepts** and **conceptual_question_extraction** are the primary functions to use, while **extract_derivations** and **computational_question_extraction** are more specialized and should be used based on specific content characteristics.\nForward the user's query to the relevant functions using the send_query_to_functions tool based on the material's content and format.\nAdditionally, provide an overall summary of the content you are analyzing. If possible, indicate how many pages or slides were provided and whether the material consists of a single page or multiple pages/slides.\n\"\"\"",
-        "detail": "src.llm_module_generator.agent.lecture_triaging_agent",
-        "documentation": {}
-    },
-    {
-        "label": "triaging_system_prompt_simple",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.agent.lecture_triaging_agent",
-        "description": "src.llm_module_generator.agent.lecture_triaging_agent",
-        "peekOfCode": "triaging_system_prompt_simple = \"\"\"\nYou are responsible for assessing the user's query and analyzing the provided material. Route the query to the appropriate functions based on the content. The available functions are:\n- **extract_summary_and_key_concepts**: This function must always be called to extract the summary and key concepts, especially when the material is formatted like a lecture. It should be used in all cases where the content is detailed and lecture-like, ensuring that the core ideas and concepts are captured.\n- **conceptual_question_extraction**: This function should also always be called, complementing **extract_summary_and_key_concepts** by generating or identifying related conceptual questions. These two functions work together to ensure that the key points and related questions are clearly defined. For shorter materials, such as collections of questions, apply the same conditions as for the **computational_question_extraction** function.\n- **extract_derivations**: This function must be used whenever the material contains any sort of formal proof or mathematical derivation. A derivation refers to a detailed, step-by-step explanation or proof that shows how a particular mathematical formula, equation, or result is derived. It is essential for handling content related to physics, engineering, or other subjects involving detailed mathematical processes.\nIn every scenario, **extract_summary_and_key_concepts** and **conceptual_question_extraction** should always be executed. **extract_derivations** should be used whenever there are any proofs, derivations, or step-by-step mathematical explanations.\nForward the user's query to the relevant functions using the send_query_to_functions tool based on the material's content and format.\nAdditionally, provide an overall summary of the content you are analyzing. If possible, indicate how many pages or slides were provided and whether the material consists of a single page or multiple pages/slides.\n\"\"\"\nclass Response(BaseModel):",
-        "detail": "src.llm_module_generator.agent.lecture_triaging_agent",
-        "documentation": {}
-    },
-    {
-        "label": "agent_schema",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.agent.lecture_triaging_agent",
-        "description": "src.llm_module_generator.agent.lecture_triaging_agent",
-        "peekOfCode": "agent_schema = Response.model_json_schema()\nlecture_triaging_agent = ImageToLLMProcessor(triaging_system_prompt,agent_schema)\nlecture_triaging_agent_simple = ImageToLLMProcessor(triaging_system_prompt_simple,agent_schema)\nasync def main():\n    try:\n        print(\"Please enter the absolute paths to the image files, separated by commas:\")\n        image_paths_input = input()\n        # Split the input into a list of paths\n        image_paths = [path.strip() for path in image_paths_input.split(',')]\n        # Validate each provided path",
+        "peekOfCode": "class Response(BaseModel):\n    functions_call: List[str] = Field(...,description=\"An array of functions to call\")\n    summary: str = Field(\"A consise summary of the content of the content provided \")\n    pages: int = Field(\"A number of pages/slides you were given. This is meant to indicate how much content you were given\")\nlecture_triaging_agent = ImageLLMProcessor(    \n    prompt = hub.pull(\"lecture-triaging\"),\n    response = Response,\n    model = \"gpt-4o-mini\"\n)\nlecture_triaging_agent_simple = ImageLLMProcessor(    ",
         "detail": "src.llm_module_generator.agent.lecture_triaging_agent",
         "documentation": {}
     },
@@ -6193,41 +6177,26 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.agent.lecture_triaging_agent",
         "description": "src.llm_module_generator.agent.lecture_triaging_agent",
-        "peekOfCode": "lecture_triaging_agent = ImageToLLMProcessor(triaging_system_prompt,agent_schema)\nlecture_triaging_agent_simple = ImageToLLMProcessor(triaging_system_prompt_simple,agent_schema)\nasync def main():\n    try:\n        print(\"Please enter the absolute paths to the image files, separated by commas:\")\n        image_paths_input = input()\n        # Split the input into a list of paths\n        image_paths = [path.strip() for path in image_paths_input.split(',')]\n        # Validate each provided path\n        for image_path in image_paths:",
+        "peekOfCode": "lecture_triaging_agent = ImageLLMProcessor(    \n    prompt = hub.pull(\"lecture-triaging\"),\n    response = Response,\n    model = \"gpt-4o-mini\"\n)\nlecture_triaging_agent_simple = ImageLLMProcessor(    \n    prompt = hub.pull(\"lecture-triaging-simple\"),\n    response = Response,\n    model = \"gpt-4o-mini\"\n)",
         "detail": "src.llm_module_generator.agent.lecture_triaging_agent",
         "documentation": {}
     },
     {
-<<<<<<< Updated upstream
         "label": "lecture_triaging_agent_simple",
         "kind": 5,
         "importPath": "src.llm_module_generator.agent.lecture_triaging_agent",
         "description": "src.llm_module_generator.agent.lecture_triaging_agent",
-        "peekOfCode": "lecture_triaging_agent_simple = ImageToLLMProcessor(triaging_system_prompt_simple,agent_schema)\nasync def main():\n    try:\n        print(\"Please enter the absolute paths to the image files, separated by commas:\")\n        image_paths_input = input()\n        # Split the input into a list of paths\n        image_paths = [path.strip() for path in image_paths_input.split(',')]\n        # Validate each provided path\n        for image_path in image_paths:\n            if not os.path.isabs(image_path):",
+        "peekOfCode": "lecture_triaging_agent_simple = ImageLLMProcessor(    \n    prompt = hub.pull(\"lecture-triaging-simple\"),\n    response = Response,\n    model = \"gpt-4o-mini\"\n)\nasync def main():\n    try:\n        print(\"Please enter the absolute paths to the image files, separated by commas:\")\n        image_paths_input = input()\n        # Split the input into a list of paths",
         "detail": "src.llm_module_generator.agent.lecture_triaging_agent",
         "documentation": {}
     },
     {
-=======
->>>>>>> Stashed changes
         "label": "ImageLLMProcessor",
         "kind": 6,
         "importPath": "src.llm_module_generator.image_extraction.image_llm",
         "description": "src.llm_module_generator.image_extraction.image_llm",
         "peekOfCode": "class ImageLLMProcessor:\n    prompt:str\n    response: BaseModel\n    model:str\n    def __post_init__(self):\n        self.llm = ChatOpenAI(model=self.model)\n    async def send_request(self, image_paths:list[str]):\n        image_contents = await create_image_content_payload(image_paths)\n        message = HumanMessage(\n        content=[",
         "detail": "src.llm_module_generator.image_extraction.image_llm",
-<<<<<<< Updated upstream
-        "documentation": {}
-    },
-    {
-        "label": "extract_derivations_prompt",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.image_extraction.image_extraction_prompts",
-        "description": "src.llm_module_generator.image_extraction.image_extraction_prompts",
-        "peekOfCode": "extract_derivations_prompt = \"\"\"\n    You are tasked with analyzing the following lecture slides covering a specific class topic. Please address the following points and return the results as a JSON structure with the specified keys:\n    1. **Derivations**: Extract all derivations found in the lecture material. For each derivation:\n        - Provide a descriptive name that clearly explains what the derivation is trying to demonstrate.\n        - Extract the full solution, including all steps as if explaining to a student. Ensure that any mathematical expressions, symbols, or equations are properly formatted using LaTeX, enclosed within `$` symbols for inline math and `$$` symbols for block-level equations.\n        - Be aware that similar derivations may exist for different cases. These distinctions are often marked by changes in images or unique contexts. Ensure that these derivations are correctly identified and separated.\n        - Indicate the completeness of each derivation. If a derivation appears incomplete, explicitly state this.\n        - If no derivations are found in the material, return \"NaN\".\n\"\"\"\nextract_computation_questions_prompt = \"\"\"",
-        "detail": "src.llm_module_generator.image_extraction.image_extraction_prompts",
-=======
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
@@ -6381,7 +6350,6 @@
         "description": "src.llm_module_generator.image_extraction.image_llm",
         "peekOfCode": "extract_conceptual_questions = ImageLLMProcessor(\n    prompt = hub.pull(\"generate-conceptual-questions\"),\n    response = Questions,\n    model = \"gpt-4o\"\n)\n# Helper Function Just sends request\nasync def process_with_extractor(extractor: ImageLLMProcessor, image_paths: List[str]) -> dict:\n    return await extractor.send_request(image_paths=image_paths)\nasync def main(image_paths: List[str], prompt: str, response_format: Dict = None) -> tuple[Dict, int]:\n    \"\"\"",
         "detail": "src.llm_module_generator.image_extraction.image_llm",
-<<<<<<< Updated upstream
         "documentation": {}
     },
     {
@@ -6425,297 +6393,16 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
         "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "question_html_generator = ModuleCodeGenerator(\n    base_prompt=hub.pull(\"question_html_template\"),\n    model=\"gpt-4o-mini\",\n    response=Response,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",\n    num_examples = 2\n)\nquestion_solution_generator = ModuleCodeGenerator(\n    base_prompt=hub.pull(\"solution_html_template\"),",
+        "peekOfCode": "question_html_generator = ModuleCodeGenerator(\n    base_prompt=hub.pull(\"question_html_template\"),\n    model=\"gpt-4o-mini\",\n    response=Response,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",\n    num_examples = 2\n)\nquestion_html_generator_nonadaptive = ModuleCodeGenerator(\n    base_prompt=hub.pull(\"question_html_template\"),",
         "detail": "src.llm_module_generator.physics_module_generator.module_generator",
         "documentation": {}
     },
     {
-        "label": "conceptual_questions_parser",
-        "kind": 2,
-        "importPath": "src.llm_module_generator.parsers.parser",
-        "description": "src.llm_module_generator.parsers.parser",
-        "peekOfCode": "def conceptual_questions_parser(result: dict) -> list[str]:\n    extracted_questions = result.get(\"questions\",\"\")\n    all_questions = []\n    for question in extracted_questions:\n        question_text = f\"Question: {question.get('question', 'Unknown')}\"\n        multiple_choice_options = question.get('multiple_choice_options', [])\n        options_text = \"\\n\".join(f\" - Option: {option}\" for option in multiple_choice_options)\n        correct_answer = f\"Correct Answer: {question.get('correct_answer', 'No answer provided')}\"\n        combined_text = f\"{question_text}\\n{options_text}\\n{correct_answer}\"\n        all_questions.append(combined_text)",
-        "detail": "src.llm_module_generator.parsers.parser",
-        "documentation": {}
-    },
-    {
-        "label": "derivations_parser",
-        "kind": 2,
-        "importPath": "src.llm_module_generator.parsers.parser",
-        "description": "src.llm_module_generator.parsers.parser",
-        "peekOfCode": "def derivations_parser(response: dict) -> list[str]:\n    derivations = response.get(\"derivations\", [])\n    all_derivations = []\n    for derivation in derivations:\n        # Extract derivation name\n        derivation_name = f\"Derivation Name: {derivation.get('derivation_name', 'Unknown')}\"\n        # Extract derivation steps\n        derivation_steps = \"\".join(\n            f\"\\n - Explanation: {step.get('explanation', 'No explanation provided')}\"\n            f\"\\n - Step: {step.get('output', 'No output provided')}\"",
-        "detail": "src.llm_module_generator.parsers.parser",
-        "documentation": {}
-    },
-    {
-        "label": "lecture_summary_parser",
-        "kind": 2,
-        "importPath": "src.llm_module_generator.parsers.parser",
-        "description": "src.llm_module_generator.parsers.parser",
-        "peekOfCode": "def lecture_summary_parser(response: dict) -> list[str]:\n    print(response)\n    analysis = response.get(\"analysis\",\"\")\n    summary = analysis.get('summary', \"No summary provided.\")\n    key_concepts_list = analysis.get('key_concepts', [])\n    foundational_concepts_list = analysis.get('foundational_concepts', [])\n    # Parsing key concepts\n    key_concepts = \"\\n\".join([\n        f\"- {concept}\\n\"\n        for concept in key_concepts_list",
-        "detail": "src.llm_module_generator.parsers.parser",
-        "documentation": {}
-    },
-    {
-        "label": "computational_question_parser",
-        "kind": 2,
-        "importPath": "src.llm_module_generator.parsers.parser",
-        "description": "src.llm_module_generator.parsers.parser",
-        "peekOfCode": "def computational_question_parser(response: dict)->list[dict]:\n    \"\"\"\n    Parses the response dictionary to extract computational questions and their corresponding solutions.\n    Args:\n        response (dict): A dictionary containing the extracted questions and their details.\n                         The expected structure includes a list under the key \"extracted_question\",\n                         where each entry is a dictionary with keys like \"question\", \"complete\", \"solution\",\n                         \"image_req\", and \"external_data_req\".\n    Returns:\n        list: A list of dictionaries, where each dictionary represents a question and its solution.",
-        "detail": "src.llm_module_generator.parsers.parser",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
+        "label": "question_html_generator_nonadaptive",
         "kind": 5,
         "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
         "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "question_solution_generator = ModuleCodeGenerator(\n    base_prompt=hub.pull(\"solution_html_template\"),\n    example_input_column=\"question.html\",\n    example_output_column=\"solution.html\",\n    model=\"gpt-4o-mini\",\n    response=Response,\n    num_examples = 1\n)\nserver_js_generator = ModuleCodeGenerator(\n    base_prompt=hub.pull(\"server_js_template_base\"),",
-        "detail": "src.llm_module_generator.physics_module_generator.module_generator",
-        "documentation": {}
-    },
-    {
-        "label": "server_js_generator",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
-        "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "server_js_generator = ModuleCodeGenerator(\n    base_prompt=hub.pull(\"server_js_template_base\"),\n    example_input_column=\"question.html\",\n    example_output_column=\"server.js\",\n    model=\"gpt-4o-mini\",\n    response=Response,\n    num_examples = 1\n)\nserver_py_generator = ModuleCodeGenerator(\n    base_prompt=hub.pull(\"server_py_template_base1\"),",
-        "detail": "src.llm_module_generator.physics_module_generator.module_generator",
-        "documentation": {}
-    },
-    {
-        "label": "server_py_generator",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
-        "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "server_py_generator = ModuleCodeGenerator(\n    base_prompt=hub.pull(\"server_py_template_base1\"),\n    example_input_column=\"question.html\",\n    example_output_column=\"server.py\",\n    model=\"gpt-4o-mini\",\n    response=Response,\n    num_examples = 1\n)\nasync def main():\n    # The question to be processed",
-        "detail": "src.llm_module_generator.physics_module_generator.module_generator",
-        "documentation": {}
-    },
-    {
-        "label": "Code_Analysis",
-        "kind": 6,
-        "importPath": "src.llm_module_generator.retriever.math_js_retriever",
-        "description": "src.llm_module_generator.retriever.math_js_retriever",
-        "peekOfCode": "class Code_Analysis(BaseModel):\n    \"\"\"Analyze the code related to the given question.\"\"\"\n    analysis: str = Field(description=\"A brief description of the functionality that the code implements.\")\n    code_snippet: str = Field(description=\"A code snippet delimit the code using triple backticks\")\nclass Response(BaseModel):\n    response: Optional[list[Code_Analysis]] = Field(description=\"A list of potential code implementations based on documentation that matches the given question. If no matches are found, return None.\")\n## Format the retrieved information\ndef format_docs(docs):\n    return \"\\n\\n\".join(doc.page_content for doc in docs)\n## Define the RAG Chain",
-        "detail": "src.llm_module_generator.retriever.math_js_retriever",
-        "documentation": {}
-    },
-    {
-        "label": "Response",
-        "kind": 6,
-        "importPath": "src.llm_module_generator.retriever.math_js_retriever",
-        "description": "src.llm_module_generator.retriever.math_js_retriever",
-        "peekOfCode": "class Response(BaseModel):\n    response: Optional[list[Code_Analysis]] = Field(description=\"A list of potential code implementations based on documentation that matches the given question. If no matches are found, return None.\")\n## Format the retrieved information\ndef format_docs(docs):\n    return \"\\n\\n\".join(doc.page_content for doc in docs)\n## Define the RAG Chain\nrag_chain_from_docs = (\n    {\n        \"input\": lambda x: x[\"input\"],\n        \"context\": lambda x: format_docs(x[\"context\"]),",
-        "detail": "src.llm_module_generator.retriever.math_js_retriever",
-        "documentation": {}
-    },
-    {
-        "label": "format_docs",
-        "kind": 2,
-        "importPath": "src.llm_module_generator.retriever.math_js_retriever",
-        "description": "src.llm_module_generator.retriever.math_js_retriever",
-        "peekOfCode": "def format_docs(docs):\n    return \"\\n\\n\".join(doc.page_content for doc in docs)\n## Define the RAG Chain\nrag_chain_from_docs = (\n    {\n        \"input\": lambda x: x[\"input\"],\n        \"context\": lambda x: format_docs(x[\"context\"]),\n    }\n    | prompt\n    | llm.with_structured_output(Response)",
-        "detail": "src.llm_module_generator.retriever.math_js_retriever",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.retriever.math_js_retriever",
-        "description": "src.llm_module_generator.retriever.math_js_retriever",
-        "peekOfCode": "logger = get_logger(__name__)\n## Define the LLM and Load the Vector Store\nllm = ChatOpenAI(model=\"gpt-4o-mini\")\nembedding_function = OpenAIEmbeddings()\nvectorstore = Chroma(persist_directory=r\"src\\llm_module_generator\\physics_module_generator\\chroma_db\", embedding_function=embedding_function)\ndocs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)",
-        "detail": "src.llm_module_generator.retriever.math_js_retriever",
-        "documentation": {}
-    },
-    {
-        "label": "llm",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.retriever.math_js_retriever",
-        "description": "src.llm_module_generator.retriever.math_js_retriever",
-        "peekOfCode": "llm = ChatOpenAI(model=\"gpt-4o-mini\")\nembedding_function = OpenAIEmbeddings()\nvectorstore = Chroma(persist_directory=r\"src\\llm_module_generator\\physics_module_generator\\chroma_db\", embedding_function=embedding_function)\ndocs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain",
-        "detail": "src.llm_module_generator.retriever.math_js_retriever",
-        "documentation": {}
-    },
-    {
-        "label": "embedding_function",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.retriever.math_js_retriever",
-        "description": "src.llm_module_generator.retriever.math_js_retriever",
-        "peekOfCode": "embedding_function = OpenAIEmbeddings()\nvectorstore = Chroma(persist_directory=r\"src\\llm_module_generator\\physics_module_generator\\chroma_db\", embedding_function=embedding_function)\ndocs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (",
-        "detail": "src.llm_module_generator.retriever.math_js_retriever",
-        "documentation": {}
-    },
-    {
-        "label": "vectorstore",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.retriever.math_js_retriever",
-        "description": "src.llm_module_generator.retriever.math_js_retriever",
-        "peekOfCode": "vectorstore = Chroma(persist_directory=r\"src\\llm_module_generator\\physics_module_generator\\chroma_db\", embedding_function=embedding_function)\ndocs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (\n    \"You are an assistant for question-answering tasks. \"",
-        "detail": "src.llm_module_generator.retriever.math_js_retriever",
-        "documentation": {}
-    },
-    {
-        "label": "docs",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.retriever.math_js_retriever",
-        "description": "src.llm_module_generator.retriever.math_js_retriever",
-        "peekOfCode": "docs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (\n    \"You are an assistant for question-answering tasks. \"\n    \"Use the following pieces of retrieved context to answer \"",
-        "detail": "src.llm_module_generator.retriever.math_js_retriever",
-        "documentation": {}
-    },
-    {
-        "label": "retriever",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.retriever.math_js_retriever",
-        "description": "src.llm_module_generator.retriever.math_js_retriever",
-        "peekOfCode": "retriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (\n    \"You are an assistant for question-answering tasks. \"\n    \"Use the following pieces of retrieved context to answer \"\n    \"the question. If you don't know the answer, say that you \"",
-        "detail": "src.llm_module_generator.retriever.math_js_retriever",
-        "documentation": {}
-    },
-    {
-        "label": "retriever_from_llm",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.retriever.math_js_retriever",
-        "description": "src.llm_module_generator.retriever.math_js_retriever",
-        "peekOfCode": "retriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (\n    \"You are an assistant for question-answering tasks. \"\n    \"Use the following pieces of retrieved context to answer \"\n    \"the question. If you don't know the answer, say that you \"\n    \"don't know.If the context provided does not offer information \"",
-        "detail": "src.llm_module_generator.retriever.math_js_retriever",
-        "documentation": {}
-    },
-    {
-        "label": "system_prompt",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.retriever.math_js_retriever",
-        "description": "src.llm_module_generator.retriever.math_js_retriever",
-        "peekOfCode": "system_prompt = (\n    \"You are an assistant for question-answering tasks. \"\n    \"Use the following pieces of retrieved context to answer \"\n    \"the question. If you don't know the answer, say that you \"\n    \"don't know.If the context provided does not offer information \"\n    \"that directly answers the question, make it clear that the context \"\n    \"does not provide the necessary information.\"\n    \"\\n\\n\"\n    \"{context}\"\n)",
-        "detail": "src.llm_module_generator.retriever.math_js_retriever",
-        "documentation": {}
-    },
-    {
-        "label": "prompt",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.retriever.math_js_retriever",
-        "description": "src.llm_module_generator.retriever.math_js_retriever",
-        "peekOfCode": "prompt = ChatPromptTemplate.from_messages(\n    [\n        (\"system\", system_prompt),\n        (\"human\", \"{input}\"),\n    ]\n)\n## This prompt will go in for the human input of the question\nhuman_prompt = f\"\"\"\nYou are tasked with analyzing a given question and generating relevant code snippets in Javascript based on the Math Js documentation.\nEach response should contain a brief description of the functionality the code implements (analysis)",
-        "detail": "src.llm_module_generator.retriever.math_js_retriever",
-        "documentation": {}
-    },
-    {
-        "label": "human_prompt",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.retriever.math_js_retriever",
-        "description": "src.llm_module_generator.retriever.math_js_retriever",
-        "peekOfCode": "human_prompt = f\"\"\"\nYou are tasked with analyzing a given question and generating relevant code snippets in Javascript based on the Math Js documentation.\nEach response should contain a brief description of the functionality the code implements (analysis)\nand a short, concise code snippet that demonstrates the functionality (code_snippet).\nEach code snippet should be unique, avoiding repetition of similar code, and serve a distinct purpose.\nA single response can contain multiple components if needed, but the goal is to be direct with the appropriate code snippets.\nThe response should return a list of potential code implementations.\nIf no suitable code implementations are found, return None.\nReturn a max of 0-2 analysis, code_snippet pairs.\nQuestion: {{question}}",
-        "detail": "src.llm_module_generator.retriever.math_js_retriever",
-        "documentation": {}
-    },
-    {
-        "label": "rag_chain_from_docs",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.retriever.math_js_retriever",
-        "description": "src.llm_module_generator.retriever.math_js_retriever",
-        "peekOfCode": "rag_chain_from_docs = (\n    {\n        \"input\": lambda x: x[\"input\"],\n        \"context\": lambda x: format_docs(x[\"context\"]),\n    }\n    | prompt\n    | llm.with_structured_output(Response)\n)\nretrieve_docs = (lambda x: x[\"input\"]) | retriever_from_llm\nchain = RunnablePassthrough.assign(context=retrieve_docs).assign(",
-        "detail": "src.llm_module_generator.retriever.math_js_retriever",
-        "documentation": {}
-    },
-    {
-        "label": "retrieve_docs",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.retriever.math_js_retriever",
-        "description": "src.llm_module_generator.retriever.math_js_retriever",
-        "peekOfCode": "retrieve_docs = (lambda x: x[\"input\"]) | retriever_from_llm\nchain = RunnablePassthrough.assign(context=retrieve_docs).assign(\n    answer=rag_chain_from_docs\n)\n## Wrap it all in a funciton \nasync def mathjs_code_snippet_chain(question:str)->str:\n    code_search = await chain.ainvoke({\"input\": human_prompt.format(question=question)})\n    response_instance = json.loads(code_search[\"answer\"].model_dump_json())\n    response = response_instance[\"response\"]\n    # Build the example code snippets",
-        "detail": "src.llm_module_generator.retriever.math_js_retriever",
-        "documentation": {}
-    },
-    {
-        "label": "chain",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.retriever.math_js_retriever",
-        "description": "src.llm_module_generator.retriever.math_js_retriever",
-        "peekOfCode": "chain = RunnablePassthrough.assign(context=retrieve_docs).assign(\n    answer=rag_chain_from_docs\n)\n## Wrap it all in a funciton \nasync def mathjs_code_snippet_chain(question:str)->str:\n    code_search = await chain.ainvoke({\"input\": human_prompt.format(question=question)})\n    response_instance = json.loads(code_search[\"answer\"].model_dump_json())\n    response = response_instance[\"response\"]\n    # Build the example code snippets\n    example_code_snippets = \"\\nThe following are useful code snippets\\n\"",
-        "detail": "src.llm_module_generator.retriever.math_js_retriever",
-        "documentation": {}
-    },
-    {
-        "label": "is_href_invalid",
-        "kind": 2,
-        "importPath": "src.llm_module_generator.retriever.math_js_vectorstore",
-        "description": "src.llm_module_generator.retriever.math_js_vectorstore",
-        "peekOfCode": "def is_href_invalid(href: str) -> bool:\n    \"\"\"\n    Checks if the href is an invalid link based on specific conditions.\n    Args:\n        href (str): The link to check.\n    Returns:\n        bool: True if the link is invalid, otherwise False.\n    \"\"\"\n    if (href.startswith(\"https://en.wikipedia.org\") or\n        href.startswith(\"https://github.com\") or",
-        "detail": "src.llm_module_generator.retriever.math_js_vectorstore",
-        "documentation": {}
-    },
-    {
-        "label": "extract_all_links",
-        "kind": 2,
-        "importPath": "src.llm_module_generator.retriever.math_js_vectorstore",
-        "description": "src.llm_module_generator.retriever.math_js_vectorstore",
-        "peekOfCode": "def extract_all_links(link: str) -> Set[str]:\n    \"\"\"\n    Recursively extracts all unique links from a given webpage and its child pages.\n    Args:\n        link (str): The URL of the webpage to extract links from.\n    Returns:\n        Set[str]: A set of all unique links found.\n    \"\"\"\n    all_links = set()\n    html = requests.get(link)",
-        "detail": "src.llm_module_generator.retriever.math_js_vectorstore",
-        "documentation": {}
-    },
-    {
-        "label": "check_and_return_html",
-        "kind": 2,
-        "importPath": "src.llm_module_generator.retriever.math_js_vectorstore",
-        "description": "src.llm_module_generator.retriever.math_js_vectorstore",
-        "peekOfCode": "def check_and_return_html(url: str) -> str:\n    \"\"\"\n    Attempts to request the HTML content from a given URL, handling common errors.\n    Args:\n        url (str): The URL to make the request to.\n    Returns:\n        str: The HTML content of the webpage if the request is successful. If the request fails, \n        it prints an error message and returns an empty string.\n    \"\"\"\n    # Fix any backslashes in the URL by replacing them with forward slashes",
-        "detail": "src.llm_module_generator.retriever.math_js_vectorstore",
-        "documentation": {}
-    },
-    {
-        "label": "main",
-        "kind": 2,
-        "importPath": "src.llm_module_generator.retriever.math_js_vectorstore",
-        "description": "src.llm_module_generator.retriever.math_js_vectorstore",
-        "peekOfCode": "def main():\n    \"\"\"\n    Main function to extract links, split the content of the webpages,\n    and store the results in a vectorstore for future use.\n    \"\"\"\n    # Base URL to extract links from\n    original_link = \"https://mathjs.org/docs/index.html\"\n    # Extract all links from the base URL\n    all_links = extract_all_links(original_link)\n    # Headers to split the HTML content on",
-        "detail": "src.llm_module_generator.physics_module_generator.math_js_vectorstore",
-=======
->>>>>>> Stashed changes
-        "documentation": {}
-    },
-    {
-        "label": "ModuleCodeGenerator",
-        "kind": 6,
-        "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
-        "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "class ModuleCodeGenerator:\n    model: str\n    base_prompt: str\n    example_input_column: str\n    example_output_column: str\n    response: BaseModel\n    threshold: float = 0.0\n    num_examples: int = field(default=1)\n    is_adaptive: bool = True\n    def __post_init__(self):",
-        "detail": "src.llm_module_generator.physics_module_generator.module_generator",
-        "documentation": {}
-    },
-    {
-        "label": "Response",
-        "kind": 6,
-        "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
-        "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "class Response(BaseModel):\n    generated_code:str = Field(...,description=\"The generated code only return the generated code\")\nquestion_html_generator = ModuleCodeGenerator(\n    base_prompt=hub.pull(\"question_html_template\"),\n    model=\"gpt-4o-mini\",\n    response=Response,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",\n    num_examples = 2\n)",
-        "detail": "src.llm_module_generator.physics_module_generator.module_generator",
-        "documentation": {}
-    },
-    {
-        "label": "api_key",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
-        "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "api_key = os.getenv(\"OPENAI_API_KEY\")\n# Initialize logger\nlogger = get_logger(__name__)\n@dataclass\nclass ModuleCodeGenerator:\n    model: str\n    base_prompt: str\n    example_input_column: str\n    example_output_column: str\n    response: BaseModel",
-        "detail": "src.llm_module_generator.physics_module_generator.module_generator",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
-        "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "logger = get_logger(__name__)\n@dataclass\nclass ModuleCodeGenerator:\n    model: str\n    base_prompt: str\n    example_input_column: str\n    example_output_column: str\n    response: BaseModel\n    threshold: float = 0.0\n    num_examples: int = field(default=1)",
-        "detail": "src.llm_module_generator.physics_module_generator.module_generator",
-        "documentation": {}
-    },
-    {
-        "label": "question_html_generator",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
-        "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "question_html_generator = ModuleCodeGenerator(\n    base_prompt=hub.pull(\"question_html_template\"),\n    model=\"gpt-4o-mini\",\n    response=Response,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",\n    num_examples = 2\n)\nquestion_solution_generator = ModuleCodeGenerator(\n    base_prompt=hub.pull(\"solution_html_template\"),",
+        "peekOfCode": "question_html_generator_nonadaptive = ModuleCodeGenerator(\n    base_prompt=hub.pull(\"question_html_template\"),\n    model=\"gpt-4o-mini\",\n    response=Response,\n    example_input_column=\"question\",\n    example_output_column=\"question.html\",\n    num_examples = 3,\n    is_adaptive=False\n)\nquestion_solution_generator = ModuleCodeGenerator(",
         "detail": "src.llm_module_generator.physics_module_generator.module_generator",
         "documentation": {}
     },
@@ -6749,268 +6436,150 @@
     {
         "label": "Code_Analysis",
         "kind": 6,
-<<<<<<< Updated upstream
-        "importPath": "src.llm_module_generator.retriever.pl_retriever",
-        "description": "src.llm_module_generator.retriever.pl_retriever",
-        "peekOfCode": "class Code_Analysis(BaseModel):\n    \"\"\"Analyze the code related to the given question.\"\"\"\n    analysis: str = Field(description=\"A brief description of the functionality that the code implements.\")\n    code_snippet: str = Field(description=\"A code snippet delimit the code using triple backticks\")\nclass Response(BaseModel):\n    response: Optional[list[Code_Analysis]] = Field(description=\"A list of potential code implementations based on documentation that matches the given question. If no matches are found, return None.\")\n## Format the retrieved information\ndef format_docs(docs):\n    return \"\\n\\n\".join(doc.page_content for doc in docs)\n## Define the RAG Chain",
-        "detail": "src.llm_module_generator.retriever.pl_retriever",
-=======
         "importPath": "src.llm_module_generator.retriever.math_js_retriever",
         "description": "src.llm_module_generator.retriever.math_js_retriever",
         "peekOfCode": "class Code_Analysis(BaseModel):\n    \"\"\"Analyze the code related to the given question.\"\"\"\n    analysis: str = Field(description=\"A brief description of the functionality that the code implements.\")\n    code_snippet: str = Field(description=\"A code snippet delimit the code using triple backticks\")\nclass Response(BaseModel):\n    response: Optional[list[Code_Analysis]] = Field(description=\"A list of potential code implementations based on documentation that matches the given question. If no matches are found, return None.\")\n## Format the retrieved information\ndef format_docs(docs):\n    return \"\\n\\n\".join(doc.page_content for doc in docs)\n## Define the RAG Chain",
         "detail": "src.llm_module_generator.retriever.math_js_retriever",
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
         "label": "Response",
         "kind": 6,
-<<<<<<< Updated upstream
-        "importPath": "src.llm_module_generator.retriever.pl_retriever",
-        "description": "src.llm_module_generator.retriever.pl_retriever",
-        "peekOfCode": "class Response(BaseModel):\n    response: Optional[list[Code_Analysis]] = Field(description=\"A list of potential code implementations based on documentation that matches the given question. If no matches are found, return None.\")\n## Format the retrieved information\ndef format_docs(docs):\n    return \"\\n\\n\".join(doc.page_content for doc in docs)\n## Define the RAG Chain\nrag_chain_from_docs = (\n    {\n        \"input\": lambda x: x[\"input\"],\n        \"context\": lambda x: format_docs(x[\"context\"]),",
-        "detail": "src.llm_module_generator.retriever.pl_retriever",
-=======
         "importPath": "src.llm_module_generator.retriever.math_js_retriever",
         "description": "src.llm_module_generator.retriever.math_js_retriever",
         "peekOfCode": "class Response(BaseModel):\n    response: Optional[list[Code_Analysis]] = Field(description=\"A list of potential code implementations based on documentation that matches the given question. If no matches are found, return None.\")\n## Format the retrieved information\ndef format_docs(docs):\n    return \"\\n\\n\".join(doc.page_content for doc in docs)\n## Define the RAG Chain\nrag_chain_from_docs = (\n    {\n        \"input\": lambda x: x[\"input\"],\n        \"context\": lambda x: format_docs(x[\"context\"]),",
         "detail": "src.llm_module_generator.retriever.math_js_retriever",
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
         "label": "format_docs",
         "kind": 2,
-<<<<<<< Updated upstream
-        "importPath": "src.llm_module_generator.retriever.pl_retriever",
-        "description": "src.llm_module_generator.retriever.pl_retriever",
-        "peekOfCode": "def format_docs(docs):\n    return \"\\n\\n\".join(doc.page_content for doc in docs)\n## Define the RAG Chain\nrag_chain_from_docs = (\n    {\n        \"input\": lambda x: x[\"input\"],\n        \"context\": lambda x: format_docs(x[\"context\"]),\n    }\n    | prompt\n    | llm.with_structured_output(Response)",
-        "detail": "src.llm_module_generator.retriever.pl_retriever",
-=======
         "importPath": "src.llm_module_generator.retriever.math_js_retriever",
         "description": "src.llm_module_generator.retriever.math_js_retriever",
         "peekOfCode": "def format_docs(docs):\n    return \"\\n\\n\".join(doc.page_content for doc in docs)\n## Define the RAG Chain\nrag_chain_from_docs = (\n    {\n        \"input\": lambda x: x[\"input\"],\n        \"context\": lambda x: format_docs(x[\"context\"]),\n    }\n    | prompt\n    | llm.with_structured_output(Response)",
         "detail": "src.llm_module_generator.retriever.math_js_retriever",
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
         "label": "logger",
         "kind": 5,
-<<<<<<< Updated upstream
-        "importPath": "src.llm_module_generator.retriever.pl_retriever",
-        "description": "src.llm_module_generator.retriever.pl_retriever",
-        "peekOfCode": "logger = get_logger(__name__)\n## Define the LLM and Load the Vector Store\nllm = ChatOpenAI(model=\"gpt-4o-mini\")\nembedding_function = OpenAIEmbeddings()\nvectorstore = Chroma(persist_directory=r\"src\\llm_module_generator\\physics_module_generator\\pl_chroma_db\", embedding_function=embedding_function)\ndocs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)",
-        "detail": "src.llm_module_generator.retriever.pl_retriever",
-=======
         "importPath": "src.llm_module_generator.retriever.math_js_retriever",
         "description": "src.llm_module_generator.retriever.math_js_retriever",
         "peekOfCode": "logger = get_logger(__name__)\n## Define the LLM and Load the Vector Store\nllm = ChatOpenAI(model=\"gpt-4o-mini\")\nembedding_function = OpenAIEmbeddings()\nvectorstore = Chroma(persist_directory=r\"src\\llm_module_generator\\physics_module_generator\\chroma_db\", embedding_function=embedding_function)\ndocs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)",
         "detail": "src.llm_module_generator.retriever.math_js_retriever",
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
         "label": "llm",
         "kind": 5,
-<<<<<<< Updated upstream
-        "importPath": "src.llm_module_generator.retriever.pl_retriever",
-        "description": "src.llm_module_generator.retriever.pl_retriever",
-        "peekOfCode": "llm = ChatOpenAI(model=\"gpt-4o-mini\")\nembedding_function = OpenAIEmbeddings()\nvectorstore = Chroma(persist_directory=r\"src\\llm_module_generator\\physics_module_generator\\pl_chroma_db\", embedding_function=embedding_function)\ndocs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain",
-        "detail": "src.llm_module_generator.retriever.pl_retriever",
-=======
         "importPath": "src.llm_module_generator.retriever.math_js_retriever",
         "description": "src.llm_module_generator.retriever.math_js_retriever",
         "peekOfCode": "llm = ChatOpenAI(model=\"gpt-4o-mini\")\nembedding_function = OpenAIEmbeddings()\nvectorstore = Chroma(persist_directory=r\"src\\llm_module_generator\\physics_module_generator\\chroma_db\", embedding_function=embedding_function)\ndocs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain",
         "detail": "src.llm_module_generator.retriever.math_js_retriever",
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
         "label": "embedding_function",
         "kind": 5,
-<<<<<<< Updated upstream
-        "importPath": "src.llm_module_generator.retriever.pl_retriever",
-        "description": "src.llm_module_generator.retriever.pl_retriever",
-        "peekOfCode": "embedding_function = OpenAIEmbeddings()\nvectorstore = Chroma(persist_directory=r\"src\\llm_module_generator\\physics_module_generator\\pl_chroma_db\", embedding_function=embedding_function)\ndocs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (",
-        "detail": "src.llm_module_generator.retriever.pl_retriever",
-=======
         "importPath": "src.llm_module_generator.retriever.math_js_retriever",
         "description": "src.llm_module_generator.retriever.math_js_retriever",
         "peekOfCode": "embedding_function = OpenAIEmbeddings()\nvectorstore = Chroma(persist_directory=r\"src\\llm_module_generator\\physics_module_generator\\chroma_db\", embedding_function=embedding_function)\ndocs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (",
         "detail": "src.llm_module_generator.retriever.math_js_retriever",
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
         "label": "vectorstore",
         "kind": 5,
-<<<<<<< Updated upstream
-        "importPath": "src.llm_module_generator.retriever.pl_retriever",
-        "description": "src.llm_module_generator.retriever.pl_retriever",
-        "peekOfCode": "vectorstore = Chroma(persist_directory=r\"src\\llm_module_generator\\physics_module_generator\\pl_chroma_db\", embedding_function=embedding_function)\ndocs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (\n    \"You are an assistant for question-answering tasks. \"",
-        "detail": "src.llm_module_generator.retriever.pl_retriever",
-=======
         "importPath": "src.llm_module_generator.retriever.math_js_retriever",
         "description": "src.llm_module_generator.retriever.math_js_retriever",
         "peekOfCode": "vectorstore = Chroma(persist_directory=r\"src\\llm_module_generator\\physics_module_generator\\chroma_db\", embedding_function=embedding_function)\ndocs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (\n    \"You are an assistant for question-answering tasks. \"",
         "detail": "src.llm_module_generator.retriever.math_js_retriever",
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
         "label": "docs",
         "kind": 5,
-<<<<<<< Updated upstream
-        "importPath": "src.llm_module_generator.retriever.pl_retriever",
-        "description": "src.llm_module_generator.retriever.pl_retriever",
-        "peekOfCode": "docs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (\n    \"You are an assistant for question-answering tasks. \"\n    \"Use the following pieces of retrieved context to answer \"",
-        "detail": "src.llm_module_generator.retriever.pl_retriever",
-=======
         "importPath": "src.llm_module_generator.retriever.math_js_retriever",
         "description": "src.llm_module_generator.retriever.math_js_retriever",
         "peekOfCode": "docs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (\n    \"You are an assistant for question-answering tasks. \"\n    \"Use the following pieces of retrieved context to answer \"",
         "detail": "src.llm_module_generator.retriever.math_js_retriever",
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
         "label": "retriever",
         "kind": 5,
-<<<<<<< Updated upstream
-        "importPath": "src.llm_module_generator.retriever.pl_retriever",
-        "description": "src.llm_module_generator.retriever.pl_retriever",
-        "peekOfCode": "retriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (\n    \"You are an assistant for question-answering tasks. \"\n    \"Use the following pieces of retrieved context to answer \"\n    \"the question. If you don't know the answer, say that you \"",
-        "detail": "src.llm_module_generator.retriever.pl_retriever",
-=======
         "importPath": "src.llm_module_generator.retriever.math_js_retriever",
         "description": "src.llm_module_generator.retriever.math_js_retriever",
         "peekOfCode": "retriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (\n    \"You are an assistant for question-answering tasks. \"\n    \"Use the following pieces of retrieved context to answer \"\n    \"the question. If you don't know the answer, say that you \"",
         "detail": "src.llm_module_generator.retriever.math_js_retriever",
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
         "label": "retriever_from_llm",
         "kind": 5,
-<<<<<<< Updated upstream
-        "importPath": "src.llm_module_generator.retriever.pl_retriever",
-        "description": "src.llm_module_generator.retriever.pl_retriever",
-        "peekOfCode": "retriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (\n    \"You are an assistant for question-answering tasks. \"\n    \"Use the following pieces of retrieved context to answer \"\n    \"the question. If you don't know the answer, say that you \"\n    \"don't know.If the context provided does not offer information \"",
-        "detail": "src.llm_module_generator.retriever.pl_retriever",
-=======
         "importPath": "src.llm_module_generator.retriever.math_js_retriever",
         "description": "src.llm_module_generator.retriever.math_js_retriever",
         "peekOfCode": "retriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (\n    \"You are an assistant for question-answering tasks. \"\n    \"Use the following pieces of retrieved context to answer \"\n    \"the question. If you don't know the answer, say that you \"\n    \"don't know.If the context provided does not offer information \"",
         "detail": "src.llm_module_generator.retriever.math_js_retriever",
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
         "label": "system_prompt",
         "kind": 5,
-<<<<<<< Updated upstream
-        "importPath": "src.llm_module_generator.retriever.pl_retriever",
-        "description": "src.llm_module_generator.retriever.pl_retriever",
-        "peekOfCode": "system_prompt = (\n    \"You are an assistant for question-answering tasks. \"\n    \"Use the following pieces of retrieved context to answer \"\n    \"the question. If you don't know the answer, say that you \"\n    \"don't know.If the context provided does not offer information \"\n    \"that directly answers the question, make it clear that the context \"\n    \"does not provide the necessary information.\"\n    \"\\n\\n\"\n    \"{context}\"\n)",
-        "detail": "src.llm_module_generator.retriever.pl_retriever",
-=======
         "importPath": "src.llm_module_generator.retriever.math_js_retriever",
         "description": "src.llm_module_generator.retriever.math_js_retriever",
         "peekOfCode": "system_prompt = (\n    \"You are an assistant for question-answering tasks. \"\n    \"Use the following pieces of retrieved context to answer \"\n    \"the question. If you don't know the answer, say that you \"\n    \"don't know.If the context provided does not offer information \"\n    \"that directly answers the question, make it clear that the context \"\n    \"does not provide the necessary information.\"\n    \"\\n\\n\"\n    \"{context}\"\n)",
         "detail": "src.llm_module_generator.retriever.math_js_retriever",
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
         "label": "prompt",
         "kind": 5,
-<<<<<<< Updated upstream
-        "importPath": "src.llm_module_generator.retriever.pl_retriever",
-        "description": "src.llm_module_generator.retriever.pl_retriever",
-        "peekOfCode": "prompt = ChatPromptTemplate.from_messages(\n    [\n        (\"system\", system_prompt),\n        (\"human\", \"{input}\"),\n    ]\n)\n## This prompt will go in for the human input of the question\nhuman_prompt = f\"\"\"\nYou have access to documentation on formatting questions using custom HTML tags. Your task is to format user-input questions in a valid format.\nFor each response, please include:",
-        "detail": "src.llm_module_generator.retriever.pl_retriever",
-=======
         "importPath": "src.llm_module_generator.retriever.math_js_retriever",
         "description": "src.llm_module_generator.retriever.math_js_retriever",
         "peekOfCode": "prompt = ChatPromptTemplate.from_messages(\n    [\n        (\"system\", system_prompt),\n        (\"human\", \"{input}\"),\n    ]\n)\n## This prompt will go in for the human input of the question\nhuman_prompt = f\"\"\"\nYou are tasked with analyzing a given question and generating relevant code snippets in Javascript based on the Math Js documentation.\nEach response should contain a brief description of the functionality the code implements (analysis)",
         "detail": "src.llm_module_generator.retriever.math_js_retriever",
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
         "label": "human_prompt",
         "kind": 5,
-<<<<<<< Updated upstream
-        "importPath": "src.llm_module_generator.retriever.pl_retriever",
-        "description": "src.llm_module_generator.retriever.pl_retriever",
-        "peekOfCode": "human_prompt = f\"\"\"\nYou have access to documentation on formatting questions using custom HTML tags. Your task is to format user-input questions in a valid format.\nFor each response, please include:\n1. **Analysis**: A brief description of the functionality that the code implements.\n2. **Code Snippet**: A short, concise code snippet demonstrating the functionality.\nGuidelines:\n- Each code snippet should be unique and serve a distinct purpose, avoiding repetition of similar code.\n- A single response may contain multiple components if necessary, but aim to be direct and relevant.\n- Return a list of potential code implementations. If no suitable implementations are found, return `None`.\n- If possible, return the entire formatted HTML. If you're unsure, provide the response in chunks of code snippets.",
-        "detail": "src.llm_module_generator.retriever.pl_retriever",
-=======
         "importPath": "src.llm_module_generator.retriever.math_js_retriever",
         "description": "src.llm_module_generator.retriever.math_js_retriever",
         "peekOfCode": "human_prompt = f\"\"\"\nYou are tasked with analyzing a given question and generating relevant code snippets in Javascript based on the Math Js documentation.\nEach response should contain a brief description of the functionality the code implements (analysis)\nand a short, concise code snippet that demonstrates the functionality (code_snippet).\nEach code snippet should be unique, avoiding repetition of similar code, and serve a distinct purpose.\nA single response can contain multiple components if needed, but the goal is to be direct with the appropriate code snippets.\nThe response should return a list of potential code implementations.\nIf no suitable code implementations are found, return None.\nReturn a max of 0-2 analysis, code_snippet pairs.\nQuestion: {{question}}",
         "detail": "src.llm_module_generator.retriever.math_js_retriever",
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
         "label": "rag_chain_from_docs",
         "kind": 5,
-<<<<<<< Updated upstream
-        "importPath": "src.llm_module_generator.retriever.pl_retriever",
-        "description": "src.llm_module_generator.retriever.pl_retriever",
-        "peekOfCode": "rag_chain_from_docs = (\n    {\n        \"input\": lambda x: x[\"input\"],\n        \"context\": lambda x: format_docs(x[\"context\"]),\n    }\n    | prompt\n    | llm.with_structured_output(Response)\n)\nretrieve_docs = (lambda x: x[\"input\"]) | retriever_from_llm\nchain = RunnablePassthrough.assign(context=retrieve_docs).assign(",
-        "detail": "src.llm_module_generator.retriever.pl_retriever",
-=======
         "importPath": "src.llm_module_generator.retriever.math_js_retriever",
         "description": "src.llm_module_generator.retriever.math_js_retriever",
         "peekOfCode": "rag_chain_from_docs = (\n    {\n        \"input\": lambda x: x[\"input\"],\n        \"context\": lambda x: format_docs(x[\"context\"]),\n    }\n    | prompt\n    | llm.with_structured_output(Response)\n)\nretrieve_docs = (lambda x: x[\"input\"]) | retriever_from_llm\nchain = RunnablePassthrough.assign(context=retrieve_docs).assign(",
         "detail": "src.llm_module_generator.retriever.math_js_retriever",
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
         "label": "retrieve_docs",
         "kind": 5,
-<<<<<<< Updated upstream
-        "importPath": "src.llm_module_generator.retriever.pl_retriever",
-        "description": "src.llm_module_generator.retriever.pl_retriever",
-        "peekOfCode": "retrieve_docs = (lambda x: x[\"input\"]) | retriever_from_llm\nchain = RunnablePassthrough.assign(context=retrieve_docs).assign(\n    answer=rag_chain_from_docs\n)\n## Wrap it all in a funciton \nasync def pl_code_snippet_chain(question:str)->str:\n    code_search = await chain.ainvoke({\"input\": human_prompt.format(question=question)})\n    response_instance = json.loads(code_search[\"answer\"].model_dump_json())\n    response = response_instance[\"response\"]\n    # Build the example code snippets",
-        "detail": "src.llm_module_generator.retriever.pl_retriever",
-=======
         "importPath": "src.llm_module_generator.retriever.math_js_retriever",
         "description": "src.llm_module_generator.retriever.math_js_retriever",
         "peekOfCode": "retrieve_docs = (lambda x: x[\"input\"]) | retriever_from_llm\nchain = RunnablePassthrough.assign(context=retrieve_docs).assign(\n    answer=rag_chain_from_docs\n)\n## Wrap it all in a funciton \nasync def mathjs_code_snippet_chain(question:str)->str:\n    code_search = await chain.ainvoke({\"input\": human_prompt.format(question=question)})\n    response_instance = json.loads(code_search[\"answer\"].model_dump_json())\n    response = response_instance[\"response\"]\n    # Build the example code snippets",
         "detail": "src.llm_module_generator.retriever.math_js_retriever",
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
         "label": "chain",
         "kind": 5,
-<<<<<<< Updated upstream
-        "importPath": "src.llm_module_generator.retriever.pl_retriever",
-        "description": "src.llm_module_generator.retriever.pl_retriever",
-        "peekOfCode": "chain = RunnablePassthrough.assign(context=retrieve_docs).assign(\n    answer=rag_chain_from_docs\n)\n## Wrap it all in a funciton \nasync def pl_code_snippet_chain(question:str)->str:\n    code_search = await chain.ainvoke({\"input\": human_prompt.format(question=question)})\n    response_instance = json.loads(code_search[\"answer\"].model_dump_json())\n    response = response_instance[\"response\"]\n    # Build the example code snippets\n    example_code_snippets = \"\\nThe following are useful code snippets\\n\"",
-        "detail": "src.llm_module_generator.retriever.pl_retriever",
-=======
         "importPath": "src.llm_module_generator.retriever.math_js_retriever",
         "description": "src.llm_module_generator.retriever.math_js_retriever",
         "peekOfCode": "chain = RunnablePassthrough.assign(context=retrieve_docs).assign(\n    answer=rag_chain_from_docs\n)\n## Wrap it all in a funciton \nasync def mathjs_code_snippet_chain(question:str)->str:\n    code_search = await chain.ainvoke({\"input\": human_prompt.format(question=question)})\n    response_instance = json.loads(code_search[\"answer\"].model_dump_json())\n    response = response_instance[\"response\"]\n    # Build the example code snippets\n    example_code_snippets = \"\\nThe following are useful code snippets\\n\"",
         "detail": "src.llm_module_generator.retriever.math_js_retriever",
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
         "label": "is_href_invalid",
         "kind": 2,
-<<<<<<< Updated upstream
-        "importPath": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "description": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "peekOfCode": "def is_github_link(href:str):\n  return href.startswith(\"https://github.com/\")\nall_links = set()\noriginal_link = \"https://prairielearn.readthedocs.io/en/latest/elements/\"\nhtml = requests.get(original_link)\nsoup = bs4.BeautifulSoup(html.text, 'html.parser')\n# Define the valid elements that we can render\nVALID_ELEMENTS: list[str] = [\n    \"pl-question-panel\", \"pl-number-input\", \"pl-checkbox\", \"pl-figure\",\n    \"pl-integer-input\", \"pl-matching\", \"pl-matrix-component-input\",",
-        "detail": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-=======
         "importPath": "src.llm_module_generator.retriever.math_js_vectorstore",
         "description": "src.llm_module_generator.retriever.math_js_vectorstore",
         "peekOfCode": "def is_href_invalid(href: str) -> bool:\n    \"\"\"\n    Checks if the href is an invalid link based on specific conditions.\n    Args:\n        href (str): The link to check.\n    Returns:\n        bool: True if the link is invalid, otherwise False.\n    \"\"\"\n    if (href.startswith(\"https://en.wikipedia.org\") or\n        href.startswith(\"https://github.com\") or",
@@ -7069,116 +6638,38 @@
         "description": "src.llm_module_generator.retriever.pl_retriever",
         "peekOfCode": "def format_docs(docs):\n    return \"\\n\\n\".join(doc.page_content for doc in docs)\n## Define the RAG Chain\nrag_chain_from_docs = (\n    {\n        \"input\": lambda x: x[\"input\"],\n        \"context\": lambda x: format_docs(x[\"context\"]),\n    }\n    | prompt\n    | llm.with_structured_output(Response)",
         "detail": "src.llm_module_generator.retriever.pl_retriever",
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
         "label": "logger",
         "kind": 5,
-<<<<<<< Updated upstream
-        "importPath": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "description": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "peekOfCode": "all_links = set()\noriginal_link = \"https://prairielearn.readthedocs.io/en/latest/elements/\"\nhtml = requests.get(original_link)\nsoup = bs4.BeautifulSoup(html.text, 'html.parser')\n# Define the valid elements that we can render\nVALID_ELEMENTS: list[str] = [\n    \"pl-question-panel\", \"pl-number-input\", \"pl-checkbox\", \"pl-figure\",\n    \"pl-integer-input\", \"pl-matching\", \"pl-matrix-component-input\",\n    \"pl-matrix-input\", \"pl-multiple-choice\", \"pl-order-blocks\",\n    \"pl-symbolic-input\", \"pl-units-input\",\"pl-matrix-latex\",\"pl-card\",\"pl-answer-panel\"",
-        "detail": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-=======
         "importPath": "src.llm_module_generator.retriever.pl_retriever",
         "description": "src.llm_module_generator.retriever.pl_retriever",
         "peekOfCode": "logger = get_logger(__name__)\n## Define the LLM and Load the Vector Store\nllm = ChatOpenAI(model=\"gpt-4o-mini\")\nembedding_function = OpenAIEmbeddings()\nvectorstore = Chroma(persist_directory=r\"src\\llm_module_generator\\physics_module_generator\\pl_chroma_db\", embedding_function=embedding_function)\ndocs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)",
         "detail": "src.llm_module_generator.retriever.pl_retriever",
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
         "label": "llm",
         "kind": 5,
-<<<<<<< Updated upstream
-        "importPath": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "description": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "peekOfCode": "original_link = \"https://prairielearn.readthedocs.io/en/latest/elements/\"\nhtml = requests.get(original_link)\nsoup = bs4.BeautifulSoup(html.text, 'html.parser')\n# Define the valid elements that we can render\nVALID_ELEMENTS: list[str] = [\n    \"pl-question-panel\", \"pl-number-input\", \"pl-checkbox\", \"pl-figure\",\n    \"pl-integer-input\", \"pl-matching\", \"pl-matrix-component-input\",\n    \"pl-matrix-input\", \"pl-multiple-choice\", \"pl-order-blocks\",\n    \"pl-symbolic-input\", \"pl-units-input\",\"pl-matrix-latex\",\"pl-card\",\"pl-answer-panel\"\n]",
-        "detail": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-=======
         "importPath": "src.llm_module_generator.retriever.pl_retriever",
         "description": "src.llm_module_generator.retriever.pl_retriever",
         "peekOfCode": "llm = ChatOpenAI(model=\"gpt-4o-mini\")\nembedding_function = OpenAIEmbeddings()\nvectorstore = Chroma(persist_directory=r\"src\\llm_module_generator\\physics_module_generator\\pl_chroma_db\", embedding_function=embedding_function)\ndocs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain",
         "detail": "src.llm_module_generator.retriever.pl_retriever",
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
         "label": "embedding_function",
         "kind": 5,
-<<<<<<< Updated upstream
-        "importPath": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "description": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "peekOfCode": "html = requests.get(original_link)\nsoup = bs4.BeautifulSoup(html.text, 'html.parser')\n# Define the valid elements that we can render\nVALID_ELEMENTS: list[str] = [\n    \"pl-question-panel\", \"pl-number-input\", \"pl-checkbox\", \"pl-figure\",\n    \"pl-integer-input\", \"pl-matching\", \"pl-matrix-component-input\",\n    \"pl-matrix-input\", \"pl-multiple-choice\", \"pl-order-blocks\",\n    \"pl-symbolic-input\", \"pl-units-input\",\"pl-matrix-latex\",\"pl-card\",\"pl-answer-panel\"\n]\n# Modify the string so that it matches the id of the header",
-        "detail": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "documentation": {}
-    },
-    {
-        "label": "soup",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "description": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "peekOfCode": "soup = bs4.BeautifulSoup(html.text, 'html.parser')\n# Define the valid elements that we can render\nVALID_ELEMENTS: list[str] = [\n    \"pl-question-panel\", \"pl-number-input\", \"pl-checkbox\", \"pl-figure\",\n    \"pl-integer-input\", \"pl-matching\", \"pl-matrix-component-input\",\n    \"pl-matrix-input\", \"pl-multiple-choice\", \"pl-order-blocks\",\n    \"pl-symbolic-input\", \"pl-units-input\",\"pl-matrix-latex\",\"pl-card\",\"pl-answer-panel\"\n]\n# Modify the string so that it matches the id of the header\nVALID_ELEMENTS_EX = [(v + \"-element\") for v in VALID_ELEMENTS]",
-        "detail": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "documentation": {}
-    },
-    {
-        "label": "VALID_ELEMENTS_EX",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "description": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "peekOfCode": "VALID_ELEMENTS_EX = [(v + \"-element\") for v in VALID_ELEMENTS]\ncontent =[]\nh3_tags = soup.find_all(\"h3\")\nfor h3 in h3_tags:\n  if h3.get(\"id\") in VALID_ELEMENTS_EX:\n    element_info =[]\n    element_info.append(h3)\n    current_tag = h3.find_next_sibling()\n    while current_tag and current_tag != h3.find_next(\"h3\"):\n      element_info.append(current_tag)",
-        "detail": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "documentation": {}
-    },
-    {
-        "label": "h3_tags",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "description": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "peekOfCode": "h3_tags = soup.find_all(\"h3\")\nfor h3 in h3_tags:\n  if h3.get(\"id\") in VALID_ELEMENTS_EX:\n    element_info =[]\n    element_info.append(h3)\n    current_tag = h3.find_next_sibling()\n    while current_tag and current_tag != h3.find_next(\"h3\"):\n      element_info.append(current_tag)\n      extracted_links = current_tag.find_all(\"a\")\n      for link in extracted_links:",
-        "detail": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "documentation": {}
-    },
-    {
-        "label": "headers_to_split_on",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "description": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "peekOfCode": "headers_to_split_on = [\n    (\"h3\", \"Header 3\"),\n]\nhtml_splitter = HTMLSectionSplitter(\n    headers_to_split_on\n)\nall_docs = []\nall_docs.extend(html_splitter.split_text(html_text))\nvectorstore = Chroma.from_documents(all_docs, OpenAIEmbeddings(), persist_directory=\"./pl_chroma_db\")",
-        "detail": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "documentation": {}
-    },
-    {
-        "label": "html_splitter",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "description": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "peekOfCode": "html_splitter = HTMLSectionSplitter(\n    headers_to_split_on\n)\nall_docs = []\nall_docs.extend(html_splitter.split_text(html_text))\nvectorstore = Chroma.from_documents(all_docs, OpenAIEmbeddings(), persist_directory=\"./pl_chroma_db\")",
-        "detail": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "documentation": {}
-    },
-    {
-        "label": "all_docs",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "description": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-        "peekOfCode": "all_docs = []\nall_docs.extend(html_splitter.split_text(html_text))\nvectorstore = Chroma.from_documents(all_docs, OpenAIEmbeddings(), persist_directory=\"./pl_chroma_db\")",
-        "detail": "src.llm_module_generator.retriever.prairielearn_vectorstore",
-=======
         "importPath": "src.llm_module_generator.retriever.pl_retriever",
         "description": "src.llm_module_generator.retriever.pl_retriever",
         "peekOfCode": "embedding_function = OpenAIEmbeddings()\nvectorstore = Chroma(persist_directory=r\"src\\llm_module_generator\\physics_module_generator\\pl_chroma_db\", embedding_function=embedding_function)\ndocs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (",
         "detail": "src.llm_module_generator.retriever.pl_retriever",
->>>>>>> Stashed changes
         "documentation": {}
     },
     {
         "label": "vectorstore",
         "kind": 5,
-<<<<<<< Updated upstream
-=======
         "importPath": "src.llm_module_generator.retriever.pl_retriever",
         "description": "src.llm_module_generator.retriever.pl_retriever",
         "peekOfCode": "vectorstore = Chroma(persist_directory=r\"src\\llm_module_generator\\physics_module_generator\\pl_chroma_db\", embedding_function=embedding_function)\ndocs = vectorstore.similarity_search(\"Matrices\")\nretriever = vectorstore.as_retriever()\nretriever_from_llm = MultiQueryRetriever.from_llm(\n    retriever=vectorstore.as_retriever(), llm=llm\n)\n## Define the system prompt \n## This will be given to the RAG Chain\nsystem_prompt = (\n    \"You are an assistant for question-answering tasks. \"",
@@ -7359,7 +6850,6 @@
     {
         "label": "vectorstore",
         "kind": 5,
->>>>>>> Stashed changes
         "importPath": "src.llm_module_generator.retriever.prairielearn_vectorstore",
         "description": "src.llm_module_generator.retriever.prairielearn_vectorstore",
         "peekOfCode": "vectorstore = Chroma.from_documents(all_docs, OpenAIEmbeddings(), persist_directory=\"./pl_chroma_db\")",
@@ -7380,7 +6870,7 @@
         "kind": 2,
         "importPath": "src.llm_module_generator.ui_generator_ai.parser",
         "description": "src.llm_module_generator.ui_generator_ai.parser",
-        "peekOfCode": "def derivations_parser(response: dict) -> list[str]:\n    derivations = response.get(\"derivations\", [])\n    print(\"Derivations here \")\n    all_derivations = []\n    for derivation in derivations:\n        # Extract derivation name\n        derivation_name = f\"Derivation Name: {derivation.get('derivation_name', 'Unknown')}\"\n        # Extract derivation steps\n        derivation_steps = \"\".join(\n            f\"\\n - Explanation: {step.get('explanation', 'No explanation provided')}\"",
+        "peekOfCode": "def derivations_parser(response: dict) -> list[str]:\n    derivations = response.get(\"derivations\", [])\n    print(\"Derivations here \")\n    print(\"Derivations here \")\n    all_derivations = []\n    for derivation in derivations:\n        # Extract derivation name\n        derivation_name = f\"Derivation Name: {derivation.get('derivation_name', 'Unknown')}\"\n        # Extract derivation steps, ensuring LaTeX backslashes are properly escaped\n        derivation_steps = \"\\n\".join(",
         "detail": "src.llm_module_generator.ui_generator_ai.parser",
         "documentation": {}
     },
@@ -7389,7 +6879,7 @@
         "kind": 2,
         "importPath": "src.llm_module_generator.ui_generator_ai.parser",
         "description": "src.llm_module_generator.ui_generator_ai.parser",
-        "peekOfCode": "def lecture_summary_parser(response: dict) -> list[str]:\n    analysis = response.get(\"analysis\",\"\")\n    summary = analysis.get('summary', \"No summary provided.\")\n    key_concepts_list = analysis.get('key_concepts', [])\n    foundational_concepts_list = analysis.get('foundational_concepts', [])\n    # Parsing key concepts\n    key_concepts = \"\\n\".join([\n        f\"- {concept}\\n\"\n        for concept in key_concepts_list\n    ]) or \"No key concepts provided.\"",
+        "peekOfCode": "def lecture_summary_parser(response: dict) -> list[str]:\n    analysis = response.get(\"analysis\", {})\n    if analysis:\n        summary = analysis.get('summary', \"No summary provided.\")\n        key_concepts_list = analysis.get('key_concepts', [])\n        foundational_concepts_list = analysis.get('foundational_concepts', [])\n    else:\n        summary = response.get('summary', \"No summary provided.\")\n        key_concepts_list = response.get('key_concepts', [])\n        foundational_concepts_list = response.get('foundational_concepts', [])",
         "detail": "src.llm_module_generator.ui_generator_ai.parser",
         "documentation": {}
     },
@@ -7461,7 +6951,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.ui_generator_ai.ui_generators",
         "description": "src.llm_module_generator.ui_generator_ai.ui_generators",
-        "peekOfCode": "llm_config = LLMConfig(\n    api_key=api_key, \n    model=\"gpt-4o-2024-08-06\", \n    temperature=0\n)\n# Define the image paths\nimage_paths = [\n    r\"C:\\Users\\lberm\\OneDrive\\Desktop\\GitHub_Repository\\mechedu1.0\\mechedu1\\test_images\\textbook_section\\Screenshot 2024-08-21 191624.png\"\n]\n# Initialize all the generators",
+        "peekOfCode": "llm_config = LLMConfig(\n    api_key=api_key, \n    model=\"gpt-4o-mini\", \n    temperature=0\n)\n# Define the image paths\nimage_paths = [\n    r\"C:\\Users\\lberm\\OneDrive\\Desktop\\GitHub_Repository\\mechedu1.0\\mechedu1\\test_images\\textbook_section\\Screenshot 2024-08-21 191624.png\"\n]\n# Initialize all the generators",
         "detail": "src.llm_module_generator.ui_generator_ai.ui_generators",
         "documentation": {}
     },
@@ -7497,35 +6987,8 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.ui_generator_ai.ui_generators",
         "description": "src.llm_module_generator.ui_generator_ai.ui_generators",
-        "peekOfCode": "summary_ui_generator = MultiUIContentGenerator(\n    llm_config=llm_config,\n    css_category=\"summary_and_key_concepts\",\n    base_prompt=summary_ui_prompt,\n    extractor=extract_summary,\n    parser=lecture_summary_parser\n)\nasync def main():\n    # Run all the generators concurrently using asyncio.gather\n    derivation_html, conceptual_html, lecture_ui = await asyncio.gather(",
+        "peekOfCode": "summary_ui_generator = MultiUIContentGenerator(\n    llm_config=llm_config,\n    css_category=\"summary_and_key_concepts\",\n    base_prompt=summary_ui_prompt,\n    extractor=extract_summary,\n    parser=lecture_summary_parser\n)\nasync def main():\n    # Run all the generators concurrently using asyncio.gather\n    # derivation_html, conceptual_html, lecture_ui = await asyncio.gather(",
         "detail": "src.llm_module_generator.ui_generator_ai.ui_generators",
-        "documentation": {}
-    },
-    {
-        "label": "conceptual_question_ui_prompt",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.ui_generator_ai.ui_prompts",
-        "description": "src.llm_module_generator.ui_generator_ai.ui_prompts",
-        "peekOfCode": "conceptual_question_ui_prompt = \"\"\"\n    You are a web developer tasked with creating an engaging and informative HTML webpage based on the following extracted lecture notes. The webpage should be well-structured, visually appealing, and easy to navigate.\n    You are only focused on working on the following sections. When you need to format any mathematical symbols or equations, use LaTeX enclosed within appropriate delimiters to ensure proper rendering.\n    **Instructions:**\n    1. **Conceptual Questions**: Create a section dedicated to multiple-choice conceptual questions based on the lecture material. Each question should be clearly presented, with four possible answer choices labeled (A), (B), (C), and (D). Indicate the correct answer for each question.\n    - Ensure that all questions and answer choices are formatted using appropriate HTML tags to enhance readability.\n    - If any mathematical notation is required within the questions or answer choices, use LaTeX to format it properly.\n    \"\"\"\nderivation_ui_prompt = \"\"\"\n    You are a web developer tasked with creating an engaging, well-structured, and informative HTML webpage based on the following extracted lecture notes. The webpage should prioritize clarity, ease of navigation, and visual appeal, with a focus on presenting mathematical derivations.",
-        "detail": "src.llm_module_generator.ui_generator_ai.ui_prompts",
-        "documentation": {}
-    },
-    {
-        "label": "derivation_ui_prompt",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.ui_generator_ai.ui_prompts",
-        "description": "src.llm_module_generator.ui_generator_ai.ui_prompts",
-        "peekOfCode": "derivation_ui_prompt = \"\"\"\n    You are a web developer tasked with creating an engaging, well-structured, and informative HTML webpage based on the following extracted lecture notes. The webpage should prioritize clarity, ease of navigation, and visual appeal, with a focus on presenting mathematical derivations.\n    **Goal:**\n    The purpose of the webpage is to clearly showcase mathematical derivations and logical arguments from the lecture in a way that is easy to read, well-organized, and aesthetically pleasing. Pay particular attention to the presentation of the derivation steps and ensure that all mathematical symbols or equations are properly formatted using LaTeX.\n    **Instructions:**\n    1. **Derivations**:\n       - Present each mathematical derivation or logical argument in full, broken down into clear and understandable steps. For each derivation:\n         - **Use Ordered Lists or Numbered Headings** to display the step-by-step process, ensuring that each step is easy to follow.\n         - Ensure the **explanation** of each step is concise, using HTML `<p>` tags for descriptions.\n         - For mathematical expressions, use **LaTeX** enclosed within `$$` or `\\\\(\\\\)` delimiters to ensure proper rendering.",
-        "detail": "src.llm_module_generator.ui_generator_ai.ui_prompts",
-        "documentation": {}
-    },
-    {
-        "label": "summary_ui_prompt",
-        "kind": 5,
-        "importPath": "src.llm_module_generator.ui_generator_ai.ui_prompts",
-        "description": "src.llm_module_generator.ui_generator_ai.ui_prompts",
-        "peekOfCode": "summary_ui_prompt = f\"\"\"\n    You are a web developer tasked with creating an engaging and informative HTML webpage based on the following extracted lecture notes. The webpage should be well-structured, visually appealing, and easy to navigate.\n    You are only focused on working on the following sections. When you need to format any mathematical symbols or equations, use LaTeX enclosed within appropriate delimiters to ensure proper rendering.\n    \"\"\"",
-        "detail": "src.llm_module_generator.ui_generator_ai.ui_prompts",
         "documentation": {}
     },
     {
@@ -7569,7 +7032,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.ui_generator_ai.ui_response",
         "description": "src.llm_module_generator.ui_generator_ai.ui_response",
-        "peekOfCode": "logger = get_logger(__name__)\nbase_dir = os.path.dirname(os.path.abspath(__file__))\ncss_styles_file = os.path.join(base_dir, 'valid_css_styles_generator.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"\n        ol = \"ol\"",
+        "peekOfCode": "logger = get_logger(__name__)\nbase_dir = os.path.dirname(os.path.abspath(__file__))\ncss_styles_file = os.path.join(base_dir, 'valid_css_styles_new.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nprint(css_styles)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"",
         "detail": "src.llm_module_generator.ui_generator_ai.ui_response",
         "documentation": {}
     },
@@ -7578,7 +7041,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.ui_generator_ai.ui_response",
         "description": "src.llm_module_generator.ui_generator_ai.ui_response",
-        "peekOfCode": "base_dir = os.path.dirname(os.path.abspath(__file__))\ncss_styles_file = os.path.join(base_dir, 'valid_css_styles_generator.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"\n        ol = \"ol\"\n        li = \"li\"",
+        "peekOfCode": "base_dir = os.path.dirname(os.path.abspath(__file__))\ncss_styles_file = os.path.join(base_dir, 'valid_css_styles_new.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nprint(css_styles)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"\n        ol = \"ol\"",
         "detail": "src.llm_module_generator.ui_generator_ai.ui_response",
         "documentation": {}
     },
@@ -7587,7 +7050,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.ui_generator_ai.ui_response",
         "description": "src.llm_module_generator.ui_generator_ai.ui_response",
-        "peekOfCode": "css_styles_file = os.path.join(base_dir, 'valid_css_styles_generator.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"\n        ol = \"ol\"\n        li = \"li\"\n        h1 = \"h1\"",
+        "peekOfCode": "css_styles_file = os.path.join(base_dir, 'valid_css_styles_new.json')\nwith open(css_styles_file,\"r\") as file:\n    css_styles = json.load(file)\nprint(css_styles)\nclass UIType(str,Enum):\n        div = \"div\"\n        p = \"p\"\n        ul = \"ul\"\n        ol = \"ol\"\n        li = \"li\"",
         "detail": "src.llm_module_generator.ui_generator_ai.ui_response",
         "documentation": {}
     },
@@ -7632,7 +7095,25 @@
         "kind": 6,
         "importPath": "src.llm_module_generator.utils",
         "description": "src.llm_module_generator.utils",
-        "peekOfCode": "class ModuleSpecification(BaseModel):\n    \"\"\"Specification for Module\"\"\"\n    question: str = Field(description=\"The question to be generated\")\n    question_html_instructions: Optional[Union[bool, str]] = Field(description=\"Any question html instructions such as styling or type these need to be explitly stated\")\n    server_instructions: Optional[Union[bool, str]] = Field(description=\"server requirements these should be explitly stated\")\n    metadata: Metadata\n# Set up the model and chain with structured output\nmodel = ChatOpenAI(model=\"gpt-4o-mini\")\nchain = prompt | model.with_structured_output(ModuleSpecification)\n# Main async function",
+        "peekOfCode": "class ModuleSpecification(BaseModel):\n    \"\"\"Specification for Module\"\"\"\n    question: str = Field(description=\"The question to be generated\")\n    question_html_instructions: Optional[Union[bool, str]] = Field(description=\"Any question html instructions such as styling or type these need to be explitly stated\")\n    server_instructions: Optional[Union[bool, str]] = Field(description=\"server requirements these should be explitly stated\")\n    metadata: Metadata\n# Set up the model and chain with structured output\nmodel = ChatOpenAI(model=\"gpt-4o-mini\")\nchain = prompt | model.with_structured_output(ModuleSpecification)\n# Define the MetaData model",
+        "detail": "src.llm_module_generator.utils",
+        "documentation": {}
+    },
+    {
+        "label": "ModuleMetaData",
+        "kind": 6,
+        "importPath": "src.llm_module_generator.utils",
+        "description": "src.llm_module_generator.utils",
+        "peekOfCode": "class ModuleMetaData(BaseModel):\n    title: str = Field(..., description=\"An appropriate title for the given question, returned using CamelCase format\")\n    stem: str = Field(..., description=\"Additional context or a subtopic related to the main topic\")\n    topic: str = Field(..., description=\"The main topic or subject of the educational content\")\n    tags: List[str] = Field(..., description=\"An array of keywords or tags associated with the content\")\n    prereqs: List[str] = Field(..., description=\"An array of prerequisites needed to access or understand the content\")\n    isAdaptive: bool = Field(..., description=\"Designates whether the content necessitates any form of numerical computation\")\n# Define the Response model\nclass Response(BaseModel):\n    question: str = Field(..., description=\"The original question that was classified\")",
+        "detail": "src.llm_module_generator.utils",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "kind": 6,
+        "importPath": "src.llm_module_generator.utils",
+        "description": "src.llm_module_generator.utils",
+        "peekOfCode": "class Response(BaseModel):\n    question: str = Field(..., description=\"The original question that was classified\")\n    metadata: ModuleMetaData\n# Pull the metadata prompt\nmetadata_prompt = hub.pull(\"gestalt_metadata\")\n# Set up the metadata chain\nmetadata_model = ChatOpenAI(model=\"gpt-4o-mini\")\nmetadata_chain = metadata_prompt | metadata_model.with_structured_output(Response)\n# Main async function\nasync def main():",
         "detail": "src.llm_module_generator.utils",
         "documentation": {}
     },
@@ -7650,7 +7131,7 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.utils",
         "description": "src.llm_module_generator.utils",
-        "peekOfCode": "model = ChatOpenAI(model=\"gpt-4o-mini\")\nchain = prompt | model.with_structured_output(ModuleSpecification)\n# Main async function\nasync def main():\n    # Invoke the main chain with the initial query\n    data = await chain.ainvoke({\"query\": \"I want to generate the following 'A car is traveling at a distance of 60 mph for 5 hours, what is the total distance traveled.' I want to ensure that there are a variety of units in the calculations including ft/s, mph and kmh for the speeds\"})\n    data = data.dict()\n    print(data)\n# Run the main async function\nif __name__ == \"__main__\":",
+        "peekOfCode": "model = ChatOpenAI(model=\"gpt-4o-mini\")\nchain = prompt | model.with_structured_output(ModuleSpecification)\n# Define the MetaData model\nclass ModuleMetaData(BaseModel):\n    title: str = Field(..., description=\"An appropriate title for the given question, returned using CamelCase format\")\n    stem: str = Field(..., description=\"Additional context or a subtopic related to the main topic\")\n    topic: str = Field(..., description=\"The main topic or subject of the educational content\")\n    tags: List[str] = Field(..., description=\"An array of keywords or tags associated with the content\")\n    prereqs: List[str] = Field(..., description=\"An array of prerequisites needed to access or understand the content\")\n    isAdaptive: bool = Field(..., description=\"Designates whether the content necessitates any form of numerical computation\")",
         "detail": "src.llm_module_generator.utils",
         "documentation": {}
     },
@@ -7659,7 +7140,34 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.utils",
         "description": "src.llm_module_generator.utils",
-        "peekOfCode": "chain = prompt | model.with_structured_output(ModuleSpecification)\n# Main async function\nasync def main():\n    # Invoke the main chain with the initial query\n    data = await chain.ainvoke({\"query\": \"I want to generate the following 'A car is traveling at a distance of 60 mph for 5 hours, what is the total distance traveled.' I want to ensure that there are a variety of units in the calculations including ft/s, mph and kmh for the speeds\"})\n    data = data.dict()\n    print(data)\n# Run the main async function\nif __name__ == \"__main__\":\n    asyncio.run(main())",
+        "peekOfCode": "chain = prompt | model.with_structured_output(ModuleSpecification)\n# Define the MetaData model\nclass ModuleMetaData(BaseModel):\n    title: str = Field(..., description=\"An appropriate title for the given question, returned using CamelCase format\")\n    stem: str = Field(..., description=\"Additional context or a subtopic related to the main topic\")\n    topic: str = Field(..., description=\"The main topic or subject of the educational content\")\n    tags: List[str] = Field(..., description=\"An array of keywords or tags associated with the content\")\n    prereqs: List[str] = Field(..., description=\"An array of prerequisites needed to access or understand the content\")\n    isAdaptive: bool = Field(..., description=\"Designates whether the content necessitates any form of numerical computation\")\n# Define the Response model",
+        "detail": "src.llm_module_generator.utils",
+        "documentation": {}
+    },
+    {
+        "label": "metadata_prompt",
+        "kind": 5,
+        "importPath": "src.llm_module_generator.utils",
+        "description": "src.llm_module_generator.utils",
+        "peekOfCode": "metadata_prompt = hub.pull(\"gestalt_metadata\")\n# Set up the metadata chain\nmetadata_model = ChatOpenAI(model=\"gpt-4o-mini\")\nmetadata_chain = metadata_prompt | metadata_model.with_structured_output(Response)\n# Main async function\nasync def main():\n    # Invoke the main chain with the initial query\n    data = await chain.ainvoke({\"query\": \"I want to generate the following 'A car is traveling at a distance of 60 mph for 5 hours, what is the total distance traveled.' I want to ensure that there are a variety of units in the calculations including ft/s, mph and kmh for the speeds\"})\n    data = data.dict()\n    question = data.get(\"question\")",
+        "detail": "src.llm_module_generator.utils",
+        "documentation": {}
+    },
+    {
+        "label": "metadata_model",
+        "kind": 5,
+        "importPath": "src.llm_module_generator.utils",
+        "description": "src.llm_module_generator.utils",
+        "peekOfCode": "metadata_model = ChatOpenAI(model=\"gpt-4o-mini\")\nmetadata_chain = metadata_prompt | metadata_model.with_structured_output(Response)\n# Main async function\nasync def main():\n    # Invoke the main chain with the initial query\n    data = await chain.ainvoke({\"query\": \"I want to generate the following 'A car is traveling at a distance of 60 mph for 5 hours, what is the total distance traveled.' I want to ensure that there are a variety of units in the calculations including ft/s, mph and kmh for the speeds\"})\n    data = data.dict()\n    question = data.get(\"question\")\n    metadata_chain.invoke({\"question\":question})\n# Run the main async function",
+        "detail": "src.llm_module_generator.utils",
+        "documentation": {}
+    },
+    {
+        "label": "metadata_chain",
+        "kind": 5,
+        "importPath": "src.llm_module_generator.utils",
+        "description": "src.llm_module_generator.utils",
+        "peekOfCode": "metadata_chain = metadata_prompt | metadata_model.with_structured_output(Response)\n# Main async function\nasync def main():\n    # Invoke the main chain with the initial query\n    data = await chain.ainvoke({\"query\": \"I want to generate the following 'A car is traveling at a distance of 60 mph for 5 hours, what is the total distance traveled.' I want to ensure that there are a variety of units in the calculations including ft/s, mph and kmh for the speeds\"})\n    data = data.dict()\n    question = data.get(\"question\")\n    metadata_chain.invoke({\"question\":question})\n# Run the main async function\nif __name__ == \"__main__\":",
         "detail": "src.llm_module_generator.utils",
         "documentation": {}
     },

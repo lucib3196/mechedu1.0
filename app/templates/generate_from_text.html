@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <form method="POST" action="{{ url_for('text_generator_bp.generate_text') }}">
+    <form method="POST" id="form" action="{{ url_for('text_generator_bp.generate_text') }}">
         <div class="form-group">
             {{ form.hidden_tag() }}
 
@@ -54,6 +54,25 @@
         </div>
     </form>
 </div>
+<div id="loadingSpinner" class="d-none text-center">
+    <div class="spinner-border" role="status">
+        <span class="sr-only">...Processing</span>
+    </div>
+    <p>Please wait while we process your request...</p>
+</div>
+<script>
+    document.getElementById("form").addEventListener("submit", function() {
+        // Show the loading spinner
+        document.getElementById("loadingSpinner").classList.remove("d-none");
+        
+        // Disable the submit button to prevent multiple submissions
+        const submitButton = document.getElementById('submitButton');
+        submitButton.disabled = true;
+        
+        // Optionally change the button text to indicate processing
+        submitButton.innerHTML = 'Processing...';
+    });
+</script>
 
 
 {% endblock %}

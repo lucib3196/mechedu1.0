@@ -17,7 +17,7 @@ from .utils import retrieve_files_folder
 from src.process_prairielearn.process_prairielearn import format_question_html
 from src.prairielearn.python import prairielearn as pl
 from src.logging_config.logging_config import get_logger
-
+from flask_wtf.csrf import generate_csrf
 # Blueprint Definition
 adaptive_quiz_bp = Blueprint('adaptive_quiz_bp', __name__)
 
@@ -26,6 +26,7 @@ logger = get_logger(__name__)
 
 @adaptive_quiz_bp.route("/quiz_overview/_adaptive", methods=['GET', 'POST'])
 def render_adaptive_quiz():
+    csrf_token = generate_csrf()
     try:
         # Retrieve folder information from session
         folder_id = session.get("folder_id")
@@ -60,7 +61,7 @@ def render_adaptive_quiz():
 
             # Load question and solution HTML
             question_html = read_file(os.path.join(tmpdir, "question.html"))
-            solution_html = read_file(os.path.join(tmpdir, "solution.html"))
+            # solution_html = read_file(os.path.join(tmpdir, "solution.html"))
 
             # Populate the question data
             data: pl.QuestionData = {
@@ -85,7 +86,7 @@ def render_adaptive_quiz():
 
             # Format and log the question HTML
             formatted_question_html = format_question_html(question_html, data=data)
-            logger.debug(f"Formatted Question HTML: {formatted_question_html}")
+            logger.info(f"Formatted Question HTML: {formatted_question_html}")
 
             # Store formatted question HTML in session
             session["question_html"] = question_html
@@ -94,11 +95,14 @@ def render_adaptive_quiz():
             return render_template(
                 "question_base.html",
                 quiz_name=folder_name,
-                question_html=formatted_question_html
-            )
+                question_html=formatted_question_html,csrf_token=csrf_token)
 
     except Exception as e:
-        logger.error(f"Error in rendering adaptive quiz: {str(e)}")
+        logger.error(f"Error in rendering adaptive quiz: {e}")
+        # if 'str' in str(e):
+        #     raise TypeError(f"Error in rendering adaptive quiz:  is a string and cannot be called as a function. "
+        #                     "Please check if you're overwriting a function with a string or using the wrong variable type. "
+        #                     f"Occurred at line 101 in adaptive_questions.py")
         return "An error occurred while rendering the quiz", 500
     
 

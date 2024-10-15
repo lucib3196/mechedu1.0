@@ -25,7 +25,7 @@
     </div>
 
     <!-- Form Section -->
-    <form method="POST" action="{{ url_for('image_generator_bp.generate_image') }}" class="p-4" enctype="multipart/form-data">
+    <form method="POST" id="form" action="{{ url_for('image_generator_bp.generate_image') }}" class="p-4" enctype="multipart/form-data">
         <div class="form-group mt-4 mb-4">
             <label for="module_name">Module Name</label>
             {{ form.module_name(class="form-control", placeholder="Enter Module Name") }}
@@ -41,4 +41,23 @@
        
     </form>
 </div>
+<div id="loadingSpinner" class="d-none text-center">
+    <div class="spinner-border" role="status">
+        <span class="sr-only">...Processing</span>
+    </div>
+    <p>Please wait while we process your request...</p>
+</div>
+<script>
+    document.getElementById("form").addEventListener("submit", function() {
+        // Show the loading spinner
+        document.getElementById("loadingSpinner").classList.remove("d-none");
+        
+        // Disable the submit button to prevent multiple submissions
+        const submitButton = document.getElementById('submitButton');
+        submitButton.disabled = true;
+        
+        // Optionally change the button text to indicate processing
+        submitButton.innerHTML = 'Processing...';
+    });
+</script>
 {% endblock %}
