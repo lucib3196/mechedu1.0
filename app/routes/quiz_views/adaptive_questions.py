@@ -14,7 +14,7 @@ from src.run_quizzes.run_module import generateAdaptive, run_generate_py, run_ge
 from src.utils.plutilities import process_prairielearn_html
 from ...db_models.models import Folder
 from .utils import retrieve_files_folder
-from src.process_prairielearn.process_prairielearn import format_question_html
+from src.process_prairielearn.process_prairielearn import format_question_html,format_solution_html
 from src.prairielearn.python import prairielearn as pl
 from src.logging_config.logging_config import get_logger
 from flask_wtf.csrf import generate_csrf
@@ -61,7 +61,7 @@ def render_adaptive_quiz():
 
             # Load question and solution HTML
             question_html = read_file(os.path.join(tmpdir, "question.html"))
-            # solution_html = read_file(os.path.join(tmpdir, "solution.html"))
+            solution_html = read_file(os.path.join(tmpdir, "solution_flask.html"))
 
             # Populate the question data
             data: pl.QuestionData = {
@@ -87,6 +87,10 @@ def render_adaptive_quiz():
             # Format and log the question HTML
             formatted_question_html = format_question_html(question_html, data=data)
             logger.info(f"Formatted Question HTML: {formatted_question_html}")
+            
+            print(solution_html)
+            solution_html =  format_solution_html(html_content = solution_html,data=data)
+            logger.info(f"Formatted Question HTML: {solution_html}")
 
             # Store formatted question HTML in session
             session["question_html"] = question_html
@@ -95,7 +99,7 @@ def render_adaptive_quiz():
             return render_template(
                 "question_base.html",
                 quiz_name=folder_name,
-                question_html=formatted_question_html,csrf_token=csrf_token)
+                question_html=formatted_question_html,csrf_token=csrf_token,solution_html =solution_html)
 
     except Exception as e:
         logger.error(f"Error in rendering adaptive quiz: {e}")

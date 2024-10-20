@@ -1,6 +1,6 @@
 import asyncio
 from typing import Optional,Dict ,Any
-from . import question_html_generator, question_solution_generator,server_js_generator,server_py_generator
+from . import question_html_generator, question_solution_generator,server_js_generator,server_py_generator,question_solution_generator_flask
 from . import get_logger
 logger = get_logger(__name__)
 
@@ -33,16 +33,19 @@ async def generate_server_and_solution(
     solution = instructions.get("solution_guide","")
     try: 
         logger.info("Generating server JS, server PY, and solution HTML concurrently.")
+        logger.info(f"Solution Guide Provided for Code Generation {solution}")
         server_js_task = server_js_generator.acall_generate_code(question_html,server_instructions,solution)
         server_py_task = server_py_generator.acall_generate_code(question_html,server_instructions,solution)
         solution_html_task = question_solution_generator.acall_generate_code(query=question_html,solution_guide=solution)
-        server_js, server_py, solution_html = await asyncio.gather(
+        solution_html_flask_task = question_solution_generator_flask.acall_generate_code(question_html,solution_guide=solution)
+        server_js, server_py, solution_html,solution_html_flask = await asyncio.gather(
             server_js_task,
             server_py_task,
             solution_html_task,
+            solution_html_flask_task
         )
         logger.info("Successfully generated server JS, server PY, and solution HTML.")
-        return server_js, server_py, solution_html
+        return server_js, server_py, solution_html,solution_html_flask
     except Exception as e:
         logger.error(f"Error during server and solution generation: {e}", exc_info=True)
         raise
@@ -52,7 +55,7 @@ async def generate_adaptive_module(question: str,
     instructions:Dict = {}):
     try:
         question_html = await generate_question_html(question,instructions)
-        server_js, server_py, solution_html = await generate_server_and_solution(
+        server_js, server_py, solution_html,solution_flask = await generate_server_and_solution(
             question_html, instructions=instructions
         )
         generated_content = {
@@ -61,6 +64,7 @@ async def generate_adaptive_module(question: str,
             "server.js": server_js,
             "info.json": metadata_dict if metadata_dict else {},
             "solution.html": solution_html,
+            "solution_flask.html":solution_flask
         }
         logger.debug(f"Generated Content: {generated_content}")
         return generated_content

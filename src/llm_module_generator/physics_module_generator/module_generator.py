@@ -63,13 +63,14 @@ class ModuleCodeGenerator:
             prompt += f"""SOLUTION GUIDE: The user provided a solution guide Analyze 
             the following solution guide and ensure that all logic provided is correctly 
             implemented in any generated code. When generating code, use the solution steps and 
-            calculations as the foundation for the computation, adhering strictly to the logic provided in the guide. """
+            calculations as the foundation for the computation, adhering strictly to the logic provided in the guide.
+            {solution_guide} """
         if additional_instructions:
             prompt += f"\nADDITIONAL INSTRUCTIONS: {additional_instructions}\n"
         return prompt
 
     async def acall_generate_code(self, query: str, additional_instructions: Optional[str] = None,solution_guide:Optional[str]=None):
-        prompt = self.generate_prompt(query, additional_instructions)
+        prompt = self.generate_prompt(query, additional_instructions,solution_guide=solution_guide)
         response = await self.llm.with_structured_output(self.response).ainvoke([prompt])
         response = response.dict()
         return response.get("generated_code","")
@@ -102,6 +103,14 @@ question_solution_generator = ModuleCodeGenerator(
     model="gpt-4o-mini",
     response=Response,
     num_examples = 1
+)
+question_solution_generator_flask = ModuleCodeGenerator(
+    base_prompt=hub.pull("solution_html_flask"),
+    example_input_column="question.html",
+    example_output_column="solution.html",
+    model="gpt-4o-mini",
+    response=Response,
+    num_examples = 0
 )
 server_js_generator = ModuleCodeGenerator(
     base_prompt=hub.pull("server_js_template_base"),

@@ -49,6 +49,7 @@ async def generate_module_from_question(
         "server_instructions": analysis.get("server_instructions"),
         "solution_guide": solution_guide if not None else None
     }
+    logger.info(f"Here are the instructions {instructions}")
 
     # Generate metadata and get title
     metadata = await generate_module_metadata(question, user_data)

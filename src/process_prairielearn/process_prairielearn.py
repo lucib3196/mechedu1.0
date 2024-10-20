@@ -6,6 +6,7 @@ import os
 import re
 from jinja2 import Template
 import sympy
+from jinja2 import Template, Environment
 # Define valid elements
 VALID_ELEMENTS: list[str] = [
     "pl-question-panel", "pl-number-input", "pl-checkbox", "pl-figure", 
@@ -13,6 +14,10 @@ VALID_ELEMENTS: list[str] = [
     "pl-matrix-input", "pl-multiple-choice", "pl-order-blocks", 
     "pl-symbolic-input", "pl-units-input","pl-matrix-latex","pl-card","pl-answer-panel"
 ]
+import re
+
+import re
+
 def escape_jinja_in_latex(template: str) -> str:
     """
     Escapes Jinja2 curly braces within LaTeX math mode in an HTML template.
@@ -23,20 +28,24 @@ def escape_jinja_in_latex(template: str) -> str:
     Returns:
         str: The modified template with Jinja2 expressions properly escaped within LaTeX math mode.
     """
-    # Regex to find Jinja2 expressions within LaTeX math mode (\(...\) or \[...\])
-    pattern = r'\\\((.*?)\\\)|\\\[(.*?)\\\]'
-    
+    # Regex pattern to find LaTeX math mode in both inline (\(...\)) and display mode (\[...\])
+    pattern = r'(\\\((.*?)\\\))|(\\\[(.*?)\\\])'
+
     def escape_curly_braces(match):
-        # This function will escape {{ and }} inside LaTeX math mode
-        content = match.group(0)
-        content = re.sub(r'{{', r'{{{{', content)
-        content = re.sub(r'}}', r'}}}}', content)
+        # This function will escape {{ and }} only inside LaTeX math mode
+        content = match.group(0)  # The entire LaTeX expression (inline or display)
+        # Escape opening and closing Jinja curly braces inside LaTeX environments
+        content = re.sub(r'{{', r'{{{{', content)  # Escape opening braces
+        content = re.sub(r'}}', r'}}}}', content)  # Escape closing braces
         return content
     
-    # Apply the escaping function to all matches in the template
+    # Apply the escaping function only to the parts of the template inside LaTeX math mode
     escaped_template = re.sub(pattern, escape_curly_braces, template, flags=re.DOTALL)
-    
+
     return escaped_template
+
+
+
 
 
 def format_question_html(html_content: str, data: 'pl.QuestionData', isTesting: bool = False) -> str:
@@ -86,6 +95,46 @@ def format_question_html(html_content: str, data: 'pl.QuestionData', isTesting: 
     modified_html = Template(escape_jinja_in_latex(modified_html)).render(params=params)
 
     return modified_html
+
+from jinja2 import Template
+import html
+
+def format_solution_html(html_content: str, data: dict) -> str:
+    """
+    Renders the HTML content by replacing custom Jinja2 placeholders with actual data.
+    
+    Args:
+        html_content (str): The HTML template string containing Jinja2 and LaTeX code.
+        data (dict): The dictionary containing 'params' and 'correct_answers'.
+    
+    Returns:
+        str: The rendered HTML with placeholders replaced by actual values.
+    """
+    try:
+        # Create a Jinja2 environment with custom delimiters
+        env = Environment()
+        env.variable_start_string = '[['
+        env.variable_end_string = ']]'
+        env.block_start_string = '[%%'
+        env.block_end_string = '%%]'
+        
+        # Create a Jinja2 template from the HTML content
+        template = env.from_string(html_content)
+        
+        # Extract 'params' and 'correct_answers' from the data
+        params = data.get("params", {})
+        correct_answers = data.get("correct_answers", {})
+    
+        # Render the template with the provided data
+        rendered_html = template.render(params=params, correct_answers=correct_answers)
+    
+        print(rendered_html)  # For debugging purposes
+        return rendered_html
+    except Exception as e:
+        print(f"An error occurred during template rendering: {e}")
+        raise
+
+
 
 if __name__ == "__main__":
     projectile_motion_question = r"""
@@ -219,3 +268,39 @@ if __name__ == "__main__":
     # Write the HTML content with the submitted answers to a file
     with open(correct_html_path, "w") as f:
         f.write(html.unescape(format_question_html(html_content=projectile_motion_question,data =data,isTesting=True)))  # Render the page with submitted answers
+
+
+    solution_html = r"""<pl-solution-panel>
+    <pl-hint level="1" data-type="text"> Start by writing the formula for specific heat capacity. </pl-hint>
+    <pl-hint level="2" data-type="text"> The specific heat capacity can be defined as:
+        \[ C_p = \frac{Q}{m \cdot (T_f - T_i)} \]
+    </pl-hint>
+    <pl-hint level="3" data-type="text"> Substitute the known values into the equation:
+        \[ C_p = \frac{{{{ params.Q }}}}{{{{ params.m }}} \cdot ({{ params.Tf }} - {{ params.Ti }})} \]
+    </pl-hint>
+    <pl-hint level="4" data-type="text"> Now, calculate the specific heat capacity:
+        \[ C_p = \frac{{{{ params.Q }}}}{{{{ params.m }}} \cdot ({{ params.Tf }} - {{ params.Ti }})} = {{ correct_answers.Cp }} \text{ } {{ params.unitsCp }}
+    </pl-hint>
+    </pl-solution-panel>
+    """ 
+    data: pl.QuestionData = {
+            "params": {'Q': 175, 'm': 8, 'Ti': 22, 'Tf': 57, 'materialName': 'water', 'masslabel': 'mass', 'unitsMass': 'kg', 'unitsTemperature': 'degree C', 'unitsCp': 'kJ/kg C', 'unitsHeat': 'kJ'},
+            "correct_answers": {'Cp': 0.625},
+            "submitted_answers": {},  # Empty initially
+            "format_errors": {},
+            "partial_scores": {},
+            "score": 0,
+            "feedback": {"comment": "Great job"},  # Feedback placeholder
+            "variant_seed": "seed123",  # Random seed
+            "options": {},
+            "raw_submitted_answers": {},
+            "editable": True,  # Marks whether the question is editable
+            "panel": "question",  # Initial panel for displaying the question
+            "extensions": {},
+            "num_valid_submissions": 3,  # Number of valid submissions allowed
+            "manual_grading": False,  # No manual grading needed
+            "answers_names": {}
+        }
+    solution_path = r"C:\Users\lberm\OneDrive\Desktop\GitHub_Repository\mechedu1.0\mechedu1\src\process_prairielearn\solution_html.html"
+    with open("solution_html", "w") as f:
+            f.write(html.unescape(format_solution_html(html_content=solution_html,data =data)))  # Render the page with submitted answers    

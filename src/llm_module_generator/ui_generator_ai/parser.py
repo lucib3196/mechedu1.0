@@ -153,9 +153,8 @@ def computational_question_parser(response: dict)->list[dict]:
 
             # Construct the solution guide by iterating over each step in the solution
             for step in solution_steps:
-                explanation = step.get('explanation', 'No explanation provided')
-                output = step.get('output', 'No output provided')
-                solution_guide.append(f"\n{explanation}\n{output}")
+                explanation = step.get('step_description', 'No explanation provided')
+                solution_guide.append(f"\n{explanation}\n")
 
             # Map the question and its corresponding details
             question_mapping = {

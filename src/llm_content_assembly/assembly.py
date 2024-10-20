@@ -111,7 +111,8 @@ async def generate_from_image(paths: List[str] ,user_data: dict) -> Tuple[List[T
     
 
     logger.debug(f"This is the computational questions type {type(computational_questions)}")
-    logger.debug(f"This is the computational questions type inner {computational_questions}")
+    logger.info(f"This is the computational questions type inner {computational_questions}")
+    print("This is the solution")
     # Generate modules from extracted questions
     results = await asyncio.gather(*[
         generate_module_from_question(

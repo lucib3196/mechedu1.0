@@ -19,7 +19,7 @@ class ImageLLMProcessor:
     model:str
 
     def __post_init__(self):
-        self.llm = ChatOpenAI(model=self.model)
+        self.llm = ChatOpenAI(model=self.model,max_tokens = 16384 )
 
     async def send_request(self, image_paths:list[str]):
         image_contents = await create_image_content_payload(image_paths)
@@ -52,16 +52,18 @@ class ImageReq(BaseModel):
 class ExternalDataReq(BaseModel):
     requires_external_data: bool = Field(..., description="Indicates whether external data, such as tabular data or charts, is needed to solve the question.")
     external_data: Optional[str] = Field(None, description="If external data is required, indicate the required data.")
+
+
 class ComputationalQuestion(BaseModel):
     question: str = Field(..., description="A computational question that requires computation. Format any mathematical symbols or equations using LaTeX.")
-    solution: Optional[List[Step]] = Field(None, description="A detailed solution with steps for the computational question, using LaTeX for formatting any mathematical symbols or equations. This field is optional and should be `None` if a solution is not present, particularly if the `complete` field is `false`.")
+    solution: Optional[List[Step]] = Field(default_factory=list, description="A detailed solution with steps for the computational question, using LaTeX for formatting any mathematical symbols or equations. This field is optional and defaults to an empty list if no solution is provided.")
     source: str = Field(..., description="The source from which this question is derived.")
-    complete: bool = Field(..., description="Indicates if the computational question is completed with the solutions. If `false`, the `solution` field can be `None`.")
+    complete: bool = Field(..., description="Indicates if the computational question is completed with the solutions. If `false`, the `solution` field can be an empty list.")
     image_req: List[ImageReq] = Field(..., description="A list of image requirements for understanding the question, if any.")
-    external_data_req: ExternalDataReq    
+    external_data_req: ExternalDataReq
+ 
 class ExtractedCompuationalQuestions(BaseModel):
     extracted_question: List[ComputationalQuestion] = Field(...,description="A list of all the extracted questions")
-
 
 class ImageRequirements(BaseModel):
     requires_image: str = Field(..., description="Indicates if the derivation requires an image to fully understand the derivation. Should be 'True' or 'False'.")

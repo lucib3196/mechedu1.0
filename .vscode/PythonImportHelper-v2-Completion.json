@@ -2496,6 +2496,14 @@
         "documentation": {}
     },
     {
+        "label": "format_solution_html",
+        "importPath": "src.process_prairielearn.process_prairielearn",
+        "description": "src.process_prairielearn.process_prairielearn",
+        "isExtraImport": true,
+        "detail": "src.process_prairielearn.process_prairielearn",
+        "documentation": {}
+    },
+    {
         "label": "format_question_html",
         "importPath": "src.process_prairielearn.process_prairielearn",
         "description": "src.process_prairielearn.process_prairielearn",
@@ -5085,6 +5093,14 @@
         "documentation": {}
     },
     {
+        "label": "Template",
+        "importPath": "jinja2",
+        "description": "jinja2",
+        "isExtraImport": true,
+        "detail": "jinja2",
+        "documentation": {}
+    },
+    {
         "label": "execjs",
         "kind": 6,
         "isExtraImport": true,
@@ -6060,7 +6076,7 @@
         "kind": 5,
         "importPath": "src.llm_content_assembly.llm_lecture_processor_simple",
         "description": "src.llm_content_assembly.llm_lecture_processor_simple",
-        "peekOfCode": "logger = get_logger(__name__)\nTOTAL_TOKENS = 0\nasync def extract_summary_and_key_concepts(image_paths: List[str]) -> Tuple:\n    \"\"\"\n    Extracts summary and key concepts from lecture images and generates HTML.\n    Args:\n        image_paths (List[str]): List of paths to the lecture images.\n    Returns:\n        str: Generated HTML for the summary and key concepts section.\n    \"\"\"",
+        "peekOfCode": "logger = get_logger(__name__)\nTOTAL_TOKENS = 0\nasync def extract_summary_and_key_concepts(image_paths: List[str], search=False) -> Tuple:\n    \"\"\"\n    Extracts summary and key concepts from lecture images and generates HTML.\n    Args:\n        image_paths (List[str]): List of paths to the lecture images.\n    Returns:\n        str: Generated HTML for the summary and key concepts section.\n    \"\"\"",
         "detail": "src.llm_content_assembly.llm_lecture_processor_simple",
         "documentation": {}
     },
@@ -6069,7 +6085,7 @@
         "kind": 5,
         "importPath": "src.llm_content_assembly.llm_lecture_processor_simple",
         "description": "src.llm_content_assembly.llm_lecture_processor_simple",
-        "peekOfCode": "TOTAL_TOKENS = 0\nasync def extract_summary_and_key_concepts(image_paths: List[str]) -> Tuple:\n    \"\"\"\n    Extracts summary and key concepts from lecture images and generates HTML.\n    Args:\n        image_paths (List[str]): List of paths to the lecture images.\n    Returns:\n        str: Generated HTML for the summary and key concepts section.\n    \"\"\"\n    logger.info(\"Extracting summary and key concepts...\\n\")",
+        "peekOfCode": "TOTAL_TOKENS = 0\nasync def extract_summary_and_key_concepts(image_paths: List[str], search=False) -> Tuple:\n    \"\"\"\n    Extracts summary and key concepts from lecture images and generates HTML.\n    Args:\n        image_paths (List[str]): List of paths to the lecture images.\n    Returns:\n        str: Generated HTML for the summary and key concepts section.\n    \"\"\"\n    logger.info(\"Extracting summary and key concepts...\\n\") ",
         "detail": "src.llm_content_assembly.llm_lecture_processor_simple",
         "documentation": {}
     },
@@ -6195,7 +6211,7 @@
         "kind": 6,
         "importPath": "src.llm_module_generator.image_extraction.image_llm",
         "description": "src.llm_module_generator.image_extraction.image_llm",
-        "peekOfCode": "class ImageLLMProcessor:\n    prompt:str\n    response: BaseModel\n    model:str\n    def __post_init__(self):\n        self.llm = ChatOpenAI(model=self.model)\n    async def send_request(self, image_paths:list[str]):\n        image_contents = await create_image_content_payload(image_paths)\n        message = HumanMessage(\n        content=[",
+        "peekOfCode": "class ImageLLMProcessor:\n    prompt:str\n    response: BaseModel\n    model:str\n    def __post_init__(self):\n        self.llm = ChatOpenAI(model=self.model,max_tokens = 16384 )\n    async def send_request(self, image_paths:list[str]):\n        image_contents = await create_image_content_payload(image_paths)\n        message = HumanMessage(\n        content=[",
         "detail": "src.llm_module_generator.image_extraction.image_llm",
         "documentation": {}
     },
@@ -6240,7 +6256,7 @@
         "kind": 6,
         "importPath": "src.llm_module_generator.image_extraction.image_llm",
         "description": "src.llm_module_generator.image_extraction.image_llm",
-        "peekOfCode": "class ImageReq(BaseModel):\n    requires_image: bool = Field(..., description=\"Indicate whether the question requires an image to solve.\")\n    image_description: Optional[str] = Field(None, description=\"If the question requires an image to solve, provide a description of the image that is needed.\")\nclass ExternalDataReq(BaseModel):\n    requires_external_data: bool = Field(..., description=\"Indicates whether external data, such as tabular data or charts, is needed to solve the question.\")\n    external_data: Optional[str] = Field(None, description=\"If external data is required, indicate the required data.\")\nclass ComputationalQuestion(BaseModel):\n    question: str = Field(..., description=\"A computational question that requires computation. Format any mathematical symbols or equations using LaTeX.\")\n    solution: Optional[List[Step]] = Field(None, description=\"A detailed solution with steps for the computational question, using LaTeX for formatting any mathematical symbols or equations. This field is optional and should be `None` if a solution is not present, particularly if the `complete` field is `false`.\")\n    source: str = Field(..., description=\"The source from which this question is derived.\")",
+        "peekOfCode": "class ImageReq(BaseModel):\n    requires_image: bool = Field(..., description=\"Indicate whether the question requires an image to solve.\")\n    image_description: Optional[str] = Field(None, description=\"If the question requires an image to solve, provide a description of the image that is needed.\")\nclass ExternalDataReq(BaseModel):\n    requires_external_data: bool = Field(..., description=\"Indicates whether external data, such as tabular data or charts, is needed to solve the question.\")\n    external_data: Optional[str] = Field(None, description=\"If external data is required, indicate the required data.\")\nclass ComputationalQuestion(BaseModel):\n    question: str = Field(..., description=\"A computational question that requires computation. Format any mathematical symbols or equations using LaTeX.\")\n    solution: Optional[List[Step]] = Field(default_factory=list, description=\"A detailed solution with steps for the computational question, using LaTeX for formatting any mathematical symbols or equations. This field is optional and defaults to an empty list if no solution is provided.\")\n    source: str = Field(..., description=\"The source from which this question is derived.\")",
         "detail": "src.llm_module_generator.image_extraction.image_llm",
         "documentation": {}
     },
@@ -6249,7 +6265,7 @@
         "kind": 6,
         "importPath": "src.llm_module_generator.image_extraction.image_llm",
         "description": "src.llm_module_generator.image_extraction.image_llm",
-        "peekOfCode": "class ExternalDataReq(BaseModel):\n    requires_external_data: bool = Field(..., description=\"Indicates whether external data, such as tabular data or charts, is needed to solve the question.\")\n    external_data: Optional[str] = Field(None, description=\"If external data is required, indicate the required data.\")\nclass ComputationalQuestion(BaseModel):\n    question: str = Field(..., description=\"A computational question that requires computation. Format any mathematical symbols or equations using LaTeX.\")\n    solution: Optional[List[Step]] = Field(None, description=\"A detailed solution with steps for the computational question, using LaTeX for formatting any mathematical symbols or equations. This field is optional and should be `None` if a solution is not present, particularly if the `complete` field is `false`.\")\n    source: str = Field(..., description=\"The source from which this question is derived.\")\n    complete: bool = Field(..., description=\"Indicates if the computational question is completed with the solutions. If `false`, the `solution` field can be `None`.\")\n    image_req: List[ImageReq] = Field(..., description=\"A list of image requirements for understanding the question, if any.\")\n    external_data_req: ExternalDataReq    ",
+        "peekOfCode": "class ExternalDataReq(BaseModel):\n    requires_external_data: bool = Field(..., description=\"Indicates whether external data, such as tabular data or charts, is needed to solve the question.\")\n    external_data: Optional[str] = Field(None, description=\"If external data is required, indicate the required data.\")\nclass ComputationalQuestion(BaseModel):\n    question: str = Field(..., description=\"A computational question that requires computation. Format any mathematical symbols or equations using LaTeX.\")\n    solution: Optional[List[Step]] = Field(default_factory=list, description=\"A detailed solution with steps for the computational question, using LaTeX for formatting any mathematical symbols or equations. This field is optional and defaults to an empty list if no solution is provided.\")\n    source: str = Field(..., description=\"The source from which this question is derived.\")\n    complete: bool = Field(..., description=\"Indicates if the computational question is completed with the solutions. If `false`, the `solution` field can be an empty list.\")\n    image_req: List[ImageReq] = Field(..., description=\"A list of image requirements for understanding the question, if any.\")\n    external_data_req: ExternalDataReq",
         "detail": "src.llm_module_generator.image_extraction.image_llm",
         "documentation": {}
     },
@@ -6258,7 +6274,7 @@
         "kind": 6,
         "importPath": "src.llm_module_generator.image_extraction.image_llm",
         "description": "src.llm_module_generator.image_extraction.image_llm",
-        "peekOfCode": "class ComputationalQuestion(BaseModel):\n    question: str = Field(..., description=\"A computational question that requires computation. Format any mathematical symbols or equations using LaTeX.\")\n    solution: Optional[List[Step]] = Field(None, description=\"A detailed solution with steps for the computational question, using LaTeX for formatting any mathematical symbols or equations. This field is optional and should be `None` if a solution is not present, particularly if the `complete` field is `false`.\")\n    source: str = Field(..., description=\"The source from which this question is derived.\")\n    complete: bool = Field(..., description=\"Indicates if the computational question is completed with the solutions. If `false`, the `solution` field can be `None`.\")\n    image_req: List[ImageReq] = Field(..., description=\"A list of image requirements for understanding the question, if any.\")\n    external_data_req: ExternalDataReq    \nclass ExtractedCompuationalQuestions(BaseModel):\n    extracted_question: List[ComputationalQuestion] = Field(...,description=\"A list of all the extracted questions\")\nclass ImageRequirements(BaseModel):",
+        "peekOfCode": "class ComputationalQuestion(BaseModel):\n    question: str = Field(..., description=\"A computational question that requires computation. Format any mathematical symbols or equations using LaTeX.\")\n    solution: Optional[List[Step]] = Field(default_factory=list, description=\"A detailed solution with steps for the computational question, using LaTeX for formatting any mathematical symbols or equations. This field is optional and defaults to an empty list if no solution is provided.\")\n    source: str = Field(..., description=\"The source from which this question is derived.\")\n    complete: bool = Field(..., description=\"Indicates if the computational question is completed with the solutions. If `false`, the `solution` field can be an empty list.\")\n    image_req: List[ImageReq] = Field(..., description=\"A list of image requirements for understanding the question, if any.\")\n    external_data_req: ExternalDataReq\nclass ExtractedCompuationalQuestions(BaseModel):\n    extracted_question: List[ComputationalQuestion] = Field(...,description=\"A list of all the extracted questions\")\nclass ImageRequirements(BaseModel):",
         "detail": "src.llm_module_generator.image_extraction.image_llm",
         "documentation": {}
     },
@@ -16230,7 +16246,7 @@
         "kind": 2,
         "importPath": "src.process_prairielearn.process_prairielearn",
         "description": "src.process_prairielearn.process_prairielearn",
-        "peekOfCode": "def escape_jinja_in_latex(template: str) -> str:\n    \"\"\"\n    Escapes Jinja2 curly braces within LaTeX math mode in an HTML template.\n    Args:\n        template (str): The HTML template string containing Jinja2 and LaTeX code.\n    Returns:\n        str: The modified template with Jinja2 expressions properly escaped within LaTeX math mode.\n    \"\"\"\n    # Regex to find Jinja2 expressions within LaTeX math mode (\\(...\\) or \\[...\\])\n    pattern = r'\\\\\\((.*?)\\\\\\)|\\\\\\[(.*?)\\\\\\]'",
+        "peekOfCode": "def escape_jinja_in_latex(template: str) -> str:\n    \"\"\"\n    Escapes Jinja2 curly braces within LaTeX math mode in an HTML template.\n    Args:\n        template (str): The HTML template string containing Jinja2 and LaTeX code.\n    Returns:\n        str: The modified template with Jinja2 expressions properly escaped within LaTeX math mode.\n    \"\"\"\n    # Regex pattern to find LaTeX math mode in both inline (\\(...\\)) and display mode (\\[...\\])\n    pattern = r'(\\\\\\((.*?)\\\\\\))|(\\\\\\[(.*?)\\\\\\])'",
         "detail": "src.process_prairielearn.process_prairielearn",
         "documentation": {}
     },
@@ -16240,6 +16256,15 @@
         "importPath": "src.process_prairielearn.process_prairielearn",
         "description": "src.process_prairielearn.process_prairielearn",
         "peekOfCode": "def format_question_html(html_content: str, data: 'pl.QuestionData', isTesting: bool = False) -> str:\n    current_directory = os.getcwd()\n    element_info = gather_element_info(current_directory,valid_elements=VALID_ELEMENTS)\n    elements_to_call, extracted_elements = find_elements_to_load(html_str=html_content, element_info=element_info)\n    controllers = load_controllers(element_info, elements_to_call)\n    submitted_answers = data.get(\"submitted_answers\",{})\n    if (data.get('panel')==\"answer\") and (submitted_answers):\n        answers = \"\"\n        for k, v in submitted_answers.items():\n            print(k,v)",
+        "detail": "src.process_prairielearn.process_prairielearn",
+        "documentation": {}
+    },
+    {
+        "label": "format_solution_html",
+        "kind": 2,
+        "importPath": "src.process_prairielearn.process_prairielearn",
+        "description": "src.process_prairielearn.process_prairielearn",
+        "peekOfCode": "def format_solution_html(html_content: str, data: dict) -> str:\n    # Create the Jinja template from the HTML content\n    template = Template(html_content)\n    # Extract params and correct_answers from the data\n    params = data.get(\"params\", {})\n    correct_answers = data.get(\"correct_answers\", {})\n    # Render the template with params and correct_answers\n    rendered_html = template.render(params=params, correct_answers=correct_answers)\n    return rendered_html\nif __name__ == \"__main__\":",
         "detail": "src.process_prairielearn.process_prairielearn",
         "documentation": {}
     },

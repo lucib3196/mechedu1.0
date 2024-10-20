@@ -20,12 +20,18 @@
         <div class="form-field mb-3">
             {{ question_html | safe }}
         </div>
+        <div class="container mb-3">
+            {{ solution_html | safe }}
+        </div>
 
         <!-- Buttons for submitting or refreshing the quiz -->
         <div class="quiz-btn-container">
             <button type="submit" class="btn btn-primary">Submit</button>
             <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
             <button type="button" class="btn btn-secondary" onclick="location.reload()">New Variant</button>
+        </div>
+        <div class="step-btn-container">
+            <button type="submit" class="btn btn-primary">Show Hint</button>
         </div>
     </form>
 </div>

@@ -12,7 +12,7 @@ logger = get_logger(__name__)
 TOTAL_TOKENS = 0
 
 
-async def extract_summary_and_key_concepts(image_paths: List[str]) -> Tuple:
+async def extract_summary_and_key_concepts(image_paths: List[str], search=False) -> Tuple:
     """
     Extracts summary and key concepts from lecture images and generates HTML.
 
@@ -22,9 +22,9 @@ async def extract_summary_and_key_concepts(image_paths: List[str]) -> Tuple:
     Returns:
         str: Generated HTML for the summary and key concepts section.
     """
-    logger.info("Extracting summary and key concepts...\n")
+    logger.info("Extracting summary and key concepts...\n") 
     # Generate HTML for the summary section
-    summary_html = await generate_lecture_html_static(image_paths)
+    summary_html = await generate_lecture_html_static(image_paths,search = search)
     
     return summary_html[0] # type: ignore
 
