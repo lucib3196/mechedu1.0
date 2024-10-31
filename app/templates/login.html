@@ -6,6 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <h2 class="text-center">Login</h2>
+            
             <form method="POST" action="{{ url_for('auth.login') }}" class="p-4 shadow-sm rounded bg-light" enctype="multipart/form-data">
                 {{ form.hidden_tag() }}
 
@@ -24,8 +25,14 @@
                     <label class="form-check-label" for="remember_me">Remember Me</label>
                 </div>
 
-                <div class="d-grid">
+                <div class="d-grid my-3">
                     {{ form.submit(class="btn btn-primary btn-block") }}
+                </div>
+                <div class="sign-up-container" class = "m-3">
+                    New User?
+                    <a href="{{ url_for('auth.signup') }}" >
+                        Click here to register
+                    </a>
                 </div>
             </form>
         </div>

@@ -472,6 +472,38 @@
         "documentation": {}
     },
     {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Optional",
         "importPath": "typing",
         "description": "typing",
@@ -3162,6 +3194,14 @@
         "documentation": {}
     },
     {
+        "label": "get_logger",
+        "importPath": "src.logging_config",
+        "description": "src.logging_config",
+        "isExtraImport": true,
+        "detail": "src.logging_config",
+        "documentation": {}
+    },
+    {
         "label": "load_dotenv",
         "importPath": "dotenv",
         "description": "dotenv",
@@ -5085,6 +5125,22 @@
         "documentation": {}
     },
     {
+        "label": "Environment",
+        "importPath": "jinja2",
+        "description": "jinja2",
+        "isExtraImport": true,
+        "detail": "jinja2",
+        "documentation": {}
+    },
+    {
+        "label": "Template",
+        "importPath": "jinja2",
+        "description": "jinja2",
+        "isExtraImport": true,
+        "detail": "jinja2",
+        "documentation": {}
+    },
+    {
         "label": "Template",
         "importPath": "jinja2",
         "description": "jinja2",
@@ -5365,7 +5421,7 @@
         "kind": 2,
         "importPath": "app.routes.generic_routes.auth",
         "description": "app.routes.generic_routes.auth",
-        "peekOfCode": "def logout():\n    logout_user()\n    return redirect(url_for('auth.login'))\n@auth.route('/signup', methods=[\"GET\", \"POST\"])\ndef signup():\n    form = SignUp()\n    print(form)\n    if form.validate_on_submit():\n        user = User(\n            email=form.email.data,",
+        "peekOfCode": "def logout():\n    logout_user()\n    return redirect(url_for('auth.login'))\n@auth.route('/signup', methods=[\"GET\", \"POST\"])\ndef signup():\n    form = SignUp()\n    if form.validate_on_submit():\n        user = User(\n            email=form.email.data,\n            first_name=form.first_name.data,",
         "detail": "app.routes.generic_routes.auth",
         "documentation": {}
     },
@@ -5374,7 +5430,7 @@
         "kind": 2,
         "importPath": "app.routes.generic_routes.auth",
         "description": "app.routes.generic_routes.auth",
-        "peekOfCode": "def signup():\n    form = SignUp()\n    print(form)\n    if form.validate_on_submit():\n        user = User(\n            email=form.email.data,\n            first_name=form.first_name.data,\n            password=form.password.data  # Password will be hashed in the model\n        )\n        db.session.add(user)",
+        "peekOfCode": "def signup():\n    form = SignUp()\n    if form.validate_on_submit():\n        user = User(\n            email=form.email.data,\n            first_name=form.first_name.data,\n            password=form.password.data  # Password will be hashed in the model\n        )\n        db.session.add(user)\n        db.session.commit()",
         "detail": "app.routes.generic_routes.auth",
         "documentation": {}
     },
@@ -6369,6 +6425,15 @@
         "documentation": {}
     },
     {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "src.llm_module_generator.physics_module_generator.# Standard library imports",
+        "description": "src.llm_module_generator.physics_module_generator.# Standard library imports",
+        "peekOfCode": "logger = get_logger(__name__)\nasync def generate_question_html(question_instructions: str) -> str:\n    \"\"\"\n    Generates HTML content for the given question instructions.\n    Args:\n        question_instructions (str): Instructions for generating question HTML.\n    Returns:\n        str: Generated question HTML.\n    \"\"\"\n    logger.info(\"Generating question HTML...\")",
+        "detail": "src.llm_module_generator.physics_module_generator.# Standard library imports",
+        "documentation": {}
+    },
+    {
         "label": "ModuleCodeGenerator",
         "kind": 6,
         "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
@@ -6427,7 +6492,16 @@
         "kind": 5,
         "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
         "description": "src.llm_module_generator.physics_module_generator.module_generator",
-        "peekOfCode": "question_solution_generator = ModuleCodeGenerator(\n    base_prompt=hub.pull(\"solution_html_template\"),\n    example_input_column=\"question.html\",\n    example_output_column=\"solution.html\",\n    model=\"gpt-4o-mini\",\n    response=Response,\n    num_examples = 1\n)\nserver_js_generator = ModuleCodeGenerator(\n    base_prompt=hub.pull(\"server_js_template_base\"),",
+        "peekOfCode": "question_solution_generator = ModuleCodeGenerator(\n    base_prompt=hub.pull(\"solution_html_template\"),\n    example_input_column=\"question.html\",\n    example_output_column=\"solution.html\",\n    model=\"gpt-4o-mini\",\n    response=Response,\n    num_examples = 1\n)\nquestion_solution_generator_flask = ModuleCodeGenerator(\n    base_prompt=hub.pull(\"solution_html_flask\"),",
+        "detail": "src.llm_module_generator.physics_module_generator.module_generator",
+        "documentation": {}
+    },
+    {
+        "label": "question_solution_generator_flask",
+        "kind": 5,
+        "importPath": "src.llm_module_generator.physics_module_generator.module_generator",
+        "description": "src.llm_module_generator.physics_module_generator.module_generator",
+        "peekOfCode": "question_solution_generator_flask = ModuleCodeGenerator(\n    base_prompt=hub.pull(\"solution_html_flask\"),\n    example_input_column=\"question.html\",\n    example_output_column=\"solution.html\",\n    model=\"gpt-4o-mini\",\n    response=Response,\n    num_examples = 0\n)\nserver_js_generator = ModuleCodeGenerator(\n    base_prompt=hub.pull(\"server_js_template_base\"),",
         "detail": "src.llm_module_generator.physics_module_generator.module_generator",
         "documentation": {}
     },
@@ -16264,7 +16338,7 @@
         "kind": 2,
         "importPath": "src.process_prairielearn.process_prairielearn",
         "description": "src.process_prairielearn.process_prairielearn",
-        "peekOfCode": "def format_solution_html(html_content: str, data: dict) -> str:\n    # Create the Jinja template from the HTML content\n    template = Template(html_content)\n    # Extract params and correct_answers from the data\n    params = data.get(\"params\", {})\n    correct_answers = data.get(\"correct_answers\", {})\n    # Render the template with params and correct_answers\n    rendered_html = template.render(params=params, correct_answers=correct_answers)\n    return rendered_html\nif __name__ == \"__main__\":",
+        "peekOfCode": "def format_solution_html(html_content: str, data: dict) -> str:\n    \"\"\"\n    Renders the HTML content by replacing custom Jinja2 placeholders with actual data.\n    Args:\n        html_content (str): The HTML template string containing Jinja2 and LaTeX code.\n        data (dict): The dictionary containing 'params' and 'correct_answers'.\n    Returns:\n        str: The rendered HTML with placeholders replaced by actual values.\n    \"\"\"\n    try:",
         "detail": "src.process_prairielearn.process_prairielearn",
         "documentation": {}
     },

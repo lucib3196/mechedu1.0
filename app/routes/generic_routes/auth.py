@@ -32,8 +32,6 @@ def logout():
 @auth.route('/signup', methods=["GET", "POST"])
 def signup():
     form = SignUp()
-    print(form)
-
     if form.validate_on_submit():
         user = User(
             email=form.email.data,
