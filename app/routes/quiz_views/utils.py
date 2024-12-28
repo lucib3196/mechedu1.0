@@ -38,7 +38,7 @@ def retrieve_files_session(module_name: str, folder_name: str, folder_id: int) -
     
     full_files_data = [{
         "filename": file.filename,
-        "content": file.content.decode('utf-8', errors='ignore')  # Assuming content is binary
+        "content":decode_content(file.content)  # Assuming content is binary
     } for file in folder.files if file.filename in {f['filename'] for f in files_data}]
     
     return full_files_data
@@ -77,7 +77,7 @@ def retrieve_files_folder(folder_id: int) -> Union[Tuple[str, List[Dict[str, str
     full_files_data = [
         {
             "filename": file.filename,
-            "content": file.content.decode('utf-8', errors='ignore')
+            "content": decode_content(file.content)
         }
         for file in folder.files
     ]
