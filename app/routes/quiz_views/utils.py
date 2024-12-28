@@ -1,6 +1,12 @@
 from ...db_models.models import Folder
 from typing import Union,List, Dict
 from flask import session
+import json
+from typing import Optional
+
+from src.logging_config.logging_config import get_logger
+# Initialize the logger
+logger = get_logger(__name__)
 
 def retrieve_files_session(module_name: str, folder_name: str, folder_id: int) -> Union[List[Dict[str, str]], tuple]:
     """
@@ -77,3 +83,40 @@ def retrieve_files_folder(folder_id: int) -> Union[Tuple[str, List[Dict[str, str
     ]
     
     return folder_name, full_files_data
+
+
+def decode_content(content: str) -> dict|str|None:
+    """
+    Decodes the given content string, handling both hex-encoded data and plain strings.
+
+    If the input is a hex-encoded string (starts with '\\x'), it decodes it into a
+    readable format. If the decoded content is valid JSON, it parses and returns it
+    as a dictionary. If the content is already a plain string, it attempts to parse
+    it as JSON or returns the string as-is.
+
+    Args:
+        content (str): The input content to decode. Can be a hex-encoded string (e.g., '\\x7b...') 
+                       or a plain string.
+
+    Returns:
+        Optional[dict]: Returns the parsed JSON as a dictionary if successful, or the decoded 
+                        plain string. Returns None if the decoding or parsing fails.
+    """
+    try:
+        # If content is hex-encoded, decode it
+        if content.startswith("\\x"):
+            decoded = bytes.fromhex(content.replace("\\x", "")).decode("utf-8")
+        else:
+            # Content is already a string
+            decoded = content
+        
+        # Try parsing as JSON
+        try:
+            return json.loads(decoded)
+        except json.JSONDecodeError:
+            # Not JSON, return as plain string
+            return decoded
+    except Exception as e:
+        print(f"Error decoding content: {e}")
+        return None
+

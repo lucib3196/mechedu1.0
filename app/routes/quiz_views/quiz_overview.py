@@ -5,6 +5,7 @@ import zipfile
 import io
 import json
 from io import BytesIO
+from .utils import decode_content
 
 # Third-Party Imports
 from flask import (
@@ -19,9 +20,11 @@ logger = get_logger(__name__)
 from ...db_models.models import File, EduModule, Folder, db
 from .utils import retrieve_files_session, retrieve_files_folder
 from src.utils.file_handler import create_zip_file
-from ...form.forms import UPDATE_CODE,DOWNLOAD 
+
 
 quiz_overview_bp = Blueprint('quiz_overview_bp', __name__)
+
+
 # This is perfect as is 
 @quiz_overview_bp.route("/quiz_overview/<folder_id>/actions", methods=['GET', 'POST'])
 def modules_action(folder_id):
@@ -29,12 +32,20 @@ def modules_action(folder_id):
     session["folder_id"] = folder.id
     return render_template('module_actions.html',folder=folder)
 
+
+
+
+
+
+
+
+
 @quiz_overview_bp.route('/edit_code/<int:fileid>', methods=['GET', 'POST'])
 def edit_code(fileid):
     # Retrieve the file from the database using its ID
     file = File.query.filter_by(id=fileid).first_or_404(description="File Not Found")
     session["fileid"] = file.id
-    code_content = file.content.decode('utf-8')
+    code_content = decode_content(file.content)
 
     language_map = {
         "py":"python",
@@ -68,6 +79,7 @@ def determine_file_type(file_names:dict)->str:
         return "Adaptive"
     else:
         return "Lecture"
+    
 @quiz_overview_bp.route('/quiz_overview/<int:folder_id>', methods=['GET', 'POST'])
 def render_content(folder_id):
     # Retrieve the folder
@@ -81,7 +93,7 @@ def render_content(folder_id):
     if metadata_file:
         logger.info(f'Metadata file: {metadata_file.content}')
         # Load the metadata content
-        metadata = json.loads(metadata_file.content.decode('utf-8'))
+        metadata = json.loads(decode_content(metadata_file.content))
         is_adaptive = metadata.get("isAdaptive")
         
         # Adaptive Content
@@ -94,7 +106,7 @@ def render_content(folder_id):
     # Case 2: Lecture Content (HTML file)
     elif lecture_file:
         # Render the lecture HTML file content
-        lecture_content = lecture_file.content.decode('utf-8')
+        lecture_content = decode_content(lecture_file.content)
         return render_template('lecture.html', lecture=lecture_content)
     
     # Case 3: No content found
