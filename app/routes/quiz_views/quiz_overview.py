@@ -4,8 +4,6 @@ import tempfile
 import zipfile
 import io
 import json
-from typing import List
-from ast import literal_eval
 from io import BytesIO
 
 # Third-Party Imports
@@ -81,6 +79,7 @@ def render_content(folder_id):
 
     # Case 1: Adaptive/Non-Adaptive Content based on metadata
     if metadata_file:
+        logger.info(f'Metadata file: {metadata_file}')
         # Load the metadata content
         metadata = json.loads(metadata_file.content.decode('utf-8'))
         is_adaptive = metadata.get("isAdaptive")
