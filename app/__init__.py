@@ -1,43 +1,24 @@
-import os
 from flask import Flask
-from flask_migrate import Migrate
-from flask_bootstrap import Bootstrap5
 from flask_login import LoginManager
-from pickle import TRUE
-from src.prairielearn.python import prairielearn
-from src.prairielearn.python import prairielearn as pl
-import json
 from flask_wtf import CSRFProtect 
+from .config import config
 
 
-class Config:
-    SECRET_KEY = "6Vicv382oz3PyNOAYP2SlAo/uO2750TY4+5fjNRoi8ccH0fpoEP/QLznbI07K36v"
-    FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN', "").split(",")
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SESSION_TYPE = 'filesystem'
 
-    @staticmethod
-    def init_app(app):
-        pass
 
-class DevelopmentConfig(Config):
-    DEBUG = True
-    SQLALCHEMY_DATABASE_URI = "sqlite:///files.db"
-
-config: dict[str, type[DevelopmentConfig]] = {
-    'development': DevelopmentConfig,
-    'default': DevelopmentConfig
-}
-
-def create_app():
+def create_app(config_name):
     app = Flask(__name__)
-    app.config.from_object(config['development'])
-
+    
+    # Intialize the configuration
+    app.config.from_object(config[config_name])
+    config[config_name].init_app(app)
+    
+    # Protection
     csrf = CSRFProtect(app) 
     csrf.init_app(app)
-
+    
     # Initialize database
-    from .db_models.models import db, User,Role,QuestionMetadata,Folder
+    from .db_models.models import db, User,Role
     db.init_app(app)
 
     # Initialize and configure Flask-Login
@@ -75,29 +56,5 @@ def create_app():
         db.create_all()
         Role.insert_roles()
 
-        # folder = Folder.query.filter_by(name='Example Folder').first()
-        # if folder is None:
-        #     folder = Folder(name='Example Folder', module_id=1)  # Assuming module_id=1 exists
-        #     db.session.add(folder)
-        #     db.session.commit()
-
-        # question = QuestionMetadata(
-        # uuid="d8b914d1-5f8e-4e44-994f-e78e08d396f1",
-        # title="ProjectileMotionCalculation",
-        # stem="Calculating the time taken for an object to fall from a height",
-        # topic="Physics",
-        # tags=json.dumps(["Projectile Motion", "Physics", "Kinematics", "Free Fall"]),
-        # prereqs=json.dumps(["Basic understanding of kinematics", "Knowledge of free fall motion"]),
-        # is_adaptive=True,
-        # created_by="lberm007@ucr.edu",
-        # q_type="num",
-        # n_steps=1,
-        # updated_by="",
-        # difficulty=1,
-        # codelang="javascript",
-        # reviewed=False,
-        # folder_id=folder.id)
-        # db.session.add(question)
-        # db.session.commit()
 
     return app
