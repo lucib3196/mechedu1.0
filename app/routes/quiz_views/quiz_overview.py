@@ -93,7 +93,7 @@ def render_content(folder_id):
     if metadata_file:
         logger.info(f'Metadata file: {metadata_file.content}')
         # Load the metadata content
-        metadata = json.loads(decode_content(metadata_file.content))
+        metadata = decode_content(metadata_file.content)
         is_adaptive = metadata.get("isAdaptive")
         
         # Adaptive Content
