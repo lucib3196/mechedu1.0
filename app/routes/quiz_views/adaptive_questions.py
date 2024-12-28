@@ -5,6 +5,7 @@ import tempfile
 import traceback
 import logging
 from flask import request
+import json
 
 # Third-Party Imports
 from flask import Blueprint, render_template, session, redirect, url_for, flash
@@ -44,6 +45,8 @@ def render_adaptive_quiz():
                 # Convert content to bytes if it's a string
                 if isinstance(content, str):
                     content = content.encode('utf-8')
+                if isinstance(content,dict):
+                    content = json.dumps(content).encode('utf-8')
 
                 # Write content to a temporary file
                 tempfile_path = os.path.join(tmpdir, filename)
