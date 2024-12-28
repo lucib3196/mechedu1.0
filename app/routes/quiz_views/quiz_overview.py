@@ -171,7 +171,13 @@ def download_all_modules():
             with zipfile.ZipFile(folder_zip_buffer, 'w', zipfile.ZIP_DEFLATED) as folder_zip:
                 for file in full_files_data:
                     filename = file.get("filename")
-                    content = file.get("content", "").encode('utf-8') if isinstance(file.get("content", ""), str) else file.get("content")
+                    content = file.get("content", "")
+                    
+                    # Convert content to bytes if it's a string
+                    if isinstance(content, str):
+                        content = content.encode('utf-8')
+                    if isinstance(content,dict):
+                        content = json.dumps(content).encode('utf-8')
                     
                     # Add file to folder-specific ZIP
                     folder_zip.writestr(filename, content)
