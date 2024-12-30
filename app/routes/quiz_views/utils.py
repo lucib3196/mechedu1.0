@@ -103,7 +103,8 @@ def decode_content(content: str) -> dict|str|None:
                         plain string. Returns None if the decoding or parsing fails.
     """
     try:
-        # If content is hex-encoded, decode it
+        if isinstance(content, bytes):
+            content = content.decode('utf-8', errors='ignore')
         if content.startswith("\\x"):
             decoded = bytes.fromhex(content.replace("\\x", "")).decode("utf-8")
         else:

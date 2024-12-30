@@ -22,7 +22,7 @@ class ExampleBasedPromptDataFrame:
 
     embedding_engine: str = "text-embedding-3-small"
     embedding_columns: str = "embeddings-3-small"
-    embedding_file: str = os.path.join(base_dir, '..', 'data', 'question_embeddings_2024_9_11.csv')
+    embedding_file: str = os.path.join(base_dir, '..', 'data', 'Question_Embedding_20241230.csv')
 
 
     df_config: EmbeddingDataFrame = field(init=False)
