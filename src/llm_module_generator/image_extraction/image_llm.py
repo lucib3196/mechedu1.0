@@ -19,7 +19,7 @@ class ImageLLMProcessor:
     model:str
 
     def __post_init__(self):
-        self.llm = ChatOpenAI(model=self.model,max_tokens = 16384 )
+        self.llm = ChatOpenAI(model=self.model)
 
     async def send_request(self, image_paths:list[str]):
         image_contents = await create_image_content_payload(image_paths)
@@ -30,6 +30,9 @@ class ImageLLMProcessor:
         ],)
         response = await self.llm.with_structured_output(self.response).ainvoke([message]) # type: ignore
         return response.dict() # type: ignore
+
+
+
 
 
 class KeyWord(BaseModel):
