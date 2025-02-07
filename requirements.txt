@@ -113,6 +113,7 @@ posthog==3.8.3
 prompt_toolkit==3.0.48
 propcache==0.2.1
 protobuf==5.29.3
+psycopg2==2.9.10
 pure_eval==0.2.3
 pyasn1==0.6.1
 pyasn1_modules==0.4.1
