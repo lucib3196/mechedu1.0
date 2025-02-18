@@ -121,6 +121,7 @@ pyasn1_modules==0.4.1
 pydantic==2.10.5
 pydantic-settings==2.7.1
 pydantic_core==2.27.2
+PyExecJS==1.5.1
 Pygments==2.19.1
 PyMuPDF==1.25.1
 pyparsing==3.2.1
