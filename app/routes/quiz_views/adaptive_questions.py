@@ -46,13 +46,14 @@ def render_adaptive_quiz():
 
                 # Convert content to bytes if it's a string
                 if isinstance(content, str):
-                    content = content.encode('utf-8')
+                    # content = content.encode('utf-8')
+                    content = content
                 if isinstance(content,dict):
-                    content = json.dumps(content).encode('utf-8')
+                    content = json.dumps(content)
 
                 # Write content to a temporary file
                 tempfile_path = os.path.join(tmpdir, filename)
-                with open(tempfile_path, "wb") as f:
+                with open(tempfile_path, "w") as f:
                     f.write(content)
                     print(content)
                 
@@ -62,10 +63,7 @@ def render_adaptive_quiz():
 
             # Generate quiz data
             server_file = os.path.join(tmpdir, "server.js")
-            print(server_file)
             generated_data = run_generate(server_file)
-            print("This is the generated data")
-            print(generated_data)
             params = generated_data.get("params", {})
             correct_answers = generated_data.get("correct_answers", {})
 
@@ -98,7 +96,7 @@ def render_adaptive_quiz():
             formatted_question_html = format_question_html(question_html, data=data)
             logger.info(f"Formatted Question HTML: {formatted_question_html}")
             
-            print(solution_html)
+            print(formatted_question_html)
             solution_html =  format_solution_html(html_content = solution_html,data=data)
             logger.info(f"Formatted Question HTML: {solution_html}")
 

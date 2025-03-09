@@ -59,6 +59,7 @@ def format_question_html(html_content: str, data: 'pl.QuestionData', isTesting: 
         answers = ""
         for k, v in submitted_answers.items():
             print(k,v)
+    print("Elements to call", elements_to_call)
   
     modified_html = process_extracted_elements(
         html_str=html_content, 
