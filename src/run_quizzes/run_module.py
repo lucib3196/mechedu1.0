@@ -35,10 +35,17 @@ def run_generate_py(path:str)->dict:
     return data
 
 def run_generate_js(path):
-    with open(path, 'r') as file:
-        js_code = file.read()
-    context = execjs.compile(js_code)
-    return context.call("generate")
+    try:
+        with open(path, 'rb') as file:
+            js_code = file.read().decode('utf-8')  # Decode bytes to string
+            print(js_code)
+        
+        context = execjs.compile(js_code)  # Now js_code is a string
+        val = context.call("generate")
+        print(val)
+        return val
+    except Exception as e:
+        return f"Error could not run js code: {e}"
 def run_generate(path:str):
     generators = {
         "server.js": run_generate_js,

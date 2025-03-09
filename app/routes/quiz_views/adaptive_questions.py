@@ -40,8 +40,9 @@ def render_adaptive_quiz():
         with tempfile.TemporaryDirectory() as tmpdir:
             for file in full_files_data:
                 filename = file.get("filename")
+                print(filename,type(filename))
                 content = file.get("content", "")
-                print(content)
+                
 
                 # Convert content to bytes if it's a string
                 if isinstance(content, str):
@@ -56,10 +57,14 @@ def render_adaptive_quiz():
                     print(content)
                 
                 logger.info(f"Temporary file created at: {tempfile_path}")
+                
+            
 
             # Generate quiz data
             server_file = os.path.join(tmpdir, "server.js")
+            print(server_file)
             generated_data = run_generate(server_file)
+            print("This is the generated data")
             print(generated_data)
             params = generated_data.get("params", {})
             correct_answers = generated_data.get("correct_answers", {})
