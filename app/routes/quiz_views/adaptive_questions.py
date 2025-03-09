@@ -41,6 +41,7 @@ def render_adaptive_quiz():
             for file in full_files_data:
                 filename = file.get("filename")
                 content = file.get("content", "")
+                print(content)
 
                 # Convert content to bytes if it's a string
                 if isinstance(content, str):
