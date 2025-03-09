@@ -52,6 +52,7 @@ def render_adaptive_quiz():
                 tempfile_path = os.path.join(tmpdir, filename)
                 with open(tempfile_path, "wb") as f:
                     f.write(content)
+                    print(content)
                 
                 logger.info(f"Temporary file created at: {tempfile_path}")
 
